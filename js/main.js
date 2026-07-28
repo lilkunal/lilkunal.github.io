@@ -55,7 +55,7 @@
   }
 
   /* Identity ticker */
-  var tickerWords = ["web designer", "football regular", "Ghibli defender", "Padma Enterprises founder", "technical support veteran"];
+  var tickerWords = ["web designer", "football regular", "Ghibli defender", "Padma Enterprises founder", "technical support veteran", "old soul"];
   var tickerEl = document.getElementById("ticker-word");
   if (tickerEl) {
     var tickerIndex = 0;

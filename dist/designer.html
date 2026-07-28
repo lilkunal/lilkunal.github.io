@@ -118,6 +118,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .identity-ticker::before { content: "→"; }
 #ticker-word { transition: opacity 0.25s var(--ease); }
 #ticker-word.is-fading { opacity: 0; }
+.hero__tagline { margin-top: 0.85rem; font-style: italic; color: var(--ink-faint); font-size: 0.95rem; max-width: 46ch; }
 
 .hero__lede { margin-top: 1.75rem; max-width: 58ch; font-size: 1.15rem; color: var(--ink-soft); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.5rem; }
@@ -170,6 +171,7 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--ink); }
 .faq-answer { margin-top: 1.25rem; max-width: 68ch; color: var(--ink-soft); font-size: 1.05rem; min-height: 1.6em; }
 
 .contact__lede { max-width: 60ch; color: var(--ink-soft); font-size: 1.1rem; margin-top: 0.25rem; }
+.contact__closing { margin-top: 2.5rem; max-width: 60ch; color: var(--ink-soft); font-style: italic; }
 .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; margin-top: 2.5rem; }
 .contact-card { display: flex; flex-direction: column; gap: 0.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem 1.75rem; position: relative; transition: transform 0.25s var(--ease), border-color 0.25s var(--ease); }
 .contact-card:hover { transform: translateY(-3px); border-color: var(--ink); }
@@ -235,6 +237,7 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--ink); }
       <span class="hero__became">Now I design the websites small businesses actually need<span class="squiggle">.<svg viewBox="0 0 20 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2,12 Q10,4 18,12" /></svg></span></span>
     </h1>
     <p class="identity-ticker">I am also a <span id="ticker-word">web designer</span></p>
+    <p class="hero__tagline">An old soul trying to keep up with a fast, vast world — my words, not just an Instagram bio.</p>
     <p class="hero__lede">Alongside my day job, I've spent nine years running Padma Enterprises — a lighting business I built from nothing. Running one myself means I know what a small business actually needs from a website: something fast, clear about what you sell, and easy to trust. That's what I build for others now.</p>
     <div class="hero__actions">
       <a class="btn btn--primary" href="mailto:kunalvrshn@gmail.com?subject=Let%27s%20build%20my%20website">Start a project</a>
@@ -246,7 +249,8 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--ink); }
   <section id="about" class="section about">
     <p class="eyebrow">Why work with me</p>
     <h2 class="section__title">I've been the customer on the other end of a bad website.</h2>
-    <p class="about__body">I've spent years in technical support — Teleperformance, Webhelp, Concentrix — talking to people whose systems weren't working. Alongside that, I run a manufacturing business that lives or dies by whether customers can find, understand and trust what's on offer. That combination means I don't design sites just to look good in a screenshot. I build them to load fast, explain the business clearly, and hold up long after launch — because I know exactly what it's like to be the one who answers for it when something breaks.</p>
+    <p class="about__body">I've spent years in technical support — Teleperformance, Webhelp, Concentrix — talking to people whose systems weren't working. Alongside that, I run a manufacturing business that lives or dies by whether customers can find, understand and trust what's on offer, and nothing keeps you humble like customers — every single one of them. When I told people I was walking away from steady work to build this instead, plenty asked why. I knew what I was capable of; that part never wavered.</p>
+    <p class="about__body">That combination means I don't design sites just to look good in a screenshot. I build them to load fast, explain the business clearly, and hold up long after launch — because I know exactly what it's like to be the one who answers for it when something breaks. None of that came from one mentor or one big break, either — I'm mostly the sum of everyone I've met and everyone who's travelled with me this far.</p>
     <dl class="fact-strip">
       <div class="fact"><dd class="fact__value">4+</dd><dt class="fact__label">Years in technical &amp; customer support</dt></div>
       <div class="fact"><dd class="fact__value">9</dd><dt class="fact__label">Years running Padma Enterprises</dt></div>
@@ -322,7 +326,9 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--ink); }
     <div class="faq-list">
       <button class="faq-item" type="button" data-a="Both, and neither is the fallback plan. Padma Enterprises pays the bills I already know how to pay; this is the one I'm building next.">Are you a designer, or do you just run a lighting business?</button>
       <button class="faq-item" type="button" data-a="Not yet — you'd be one of the first. What I do have: years of technical support and a real business, so I don't disappear after launch and I know how small businesses actually run.">Do you have client design work yet?</button>
+      <button class="faq-item" type="button" data-a="Personally? No — I go quiet sometimes when things pile up, ask anyone who knows me. Professionally, it's different: if you're paying me to keep your site running, I show up. That's a decision, not a personality trait.">Are you always this responsive?</button>
       <button class="faq-item" type="button" data-a="Because a portfolio that only talks about work is a LinkedIn profile with better fonts.">Why does a web designer's site mention football and Ghibli films?</button>
+      <button class="faq-item" type="button" data-a="Every trip's changed something in me, one way or another — ask me about the last one when we talk.">Where do you actually like to travel?</button>
       <button class="faq-item" type="button" data-a="This site: yes, heavily, and I'm not hiding it — it's part of how I build client sites fast without cutting corners on care. The direction, the writing, the judgment calls stay mine.">Did you use AI to build this?</button>
     </div>
     <p class="faq-answer" id="faq-answer" aria-live="polite"></p>
@@ -351,6 +357,7 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--ink); }
         <span class="contact-card__value">linkedin.com/in/kunalvrshn</span>
       </a>
     </div>
+    <p class="contact__closing">The plan for the next year is simple: know exactly what I'm working on, keep growing, and actually enjoy the work. If that's the kind of person you want building your site, let's talk.</p>
   </section>
 
 </main>
@@ -408,7 +415,7 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--ink); }
     setInterval(tickClock, 1000);
   }
 
-  var tickerWords = ["web designer", "football regular", "Ghibli defender", "Padma Enterprises founder", "technical support veteran"];
+  var tickerWords = ["web designer", "football regular", "Ghibli defender", "Padma Enterprises founder", "technical support veteran", "old soul"];
   var tickerEl = document.getElementById("ticker-word");
   if (tickerEl) {
     var tickerIndex = 0;

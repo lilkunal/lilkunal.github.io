@@ -231,6 +231,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .identity-ticker::before { content: "→"; }
 #ticker-word { transition: opacity 0.25s var(--ease); }
 #ticker-word.is-fading { opacity: 0; }
+.hero__tagline { margin-top: 0.85rem; font-style: italic; color: var(--ink-faint); font-size: 0.95rem; max-width: 46ch; }
 
 .hero__lede {
   margin-top: 1.75rem;
@@ -408,6 +409,7 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--ink); }
 
 /* ===== Contact ===== */
 .contact__lede { max-width: 60ch; color: var(--ink-soft); font-size: 1.1rem; margin-top: 0.25rem; }
+.contact__closing { margin-top: 2.5rem; max-width: 60ch; color: var(--ink-soft); font-style: italic; }
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
