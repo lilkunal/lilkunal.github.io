@@ -48,7 +48,7 @@
     } catch (e) { fmt = null; }
     function tickClock() {
       if (!fmt) return;
-      clockEl.textContent = "Aligarh, India · " + fmt.format(new Date());
+      clockEl.textContent = "Now screening · Aligarh, India · " + fmt.format(new Date());
     }
     tickClock();
     setInterval(tickClock, 1000);
