@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -69,6 +71,40 @@
     }, 2600);
   }
 
+  /* Persona switcher */
+  var personaCaptions = {
+    itguy: "Has fixed more Wi-Fi routers than he'd like to admit.",
+    actor: "Could probably cry on command. Still can't dance.",
+    businessman: "Owns exactly one good watch. Wears it to everything.",
+    funnyguy: "The friend who ruins serious photos on purpose.",
+    nextdoor: "Will help you move furniture. Will judge your paint choice silently."
+  };
+  var personaOrder = ["itguy", "actor", "businessman", "funnyguy", "nextdoor"];
+  var personaTabs = Array.prototype.slice.call(document.querySelectorAll(".persona-tab"));
+  var personaPhotos = Array.prototype.slice.call(document.querySelectorAll(".persona-photo"));
+  var personaCaptionEl = document.getElementById("persona-caption");
+
+  function activatePersona(persona) {
+    personaTabs.forEach(function (t) { t.classList.toggle("is-active", t.getAttribute("data-persona") === persona); });
+    personaPhotos.forEach(function (p) { p.classList.toggle("is-active", p.getAttribute("data-persona") === persona); });
+    if (personaCaptionEl && personaCaptions[persona]) personaCaptionEl.textContent = personaCaptions[persona];
+  }
+
+  var personaAutoTimer = null;
+  if (personaTabs.length && !reduceMotion) {
+    var personaAutoIndex = 0;
+    personaAutoTimer = setInterval(function () {
+      personaAutoIndex = (personaAutoIndex + 1) % personaOrder.length;
+      activatePersona(personaOrder[personaAutoIndex]);
+    }, 4200);
+  }
+  personaTabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      if (personaAutoTimer) { clearInterval(personaAutoTimer); personaAutoTimer = null; }
+      activatePersona(tab.getAttribute("data-persona"));
+    });
+  });
+
   /* Copy to clipboard */
   var copyBtns = Array.prototype.slice.call(document.querySelectorAll(".copy-btn"));
   copyBtns.forEach(function (btn) {
@@ -106,7 +142,6 @@
   });
 
   /* Count-up stats */
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   function animateCount(el) {
     var target = parseInt(el.getAttribute("data-count-to"), 10);
     if (isNaN(target)) return;
