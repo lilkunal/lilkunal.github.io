@@ -25,6 +25,7 @@
 
   <nav class="nav__links" aria-label="Primary">
     <a href="#about">About</a>
+    <a href="#experience">Experience</a>
     <a href="#services">Services</a>
     <a href="#process">Process</a>
     <a href="#work">Work</a>
@@ -110,6 +111,39 @@
     </aside>
   </section>
 
+  <section id="experience" class="section experience">
+    <p class="eyebrow">Professional background</p>
+    <h2 class="section__title">The résumé side of this, briefly.</h2>
+    <ol class="mini-timeline">
+      <li class="mini-timeline__item">
+        <span class="mini-timeline__date">2017 — Present</span>
+        <span class="mini-timeline__role">Founder, Padma Enterprises</span>
+        <span class="mini-timeline__org">Lighting manufacturing &amp; retail</span>
+      </li>
+      <li class="mini-timeline__item">
+        <span class="mini-timeline__date">Aug – Dec 2024</span>
+        <span class="mini-timeline__role">Technical Support Advisor</span>
+        <span class="mini-timeline__org">Teleperformance</span>
+      </li>
+      <li class="mini-timeline__item">
+        <span class="mini-timeline__date">Oct 2023 – Jan 2024</span>
+        <span class="mini-timeline__role">Customer Support Executive</span>
+        <span class="mini-timeline__org">Webhelp Pvt. Ltd.</span>
+      </li>
+      <li class="mini-timeline__item">
+        <span class="mini-timeline__date">Oct 2021 – Apr 2023</span>
+        <span class="mini-timeline__role">Content Moderator</span>
+        <span class="mini-timeline__org">Concentrix Daksh Pvt. Ltd.</span>
+      </li>
+      <li class="mini-timeline__item">
+        <span class="mini-timeline__date">Feb – Jun 2021</span>
+        <span class="mini-timeline__role">Technical Support Trainee</span>
+        <span class="mini-timeline__org">Flex Pvt. Ltd.</span>
+      </li>
+    </ol>
+    <a class="btn btn--ghost" href="resume/index.html">See the full résumé →</a>
+  </section>
+
   <section id="services" class="section services">
     <p class="eyebrow">What I do</p>
     <h2 class="section__title">Services</h2>
@@ -165,15 +199,22 @@
   <section id="ask" class="section ask">
     <p class="eyebrow">Ask anything</p>
     <h2 class="section__title">Things people usually ask.</h2>
+
+    <div class="ask-search">
+      <input type="text" id="ask-input" placeholder="Type a question — I'll match it to the closest answer below">
+      <button type="button" class="btn btn--ghost" id="ask-search-btn">Ask</button>
+    </div>
+    <p class="ask-search__note">This matches your question to the list below by keyword — it's not a live AI, just quick matching. For anything real, use the form below.</p>
+
     <div class="faq-list">
-      <button class="faq-item" type="button" data-a="Both, and neither is the fallback plan. Padma Enterprises pays the bills I already know how to pay; this is the one I'm building next.">Are you a designer, or do you just run a lighting business?</button>
+      <button class="faq-item is-active" type="button" data-a="Both, and neither is the fallback plan. Padma Enterprises pays the bills I already know how to pay; this is the one I'm building next.">Are you a designer, or do you just run a lighting business?</button>
       <button class="faq-item" type="button" data-a="Not yet — you'd be one of the first. What I do have: years of technical support and a real business, so I don't disappear after launch and I know how small businesses actually run.">Do you have client design work yet?</button>
       <button class="faq-item" type="button" data-a="Personally? No — I go quiet sometimes when things pile up, ask anyone who knows me. Professionally, it's different: if you're paying me to keep your site running, I show up. That's a decision, not a personality trait.">Are you always this responsive?</button>
       <button class="faq-item" type="button" data-a="Because a portfolio that only talks about work is a LinkedIn profile with better fonts.">Why does a web designer's site mention football and Ghibli films?</button>
       <button class="faq-item" type="button" data-a="Every trip's changed something in me, one way or another — ask me about the last one when we talk.">Where do you actually like to travel?</button>
       <button class="faq-item" type="button" data-a="This site: yes, heavily, and I'm not hiding it — it's part of how I build client sites fast without cutting corners on care. The direction, the writing, the judgment calls stay mine.">Did you use AI to build this?</button>
     </div>
-    <p class="faq-answer" id="faq-answer" aria-live="polite"></p>
+    <p class="faq-answer" id="faq-answer" aria-live="polite">Both, and neither is the fallback plan. Padma Enterprises pays the bills I already know how to pay; this is the one I'm building next.</p>
   </section>
 
   <section id="contact" class="section contact">

@@ -185,6 +185,36 @@
     });
   });
 
+  /* Ask search — keyword-matches a typed question to the FAQ list. Not a live AI. */
+  var askInput = document.getElementById("ask-input");
+  var askBtn = document.getElementById("ask-search-btn");
+  if (askInput && askBtn && faqItems.length) {
+    function runAskSearch() {
+      var query = (askInput.value || "").toLowerCase().trim();
+      if (!query) return;
+      var words = query.split(/\s+/).filter(function (w) { return w.length > 2; });
+      var best = null;
+      var bestScore = 0;
+      faqItems.forEach(function (item) {
+        var corpus = (item.textContent + " " + item.getAttribute("data-a")).toLowerCase();
+        var score = 0;
+        words.forEach(function (w) { if (corpus.indexOf(w) !== -1) score++; });
+        if (score > bestScore) { bestScore = score; best = item; }
+      });
+      if (best && bestScore > 0) {
+        best.click();
+        best.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+      } else if (faqAnswer) {
+        faqItems.forEach(function (i) { i.classList.remove("is-active"); });
+        faqAnswer.textContent = "Couldn't find a close match — just message me directly below, I'll actually answer.";
+      }
+    }
+    askBtn.addEventListener("click", runAskSearch);
+    askInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { e.preventDefault(); runAskSearch(); }
+    });
+  }
+
   /* Count-up stats */
   function animateCount(el) {
     var target = parseInt(el.getAttribute("data-count-to"), 10);
@@ -231,7 +261,7 @@
 
   /* Reveal on scroll */
   var revealTargets = Array.prototype.slice.call(
-    document.querySelectorAll(".service-card, .step, .contact-card, .fact, .work, .personal-aside, .work-tile")
+    document.querySelectorAll(".service-card, .step, .contact-card, .fact, .work, .personal-aside, .work-tile, .mini-timeline__item")
   );
   revealTargets.forEach(function (el) { el.classList.add("reveal"); });
   if ("IntersectionObserver" in window && revealTargets.length) {
