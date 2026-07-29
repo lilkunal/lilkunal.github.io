@@ -11,7 +11,7 @@
   var toggle = document.getElementById("theme-toggle");
   var stored = null;
   try { stored = localStorage.getItem("kv-theme"); } catch (e) {}
-  if (stored === "light" || stored === "dark") root.setAttribute("data-theme", stored);
+  root.setAttribute("data-theme", (stored === "light" || stored === "dark") ? stored : "dark");
 
   function currentTheme() {
     var attr = root.getAttribute("data-theme");
