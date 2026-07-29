@@ -142,6 +142,23 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .btn--text { border-color: transparent; color: var(--ink-soft); padding-left: 0.5rem; padding-right: 0.5rem; }
 .btn--text:hover { color: var(--ink); }
 
+.marquee { overflow: hidden; background: var(--letterbox); padding: 0.85rem 0; }
+.marquee__track { display: flex; width: max-content; animation: marquee-scroll 24s linear infinite; }
+.marquee__group { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
+@keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
+
+.service-card, .work-tile, .contact-card, .faq-item { position: relative; overflow: hidden; }
+.service-card::before, .work-tile::before, .contact-card::before, .faq-item::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(circle 180px at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+  pointer-events: none;
+}
+.service-card:hover::before, .work-tile:hover::before, .contact-card:hover::before, .faq-item:hover::before { opacity: 1; }
+
 .about__body { max-width: 68ch; font-size: 1.1rem; color: var(--ink-soft); margin-top: 0.25rem; }
 .fact-strip { display: grid; grid-template-columns: repeat(3, auto); gap: 2.5rem; margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 2rem; }
 .fact__value { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 1.7rem + 1vw, 2.75rem); color: var(--accent); font-variant-numeric: tabular-nums; }
@@ -258,15 +275,22 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
     </div>
   </section>
 
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span class="marquee__group">NOW SCREENING • WEBSITES FOR SMALL BUSINESSES • BUSINESS SITES • LANDING PAGES • PRODUCT CATALOGUES • CARE &amp; SUPPORT • </span>
+      <span class="marquee__group">NOW SCREENING • WEBSITES FOR SMALL BUSINESSES • BUSINESS SITES • LANDING PAGES • PRODUCT CATALOGUES • CARE &amp; SUPPORT • </span>
+    </div>
+  </div>
+
   <section id="about" class="section about">
     <p class="eyebrow">Why work with me</p>
     <h2 class="section__title">I've been the customer on the other end of a bad website.</h2>
     <p class="about__body">I've spent years in technical support — Teleperformance, Webhelp, Concentrix — talking to people whose systems weren't working. Alongside that, I run a manufacturing business that lives or dies by whether customers can find, understand and trust what's on offer, and nothing keeps you humble like customers — every single one of them. When I told people I was walking away from steady work to build this instead, plenty asked why. I knew what I was capable of; that part never wavered.</p>
     <p class="about__body">That combination means I don't design sites just to look good in a screenshot. I build them to load fast, explain the business clearly, and hold up long after launch — because I know exactly what it's like to be the one who answers for it when something breaks. None of that came from one mentor or one big break, either — I'm mostly the sum of everyone I've met and everyone who's travelled with me this far.</p>
     <dl class="fact-strip">
-      <div class="fact"><dd class="fact__value">4+</dd><dt class="fact__label">Years in technical &amp; customer support</dt></div>
-      <div class="fact"><dd class="fact__value">9</dd><dt class="fact__label">Years running Padma Enterprises</dt></div>
-      <div class="fact"><dd class="fact__value">200+</dd><dt class="fact__label">Products in a catalogue I manage</dt></div>
+      <div class="fact"><dd class="fact__value"><span class="count-num" data-count-to="4">0</span>+</dd><dt class="fact__label">Years in technical &amp; customer support</dt></div>
+      <div class="fact"><dd class="fact__value"><span class="count-num" data-count-to="9">0</span></dd><dt class="fact__label">Years running Padma Enterprises</dt></div>
+      <div class="fact"><dd class="fact__value"><span class="count-num" data-count-to="200">0</span>+</dd><dt class="fact__label">Products in a catalogue I manage</dt></div>
     </dl>
     <aside class="personal-aside">
       <svg class="personal-aside__icon" viewBox="0 0 56 24" aria-hidden="true">
@@ -474,6 +498,49 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
       }
     });
   });
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function animateCount(el) {
+    var target = parseInt(el.getAttribute("data-count-to"), 10);
+    if (isNaN(target)) return;
+    if (reduceMotion) { el.textContent = target; return; }
+    var start = null;
+    var duration = 1100;
+    function step(ts) {
+      if (start === null) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var factStrip = document.querySelector(".fact-strip");
+  if (factStrip && "IntersectionObserver" in window) {
+    var countEls = Array.prototype.slice.call(factStrip.querySelectorAll(".count-num"));
+    var countObserver = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          countEls.forEach(animateCount);
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    countObserver.observe(factStrip);
+  }
+
+  if (window.matchMedia("(pointer: fine)").matches) {
+    var spotlightEls = Array.prototype.slice.call(
+      document.querySelectorAll(".service-card, .work-tile, .contact-card, .faq-item")
+    );
+    spotlightEls.forEach(function (el) {
+      el.addEventListener("mousemove", function (e) {
+        var rect = el.getBoundingClientRect();
+        el.style.setProperty("--mx", (e.clientX - rect.left) + "px");
+        el.style.setProperty("--my", (e.clientY - rect.top) + "px");
+      });
+    });
+  }
 
   var revealTargets = Array.prototype.slice.call(
     document.querySelectorAll(".service-card, .step, .contact-card, .fact, .work, .personal-aside, .work-tile")

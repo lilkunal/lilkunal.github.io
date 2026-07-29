@@ -283,6 +283,33 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .btn--text { border-color: transparent; color: var(--ink-soft); padding-left: 0.5rem; padding-right: 0.5rem; }
 .btn--text:hover { color: var(--ink); }
 
+/* ===== Marquee ===== */
+.marquee { overflow: hidden; background: var(--letterbox); padding: 0.85rem 0; }
+.marquee__track { display: flex; width: max-content; animation: marquee-scroll 24s linear infinite; }
+.marquee__group {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+@keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
+
+/* ===== Spotlight hover ===== */
+.service-card, .work-tile, .contact-card, .faq-item { position: relative; overflow: hidden; }
+.service-card::before, .work-tile::before, .contact-card::before, .faq-item::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(circle 180px at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+  pointer-events: none;
+}
+.service-card:hover::before, .work-tile:hover::before, .contact-card:hover::before, .faq-item:hover::before { opacity: 1; }
+
 /* ===== About ===== */
 .about__body { max-width: 68ch; font-size: 1.1rem; color: var(--ink-soft); margin-top: 0.25rem; }
 .fact-strip {

@@ -105,6 +105,51 @@
     });
   });
 
+  /* Count-up stats */
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function animateCount(el) {
+    var target = parseInt(el.getAttribute("data-count-to"), 10);
+    if (isNaN(target)) return;
+    if (reduceMotion) { el.textContent = target; return; }
+    var start = null;
+    var duration = 1100;
+    function step(ts) {
+      if (start === null) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var factStrip = document.querySelector(".fact-strip");
+  if (factStrip && "IntersectionObserver" in window) {
+    var countEls = Array.prototype.slice.call(factStrip.querySelectorAll(".count-num"));
+    var countObserver = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          countEls.forEach(animateCount);
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    countObserver.observe(factStrip);
+  }
+
+  /* Spotlight hover on cards */
+  if (window.matchMedia("(pointer: fine)").matches) {
+    var spotlightEls = Array.prototype.slice.call(
+      document.querySelectorAll(".service-card, .work-tile, .contact-card, .faq-item")
+    );
+    spotlightEls.forEach(function (el) {
+      el.addEventListener("mousemove", function (e) {
+        var rect = el.getBoundingClientRect();
+        el.style.setProperty("--mx", (e.clientX - rect.left) + "px");
+        el.style.setProperty("--my", (e.clientY - rect.top) + "px");
+      });
+    });
+  }
+
   /* Reveal on scroll */
   var revealTargets = Array.prototype.slice.call(
     document.querySelectorAll(".service-card, .step, .contact-card, .fact, .work, .personal-aside, .work-tile")
