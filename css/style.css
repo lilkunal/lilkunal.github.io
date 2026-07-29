@@ -654,6 +654,145 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
   100% { transform: translateY(-150px) scale(1.05) rotate(50deg); opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .dust-mote { animation: none; opacity: 0.35; } }
+
+/* ===== Entrance & Stagger Animations ===== */
+.section { animation: section-enter 0.85s var(--ease) both; }
+.section:nth-child(1) { animation-delay: 0s; }
+.section:nth-child(2) { animation-delay: 0.1s; }
+.section:nth-child(3) { animation-delay: 0.2s; }
+.section:nth-child(4) { animation-delay: 0.3s; }
+.section:nth-child(5) { animation-delay: 0.4s; }
+@keyframes section-enter { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.service-card { animation: card-stagger-in 0.6s var(--ease) both; }
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+@keyframes card-stagger-in { from { opacity: 0; transform: scale(0.92) translateY(12px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+
+.step { animation: step-enter 0.6s var(--ease) both; }
+.step:nth-child(1) { animation-delay: 0.1s; }
+.step:nth-child(2) { animation-delay: 0.2s; }
+.step:nth-child(3) { animation-delay: 0.3s; }
+.step:nth-child(4) { animation-delay: 0.4s; }
+@keyframes step-enter { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.faq-entry { animation: faq-enter 0.5s var(--ease) both; }
+.faq-entry:nth-child(1) { animation-delay: 0.05s; }
+.faq-entry:nth-child(2) { animation-delay: 0.1s; }
+.faq-entry:nth-child(3) { animation-delay: 0.15s; }
+.faq-entry:nth-child(4) { animation-delay: 0.2s; }
+.faq-entry:nth-child(5) { animation-delay: 0.25s; }
+.faq-entry:nth-child(6) { animation-delay: 0.3s; }
+.faq-entry:nth-child(7) { animation-delay: 0.35s; }
+@keyframes faq-enter { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }
+
+.mini-timeline__item { animation: timeline-enter 0.5s var(--ease) both; }
+.mini-timeline__item:nth-child(1) { animation-delay: 0.1s; }
+.mini-timeline__item:nth-child(2) { animation-delay: 0.15s; }
+.mini-timeline__item:nth-child(3) { animation-delay: 0.2s; }
+.mini-timeline__item:nth-child(4) { animation-delay: 0.25s; }
+.mini-timeline__item:nth-child(5) { animation-delay: 0.3s; }
+@keyframes timeline-enter { from { opacity: 0; transform: translateX(-16px); border-left-color: transparent; } to { opacity: 1; transform: translateX(0); border-left-color: var(--border); } }
+
+.work-tile { animation: work-enter 0.6s var(--ease) both; }
+.work-tile:nth-child(1) { animation-delay: 0.1s; }
+.work-tile:nth-child(2) { animation-delay: 0.2s; }
+@keyframes work-enter { from { opacity: 0; transform: scale(0.90) rotateZ(-1deg); } to { opacity: 1; transform: scale(1) rotateZ(0deg); } }
+
+/* ===== Button & Interactive Animations ===== */
+.btn { position: relative; overflow: hidden; }
+.btn::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle, rgba(255,255,255,0.3), transparent); opacity: 0; transition: opacity 0.3s var(--ease); z-index: 1; pointer-events: none; }
+.btn:hover::before { opacity: 1; }
+.btn:active { animation: btn-press 0.15s ease-out; }
+@keyframes btn-press { 0% { transform: translate(-2px, -2px); } 50% { transform: translate(-1px, -1px); } 100% { transform: translate(-2px, -2px); } }
+
+.btn--primary { animation: btn-glow 3s ease-in-out infinite; }
+@keyframes btn-glow { 0%, 100% { box-shadow: 0 0 0 rgba(255, 107, 139, 0.2); } 50% { box-shadow: 0 0 12px rgba(255, 107, 139, 0.4); } }
+
+/* ===== Floating & Subtle Motion ===== */
+.personal-aside { animation: float-subtle 4s ease-in-out infinite; }
+@keyframes float-subtle { 0%, 100% { transform: rotate(-1.2deg) translateY(0); } 50% { transform: rotate(-1.2deg) translateY(-8px); } }
+
+.eyebrow { animation: fade-slide-in 0.8s var(--ease) both; }
+.eyebrow:nth-of-type(1) { animation-delay: 0.2s; }
+.eyebrow:nth-of-type(2) { animation-delay: 0.3s; }
+@keyframes fade-slide-in { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+
+/* ===== Form Field Animations ===== */
+.form-field input, .form-field textarea {
+  animation: form-field-enter 0.5s var(--ease) both;
+}
+.form-field:nth-child(1) { animation-delay: 0.1s; }
+.form-field:nth-child(2) { animation-delay: 0.15s; }
+.form-field:nth-child(3) { animation-delay: 0.2s; }
+.form-field:nth-child(4) { animation-delay: 0.25s; }
+
+@keyframes form-field-enter {
+  from { opacity: 0; transform: translateY(10px); border-color: transparent; }
+  to { opacity: 1; transform: translateY(0); border-color: var(--ink); }
+}
+
+.form-field input:focus, .form-field textarea:focus {
+  animation: field-focus-pulse 0.4s ease-out;
+}
+@keyframes field-focus-pulse {
+  0% { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent); }
+  100% { box-shadow: 0 0 0 0px color-mix(in srgb, var(--accent) 0%, transparent); }
+}
+
+/* ===== Link & Text Animations ===== */
+.nav__links a { position: relative; }
+.nav__links a::after { content: ""; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s var(--ease); }
+.nav__links a:hover::after { width: 100%; }
+
+a.work-tile::after, a.contact-card::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 8%, transparent), transparent); opacity: 0; transition: opacity 0.3s var(--ease); pointer-events: none; }
+a.work-tile:hover::after, a.contact-card:hover::after { opacity: 1; }
+
+/* ===== Shimmer Effect ===== */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+/* ===== Spinning Elements ===== */
+.count-num { display: inline-block; }
+.fact-strip .fact { animation: fact-scale-in 0.6s var(--ease) both; }
+.fact-strip .fact:nth-child(1) { animation-delay: 0.2s; }
+.fact-strip .fact:nth-child(2) { animation-delay: 0.3s; }
+.fact-strip .fact:nth-child(3) { animation-delay: 0.4s; }
+@keyframes fact-scale-in { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: scale(1); } }
+
+/* ===== Background & Gradient Animations ===== */
+body { background-attachment: fixed; }
+
+/* ===== Hover State Enhancements ===== */
+.service-card:hover, .work-tile:hover, .contact-card:hover {
+  animation: subtle-lift 0.3s ease-out forwards;
+}
+@keyframes subtle-lift { from { transform: translateY(0); } to { transform: translateY(-6px); } }
+
+.faq-item:hover { animation: faq-hover 0.2s ease-out; }
+@keyframes faq-hover { from { transform: translateY(0); } to { transform: translateY(-2px); } }
+
+/* ===== Marquee Pulse ===== */
+.marquee { animation: marquee-pulse 2s ease-in-out infinite; }
+@keyframes marquee-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.9; } }
+
+/* ===== Smooth Scroll Snap ===== */
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  .section, .service-card, .step, .faq-entry, .mini-timeline__item, .work-tile,
+  .eyebrow, .personal-aside, .btn--primary, .form-field input, .form-field textarea,
+  .fact-strip .fact, .btn:active, .form-field input:focus, .form-field textarea:focus {
+    animation: none !important;
+  }
+  .btn::before, .btn:hover::before { display: none; }
+  .nav__links a::after { display: none; }
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
