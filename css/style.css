@@ -195,15 +195,6 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 }
 .hero::before { top: 0; }
 .hero::after { bottom: 0; }
-.hero {
-  /* The hero always presents dark, regardless of the site-wide theme toggle —
-     a moody obscured photo doesn't work against a light backdrop. */
-  --ink: #f2ece1; --ink-soft: #c2b6a5; --ink-faint: #8f8272;
-  --paper: #16110d; --surface: #1f1810; --surface-2: #2b2116;
-  --border: rgba(242, 236, 225, 0.14);
-  --accent: #e8a33d; --accent-strong: #f4bd6a; --ink-on-accent: #1b140f;
-  background: var(--paper);
-}
 .hero__content { position: relative; z-index: 2; max-width: 62ch; color: var(--ink); }
 .hero__persona-bg { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
 .persona-photo {
@@ -212,14 +203,14 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   object-fit: cover;
   object-position: center 15%;
   opacity: 0;
-  filter: grayscale(1) contrast(1.2) brightness(0.5) blur(3px);
+  filter: grayscale(1) contrast(1.15) brightness(0.9) blur(3px);
   transition: opacity 1.1s var(--ease);
 }
-.persona-photo.is-active { opacity: 0.3; }
+.persona-photo.is-active { opacity: 0.22; }
 .hero__persona-bg::after {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, #16110d 0%, rgba(22, 17, 13, 0.6) 40%, rgba(22, 17, 13, 0.92) 100%);
+  background: linear-gradient(180deg, var(--paper) 0%, color-mix(in srgb, var(--paper) 60%, transparent) 40%, color-mix(in srgb, var(--paper) 92%, transparent) 100%);
 }
 .persona-glass {
   margin-top: 1.15rem;
@@ -228,10 +219,10 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   gap: 0.55rem;
   padding: 0.9rem 1.05rem;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.06);
+  background: color-mix(in srgb, var(--surface) 65%, transparent);
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--border);
   max-width: 460px;
 }
 .persona-tabs { display: flex; flex-wrap: wrap; gap: 0.4rem; }
@@ -244,8 +235,8 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   padding: 0.35rem 0.7rem;
   border-radius: 100px;
   color: var(--ink);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  border: 1px solid var(--border);
   transition: background 0.2s var(--ease), transform 0.2s var(--ease), border-color 0.2s var(--ease);
 }
 .persona-tab.is-active, .persona-tab:hover {
