@@ -49,6 +49,18 @@
       <img class="persona-photo" data-persona="nextdoor" src="assets/personas/nextdoor.jpg" alt="">
     </div>
     <div class="hero__grain" aria-hidden="true"></div>
+    <div class="ghibli-dust" aria-hidden="true">
+      <span class="dust-mote" style="left:8%; top:74%; animation-delay:0s; animation-duration:7.2s;"></span>
+      <span class="dust-mote" style="left:17%; top:34%; animation-delay:1.1s; animation-duration:6.4s;"></span>
+      <span class="dust-mote" style="left:27%; top:82%; animation-delay:2.3s; animation-duration:8s;"></span>
+      <span class="dust-mote" style="left:38%; top:18%; animation-delay:0.6s; animation-duration:6.8s;"></span>
+      <span class="dust-mote" style="left:50%; top:62%; animation-delay:3.1s; animation-duration:7.6s;"></span>
+      <span class="dust-mote" style="left:61%; top:24%; animation-delay:1.8s; animation-duration:6.6s;"></span>
+      <span class="dust-mote" style="left:71%; top:78%; animation-delay:2.6s; animation-duration:7.9s;"></span>
+      <span class="dust-mote" style="left:81%; top:38%; animation-delay:0.3s; animation-duration:6.9s;"></span>
+      <span class="dust-mote" style="left:91%; top:66%; animation-delay:3.6s; animation-duration:7.3s;"></span>
+      <span class="dust-mote" style="left:95%; top:20%; animation-delay:1.4s; animation-duration:8.4s;"></span>
+    </div>
     <div class="hero__content">
       <p class="eyebrow"><span class="dot"></span><span id="live-clock">Now screening · Aligarh, India</span></p>
       <h1 class="hero__headline">
@@ -205,16 +217,34 @@
       <button type="button" class="btn btn--ghost" id="ask-search-btn">Ask</button>
     </div>
     <p class="ask-search__note">This matches your question to the list below by keyword — it's not a live AI, just quick matching. For anything real, use the form below.</p>
+    <p class="ask-search__status" id="ask-status" aria-live="polite"></p>
 
     <div class="faq-list">
-      <button class="faq-item is-active" type="button" data-a="Both — and don't make me pick, I'm bad at picking favourites. Padma Enterprises pays the bills I already know how to pay. This is the one I actually want to build.">Are you a designer, or do you just run a lighting business?</button>
-      <button class="faq-item" type="button" data-a="Not yet — you'd be one of the first, and I'm not going to pretend otherwise. What I do have: years of technical support and a real business, so I don't vanish after launch, and I actually know how small businesses run, not just how they look in a portfolio.">Do you have client design work yet?</button>
-      <button class="faq-item" type="button" data-a="Personally? No — I go quiet sometimes when things pile up, ask anyone who knows me. Professionally, it's different: if you're paying me to keep your site running, I show up. That's a decision, not a personality trait.">Are you always this responsive?</button>
-      <button class="faq-item" type="button" data-a="Because a portfolio that only talks about work is a LinkedIn profile with better fonts. Also: ask me about Ghibli and I will not stop talking. You've been warned.">Why does a web designer's site mention football and Ghibli films?</button>
-      <button class="faq-item" type="button" data-a="Every trip's changed something in me, one way or another — ask me about the last one when we talk.">Where do you actually like to travel?</button>
-      <button class="faq-item" type="button" data-a="This site: yes, heavily, and I'm not hiding it — it's part of how I build client sites fast without cutting corners on care. The direction, the writing, the judgment calls stay mine.">Did you use AI to build this?</button>
+      <div class="faq-entry is-active">
+        <button class="faq-item" type="button" aria-expanded="true">Are you a designer, or do you just run a lighting business?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>Both — and don't make me pick, I'm bad at picking favourites. Padma Enterprises pays the bills I already know how to pay. This is the one I actually want to build.</p></div></div>
+      </div>
+      <div class="faq-entry">
+        <button class="faq-item" type="button" aria-expanded="false">Do you have client design work yet?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>Not yet — you'd be one of the first, and I'm not going to pretend otherwise. What I do have: years of technical support and a real business, so I don't vanish after launch, and I actually know how small businesses run, not just how they look in a portfolio.</p></div></div>
+      </div>
+      <div class="faq-entry">
+        <button class="faq-item" type="button" aria-expanded="false">Are you always this responsive?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>Personally? No — I go quiet sometimes when things pile up, ask anyone who knows me. Professionally, it's different: if you're paying me to keep your site running, I show up. That's a decision, not a personality trait.</p></div></div>
+      </div>
+      <div class="faq-entry">
+        <button class="faq-item" type="button" aria-expanded="false">Why does a web designer's site mention football and Ghibli films?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>Because a portfolio that only talks about work is a LinkedIn profile with better fonts. Also: ask me about Ghibli and I will not stop talking. You've been warned.</p></div></div>
+      </div>
+      <div class="faq-entry">
+        <button class="faq-item" type="button" aria-expanded="false">Where do you actually like to travel?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>Every trip's changed something in me, one way or another — ask me about the last one when we talk.</p></div></div>
+      </div>
+      <div class="faq-entry">
+        <button class="faq-item" type="button" aria-expanded="false">Did you use AI to build this?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>This site: yes, heavily, and I'm not hiding it — it's part of how I build client sites fast without cutting corners on care. The direction, the writing, the judgment calls stay mine.</p></div></div>
+      </div>
     </div>
-    <p class="faq-answer" id="faq-answer" aria-live="polite">Both — and don't make me pick, I'm bad at picking favourites. Padma Enterprises pays the bills I already know how to pay. This is the one I actually want to build.</p>
   </section>
 
   <section id="contact" class="section contact">

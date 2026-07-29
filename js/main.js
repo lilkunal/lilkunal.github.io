@@ -169,44 +169,55 @@
     });
   });
 
-  /* FAQ toggle */
-  var faqItems = Array.prototype.slice.call(document.querySelectorAll(".faq-item"));
-  var faqAnswer = document.getElementById("faq-answer");
-  faqItems.forEach(function (item) {
-    item.addEventListener("click", function () {
-      var alreadyActive = item.classList.contains("is-active");
-      faqItems.forEach(function (i) { i.classList.remove("is-active"); });
-      if (alreadyActive) {
-        if (faqAnswer) faqAnswer.textContent = "";
-      } else {
-        item.classList.add("is-active");
-        if (faqAnswer) faqAnswer.textContent = item.getAttribute("data-a");
-      }
+  /* FAQ accordion — each answer expands directly under its own question */
+  var faqEntries = Array.prototype.slice.call(document.querySelectorAll(".faq-entry"));
+
+  function setEntryState(entry, isOpen) {
+    entry.classList.toggle("is-active", isOpen);
+    var btn = entry.querySelector(".faq-item");
+    if (btn) btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  }
+  function closeAllFaq() {
+    faqEntries.forEach(function (e) { setEntryState(e, false); });
+  }
+  function openFaq(entry) {
+    closeAllFaq();
+    setEntryState(entry, true);
+  }
+  faqEntries.forEach(function (entry) {
+    var btn = entry.querySelector(".faq-item");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var alreadyActive = entry.classList.contains("is-active");
+      closeAllFaq();
+      if (!alreadyActive) setEntryState(entry, true);
     });
   });
 
   /* Ask search — keyword-matches a typed question to the FAQ list. Not a live AI. */
   var askInput = document.getElementById("ask-input");
   var askBtn = document.getElementById("ask-search-btn");
-  if (askInput && askBtn && faqItems.length) {
+  var askStatus = document.getElementById("ask-status");
+  if (askInput && askBtn && faqEntries.length) {
     function runAskSearch() {
       var query = (askInput.value || "").toLowerCase().trim();
       if (!query) return;
       var words = query.split(/\s+/).filter(function (w) { return w.length > 2; });
       var best = null;
       var bestScore = 0;
-      faqItems.forEach(function (item) {
-        var corpus = (item.textContent + " " + item.getAttribute("data-a")).toLowerCase();
+      faqEntries.forEach(function (entry) {
+        var corpus = entry.textContent.toLowerCase();
         var score = 0;
         words.forEach(function (w) { if (corpus.indexOf(w) !== -1) score++; });
-        if (score > bestScore) { bestScore = score; best = item; }
+        if (score > bestScore) { bestScore = score; best = entry; }
       });
       if (best && bestScore > 0) {
-        best.click();
+        if (askStatus) askStatus.textContent = "";
+        openFaq(best);
         best.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
-      } else if (faqAnswer) {
-        faqItems.forEach(function (i) { i.classList.remove("is-active"); });
-        faqAnswer.textContent = "Couldn't find a close match — just message me directly below, I'll actually answer.";
+      } else {
+        closeAllFaq();
+        if (askStatus) askStatus.textContent = "Couldn't find a close match — just message me directly below, I'll actually answer.";
       }
     }
     askBtn.addEventListener("click", runAskSearch);
@@ -248,7 +259,7 @@
   /* Spotlight hover on cards */
   if (window.matchMedia("(pointer: fine)").matches) {
     var spotlightEls = Array.prototype.slice.call(
-      document.querySelectorAll(".service-card, .work-tile, .contact-card, .faq-item")
+      document.querySelectorAll(".service-card, .work-tile, .contact-card, .faq-entry")
     );
     spotlightEls.forEach(function (el) {
       el.addEventListener("mousemove", function (e) {
@@ -261,7 +272,7 @@
 
   /* Reveal on scroll */
   var revealTargets = Array.prototype.slice.call(
-    document.querySelectorAll(".service-card, .step, .contact-card, .fact, .work, .personal-aside, .work-tile, .mini-timeline__item")
+    document.querySelectorAll(".service-card, .step, .contact-card, .fact, .work, .personal-aside, .work-tile, .mini-timeline__item, .faq-entry")
   );
   revealTargets.forEach(function (el) { el.classList.add("reveal"); });
   if ("IntersectionObserver" in window && revealTargets.length) {

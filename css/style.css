@@ -360,8 +360,8 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
 
 /* ===== Spotlight hover ===== */
-.service-card, .work-tile, .contact-card, .faq-item { position: relative; overflow: hidden; }
-.service-card::before, .work-tile::before, .contact-card::before, .faq-item::before {
+.service-card, .work-tile, .contact-card, .faq-entry { position: relative; overflow: hidden; }
+.service-card::before, .work-tile::before, .contact-card::before, .faq-entry::before {
   content: "";
   position: absolute; inset: 0;
   background: radial-gradient(circle 180px at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%);
@@ -369,7 +369,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   transition: opacity 0.3s var(--ease);
   pointer-events: none;
 }
-.service-card:hover::before, .work-tile:hover::before, .contact-card:hover::before, .faq-item:hover::before { opacity: 1; }
+.service-card:hover::before, .work-tile:hover::before, .contact-card:hover::before, .faq-entry:hover::before { opacity: 1; }
 
 /* ===== About ===== */
 .about__body { max-width: 68ch; font-size: 1.1rem; color: var(--ink-soft); margin-top: 0.25rem; }
@@ -544,35 +544,39 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
 
 /* ===== Ask ===== */
 .faq-list { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 2.5rem; max-width: 68ch; }
-.faq-item {
+.faq-entry {
   /* Neumorphism: a soft-UI card "extruded" from the same-colour surface via
      a light/dark shadow pair instead of a border. Pressed inward when open. */
+  background: var(--surface);
+  border-radius: 14px;
+  box-shadow: 7px 7px 14px var(--neu-dark), -7px -7px 14px var(--neu-light);
+  transition: box-shadow 0.25s var(--ease);
+}
+.faq-entry.is-active { box-shadow: inset 5px 5px 10px var(--neu-dark), inset -5px -5px 10px var(--neu-light); }
+.faq-item {
+  position: relative;
+  display: block;
+  width: 100%;
   text-align: left;
   padding: 1.1rem 1.4rem;
-  background: var(--surface);
-  border: none;
-  border-radius: 14px;
   font-weight: 600;
   font-size: 1.02rem;
   color: var(--ink);
-  position: relative;
-  box-shadow: 7px 7px 14px var(--neu-dark), -7px -7px 14px var(--neu-light);
-  transition: box-shadow 0.25s var(--ease), transform 0.15s var(--ease);
+  transition: color 0.2s var(--ease), transform 0.15s var(--ease);
 }
 .faq-item:hover { transform: translateY(-1px); }
-.faq-item.is-active {
-  box-shadow: inset 5px 5px 10px var(--neu-dark), inset -5px -5px 10px var(--neu-light);
-  color: var(--accent-strong);
+.faq-entry.is-active .faq-item { color: var(--accent-strong); }
+.faq-item::after { content: "+"; position: absolute; right: 1.4rem; top: 1.1rem; color: var(--ink-faint); font-weight: 400; }
+.faq-entry.is-active .faq-item::after { content: "–"; color: var(--accent); }
+.faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s var(--ease);
 }
-.faq-item::after { content: "+"; position: absolute; right: 1.4rem; color: var(--ink-faint); font-weight: 400; }
-.faq-item.is-active::after { content: "–"; color: var(--accent); }
-.faq-answer {
-  margin-top: 1.25rem;
-  max-width: 68ch;
-  color: var(--ink-soft);
-  font-size: 1.05rem;
-  min-height: 1.6em;
-}
+.faq-entry.is-active .faq-panel { grid-template-rows: 1fr; }
+.faq-panel__inner { overflow: hidden; }
+.faq-panel__inner p { padding: 0 1.4rem 1.25rem; color: var(--ink-soft); font-size: 1.02rem; }
+.ask-search__status { margin-top: 0.6rem; font-size: 0.9rem; color: var(--accent-strong); min-height: 1.4em; }
 
 /* ===== Contact ===== */
 .contact__lede { max-width: 60ch; color: var(--ink-soft); font-size: 1.1rem; margin-top: 0.25rem; }
@@ -627,6 +631,27 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
   50% { transform: scale(1.15) rotate(20deg); opacity: 0.9; }
 }
 @media (prefers-reduced-motion: reduce) { .mote { animation: none; } }
+
+.ghibli-dust { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.dust-mote {
+  position: absolute;
+  width: 7px; height: 7px;
+  background: var(--accent);
+  clip-path: polygon(50% 0%, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0% 50%, 35% 35%);
+  opacity: 0;
+  animation-name: dust-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.dust-mote:nth-child(3n+1) { background: var(--accent-2); }
+.dust-mote:nth-child(3n+2) { width: 5px; height: 5px; }
+@keyframes dust-drift {
+  0% { transform: translateY(26px) scale(0.5) rotate(0deg); opacity: 0; }
+  18% { opacity: 0.85; }
+  55% { opacity: 0.5; }
+  100% { transform: translateY(-150px) scale(1.05) rotate(50deg); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .dust-mote { animation: none; opacity: 0.35; } }
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
