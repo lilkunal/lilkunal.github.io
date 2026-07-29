@@ -56,6 +56,48 @@
     setInterval(tickClock, 1000);
   }
 
+  /* Visitor location + local time — best-effort city via a keyless IP lookup,
+     entirely client-side. Falls back to the browser's own time zone if the
+     lookup fails or is blocked. Nothing is sent to or stored by this site. */
+  var visitorTextEl = document.getElementById("visitor-text");
+  if (visitorTextEl) {
+    var formatVisitorTime = function (timeZone) {
+      try {
+        return new Intl.DateTimeFormat("en-US", { timeZone: timeZone, hour: "2-digit", minute: "2-digit", hour12: true }).format(new Date());
+      } catch (e) {
+        return new Date().toLocaleTimeString();
+      }
+    };
+    var showTimezoneFallback = function () {
+      var tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+      var place = tz && tz.indexOf("/") !== -1 ? tz.split("/").pop().replace(/_/g, " ") : "";
+      var time = formatVisitorTime(tz || undefined);
+      visitorTextEl.textContent = place ? ("Joining from around " + place + " · it's " + time + " there") : ("Your local time: " + time);
+    };
+
+    var hasAbort = "AbortController" in window;
+    var controller = hasAbort ? new AbortController() : null;
+    var timeoutId = setTimeout(function () { if (controller) controller.abort(); }, 3500);
+
+    fetch("https://ipwho.is/", controller ? { signal: controller.signal } : {})
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        clearTimeout(timeoutId);
+        if (data && data.success !== false && data.city) {
+          var place = data.city + (data.country ? (", " + data.country) : "");
+          var tz = data.timezone && data.timezone.id ? data.timezone.id : undefined;
+          visitorTextEl.textContent = "Joining from " + place + " · it's " + formatVisitorTime(tz) + " there";
+        } else {
+          showTimezoneFallback();
+        }
+      })
+      .catch(function () {
+        clearTimeout(timeoutId);
+        showTimezoneFallback();
+      });
+  }
+
   /* Identity ticker */
   var tickerWords = ["web designer", "football regular", "Ghibli defender", "Padma Enterprises founder", "technical support veteran", "old soul"];
   var tickerEl = document.getElementById("ticker-word");

@@ -63,6 +63,7 @@
     </div>
     <div class="hero__content">
       <p class="eyebrow"><span class="dot"></span><span id="live-clock">Now screening · Aligarh, India</span></p>
+      <p class="eyebrow eyebrow--visitor" id="visitor-note" aria-live="polite"><span class="dot dot--alt"></span><span id="visitor-text">Figuring out where you're joining from…</span></p>
       <h1 class="hero__headline">
         <span class="hero__was">I was in technical support, answering other people's tickets.</span>
         <span class="hero__became">Now I design the websites small businesses actually need<span class="squiggle">.<svg viewBox="0 0 20 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2,12 Q10,4 18,12" /></svg></span></span>
@@ -243,6 +244,10 @@
       <div class="faq-entry">
         <button class="faq-item" type="button" aria-expanded="false">Did you use AI to build this?</button>
         <div class="faq-panel"><div class="faq-panel__inner"><p>This site: yes, heavily, and I'm not hiding it — it's part of how I build client sites fast without cutting corners on care. The direction, the writing, the judgment calls stay mine.</p></div></div>
+      </div>
+      <div class="faq-entry">
+        <button class="faq-item" type="button" aria-expanded="false">How do you know where I'm visiting from?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>A quick, keyless IP lookup guesses your city, right there in your browser — it's not sent to me or stored anywhere. If that lookup ever fails or gets blocked, the site just falls back to your device's own time zone instead. Either way, nothing about you leaves your browser except the request your browser makes to that lookup service directly.</p></div></div>
       </div>
     </div>
   </section>

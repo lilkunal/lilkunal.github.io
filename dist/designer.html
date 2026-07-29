@@ -95,6 +95,8 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block; animation: pulse 2.4s ease-in-out infinite; }
 @keyframes pulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .eyebrow .dot { animation: none; } }
+.eyebrow--visitor { color: var(--accent-2); margin-top: -0.55rem; }
+.eyebrow--visitor .dot--alt { background: var(--accent-2); }
 
 .nav-toggle-input { display: none; }
 .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.15rem clamp(1.25rem, 4vw, 3rem); background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
@@ -363,6 +365,7 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
     </div>
     <div class="hero__content">
       <p class="eyebrow"><span class="dot"></span><span id="live-clock">Now screening · Aligarh, India</span></p>
+      <p class="eyebrow eyebrow--visitor" id="visitor-note" aria-live="polite"><span class="dot dot--alt"></span><span id="visitor-text">Figuring out where you're joining from…</span></p>
       <h1 class="hero__headline">
         <span class="hero__was">I was in technical support, answering other people's tickets.</span>
         <span class="hero__became">Now I design the websites small businesses actually need<span class="squiggle">.<svg viewBox="0 0 20 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2,12 Q10,4 18,12" /></svg></span></span>
@@ -542,6 +545,10 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
         <button class="faq-item" type="button" aria-expanded="false">Did you use AI to build this?</button>
         <div class="faq-panel"><div class="faq-panel__inner"><p>This site: yes, heavily, and I'm not hiding it — it's part of how I build client sites fast without cutting corners on care. The direction, the writing, the judgment calls stay mine.</p></div></div>
       </div>
+      <div class="faq-entry">
+        <button class="faq-item" type="button" aria-expanded="false">How do you know where I'm visiting from?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>A quick, keyless IP lookup guesses your city, right there in your browser — it's not sent to me or stored anywhere. If that lookup ever fails or gets blocked, the site just falls back to your device's own time zone instead. Either way, nothing about you leaves your browser except the request your browser makes to that lookup service directly.</p></div></div>
+      </div>
     </div>
   </section>
 
@@ -656,6 +663,45 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
     }
     tickClock();
     setInterval(tickClock, 1000);
+  }
+
+  var visitorTextEl = document.getElementById("visitor-text");
+  if (visitorTextEl) {
+    var formatVisitorTime = function (timeZone) {
+      try {
+        return new Intl.DateTimeFormat("en-US", { timeZone: timeZone, hour: "2-digit", minute: "2-digit", hour12: true }).format(new Date());
+      } catch (e) {
+        return new Date().toLocaleTimeString();
+      }
+    };
+    var showTimezoneFallback = function () {
+      var tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+      var place = tz && tz.indexOf("/") !== -1 ? tz.split("/").pop().replace(/_/g, " ") : "";
+      var time = formatVisitorTime(tz || undefined);
+      visitorTextEl.textContent = place ? ("Joining from around " + place + " · it's " + time + " there") : ("Your local time: " + time);
+    };
+
+    var hasAbort = "AbortController" in window;
+    var controller = hasAbort ? new AbortController() : null;
+    var timeoutId = setTimeout(function () { if (controller) controller.abort(); }, 3500);
+
+    fetch("https://ipwho.is/", controller ? { signal: controller.signal } : {})
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        clearTimeout(timeoutId);
+        if (data && data.success !== false && data.city) {
+          var place = data.city + (data.country ? (", " + data.country) : "");
+          var tz = data.timezone && data.timezone.id ? data.timezone.id : undefined;
+          visitorTextEl.textContent = "Joining from " + place + " · it's " + formatVisitorTime(tz) + " there";
+        } else {
+          showTimezoneFallback();
+        }
+      })
+      .catch(function () {
+        clearTimeout(timeoutId);
+        showTimezoneFallback();
+      });
   }
 
   var tickerWords = ["web designer", "football regular", "Ghibli defender", "Padma Enterprises founder", "technical support veteran", "old soul"];
