@@ -71,7 +71,7 @@
 
       <p class="hero__lede">Alongside my day job, I've spent nine years running Padma Enterprises — a lighting business I built from nothing. Running one myself means I know what a small business actually needs from a website: something fast, clear about what you sell, and easy to trust. That's what I build for others now.</p>
       <div class="hero__actions">
-        <a class="btn btn--primary" href="mailto:kunalvrshn@gmail.com?subject=Let%27s%20build%20my%20website">Start a project</a>
+        <a class="btn btn--primary" href="#contact">Start a project</a>
         <a class="btn btn--ghost" href="https://wa.me/917017662533?text=Hi%20Kunal%2C%20I%20found%20your%20portfolio%20and%20want%20to%20talk%20about%20a%20website%20for%20my%20business." target="_blank" rel="noopener">WhatsApp me</a>
         <a class="btn btn--text" href="#process">See how it works ↓</a>
       </div>
@@ -98,6 +98,7 @@
     </dl>
 
     <aside class="personal-aside">
+      <div class="ghibli-motes" aria-hidden="true"><span class="mote"></span><span class="mote"></span><span class="mote"></span></div>
       <svg class="personal-aside__icon" viewBox="0 0 56 24" aria-hidden="true">
         <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
         <path d="M12 4 L12 20 M4 12 L20 12 M6.3 6.3 L17.7 17.7 M17.7 6.3 L6.3 17.7" stroke="currentColor" stroke-width="1" opacity="0.55" stroke-linecap="round"/>
@@ -179,6 +180,34 @@
     <p class="eyebrow">Get in touch</p>
     <h2 class="section__title">Tell me about your business.</h2>
     <p class="contact__lede">Email, call, or WhatsApp — whichever's easiest. Let me know what you sell and what isn't working about your current site, or that you don't have one yet.</p>
+
+    <form class="project-form" id="project-form">
+      <div class="form-row">
+        <label class="form-field">
+          <span class="form-field__label">Your name</span>
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label class="form-field">
+          <span class="form-field__label">Business name</span>
+          <input type="text" name="business" autocomplete="organization">
+        </label>
+      </div>
+      <label class="form-field">
+        <span class="form-field__label">Email or phone, so I can reply</span>
+        <input type="text" name="contact" autocomplete="email" required>
+      </label>
+      <label class="form-field">
+        <span class="form-field__label">What do you need?</span>
+        <textarea name="message" rows="4" required placeholder="e.g. a site for my shop, a landing page for a launch, a redesign of what I already have..."></textarea>
+      </label>
+      <div class="form-actions">
+        <button type="button" class="btn btn--primary" id="form-send-email">Send via email</button>
+        <button type="button" class="btn btn--ghost" id="form-send-whatsapp">Send via WhatsApp</button>
+      </div>
+      <p class="form-note">This fills in your own email or WhatsApp app with everything above — you hit send yourself. Nothing here gets stored or sent anywhere else; there's no backend on this site to store it in.</p>
+    </form>
+
+    <p class="contact__divider">or reach me directly</p>
 
     <div class="contact-grid">
       <a class="contact-card" href="mailto:kunalvrshn@gmail.com?subject=Let%27s%20build%20my%20website">

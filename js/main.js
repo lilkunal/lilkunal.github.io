@@ -11,7 +11,7 @@
   var toggle = document.getElementById("theme-toggle");
   var stored = null;
   try { stored = localStorage.getItem("kv-theme"); } catch (e) {}
-  root.setAttribute("data-theme", (stored === "light" || stored === "dark") ? stored : "dark");
+  root.setAttribute("data-theme", (stored === "light" || stored === "dark") ? stored : "light");
 
   function currentTheme() {
     var attr = root.getAttribute("data-theme");
@@ -104,6 +104,50 @@
       activatePersona(tab.getAttribute("data-persona"));
     });
   });
+
+  /* Project inquiry form -> hands off to the visitor's own email/WhatsApp app */
+  var projectForm = document.getElementById("project-form");
+  if (projectForm) {
+    var emailBtn = document.getElementById("form-send-email");
+    var waBtn = document.getElementById("form-send-whatsapp");
+
+    function buildInquiryMessage() {
+      var name = projectForm.name.value.trim();
+      var business = projectForm.business.value.trim();
+      var contact = projectForm.contact.value.trim();
+      var message = projectForm.message.value.trim();
+      var lines = ["Name: " + name];
+      if (business) lines.push("Business: " + business);
+      lines.push("Reach me at: " + contact);
+      lines.push("");
+      lines.push(message);
+      return lines.join("\n");
+    }
+
+    function validateInquiry() {
+      if (!projectForm.name.value.trim() || !projectForm.contact.value.trim() || !projectForm.message.value.trim()) {
+        projectForm.reportValidity();
+        return false;
+      }
+      return true;
+    }
+
+    if (emailBtn) {
+      emailBtn.addEventListener("click", function () {
+        if (!validateInquiry()) return;
+        var subject = encodeURIComponent("New project inquiry from " + (projectForm.name.value.trim() || "your website"));
+        var body = encodeURIComponent(buildInquiryMessage());
+        window.location.href = "mailto:kunalvrshn@gmail.com?subject=" + subject + "&body=" + body;
+      });
+    }
+    if (waBtn) {
+      waBtn.addEventListener("click", function () {
+        if (!validateInquiry()) return;
+        var text = encodeURIComponent(buildInquiryMessage());
+        window.open("https://wa.me/917017662533?text=" + text, "_blank", "noopener");
+      });
+    }
+  }
 
   /* Copy to clipboard */
   var copyBtns = Array.prototype.slice.call(document.querySelectorAll(".copy-btn"));
