@@ -119,11 +119,40 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
+/* Wordmark: a solid pixel "plate" so the name reads as a logo, not a link.
+   Press Start 2P is single-weight, so weight can't carry emphasis — the
+   plate, scale and pink mark do. Ink/paper/pink echoes the favicon. */
 .nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: none;
   font-family: var(--font-pixel);
   font-weight: 400;
-  font-size: 0.72rem;
+  font-size: 0.82rem;
+  line-height: 1;
   letter-spacing: 0;
+  padding: 0.7rem 0.95rem;
+  background: var(--ink);
+  color: var(--paper);
+  clip-path: var(--pixel-corner);
+  transition: transform 0.15s var(--ease), background 0.2s var(--ease);
+}
+.nav__brand::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  flex: none;
+  background: var(--accent);
+  animation: brand-mark-blink 2.8s steps(1, end) infinite;
+}
+.nav__brand:hover { transform: translate(-2px, -2px); background: var(--accent-strong); color: var(--ink-on-accent); }
+.nav__brand:hover::before { background: var(--ink); }
+@keyframes brand-mark-blink { 0%, 70% { opacity: 1; } 71%, 100% { opacity: 0.35; } }
+@media (prefers-reduced-motion: reduce) { .nav__brand::before { animation: none; } }
+@media (max-width: 420px) {
+  .nav__brand { font-size: 0.66rem; padding: 0.6rem 0.7rem; gap: 0.4rem; }
+  .nav__brand::before { width: 7px; height: 7px; }
 }
 .nav__links { display: flex; align-items: center; gap: clamp(1.1rem, 2.2vw, 2rem); }
 .nav__links a:not(.nav__cta) {
