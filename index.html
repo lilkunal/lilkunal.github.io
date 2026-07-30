@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Hanken+Grotesk:wght@400;500;700&family=Press+Start+2P&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -25,7 +26,15 @@
 
   <nav class="nav__links" aria-label="Primary">
     <a href="#about">About</a>
-    <a href="#experience" class="nav__background">Background</a>
+    <div class="nav__dropdown">
+      <button type="button" class="nav__background" id="bg-menu-btn" aria-expanded="false" aria-haspopup="true" aria-controls="bg-menu">Background <span class="nav__caret" aria-hidden="true">▾</span></button>
+      <div class="nav__menu" id="bg-menu" role="menu" hidden>
+        <a role="menuitem" href="#experience" data-bg-jump="experience">Experience</a>
+        <a role="menuitem" href="#experience" data-bg-jump="skills">Skills</a>
+        <a role="menuitem" href="#experience" data-bg-jump="credentials">Education &amp; certifications</a>
+        <a role="menuitem" href="resume/index.html" class="nav__menu-out">Full résumé ↗</a>
+      </div>
+    </div>
     <a href="#services">Services</a>
     <a href="#process">Process</a>
     <a href="#work">Work</a>
@@ -43,7 +52,6 @@
   <section class="hero">
     <div class="hero__persona-bg" aria-hidden="true">
       <img class="persona-photo is-active" data-persona="itguy" src="assets/personas/itguy.jpg" alt="">
-      <img class="persona-photo" data-persona="actor" src="assets/personas/actor.jpg" alt="">
       <img class="persona-photo" data-persona="businessman" src="assets/personas/businessman.jpg" alt="">
       <img class="persona-photo" data-persona="funnyguy" src="assets/personas/funnyguy.jpg" alt="">
       <img class="persona-photo" data-persona="nextdoor" src="assets/personas/nextdoor.jpg" alt="">
@@ -80,7 +88,6 @@
       <div class="persona-glass">
         <div class="persona-tabs" role="tablist" aria-label="Pick a side of me">
           <button class="persona-tab is-active" type="button" data-persona="itguy">IT Guy</button>
-          <button class="persona-tab" type="button" data-persona="actor">Actor</button>
           <button class="persona-tab" type="button" data-persona="businessman">Businessman</button>
           <button class="persona-tab" type="button" data-persona="funnyguy">Funny Guy</button>
           <button class="persona-tab" type="button" data-persona="nextdoor">Next Door</button>
@@ -132,36 +139,146 @@
 
   <section id="experience" class="section experience">
     <p class="eyebrow">Professional background</p>
-    <h2 class="section__title">The résumé side of this, briefly.</h2>
-    <p class="experience__lede">Nine years running a real business online, four years in technical support. Short version below — the full record has the detail.</p>
-    <a class="btn btn--primary experience__cta" href="resume/index.html">See my full professional background →</a>
-    <ol class="mini-timeline">
-      <li class="mini-timeline__item">
-        <span class="mini-timeline__date">2017 — Present</span>
-        <span class="mini-timeline__role">Marketing Designer &amp; Online Lead</span>
-        <span class="mini-timeline__org">Padma Enterprises — family business, lighting manufacturing &amp; retail</span>
-      </li>
-      <li class="mini-timeline__item">
-        <span class="mini-timeline__date">Aug – Dec 2024</span>
-        <span class="mini-timeline__role">Technical Support Advisor</span>
-        <span class="mini-timeline__org">Teleperformance</span>
-      </li>
-      <li class="mini-timeline__item">
-        <span class="mini-timeline__date">Oct 2023 – Jan 2024</span>
-        <span class="mini-timeline__role">Customer Support Executive</span>
-        <span class="mini-timeline__org">Webhelp Pvt. Ltd.</span>
-      </li>
-      <li class="mini-timeline__item">
-        <span class="mini-timeline__date">Oct 2021 – Apr 2023</span>
-        <span class="mini-timeline__role">Content Moderator</span>
-        <span class="mini-timeline__org">Concentrix Daksh Pvt. Ltd.</span>
-      </li>
-      <li class="mini-timeline__item">
-        <span class="mini-timeline__date">Feb – Jun 2021</span>
-        <span class="mini-timeline__role">Technical Support Trainee</span>
-        <span class="mini-timeline__org">Flex Pvt. Ltd.</span>
-      </li>
-    </ol>
+    <h2 class="section__title">The formal record.</h2>
+    <p class="experience__lede">A computer science degree, four years across technical support and content moderation, nine years running a real business online, and the certifications to back it. Laid out properly — pick a tab.</p>
+
+    <div class="bg-panel-wrap">
+      <div class="bg-tabs" role="tablist" aria-label="Professional background">
+        <button class="bg-tab is-active" type="button" role="tab" id="bgtab-experience" aria-controls="bgpanel-experience" aria-selected="true" data-bg="experience">Experience</button>
+        <button class="bg-tab" type="button" role="tab" id="bgtab-skills" aria-controls="bgpanel-skills" aria-selected="false" tabindex="-1" data-bg="skills">Skills</button>
+        <button class="bg-tab" type="button" role="tab" id="bgtab-credentials" aria-controls="bgpanel-credentials" aria-selected="false" tabindex="-1" data-bg="credentials">Education &amp; certifications</button>
+      </div>
+
+      <div class="bg-panel is-active" id="bgpanel-experience" role="tabpanel" aria-labelledby="bgtab-experience" data-bg-panel="experience">
+        <ol class="cv-list">
+          <li class="cv-entry">
+            <div class="cv-entry__head">
+              <h3 class="cv-entry__role">Marketing Designer &amp; Online Lead</h3>
+              <p class="cv-entry__org">Padma Enterprises — Padma Lights · Aligarh, India</p>
+              <p class="cv-entry__date">2017 — Present</p>
+            </div>
+            <ul class="cv-entry__points">
+              <li>Run marketing and the entire online presence for the family's cast-aluminium outdoor lighting business.</li>
+              <li>Manage a catalogue of 200+ models across 4 categories, including trade pricing for architects, builders and dealers.</li>
+              <li>Handle international orders billed across 8 currencies.</li>
+            </ul>
+          </li>
+          <li class="cv-entry">
+            <div class="cv-entry__head">
+              <h3 class="cv-entry__role">Technical Support Advisor</h3>
+              <p class="cv-entry__org">Teleperformance</p>
+              <p class="cv-entry__date">Aug 2024 — Dec 2024</p>
+            </div>
+            <ul class="cv-entry__points">
+              <li>Diagnosed and resolved customer technical faults, keeping downtime and repeat contacts low.</li>
+              <li>Worked daily across PBX systems, remote troubleshooting tools and ticketing platforms.</li>
+            </ul>
+          </li>
+          <li class="cv-entry">
+            <div class="cv-entry__head">
+              <h3 class="cv-entry__role">Customer Support Executive</h3>
+              <p class="cv-entry__org">Webhelp Pvt. Ltd.</p>
+              <p class="cv-entry__date">Oct 2023 — Jan 2024</p>
+            </div>
+            <ul class="cv-entry__points">
+              <li>Handled support over chat and email, including complaints and cross-team escalations.</li>
+              <li>Maintained detailed interaction and transaction records in CRM.</li>
+            </ul>
+          </li>
+          <li class="cv-entry">
+            <div class="cv-entry__head">
+              <h3 class="cv-entry__role">Content Moderator</h3>
+              <p class="cv-entry__org">Concentrix Daksh Pvt. Ltd.</p>
+              <p class="cv-entry__date">Oct 2021 — Apr 2023</p>
+            </div>
+            <ul class="cv-entry__points">
+              <li>Reviewed content for Google platforms including YouTube Kids, working in the Yurt tool.</li>
+              <li>Produced moderation transcripts and handled team reporting with the team lead.</li>
+            </ul>
+          </li>
+          <li class="cv-entry">
+            <div class="cv-entry__head">
+              <h3 class="cv-entry__role">Technical Support Trainee</h3>
+              <p class="cv-entry__org">Flex Pvt. Ltd.</p>
+              <p class="cv-entry__date">Feb 2021 — Jun 2021</p>
+            </div>
+            <ul class="cv-entry__points">
+              <li>Monitored dashboards, internal tickets and mail queues; produced health-check reports.</li>
+              <li>Worked with Oracle WebLogic 11g and Jenkins jobs, analysing system logs to isolate faults.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <div class="bg-panel" id="bgpanel-skills" role="tabpanel" aria-labelledby="bgtab-skills" data-bg-panel="skills" hidden>
+        <div class="cv-skills">
+          <div class="cv-skillgroup">
+            <h3 class="cv-skillgroup__title">Technical support &amp; systems</h3>
+            <ul class="cv-chips">
+              <li>PBX Systems</li><li>Remote Troubleshooting</li><li>Ticketing Systems</li><li>CRM Software</li>
+              <li>Oracle WebLogic 11g</li><li>Jenkins</li><li>Dashboard Monitoring</li><li>System Log Analysis</li>
+            </ul>
+          </div>
+          <div class="cv-skillgroup">
+            <h3 class="cv-skillgroup__title">Software &amp; design</h3>
+            <ul class="cv-chips">
+              <li>HTML</li><li>CSS</li><li>Adobe Photoshop</li><li>AutoCAD</li>
+              <li>MS Excel</li><li>MS Word</li><li>MS Office</li>
+            </ul>
+          </div>
+          <div class="cv-skillgroup">
+            <h3 class="cv-skillgroup__title">Data &amp; digital</h3>
+            <ul class="cv-chips">
+              <li>Data Analysis (Excel)</li><li>Digital Marketing Fundamentals</li>
+            </ul>
+          </div>
+          <div class="cv-skillgroup">
+            <h3 class="cv-skillgroup__title">Working with people</h3>
+            <ul class="cv-chips">
+              <li>Communication</li><li>Creative Thinking</li><li>Flexibility</li><li>Time Management</li>
+              <li>Decision-Making</li><li>Multi-Tasking</li><li>Presentation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-panel" id="bgpanel-credentials" role="tabpanel" aria-labelledby="bgtab-credentials" data-bg-panel="credentials" hidden>
+        <div class="cv-creds">
+          <article class="cv-cred cv-cred--degree">
+            <p class="cv-cred__eyebrow">Degree</p>
+            <h3 class="cv-cred__title">Bachelor's in Computer Science</h3>
+            <p class="cv-cred__org">Aligarh College of Engineering &amp; Technology</p>
+            <p class="cv-cred__date">Aug 2017 — Sep 2020</p>
+          </article>
+          <article class="cv-cred">
+            <p class="cv-cred__eyebrow">Google / Coursera</p>
+            <h3 class="cv-cred__title">Google IT Support Professional</h3>
+            <ul class="cv-cred__list">
+              <li>Technical Support Fundamentals</li>
+              <li>The Bits and Bytes of Computer Networking</li>
+              <li>Operating Systems and You: Becoming a Power User</li>
+              <li>System Administration and IT Infrastructure Services</li>
+              <li>IT Security: Defense Against the Digital Dark Arts</li>
+            </ul>
+          </article>
+          <article class="cv-cred">
+            <p class="cv-cred__eyebrow">Google Digital Garage</p>
+            <h3 class="cv-cred__title">The Fundamentals of Digital Marketing</h3>
+          </article>
+          <article class="cv-cred">
+            <p class="cv-cred__eyebrow">Coursera</p>
+            <h3 class="cv-cred__title">Data Analysis Using Microsoft Excel</h3>
+            <p class="cv-cred__org">Plus Introduction to Microsoft Excel</p>
+          </article>
+          <article class="cv-cred">
+            <p class="cv-cred__eyebrow">Great Learning Academy</p>
+            <h3 class="cv-cred__title">Programming Basics · ChatGPT for Beginners</h3>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <a class="btn btn--primary experience__cta" href="resume/index.html">Open the full résumé →</a>
   </section>
 
   <section id="services" class="section services">
@@ -188,14 +305,18 @@
   </section>
 
   <section id="process" class="section process">
-    <p class="eyebrow">How it works</p>
-    <h2 class="section__title">Process</h2>
+    <p class="eyebrow">How this works</p>
+    <h2 class="section__title">Four steps, no jargon.</h2>
     <ol class="steps">
-      <li class="step"><span class="step__num">01</span><h3 class="step__title">Table read</h3><p class="step__body">A call or a WhatsApp message about your business — what you sell, who buys it, what isn't working right now.</p></li>
-      <li class="step"><span class="step__num">02</span><h3 class="step__title">Storyboard</h3><p class="step__body">A first look at direction — layout, tone, colour — before a line of it is final.</p></li>
-      <li class="step"><span class="step__num">03</span><h3 class="step__title">Shoot</h3><p class="step__body">The real site, built and refined against your feedback until it's right.</p></li>
-      <li class="step"><span class="step__num">04</span><h3 class="step__title">Premiere</h3><p class="step__body">Live, with your number and mine both still working after.</p></li>
+      <li class="step"><span class="step__num">01</span><h3 class="step__title">We talk</h3><p class="step__body">A call or WhatsApp message. You tell me what you sell, who buys it, and what isn't working right now. Free, and there's no obligation after it.</p></li>
+      <li class="step"><span class="step__num">02</span><h3 class="step__title">You get a price in writing</h3><p class="step__body">What I'll build, what it costs, and how long it takes — agreed before I start. The number doesn't move unless you ask for more.</p></li>
+      <li class="step"><span class="step__num">03</span><h3 class="step__title">You see it before anyone else</h3><p class="step__body">I send you a real link you can click and try on your own phone. You tell me what to change, and I change it.</p></li>
+      <li class="step"><span class="step__num">04</span><h3 class="step__title">It goes live — and I stay reachable</h3><p class="step__body">Your site goes up, and my number still works afterwards. Four years in technical support taught me that launch day isn't the finish line.</p></li>
     </ol>
+    <div class="process-note">
+      <p class="process-note__title">What I need from you</p>
+      <p class="process-note__body">Your logo if you have one, photos of what you sell, and the details you want customers to see — address, hours, phone. No logo or photos? Say so and we'll work it out; that's a normal starting point, not a problem.</p>
+    </div>
   </section>
 
   <section id="work" class="section work">
@@ -317,11 +438,40 @@
 </main>
 
 <footer class="footer">
-  <p>© <span id="year"></span> Kunal Varshney · Directed &amp; built on location in Aligarh, Uttar Pradesh, India</p>
+  <p>© <span id="year"></span> Kunal Varshney · Built in Aligarh, Uttar Pradesh, India</p>
   <a href="resume/index.html">My professional background →</a>
+
+  <div class="footer__secret">
+    <button type="button" class="secret-toggle" id="secret-toggle" aria-expanded="false" aria-controls="secret-panel">
+      <span class="secret-toggle__caret" aria-hidden="true">▸</span> One more thing
+    </button>
+    <div class="secret-panel" id="secret-panel" hidden>
+      <p class="secret-panel__note">Not on the résumé, not in the pitch. I act a bit. Two clips, no context, no explanation.</p>
+      <div class="secret-videos">
+        <figure class="secret-video">
+          <video controls preload="none" playsinline poster="assets/videos/clip-1-poster.jpg">
+            <source src="assets/videos/clip-1.mp4" type="video/mp4">
+            Your browser can't play this clip.
+          </video>
+          <figcaption>Clip one</figcaption>
+        </figure>
+        <figure class="secret-video">
+          <video controls preload="none" playsinline poster="assets/videos/clip-2-poster.jpg">
+            <source src="assets/videos/clip-2.mp4" type="video/mp4">
+            Your browser can't play this clip.
+          </video>
+          <figcaption>Clip two</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
   <p class="footer__ai">Designed and built in collaboration with Claude AI — direction and judgment calls are mine, a lot of the CSS typing was not.</p>
 </footer>
 
+<script src="js/vendor/anime.umd.min.js"></script>
+<script src="js/vendor/motion.min.js"></script>
 <script src="js/main.js"></script>
+<script src="js/animations.js"></script>
 </body>
 </html>

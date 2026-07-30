@@ -95,12 +95,11 @@
   /* Persona switcher */
   var personaCaptions = {
     itguy: "Has fixed more Wi-Fi routers than he'd like to admit.",
-    actor: "Could probably cry on command. Still can't dance.",
     businessman: "Owns exactly one good watch. Wears it to everything.",
     funnyguy: "The friend who ruins serious photos on purpose.",
     nextdoor: "Will help you move furniture. Will judge your paint choice silently."
   };
-  var personaOrder = ["itguy", "actor", "businessman", "funnyguy", "nextdoor"];
+  var personaOrder = ["itguy", "businessman", "funnyguy", "nextdoor"];
   var personaTabs = Array.prototype.slice.call(document.querySelectorAll(".persona-tab"));
   var personaPhotos = Array.prototype.slice.call(document.querySelectorAll(".persona-photo"));
   var personaCaptionEl = document.getElementById("persona-caption");
@@ -338,22 +337,94 @@
     });
   }
 
-  /* Reveal on scroll */
-  var revealTargets = Array.prototype.slice.call(
-    document.querySelectorAll(".service-card, .step, .contact-card, .fact, .work, .personal-aside, .work-tile, .mini-timeline__item, .faq-entry")
-  );
-  revealTargets.forEach(function (el) { el.classList.add("reveal"); });
-  if ("IntersectionObserver" in window && revealTargets.length) {
-    var reveal = new IntersectionObserver(function (entries, obs) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    revealTargets.forEach(function (el) { reveal.observe(el); });
-  } else {
-    revealTargets.forEach(function (el) { el.classList.add("is-visible"); });
+  /* Professional-background tabs. Formal content, switched by pixel tabs. */
+  var bgTabs = Array.prototype.slice.call(document.querySelectorAll(".bg-tab"));
+  var bgPanels = Array.prototype.slice.call(document.querySelectorAll("[data-bg-panel]"));
+
+  function showBackground(key) {
+    bgTabs.forEach(function (t) {
+      var on = t.getAttribute("data-bg") === key;
+      t.classList.toggle("is-active", on);
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+    });
+    bgPanels.forEach(function (p) {
+      var on = p.getAttribute("data-bg-panel") === key;
+      p.classList.toggle("is-active", on);
+      if (on) { p.removeAttribute("hidden"); } else { p.setAttribute("hidden", ""); }
+    });
   }
+
+  bgTabs.forEach(function (tab, i) {
+    tab.addEventListener("click", function () {
+      showBackground(tab.getAttribute("data-bg"));
+    });
+    /* Arrow-key navigation, which a tablist is expected to support. */
+    tab.addEventListener("keydown", function (e) {
+      var dir = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (!dir) return;
+      e.preventDefault();
+      var next = bgTabs[(i + dir + bgTabs.length) % bgTabs.length];
+      showBackground(next.getAttribute("data-bg"));
+      next.focus();
+    });
+  });
+
+  /* Background dropdown in the nav */
+  var bgMenuBtn = document.getElementById("bg-menu-btn");
+  var bgMenu = document.getElementById("bg-menu");
+
+  function closeBgMenu() {
+    if (!bgMenu || !bgMenuBtn) return;
+    bgMenu.setAttribute("hidden", "");
+    bgMenuBtn.setAttribute("aria-expanded", "false");
+  }
+  function openBgMenu() {
+    if (!bgMenu || !bgMenuBtn) return;
+    bgMenu.removeAttribute("hidden");
+    bgMenuBtn.setAttribute("aria-expanded", "true");
+  }
+
+  if (bgMenuBtn && bgMenu) {
+    bgMenuBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (bgMenuBtn.getAttribute("aria-expanded") === "true") { closeBgMenu(); } else { openBgMenu(); }
+    });
+    /* Menu items that point at a tab select it, then scroll the section in. */
+    Array.prototype.slice.call(bgMenu.querySelectorAll("[data-bg-jump]")).forEach(function (link) {
+      link.addEventListener("click", function () {
+        showBackground(link.getAttribute("data-bg-jump"));
+        closeBgMenu();
+        if (navToggleInput) navToggleInput.checked = false;
+      });
+    });
+    document.addEventListener("click", function (e) {
+      if (!bgMenu.contains(e.target) && e.target !== bgMenuBtn) closeBgMenu();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeBgMenu();
+    });
+  }
+
+  /* Footer easter egg — collapsed by default, holds the acting clips. */
+  var secretToggle = document.getElementById("secret-toggle");
+  var secretPanel = document.getElementById("secret-panel");
+  if (secretToggle && secretPanel) {
+    secretToggle.addEventListener("click", function () {
+      var open = secretToggle.getAttribute("aria-expanded") === "true";
+      secretToggle.setAttribute("aria-expanded", open ? "false" : "true");
+      if (open) {
+        secretPanel.setAttribute("hidden", "");
+        /* Stop playback when it's folded away again. */
+        Array.prototype.slice.call(secretPanel.querySelectorAll("video")).forEach(function (v) {
+          if (!v.paused) v.pause();
+        });
+      } else {
+        secretPanel.removeAttribute("hidden");
+      }
+    });
+  }
+
+  /* Scroll reveals now live in js/animations.js (Motion `inView`), which
+     replaced the CSS-class observer that used to run here. */
 })();
