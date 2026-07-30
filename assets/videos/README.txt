@@ -1,14 +1,15 @@
-Drop your two acting clips here, named exactly:
+Clips shown behind the "One more thing" toggle in the site footer.
 
-  clip-1.mp4
-  clip-2.mp4
+Currently live:
+  non-iphone-user.mp4   1280x720, 3:06, 14 MB
+  filmy-keeda.mp4        400x224, 5:26,  6 MB
 
-Optional still frames shown before playback (same folder):
+To swap one out, replace the file and keep the same name, or change the
+<source src="..."> and the <figcaption> in index.html.
 
-  clip-1-poster.jpg
-  clip-2-poster.jpg
+Both use preload="metadata": the browser fetches only the header so it can show
+a real first frame as the thumbnail, instead of a black box. The video body is
+not downloaded until a visitor presses play, so page speed is unaffected.
 
-They appear behind the "One more thing" toggle at the bottom of the site.
-Videos use preload="none", so nothing downloads until a visitor presses play
-and the page stays fast even if the files are large. Keep each clip under
-about 20 MB - GitHub blocks single files over 100 MB.
+Keep each file under about 50 MB. GitHub blocks single files over 100 MB, and
+large files stay in git history permanently even after deletion.
