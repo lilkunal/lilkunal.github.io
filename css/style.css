@@ -155,6 +155,9 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   .nav__brand::before { width: 7px; height: 7px; }
 }
 .nav__links { display: flex; align-items: center; gap: clamp(1.1rem, 2.2vw, 2rem); }
+/* Keep every nav item on one line. Without this the CTA was compressed into
+   wrapping ("Start a / project"), which pushed the bar to 112px tall. */
+.nav__links > a, .nav__cta, .nav__background { white-space: nowrap; }
 .nav__links a:not(.nav__cta) {
   font-weight: 500;
   color: var(--ink-soft);
@@ -219,7 +222,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .nav__links .nav__menu a:hover { background: var(--accent); color: var(--ink-on-accent); }
 .nav__links .nav__menu a::after { display: none; }
 .nav__menu-out { border-top: 1px solid var(--border); margin-top: 0.2rem; padding-top: 0.7rem; }
-@media (max-width: 680px) {
+@media (max-width: 1080px) {
   .nav__dropdown { display: block; width: 100%; }
   .nav__menu { position: static; box-shadow: none; margin-top: 0.5rem; min-width: 0; }
 }
@@ -1105,7 +1108,11 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
   .work-grid { grid-template-columns: 1fr; }
   .fact-strip { grid-template-columns: 1fr; gap: 1.5rem; }
 }
-@media (max-width: 680px) {
+/* Burger from 1080px, not 680px. The wordmark plate plus the Background
+   dropdown pushed the full nav 123px past a 768px tablet, scrolling the whole
+   page sideways. Measured with wrapping disabled, the horizontal bar needs
+   ~1050px to sit on one line, so everything below 1080px uses the burger. */
+@media (max-width: 1080px) {
   .nav__links {
     position: fixed;
     inset: 0 0 auto 0;
@@ -1119,11 +1126,41 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
     pointer-events: none;
     transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
     border-bottom: 1px solid var(--border);
+    /* Fixed with no intrinsic scroll: with the dropdown expanded it ran past a
+       short phone's viewport and the CTA became unreachable. Cap and scroll. */
+    max-height: 100vh;
+    max-height: 100dvh;
+    overflow-y: auto;
   }
   .nav__burger { display: flex; }
   .nav-toggle-input:checked ~ .nav .nav__links { opacity: 1; transform: translateY(0); pointer-events: auto; }
   .nav-toggle-input:checked ~ .nav .nav__burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-toggle-input:checked ~ .nav .nav__burger span:nth-child(2) { opacity: 0; }
   .nav-toggle-input:checked ~ .nav .nav__burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+@media (max-width: 680px) {
   .steps { grid-template-columns: 1fr; }
+}
+
+/* ===== Touch refinements =====
+   Measured at 375px: several controls sat at 28-33px tall, which clears the
+   WCAG 2.5.8 minimum but is uncomfortable for thumbs. These bring the ones
+   people actually tap closer to the ~44px platform guidance, and shrink the
+   pixel-font labels that were each claiming a full row. */
+@media (max-width: 1080px) {
+  .nav__links a:not(.nav__cta):not(.nav__background) { padding: 0.5rem 0; min-height: 44px; display: flex; align-items: center; }
+  .nav__cta { padding: 0.85rem 1.3rem; }
+  .nav__background { padding: 0.8rem 0.85rem; }
+  .nav__links .nav__menu a { padding: 0.8rem 0.7rem; min-height: 44px; display: flex; align-items: center; }
+  .theme-toggle { width: 2.75rem; height: 2.75rem; }
+  .persona-tab { padding: 0.7rem 0.8rem; }
+  .bg-tab { font-size: 0.46rem; padding: 0.85rem 0.55rem; }
+  .hero__cred { font-size: 0.46rem; padding: 0.6rem 0.55rem; }
+  .copy-btn { padding: 0.5rem 0.8rem; font-size: 0.68rem; }
+  .contact-card__mini { padding: 0.6rem 0.8rem; }
+  .secret-toggle { padding: 0.7rem 0.85rem; }
+  .footer a { min-height: 44px; display: inline-flex; align-items: center; }
+  .faq-item { padding: 1.15rem 2.6rem 1.15rem 1.15rem; }
+  .ask-search input, .form-field input, .form-field textarea { padding: 0.85rem 0.9rem; font-size: 1rem; }
+  .btn { padding: 0.95rem 1.2rem; }
 }
