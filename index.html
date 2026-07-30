@@ -479,5 +479,15 @@
 <script src="js/vendor/motion.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/animations.js"></script>
+<script src="js/game.js"></script>
+<script>
+  /* Offline support. Registered after load so it never competes with the
+     first paint, and only where the browser supports it. */
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("sw.js").catch(function () {});
+    });
+  }
+</script>
 </body>
 </html>
