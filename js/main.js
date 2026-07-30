@@ -35,27 +35,6 @@
     });
   });
 
-  /* Live clock — Aligarh, India (IST) */
-  var clockEl = document.getElementById("live-clock");
-  if (clockEl) {
-    var fmt;
-    try {
-      fmt = new Intl.DateTimeFormat("en-IN", {
-        timeZone: "Asia/Kolkata",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: true
-      });
-    } catch (e) { fmt = null; }
-    function tickClock() {
-      if (!fmt) return;
-      clockEl.textContent = "Now screening · Aligarh, India · " + fmt.format(new Date());
-    }
-    tickClock();
-    setInterval(tickClock, 1000);
-  }
-
   /* Visitor location + local time — best-effort city via a keyless IP lookup,
      entirely client-side. Falls back to the browser's own time zone if the
      lookup fails or is blocked. Nothing is sent to or stored by this site. */
@@ -236,15 +215,32 @@
     });
   });
 
-  /* Ask search — keyword-matches a typed question to the FAQ list. Not a live AI. */
+  /* Ask search — checks this page's answers first by keyword. If nothing here
+     fits, hands the question off to WhatsApp with the text pre-filled so Kunal
+     can answer it directly. Not a live AI, and it can't send on the visitor's
+     behalf — they still hit send in their own WhatsApp. */
+  var WHATSAPP_NUMBER = "917017662533";
   var askInput = document.getElementById("ask-input");
   var askBtn = document.getElementById("ask-search-btn");
   var askStatus = document.getElementById("ask-status");
+
+  function whatsappAskUrl(question) {
+    var msg = "Hi Kunal — I was on your portfolio and the site didn't have an answer for this:\n\n" + question;
+    return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
+  }
+
   if (askInput && askBtn && faqEntries.length) {
     function runAskSearch() {
-      var query = (askInput.value || "").toLowerCase().trim();
-      if (!query) return;
-      var words = query.split(/\s+/).filter(function (w) { return w.length > 2; });
+      var raw = (askInput.value || "").trim();
+      if (!raw) {
+        if (askStatus) askStatus.textContent = "Type a question first — then I'll either answer it here or pass it to me on WhatsApp.";
+        return;
+      }
+      var query = raw.toLowerCase();
+      var stop = ["the","and","you","your","are","for","with","how","what","why","when","does","did","can","this","that","have","from","about","much","site","website"];
+      var words = query.split(/\s+/).filter(function (w) {
+        return w.length > 2 && stop.indexOf(w) === -1;
+      });
       var best = null;
       var bestScore = 0;
       faqEntries.forEach(function (entry) {
@@ -253,14 +249,44 @@
         words.forEach(function (w) { if (corpus.indexOf(w) !== -1) score++; });
         if (score > bestScore) { bestScore = score; best = entry; }
       });
-      if (best && bestScore > 0) {
-        if (askStatus) askStatus.textContent = "";
+
+      /* Require at least two matching words (or one when that's all they typed)
+         so a single incidental word doesn't return an unrelated answer. */
+      var needed = words.length > 1 ? 2 : 1;
+      if (best && bestScore >= needed) {
         openFaq(best);
         best.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
-      } else {
-        closeAllFaq();
-        if (askStatus) askStatus.textContent = "Couldn't find a close match — just message me directly below, I'll actually answer.";
+        if (askStatus) {
+          askStatus.innerHTML = "";
+          askStatus.appendChild(document.createTextNode("Found an answer on this page — opened below. Not what you meant? "));
+          var a = document.createElement("a");
+          a.className = "ask-status__link";
+          a.href = whatsappAskUrl(raw);
+          a.target = "_blank";
+          a.rel = "noopener";
+          a.textContent = "Ask me on WhatsApp instead →";
+          askStatus.appendChild(a);
+        }
+        return;
       }
+
+      /* Nothing on the page fits — hand it to WhatsApp. */
+      closeAllFaq();
+      var url = whatsappAskUrl(raw);
+      if (askStatus) {
+        askStatus.innerHTML = "";
+        askStatus.appendChild(document.createTextNode("Nothing on this page covers that, so I'm sending it to me — "));
+        var link = document.createElement("a");
+        link.className = "ask-status__link";
+        link.href = url;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = "open WhatsApp to send it →";
+        askStatus.appendChild(link);
+      }
+      /* Runs inside the click/Enter gesture, so popup blockers allow it. The
+         status link above is the fallback if a blocker stops it anyway. */
+      window.open(url, "_blank", "noopener");
     }
     askBtn.addEventListener("click", runAskSearch);
     askInput.addEventListener("keydown", function (e) {

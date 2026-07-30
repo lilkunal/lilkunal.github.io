@@ -25,7 +25,7 @@
 
   <nav class="nav__links" aria-label="Primary">
     <a href="#about">About</a>
-    <a href="#experience">Experience</a>
+    <a href="#experience" class="nav__background">Background</a>
     <a href="#services">Services</a>
     <a href="#process">Process</a>
     <a href="#work">Work</a>
@@ -62,12 +62,18 @@
       <span class="dust-mote" style="left:95%; top:20%; animation-delay:1.4s; animation-duration:8.4s;"></span>
     </div>
     <div class="hero__content">
-      <p class="eyebrow"><span class="dot"></span><span id="live-clock">Now screening · Aligarh, India</span></p>
       <p class="eyebrow eyebrow--visitor" id="visitor-note" aria-live="polite"><span class="dot dot--alt"></span><span id="visitor-text">Figuring out where you're joining from…</span></p>
       <h1 class="hero__headline">
-        <span class="hero__was">I was in technical support, answering other people's tickets.</span>
-        <span class="hero__became">Now I design the websites small businesses actually need<span class="squiggle">.<svg viewBox="0 0 20 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2,12 Q10,4 18,12" /></svg></span></span>
+        <span class="hero__greeting">Hi — I'm</span>
+        <span class="hero__name">Kunal Varshney</span>
+        <span class="hero__craft">I build websites that make small businesses easy to find, understand and trust<span class="squiggle">.<svg viewBox="0 0 20 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2,12 Q10,4 18,12" /></svg></span></span>
       </h1>
+      <ul class="hero__creds">
+        <li class="hero__cred">9 yrs running a real business online</li>
+        <li class="hero__cred">4+ yrs technical support</li>
+        <li class="hero__cred">200+ product catalogue</li>
+        <li class="hero__cred">Aligarh, India</li>
+      </ul>
       <p class="identity-ticker">I am also a <span id="ticker-word">web designer</span></p>
       <p class="hero__tagline">An old soul trying to keep up with a fast, vast world — my words, not just an Instagram bio.</p>
 
@@ -83,7 +89,7 @@
         <p class="persona-note">That blur behind all this — yes, that's actually me. Not trying to steal focus from the point.</p>
       </div>
 
-      <p class="hero__lede">Alongside my day job, I've spent nine years as the marketing and online guy for Padma Enterprises — our family's lighting business. Handling a real business's online presence myself means I know what a small business actually needs from a website: something fast, clear about what you sell, and easy to trust. That's what I build for others now.</p>
+      <p class="hero__lede">I'm not a designer who has only ever designed. For nine years I've run the marketing and online side of Padma Enterprises — our family's lighting business — so I know what a small business actually needs from a website, not just how one should look. And four years in technical support means I'm still around when something breaks.</p>
       <div class="hero__actions">
         <a class="btn btn--primary" href="#contact">Start a project</a>
         <a class="btn btn--ghost" href="https://wa.me/917017662533?text=Hi%20Kunal%2C%20I%20found%20your%20portfolio%20and%20want%20to%20talk%20about%20a%20website%20for%20my%20business." target="_blank" rel="noopener">WhatsApp me</a>
@@ -127,6 +133,8 @@
   <section id="experience" class="section experience">
     <p class="eyebrow">Professional background</p>
     <h2 class="section__title">The résumé side of this, briefly.</h2>
+    <p class="experience__lede">Nine years running a real business online, four years in technical support. Short version below — the full record has the detail.</p>
+    <a class="btn btn--primary experience__cta" href="resume/index.html">See my full professional background →</a>
     <ol class="mini-timeline">
       <li class="mini-timeline__item">
         <span class="mini-timeline__date">2017 — Present</span>
@@ -154,7 +162,6 @@
         <span class="mini-timeline__org">Flex Pvt. Ltd.</span>
       </li>
     </ol>
-    <a class="btn btn--ghost" href="resume/index.html">See the full résumé →</a>
   </section>
 
   <section id="services" class="section services">
@@ -214,10 +221,10 @@
     <h2 class="section__title">Things people usually ask.</h2>
 
     <div class="ask-search">
-      <input type="text" id="ask-input" placeholder="Type a question — I'll match it to the closest answer below">
-      <button type="button" class="btn btn--ghost" id="ask-search-btn">Ask</button>
+      <input type="text" id="ask-input" placeholder="Ask me anything — e.g. what does a website cost?">
+      <button type="button" class="btn btn--primary" id="ask-search-btn">Ask</button>
     </div>
-    <p class="ask-search__note">This matches your question to the list below by keyword — it's not a live AI, just quick matching. For anything real, use the form below.</p>
+    <p class="ask-search__note">It checks the answers on this page first. If nothing here fits, it opens WhatsApp with your question already typed out — send it and I'll answer you myself.</p>
     <p class="ask-search__status" id="ask-status" aria-live="polite"></p>
 
     <div class="faq-list">
