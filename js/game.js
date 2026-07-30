@@ -442,6 +442,11 @@
     }
   });
 
+  /* The footer hint opens it directly. Triple-clicking a nav link is fiddly on
+     a phone, and a hint you can't act on is just a tease. */
+  var egg = document.getElementById("footer-egg");
+  if (egg) egg.addEventListener("click", open);
+
   /* Exposed purely so the physics and rendering can be verified without a live
      animation frame (headless checks drive step/draw directly). */
   window.__kvGame = {

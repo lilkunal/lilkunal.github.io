@@ -1063,6 +1063,36 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
 .footer a:hover { color: var(--accent); }
 .footer__ai { flex-basis: 100%; font-size: 0.82rem; opacity: 0.8; }
 
+/* The hint for the hidden game. Sits alone on the last line, centred, and
+   quiet enough that it reads as a footnote rather than a call to action —
+   but it's a real button, so it also works by keyboard. */
+.footer__egg {
+  flex-basis: 100%;
+  order: 99;
+  max-width: 54ch;
+  margin: 0.5rem auto 0;
+  padding: 0.6rem 0.4rem;
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--ink-faint);
+  transition: color 0.25s var(--ease);
+}
+.footer__egg:hover { color: var(--ink-soft); }
+.footer__egg-cta {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--font-pixel);
+  font-style: normal;
+  font-size: 0.45rem;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  transition: color 0.25s var(--ease);
+}
+.footer__egg:hover .footer__egg-cta { color: var(--accent-strong); }
+
 /* Footer easter egg — deliberately quiet, folded away until asked for. */
 .footer__secret { flex-basis: 100%; margin-top: 0.75rem; }
 .secret-toggle {
