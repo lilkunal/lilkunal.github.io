@@ -72,6 +72,18 @@
       { threshold: 0.15 }
     );
     revealTargets.forEach(function (el) { reveal.observe(el); });
+
+    /* Safety net. Scroll-reveal must never be able to permanently hide real
+       content — if the observer never fires for an element on some device or
+       browser (in-app browsers embedded in Instagram/LinkedIn/etc. are known
+       to be inconsistent with IntersectionObserver), the visitor should still
+       see everything, just without the entrance animation. This was very
+       likely the actual cause of "can't see anything" on mobile: almost
+       every section below the hero — timeline, credentials, contact cards —
+       depended entirely on this observer firing, with nothing to fall back on. */
+    setTimeout(function () {
+      revealTargets.forEach(function (el) { el.classList.add("is-visible"); });
+    }, 1800);
   } else {
     revealTargets.forEach(function (el) { el.classList.add("is-visible"); });
   }

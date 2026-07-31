@@ -165,10 +165,17 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   animation: brand-bounce 0.55s var(--ease);
   animation-delay: calc(var(--i) * 0.09s);
 }
+/* Opacity deliberately stays at 1 throughout — an earlier version started
+   at opacity:0 with fill-mode:both, which meant the letters were invisible
+   until the animation played and finished. If that animation ever fails to
+   run for any reason (CSS animations should always run without JS, but
+   evidently something was stopping it on real phones), the letters were
+   stuck invisible forever. Popping in via transform only means the worst
+   case is "static text, no bounce" instead of "nothing visible at all." */
 @keyframes brand-pop {
-  0% { opacity: 0; transform: scale(0.25) translateY(12px) rotate(-18deg); }
-  65% { opacity: 1; transform: scale(1.2) translateY(-4px) rotate(8deg); }
-  100% { opacity: 1; transform: scale(1) translateY(0) rotate(0deg); }
+  0% { transform: scale(0.7) translateY(6px) rotate(-10deg); }
+  65% { transform: scale(1.15) translateY(-3px) rotate(6deg); }
+  100% { transform: scale(1) translateY(0) rotate(0deg); }
 }
 @keyframes brand-bounce {
   0%, 100% { transform: translateY(0) scale(1); }
@@ -352,10 +359,14 @@ main {
   animation-delay: calc(var(--i) * 0.045s + 0.1s);
 }
 .hero__name-chars .char.space { width: 0.28em; }
+/* Same fix as brand-pop above: transform-only, opacity never touched, so a
+   failed/blocked animation leaves readable static text instead of a blank
+   name — this was very likely the actual cause of "can't see anything" on
+   the professional-background page on mobile. */
 @keyframes name-pop {
-  0% { opacity: 0; transform: translateY(28px) scale(0.6) rotate(-10deg); }
-  60% { opacity: 1; transform: translateY(-5px) scale(1.06) rotate(3deg); }
-  100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+  0% { transform: translateY(14px) scale(0.85) rotate(-6deg); }
+  60% { transform: translateY(-3px) scale(1.04) rotate(2deg); }
+  100% { transform: translateY(0) scale(1) rotate(0deg); }
 }
 .hero__role {
   font-family: var(--font-display);
