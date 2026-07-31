@@ -77,18 +77,37 @@
       });
   }
 
-  /* Hero quote strip — the funny opener before the real intro. Rotates like
-     the identity ticker below; aria-hidden in the markup since it's
-     decorative and the substance lives in the copy right after it. */
+  /* Hero quote strip — the funny opener before the real intro. aria-hidden in
+     the markup since it's decorative and the substance lives in the copy
+     right after it. The order is shuffled fresh on every load (Fisher-Yates)
+     so two people opening the site at the same moment — or the same person
+     hitting refresh — land on a different quote, instead of everyone always
+     seeing the same one first. */
   var heroQuotes = [
     '"May the Force be with you." — everyone, forever',
     '"I\'ll be back." — also me, every Monday morning',
     '"Just keep swimming." — my actual life philosophy',
     'A wise man once said nothing — he was in a Ghibli film, and it was just about the wind',
-    '"Here\'s looking at you, kid." — this website, to you, right now'
+    '"Here\'s looking at you, kid." — this website, to you, right now',
+    '"Why so serious?" — my CSS, at 2 AM, for no reason',
+    '"You can\'t handle the truth!" — me, when someone says "it\'s probably just the Wi-Fi"',
+    '"To infinity and beyond!" — my to-do list, unfortunately',
+    '"Say hello to my little friend." — me, introducing you to this website',
+    '"There\'s no place like home." — also true of a well-indented CSS file',
+    'Somewhere a referee is ruining someone\'s entire week. Respect the craft',
+    'I\'m not lazy — I\'ve just optimised for watching movies efficiently',
+    '"Life moves pretty fast." — Ferris Bueller, and my football team\'s defence',
+    '"I am inevitable." — also every deadline I\'ve ever had',
+    'Directed, written, and mildly overacted by yours truly'
   ];
   var quoteEl = document.getElementById("hero-quote");
-  if (quoteEl) {
+  if (quoteEl && heroQuotes.length) {
+    /* Fisher-Yates shuffle */
+    for (var qi = heroQuotes.length - 1; qi > 0; qi--) {
+      var qj = Math.floor(Math.random() * (qi + 1));
+      var qtmp = heroQuotes[qi]; heroQuotes[qi] = heroQuotes[qj]; heroQuotes[qj] = qtmp;
+    }
+    quoteEl.textContent = heroQuotes[0];
     var quoteIndex = 0;
     setInterval(function () {
       quoteEl.classList.add("is-fading");
