@@ -515,6 +515,7 @@ main {
   margin-top: 0.5rem;
 }
 .credential-card__org, .credential-card__date { color: var(--ink-700); font-size: 0.9rem; margin-top: 0.3rem; }
+.credential-card__desc { color: var(--ink-700); font-size: 0.88rem; line-height: 1.55; margin-top: 0.6rem; }
 .credential-card__list { margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.35rem; }
 .credential-card__list li {
   font-size: 0.88rem;
