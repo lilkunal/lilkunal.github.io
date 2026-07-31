@@ -102,6 +102,19 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block; animation: pulse 2.4s ease-in-out infinite; }
 @keyframes pulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .eyebrow .dot { animation: none; } }
+/* A rotating throwaway quote above the fold — the funny opener, before the
+   real intro (name, craft line, hero__lede) takes over. */
+.hero__quote {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 0.56rem;
+  line-height: 1.7;
+  color: var(--ink-faint);
+  margin-bottom: 0.9rem;
+  transition: opacity 0.25s var(--ease);
+}
+.hero__quote.is-fading { opacity: 0; }
+
 .eyebrow--visitor { color: var(--accent-2); margin-top: -0.55rem; }
 .eyebrow--visitor .dot--alt { background: var(--accent-2); }
 
@@ -367,6 +380,16 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   line-height: 1.02;
   letter-spacing: -0.03em;
   text-wrap: balance;
+}
+.hero__tags {
+  display: block;
+  margin-top: 0.6rem;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 0.5rem;
+  line-height: 1.8;
+  letter-spacing: 0;
+  color: var(--accent-2);
 }
 .hero__craft {
   display: block;
@@ -984,7 +1007,10 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* Three columns, not two-plus-an-orphan: with three cards, 2-up left
+     LinkedIn alone on its own row, and a lone grid item sizes to its own
+     content rather than matching the row above it. */
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.1rem;
   margin-top: 2.5rem;
 }
@@ -999,6 +1025,11 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
   padding: 1.5rem 1.75rem;
   position: relative;
   transition: transform 0.25s var(--ease), border-color 0.25s var(--ease);
+  /* Phone & WhatsApp carries an extra Call/WhatsApp row Email and LinkedIn
+     don't have. A fixed floor plus pushing that row to the bottom keeps all
+     three the same footprint instead of the third card looking bare. */
+  min-height: 176px;
+  justify-content: space-between;
 }
 .contact-card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .contact-card__label {
@@ -1061,8 +1092,6 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
 }
 .footer a { font-weight: 600; color: var(--ink-soft); transition: color 0.2s var(--ease); }
 .footer a:hover { color: var(--accent); }
-.footer__ai { flex-basis: 100%; font-size: 0.82rem; opacity: 0.8; }
-
 /* The hint for the hidden game. Sits alone on the last line, centred, and
    quiet enough that it reads as a footnote rather than a call to action —
    but it's a real button, so it also works by keyboard. */

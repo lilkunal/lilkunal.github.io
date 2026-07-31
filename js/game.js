@@ -311,9 +311,64 @@
     g.fillText(String(S.score), W / 2, 52);
 
     if (S.mode === "ready") panel(g, "TAP TO SWING", ["Click, tap or press space", "Mind the towers"]);
-    else if (S.mode === "dead") panel(g, "SPLAT", ["Score " + S.score + "   Best " + S.best, S.t > 40 ? "Tap to try again" : ""]);
+    else if (S.mode === "dead") deathPanel(g);
 
     g.restore();
+  }
+
+  /* However well you do, the leaderboard has other ideas. */
+  function funnyLine(n) {
+    if (n === 0) return "GRAVITY 1 - YOU 0";
+    if (n <= 2) return "TWO WALLS. TRAGIC.";
+    if (n <= 5) return "ALMOST COMPETENT.";
+    if (n <= 9) return "NOT BAD. NOT ENOUGH.";
+    if (n <= 19) return "OK, YOU CAN ACTUALLY PLAY";
+    if (n <= 39) return "SHOW-OFF.";
+    return "ARE YOU CHEATING?";
+  }
+
+  function deathPanel(g) {
+    var bw = 292, bh = 186, bx = (W - bw) / 2, by = H / 2 - 140;
+    g.fillStyle = C.surface;
+    g.strokeStyle = C.ink;
+    g.lineWidth = 3;
+    pixelRect(g, bx, by, bw, bh, 8);
+    g.fill(); g.stroke();
+
+    g.textAlign = "center";
+    g.fillStyle = C.accent;
+    g.font = "15px " + C.pixelFont;
+    g.fillText("SPLAT", W / 2, by + 34);
+
+    g.fillStyle = C.inkSoft;
+    g.font = "7px " + C.pixelFont;
+    g.fillText(funnyLine(S.score), W / 2, by + 58);
+
+    /* Leaderboard. Lil_Kunal always finishes exactly one ahead — beating you
+       without ever appearing to try is the entire joke. */
+    var rowL = bx + 18, rowR = bx + bw - 18, y1 = by + 92, y2 = by + 116;
+
+    g.fillStyle = C.accent2;
+    g.fillRect(bx + 12, y1 - 13, bw - 24, 20);
+
+    g.font = "8px " + C.pixelFont;
+    g.textAlign = "left";
+    g.fillStyle = C.ink;
+    g.fillText("🥱 LIL_KUNAL", rowL, y1);
+    g.textAlign = "right";
+    g.fillText(String(S.score + 1), rowR, y1);
+
+    g.textAlign = "left";
+    g.fillStyle = C.inkSoft;
+    g.fillText("YOU", rowL, y2);
+    g.textAlign = "right";
+    g.fillText(String(S.score), rowR, y2);
+
+    g.textAlign = "center";
+    g.fillStyle = C.inkFaint;
+    g.font = "7px " + C.pixelFont;
+    g.fillText("YOUR BEST " + S.best, W / 2, by + 145);
+    if (S.t > 40) g.fillText("TAP TO TRY AGAIN", W / 2, by + 166);
   }
 
   function panel(g, title, lines) {

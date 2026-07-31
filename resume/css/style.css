@@ -639,6 +639,11 @@ main {
 @media (max-width: 900px) {
   .rail {
     position: fixed;
+    /* Must reset `bottom`. The desktop rule is `inset: 0 auto 0 0`, so leaving
+       bottom at 0 kept this pinned top-and-bottom — `height: auto` is ignored
+       when both edges are set, leaving a full-height opaque panel at z-index
+       100 that covered the entire page on every screen under 900px. */
+    inset: 0 0 auto 0;
     width: 100%;
     height: auto;
     flex-direction: row;
@@ -647,6 +652,8 @@ main {
     border-right: none;
     border-bottom: 1px solid var(--border);
   }
+  /* Sole in-flow child — fill the bar so the burger sits at the far right. */
+  .rail__top { flex: 1; }
   .rail__burger { display: flex; }
   .rail__nav {
     position: fixed;

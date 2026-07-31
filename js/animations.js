@@ -221,4 +221,29 @@
       }, { target: hero, offset: ["start start", "end start"] });
     }
   }
+
+  /* ---------------------------------------------------------------------
+     6. Press feedback (Motion springs on `scale`)
+        Buttons are deliberately excluded: they already compose a magnetic
+        transform through CSS custom properties (see #4 and style.css), and
+        animating `scale` there would set an inline `transform` that clobbers
+        it. Cards and tabs have no such conflict, so they get a quick tactile
+        squash on press — inline style is cleared on release so ordinary CSS
+        hover rules keep control afterward rather than losing to a leftover
+        inline transform.
+     --------------------------------------------------------------------- */
+  if (M && M.animate) {
+    $$(".service-card, .work-tile, .contact-card, .faq-item, .persona-tab, .bg-tab, .hero__cred").forEach(function (el) {
+      el.addEventListener("pointerdown", function () {
+        M.animate(el, { scale: 0.96 }, { type: "spring", stiffness: 420, damping: 22 });
+      });
+      var release = function () {
+        M.animate(el, { scale: 1 }, { type: "spring", stiffness: 300, damping: 20 }).then(function () {
+          el.style.transform = "";
+        });
+      };
+      el.addEventListener("pointerup", release);
+      el.addEventListener("pointerleave", release);
+    });
+  }
 })();

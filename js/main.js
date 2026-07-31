@@ -77,8 +77,31 @@
       });
   }
 
+  /* Hero quote strip — the funny opener before the real intro. Rotates like
+     the identity ticker below; aria-hidden in the markup since it's
+     decorative and the substance lives in the copy right after it. */
+  var heroQuotes = [
+    '"May the Force be with you." — everyone, forever',
+    '"I\'ll be back." — also me, every Monday morning',
+    '"Just keep swimming." — my actual life philosophy',
+    'A wise man once said nothing — he was in a Ghibli film, and it was just about the wind',
+    '"Here\'s looking at you, kid." — this website, to you, right now'
+  ];
+  var quoteEl = document.getElementById("hero-quote");
+  if (quoteEl) {
+    var quoteIndex = 0;
+    setInterval(function () {
+      quoteEl.classList.add("is-fading");
+      setTimeout(function () {
+        quoteIndex = (quoteIndex + 1) % heroQuotes.length;
+        quoteEl.textContent = heroQuotes[quoteIndex];
+        quoteEl.classList.remove("is-fading");
+      }, 250);
+    }, 3400);
+  }
+
   /* Identity ticker */
-  var tickerWords = ["web designer", "football regular", "Ghibli defender", "Padma Enterprises' online guy", "technical support veteran", "old soul"];
+  var tickerWords = ["web designer", "football regular", "cinephile", "Padma Enterprises' online guy", "technical support veteran", "old soul"];
   var tickerEl = document.getElementById("ticker-word");
   if (tickerEl) {
     var tickerIndex = 0;

@@ -230,7 +230,8 @@ main { margin-left: var(--rail-w); padding: 0 2.5rem; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
 @media (max-width: 900px) {
-  .rail { position: fixed; width: 100%; height: auto; flex-direction: row; align-items: center; padding: 1rem 1.25rem; border-right: none; border-bottom: 1px solid var(--border); }
+  .rail { position: fixed; inset: 0 0 auto 0; width: 100%; height: auto; flex-direction: row; align-items: center; padding: 1rem 1.25rem; border-right: none; border-bottom: 1px solid var(--border); }
+  .rail__top { flex: 1; }
   .rail__burger { display: flex; }
   .rail__nav { position: fixed; top: 64px; left: 0; right: 0; background: var(--paper-0); flex-direction: column; margin-top: 0; padding: 1rem 1.5rem 1.5rem; border-bottom: 1px solid var(--border); transform: translateY(-8px); opacity: 0; pointer-events: none; transition: opacity 0.2s var(--ease), transform 0.2s var(--ease); }
   .rail__bottom { position: fixed; top: 14px; right: 60px; margin-top: 0; }

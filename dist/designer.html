@@ -412,7 +412,6 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
 .footer { max-width: var(--content-max); margin: 0 auto; padding: 2.5rem clamp(1.25rem, 4vw, 3rem) 3.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; color: var(--ink-faint); font-size: 0.9rem; border-top: 1px solid var(--border); }
 .footer a { font-weight: 600; color: var(--ink-soft); transition: color 0.2s var(--ease); }
 .footer a:hover { color: var(--accent); }
-.footer__ai { flex-basis: 100%; font-size: 0.82rem; opacity: 0.8; }
 
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -491,7 +490,6 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
         <li class="hero__cred">9 yrs running a real business online</li>
         <li class="hero__cred">4+ yrs technical support</li>
         <li class="hero__cred">200+ product catalogue</li>
-        <li class="hero__cred">Aligarh, India</li>
       </ul>
       <p class="identity-ticker">I am also a <span id="ticker-word">web designer</span></p>
       <p class="hero__tagline">An old soul trying to keep up with a fast, vast world — my words, not just an Instagram bio.</p>
@@ -734,9 +732,7 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
 </main>
 
 <footer class="footer">
-  <p>© <span id="year"></span> Kunal Varshney · Directed &amp; built on location in Aligarh, Uttar Pradesh, India</p>
   <a href="https://claude.ai/code/artifact/69cdcee6-b66b-4e6e-bc14-7ffb3874df74">My professional background →</a>
-  <p class="footer__ai">Designed and built in collaboration with Claude AI — direction and judgment calls are mine, a lot of the CSS typing was not.</p>
 </footer>
 
 <script>
@@ -814,7 +810,7 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
       });
   }
 
-  var tickerWords = ["web designer", "football regular", "Ghibli defender", "Padma Enterprises' online guy", "technical support veteran", "old soul"];
+  var tickerWords = ["web designer", "football regular", "cinephile", "Padma Enterprises' online guy", "technical support veteran", "old soul"];
   var tickerEl = document.getElementById("ticker-word");
   if (tickerEl) {
     var tickerIndex = 0;
