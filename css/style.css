@@ -1089,6 +1089,56 @@ a.work-tile:hover { transform: translateY(-4px); border-color: var(--accent); }
 }
 .contact-card__mini:hover { background: var(--accent-2); }
 
+/* Floating social bubbles. Two-layer transform on purpose: the outer
+   .social-float__item owns the up/down float (a @keyframes animation), the
+   inner .social-bubble owns the hover pop (a plain transition). Animation-
+   origin styles always beat author-origin styles for the same CSS property
+   on the same element in the cascade, so if both tried to set `transform`
+   on one node, hover would lose to whatever frame the float animation froze
+   on. Splitting them across two nodes sidesteps that entirely. The float
+   keyframe only ever touches transform, never opacity, so a frozen/stuck
+   animation still leaves the bubble fully visible and clickable. */
+.social-float__label {
+  margin-top: 2.5rem;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 0.5rem;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.social-float { display: flex; gap: 1.1rem; margin-top: 1rem; }
+.social-float__item {
+  display: inline-block;
+  animation: bubble-float 3.4s ease-in-out infinite;
+}
+.social-float__item:nth-child(2) { animation-duration: 4.1s; animation-delay: 0.35s; }
+.social-float__item:nth-child(3) { animation-duration: 3.7s; animation-delay: 0.7s; }
+@keyframes bubble-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+.social-bubble {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--ink);
+  background: var(--surface);
+  color: var(--ink);
+  transition: transform 0.25s var(--ease), background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.social-bubble svg { width: 22px; height: 22px; }
+.social-bubble:hover { transform: scale(1.15) rotate(-6deg); border-color: var(--accent); }
+.social-bubble--instagram:hover { background: var(--accent); color: var(--ink-on-accent); }
+.social-bubble--facebook:hover { background: var(--accent-2); color: var(--ink-on-accent); }
+.social-bubble--linkedin:hover { background: var(--ink); color: var(--paper); }
+@media (prefers-reduced-motion: reduce) {
+  .social-float__item { animation: none; }
+}
+
 /* ===== Footer ===== */
 .footer {
   max-width: var(--content-max);
