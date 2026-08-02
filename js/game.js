@@ -46,7 +46,7 @@
     C.inkFaint = v("--ink-faint", "#8b8fae");
     C.accent = v("--accent", "#ff6b8b");
     C.accent2 = v("--accent-2", "#4fc3f7");
-    C.pixelFont = v("--font-pixel", '"Press Start 2P", monospace');
+    C.pixelFont = v("--font-display", '"Syne", system-ui, sans-serif');
   }
 
   /* Stepped corners, matching the --pixel-corner clip-path used site-wide. */
