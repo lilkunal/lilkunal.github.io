@@ -69,7 +69,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Hanken+Grotesk:wght@400;500;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script>document.documentElement.classList.add("js");</script>
 </head>
@@ -108,66 +108,57 @@
 <main id="main">
 
   <section class="hero">
-    <div class="hero__persona-bg" aria-hidden="true">
-      <img class="persona-photo is-active" data-persona="itguy" src="assets/personas/itguy.jpg" alt="">
-      <img class="persona-photo" data-persona="businessman" src="assets/personas/businessman.jpg" alt="">
-      <img class="persona-photo" data-persona="funnyguy" src="assets/personas/funnyguy.jpg" alt="">
-      <img class="persona-photo" data-persona="nextdoor" src="assets/personas/nextdoor.jpg" alt="">
+    <div class="hero__shader-wrap" aria-hidden="true">
+      <canvas id="hero-shader"></canvas>
     </div>
-    <div class="hero__grain" aria-hidden="true"></div>
-    <div class="ghibli-dust" aria-hidden="true">
-      <span class="dust-mote" style="left:8%; top:74%; animation-delay:0s; animation-duration:7.2s;"></span>
-      <span class="dust-mote" style="left:17%; top:34%; animation-delay:1.1s; animation-duration:6.4s;"></span>
-      <span class="dust-mote" style="left:27%; top:82%; animation-delay:2.3s; animation-duration:8s;"></span>
-      <span class="dust-mote" style="left:38%; top:18%; animation-delay:0.6s; animation-duration:6.8s;"></span>
-      <span class="dust-mote" style="left:50%; top:62%; animation-delay:3.1s; animation-duration:7.6s;"></span>
-      <span class="dust-mote" style="left:61%; top:24%; animation-delay:1.8s; animation-duration:6.6s;"></span>
-      <span class="dust-mote" style="left:71%; top:78%; animation-delay:2.6s; animation-duration:7.9s;"></span>
-      <span class="dust-mote" style="left:81%; top:38%; animation-delay:0.3s; animation-duration:6.9s;"></span>
-      <span class="dust-mote" style="left:91%; top:66%; animation-delay:3.6s; animation-duration:7.3s;"></span>
-      <span class="dust-mote" style="left:95%; top:20%; animation-delay:1.4s; animation-duration:8.4s;"></span>
-    </div>
-    <p class="hero__quote" id="hero-quote" aria-hidden="true">"May the Force be with you." — everyone, forever</p>
-    <div class="hero__content">
-      <p class="eyebrow eyebrow--visitor" id="visitor-note" aria-live="polite"><span class="dot dot--alt"></span><span id="visitor-text">Figuring out where you're joining from…</span></p>
-      <h1 class="hero__headline">
-        <span class="hero__greeting">Hi — I'm</span>
-        <span class="hero__name">Kunal Varshney</span>
-        <span class="hero__tags" aria-hidden="true">[ web design ] [ small business sites ] [ still answers the phone ]</span>
-        <span class="hero__craft">I build websites that make small businesses easy to find, understand and trust<span class="squiggle">.<svg viewBox="0 0 20 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2,12 Q10,4 18,12" /></svg></span></span>
-      </h1>
-      <ul class="hero__creds">
-        <li class="hero__cred">9 yrs running a real business online</li>
-        <li class="hero__cred">4+ yrs technical support</li>
-        <li class="hero__cred">200+ product catalogue</li>
-              </ul>
-      <p class="identity-ticker">I am also a <span id="ticker-word">web designer</span></p>
-      <p class="hero__tagline">An old soul trying to keep up with a fast, vast world — my words, not just an Instagram bio.</p>
-
-      <div class="persona-glass">
-        <div class="persona-tabs" role="tablist" aria-label="Pick a side of me">
-          <button class="persona-tab is-active" type="button" data-persona="itguy">IT Guy</button>
-          <button class="persona-tab" type="button" data-persona="businessman">Businessman</button>
-          <button class="persona-tab" type="button" data-persona="funnyguy">Funny Guy</button>
-          <button class="persona-tab" type="button" data-persona="nextdoor">Next Door</button>
+    <div class="hero__grid">
+      <div class="hero__content">
+        <p class="eyebrow">Web design · small business</p>
+        <h1 class="hero__headline">
+          <span class="hero__greeting">Hi — I'm</span>
+          <span class="hero__name">Kunal Varshney</span>
+          <span class="hero__craft">I build websites that make small businesses easy to find, understand and trust<span class="squiggle">.<svg viewBox="0 0 20 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2,12 Q10,4 18,12" /></svg></span></span>
+        </h1>
+        <ul class="hero__creds">
+          <li class="hero__cred">9 yrs running a real business online</li>
+          <li class="hero__cred">4+ yrs technical support</li>
+          <li class="hero__cred">200+ product catalogue</li>
+        </ul>
+        <p class="identity-ticker">I am also a <span id="ticker-word">web designer</span></p>
+        <p class="hero__tagline">An old soul trying to keep up with a fast, vast world — my words, not just an Instagram bio.</p>
+        <p class="hero__lede">I'm not a designer who has only ever designed. For nine years I've run the marketing and online side of Padma Enterprises — our family's lighting business — so I know what a small business actually needs from a website, not just how one should look. And four years in technical support means I'm still around when something breaks.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#contact">Start a project</a>
+          <a class="btn btn--ghost" href="https://wa.me/917017662533?text=Hi%20Kunal%2C%20I%20found%20your%20portfolio%20and%20want%20to%20talk%20about%20a%20website%20for%20my%20business." target="_blank" rel="noopener">WhatsApp me</a>
+          <a class="btn btn--text" href="#process">See how it works ↓</a>
         </div>
-        <p class="persona-caption" id="persona-caption" aria-live="polite">Has fixed more Wi-Fi routers than he'd like to admit.</p>
-        <p class="persona-note">That blur behind all this — yes, that's actually me. Not trying to steal focus from the point.</p>
       </div>
 
-      <p class="hero__lede">I'm not a designer who has only ever designed. For nine years I've run the marketing and online side of Padma Enterprises — our family's lighting business — so I know what a small business actually needs from a website, not just how one should look. And four years in technical support means I'm still around when something breaks.</p>
-      <div class="hero__actions">
-        <a class="btn btn--primary" href="#contact">Start a project</a>
-        <a class="btn btn--ghost" href="https://wa.me/917017662533?text=Hi%20Kunal%2C%20I%20found%20your%20portfolio%20and%20want%20to%20talk%20about%20a%20website%20for%20my%20business." target="_blank" rel="noopener">WhatsApp me</a>
-        <a class="btn btn--text" href="#process">See how it works ↓</a>
-      </div>
+      <aside class="hero__visual">
+        <div class="hero__persona-bg" aria-hidden="true">
+          <img class="persona-photo is-active" data-persona="itguy" src="assets/personas/itguy.jpg" alt="">
+          <img class="persona-photo" data-persona="businessman" src="assets/personas/businessman.jpg" alt="">
+          <img class="persona-photo" data-persona="funnyguy" src="assets/personas/funnyguy.jpg" alt="">
+          <img class="persona-photo" data-persona="nextdoor" src="assets/personas/nextdoor.jpg" alt="">
+        </div>
+        <div class="persona-glass">
+          <div class="persona-tabs" role="tablist" aria-label="Pick a side of me">
+            <button class="persona-tab is-active" type="button" data-persona="itguy">IT Guy</button>
+            <button class="persona-tab" type="button" data-persona="businessman">Businessman</button>
+            <button class="persona-tab" type="button" data-persona="funnyguy">Funny Guy</button>
+            <button class="persona-tab" type="button" data-persona="nextdoor">Next Door</button>
+          </div>
+          <p class="persona-caption" id="persona-caption" aria-live="polite">Has fixed more Wi-Fi routers than he'd like to admit.</p>
+          <p class="persona-note">That's actually me behind the glass — four sides, same person.</p>
+        </div>
+      </aside>
     </div>
   </section>
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee__track">
-      <span class="marquee__group">NOW SCREENING • WEBSITES FOR SMALL BUSINESSES • BUSINESS SITES • LANDING PAGES • PRODUCT CATALOGUES • CARE &amp; SUPPORT • </span>
-      <span class="marquee__group">NOW SCREENING • WEBSITES FOR SMALL BUSINESSES • BUSINESS SITES • LANDING PAGES • PRODUCT CATALOGUES • CARE &amp; SUPPORT • </span>
+      <span class="marquee__group">Websites for small businesses · Business sites · Landing pages · Product catalogues · Care &amp; support · </span>
+      <span class="marquee__group">Websites for small businesses · Business sites · Landing pages · Product catalogues · Care &amp; support · </span>
     </div>
   </div>
 
@@ -343,23 +334,35 @@
   <section id="services" class="section services">
     <p class="eyebrow">What I do</p>
     <h2 class="section__title">Services</h2>
-    <div class="card-grid">
-      <article class="service-card">
+    <div class="carousel" data-carousel aria-label="Services">
+      <div class="carousel__controls">
+        <button type="button" class="carousel__btn" data-carousel-prev aria-label="Previous service">←</button>
+        <button type="button" class="carousel__btn" data-carousel-next aria-label="Next service">→</button>
+      </div>
+      <div class="carousel__track" data-carousel-track tabindex="0">
+      <article class="service-card carousel__slide">
         <h3 class="service-card__title">Business Websites</h3>
         <p class="service-card__body">A complete site for your business — home, about, products or services, contact — designed around what you actually sell and who you're selling to.</p>
       </article>
-      <article class="service-card">
+      <article class="service-card carousel__slide">
         <h3 class="service-card__title">Landing Pages</h3>
         <p class="service-card__body">One focused page for a launch, an offer, or a campaign. Built to get one clear action, fast.</p>
       </article>
-      <article class="service-card">
+      <article class="service-card carousel__slide">
         <h3 class="service-card__title">Product &amp; Catalogue Sites</h3>
         <p class="service-card__body">For makers and sellers who want their full range browsable online — built from real experience running a 200+ product catalogue.</p>
       </article>
-      <article class="service-card">
+      <article class="service-card carousel__slide">
         <h3 class="service-card__title">Care &amp; Support</h3>
         <p class="service-card__body">Updates, fixes, and someone who actually answers. Years in technical support means I don't disappear after launch.</p>
       </article>
+      </div>
+      <div class="carousel__dots" data-carousel-dots role="tablist" aria-label="Service slides">
+        <button type="button" class="carousel__dot is-active" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+        <button type="button" class="carousel__dot" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+        <button type="button" class="carousel__dot" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+        <button type="button" class="carousel__dot" role="tab" aria-selected="false" aria-label="Slide 4"></button>
+      </div>
     </div>
   </section>
 
@@ -381,18 +384,52 @@
   <section id="work" class="section work">
     <p class="eyebrow">Proof, honestly</p>
     <h2 class="section__title">What's actually real right now.</h2>
-    <div class="work-grid">
-      <a class="work-tile" href="https://www.padmalights.com" target="_blank" rel="noopener">
-        <span class="work-tile__label">The business, not a design credit</span>
-        <span class="work-tile__title">Padma Enterprises — padmalights.com</span>
-        <span class="work-tile__body">I handle marketing and the online side of this — our family's business. I didn't design the site itself — what it proves instead is nine years of actually running a business's online presence, not just designing for one.</span>
-      </a>
-      <div class="work-tile">
-        <span class="work-tile__label">Proof, honestly</span>
-        <span class="work-tile__title">This portfolio</span>
-        <span class="work-tile__body">Every layout, animation and line of type here — designed and built by me. If it feels considered to use, that's a fair preview of what I'd build for you.</span>
-      </div>
+    <p class="work__intro">Scroll through live work — full-bleed panels with parallax depth, inspired by <a href="https://motion.dev/examples/react-parallax" target="_blank" rel="noopener noreferrer">Motion's scroll galleries</a> and the kind of craft you see on <a href="https://www.awwwards.com/" target="_blank" rel="noopener noreferrer">Awwwards</a>.</p>
+
+    <div class="work-parallax" data-work-parallax aria-label="Selected work">
+      <article class="work-panel" data-work-panel>
+        <div class="work-panel__bg" aria-hidden="true">
+          <div class="work-panel__bg-inner work-panel__bg-inner--forge"></div>
+        </div>
+        <div class="work-panel__overlay" aria-hidden="true"></div>
+        <div class="work-panel__content">
+          <span class="work-panel__label">Design + build · AI agency</span>
+          <h3 class="work-panel__title">Singularity Forge</h3>
+          <p class="work-panel__url">singularityforge.ai</p>
+          <p class="work-panel__body">Marketing site for an AI agency building private LLM workflows, agentic automation, and human-first AI products — dark, cinematic, and built to feel as ambitious as the work they ship.</p>
+          <a class="btn btn--ghost work-panel__cta" href="https://singularityforge.ai" target="_blank" rel="noopener">Visit site →</a>
+        </div>
+      </article>
+
+      <article class="work-panel" data-work-panel>
+        <div class="work-panel__bg" aria-hidden="true">
+          <div class="work-panel__bg-inner work-panel__bg-inner--padma"></div>
+        </div>
+        <div class="work-panel__overlay" aria-hidden="true"></div>
+        <div class="work-panel__content">
+          <span class="work-panel__label">Nine years online · family business</span>
+          <h3 class="work-panel__title">Padma Enterprises</h3>
+          <p class="work-panel__url">padmalights.com</p>
+          <p class="work-panel__body">I handle marketing and the online side of our cast-aluminium lighting business — not a design credit for the site itself, but proof I've lived inside a real catalogue, trade pricing, and international orders for almost a decade.</p>
+          <a class="btn btn--ghost work-panel__cta" href="https://www.padmalights.com" target="_blank" rel="noopener">Visit site →</a>
+        </div>
+      </article>
+
+      <article class="work-panel work-panel--local" data-work-panel>
+        <div class="work-panel__bg" aria-hidden="true">
+          <div class="work-panel__bg-inner work-panel__bg-inner--portfolio"></div>
+        </div>
+        <div class="work-panel__overlay" aria-hidden="true"></div>
+        <div class="work-panel__content">
+          <span class="work-panel__label">This site · Nocturne Studio</span>
+          <h3 class="work-panel__title">Kunal Varshney</h3>
+          <p class="work-panel__url">lilkunal.github.io</p>
+          <p class="work-panel__body">Shader hero, glass UI, anime.js carousel, scroll parallax — every layout, animation, and line of type here is mine. If it feels considered to use, that's a fair preview of what I'd build for you.</p>
+          <a class="btn btn--ghost work-panel__cta" href="#contact">Start a project →</a>
+        </div>
+      </article>
     </div>
+
     <p class="work__note">I'm currently taking on a small number of new projects — if you're one of the first, you get my full attention on it.</p>
   </section>
 
@@ -414,7 +451,7 @@
       </div>
       <div class="faq-entry">
         <button class="faq-item" type="button" aria-expanded="false">Do you have client design work yet?</button>
-        <div class="faq-panel"><div class="faq-panel__inner"><p>Not yet — you'd be one of the first, and I'm not going to pretend otherwise. What I do have: years of technical support and a real business, so I don't vanish after launch, and I actually know how small businesses run, not just how they look in a portfolio.</p></div></div>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>I'm building in public — Singularity Forge (singularityforge.ai) is a recent design-and-build, and this portfolio is the craft sample. Before that: years of technical support and running Padma Enterprises online, so I don't vanish after launch, and I actually know how small businesses run, not just how they look in a portfolio.</p></div></div>
       </div>
       <div class="faq-entry">
         <button class="faq-item" type="button" aria-expanded="false">What happens after the site goes live — do you just disappear?</button>
@@ -439,10 +476,6 @@
       <div class="faq-entry">
         <button class="faq-item" type="button" aria-expanded="false">Why are you doing all of this at once?</button>
         <div class="faq-panel"><div class="faq-panel__inner"><p>Honestly? Because I'm more capable than I give myself credit for — I think most people are. Support work, a lighting business, a hidden game coded from scratch, a habit of picking up a camera on weekends — none of it waited for permission from me first. "Whether you think you can, or you think you can't — you're right." That's Henry Ford, not me, but I'd rather find out by doing than by asking if I'm allowed to.</p></div></div>
-      </div>
-      <div class="faq-entry">
-        <button class="faq-item" type="button" aria-expanded="false">How do you know where I'm visiting from?</button>
-        <div class="faq-panel"><div class="faq-panel__inner"><p>A quick, keyless IP lookup guesses your city, right there in your browser — it's not sent to me or stored anywhere. If that lookup ever fails or gets blocked, the site just falls back to your device's own time zone instead. Either way, nothing about you leaves your browser except the request your browser makes to that lookup service directly.</p></div></div>
       </div>
     </div>
   </section>
@@ -576,7 +609,10 @@
 
 <script src="js/vendor/anime.umd.min.js"></script>
 <script src="js/vendor/motion.min.js"></script>
+<script src="js/shader.js"></script>
 <script src="js/main.js"></script>
+<script src="js/carousel.js"></script>
+<script src="js/work-parallax.js"></script>
 <script src="js/animations.js"></script>
 <script src="js/game.js"></script>
 <script>
