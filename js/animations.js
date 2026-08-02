@@ -123,9 +123,11 @@
       [".experience__cta", "anim-hide-pop", { opacity: 1, scale: 1 }, 0],
       [".bg-panel-wrap", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".service-card", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.09],
+      [".carousel__slide", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.09],
       [".step", "anim-hide-up", { opacity: 1, y: 0 }, 0.09],
       [".process-note", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".work-tile", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.1],
+      [".work-panel", "anim-hide-up", { opacity: 1, y: 0 }, 0.12],
       [".work__note", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".ask-search", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".faq-entry", "anim-hide-left", { opacity: 1, x: 0 }, 0.05],
@@ -211,13 +213,11 @@
         Skipped on coarse pointers — it costs more than it adds on phones.
      --------------------------------------------------------------------- */
   if (M && M.scroll && window.matchMedia("(pointer: fine)").matches) {
-    var dust = document.querySelector(".ghibli-dust");
-    var photos = document.querySelector(".hero__persona-bg");
+    var photos = document.querySelector(".hero__visual .hero__persona-bg, .hero__persona-bg");
     var hero = document.querySelector(".hero");
-    if (hero && (dust || photos)) {
+    if (hero && photos) {
       M.scroll(function (progress) {
-        if (dust) dust.style.transform = "translateY(" + (progress * 90).toFixed(1) + "px)";
-        if (photos) photos.style.transform = "scale(" + (1 + progress * 0.08).toFixed(3) + ")";
+        photos.style.transform = "scale(" + (1 + progress * 0.06).toFixed(3) + ")";
       }, { target: hero, offset: ["start start", "end start"] });
     }
   }
@@ -233,7 +233,7 @@
         inline transform.
      --------------------------------------------------------------------- */
   if (M && M.animate) {
-    $$(".service-card, .work-tile, .contact-card, .faq-item, .persona-tab, .bg-tab, .hero__cred").forEach(function (el) {
+    $$(".service-card, .work-panel, .contact-card, .faq-item, .persona-tab, .bg-tab, .hero__cred").forEach(function (el) {
       el.addEventListener("pointerdown", function () {
         M.animate(el, { scale: 0.96 }, { type: "spring", stiffness: 420, damping: 22 });
       });
