@@ -6,7 +6,7 @@
    - Videos are never cached. They are ~21 MB and would blow past the origin's
      storage quota for no benefit.
    Bump CACHE_VERSION to retire every old cache on the next activation. */
-var CACHE_VERSION = "kv-v17";
+var CACHE_VERSION = "kv-v18";
 
 var PRECACHE = [
   "./",
@@ -24,6 +24,33 @@ var PRECACHE = [
   "./assets/brand-mark.svg",
   "./assets/work/padma-gate-light.jpg",
   "./assets/work/jai-home-care.jpg",
+  "./assets/work/singularity-forge.jpg",
+  "./assets/work/portfolio.jpg",
+  "./assets/cv/cv-now.jpg",
+  "./assets/cv/cv-support.jpg",
+  "./assets/cv/cv-school.jpg",
+  "./assets/cv/cv-skills.jpg",
+  "./assets/cv/cv-reels.jpg",
+  "./assets/cv/cv-vault.jpg",
+  "./assets/cv/cv-poster-1.jpg",
+  "./assets/cv/cv-poster-2.jpg",
+  "./assets/stickers/sticker-01.jpg",
+  "./assets/stickers/sticker-02.jpg",
+  "./assets/stickers/sticker-03.jpg",
+  "./assets/stickers/sticker-04.jpg",
+  "./assets/stickers/sticker-05.jpg",
+  "./assets/stickers/sticker-06.jpg",
+  "./assets/stickers/sticker-07.jpg",
+  "./assets/stickers/sticker-08.jpg",
+  "./assets/stickers/sticker-09.jpg",
+  "./assets/stickers/sticker-10.jpg",
+  "./assets/stickers/sticker-13.jpg",
+  "./assets/stickers/sticker-14.jpg",
+  "./assets/stickers/sticker-15.jpg",
+  "./assets/stickers/sticker-16.jpg",
+  "./assets/stickers/sticker-17.jpg",
+  "./assets/stickers/sticker-18.jpg",
+  "./assets/stickers/sticker-19.jpg",
   "./js/main.js",
   "./js/animations.js",
   "./js/milo-hero.js",
