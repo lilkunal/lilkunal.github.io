@@ -90,13 +90,102 @@ body {
 
 .theme-toggle {
   border-color: rgba(255, 255, 255, 0.2) !important;
-  background: rgba(255, 255, 255, 0.07) !important;
+  background: transparent !important;
   color: rgba(255, 255, 255, 0.85) !important;
 }
 
 .theme-toggle:hover {
   border-color: rgba(255, 255, 255, 0.4) !important;
   color: #fff !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Proper theme switch — track + sliding thumb */
+.theme-toggle--switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: auto;
+  height: auto;
+  min-height: 44px;
+  padding: 0.35rem 0.55rem 0.35rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
+
+.theme-toggle__track {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  flex: none;
+}
+
+.theme-toggle__glyph {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.72rem;
+  line-height: 1;
+  opacity: 0.55;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.theme-toggle__glyph--sun { left: 7px; }
+.theme-toggle__glyph--moon { right: 7px; }
+
+.theme-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root[data-theme="dark"] .theme-toggle__thumb,
+:root:not([data-theme="light"]) .theme-toggle__thumb {
+  transform: translateX(24px);
+}
+
+:root[data-theme="dark"] .theme-toggle__glyph--moon,
+:root:not([data-theme="light"]) .theme-toggle__glyph--moon {
+  opacity: 1;
+}
+
+:root[data-theme="light"] .theme-toggle__glyph--sun {
+  opacity: 1;
+}
+
+.theme-toggle__text {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.theme-toggle--switch .theme-toggle__icon {
+  display: none !important;
+}
+
+@media (max-width: 1080px) {
+  .nav__links {
+    background: rgba(5, 5, 5, 0.98) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .theme-toggle--switch {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.65rem 0.85rem;
+  }
 }
 
 :root[data-theme="light"] body {
