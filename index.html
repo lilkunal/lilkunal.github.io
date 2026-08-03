@@ -74,6 +74,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/milo-hero.css">
+<link rel="stylesheet" href="css/work-fly.css">
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -459,69 +460,93 @@
     <p class="eyebrow">Selected work</p>
     <h2 class="section__title">Client projects you can visit.</h2>
 
-    <ul class="work-clients" aria-label="Clients">
-      <li class="work-clients__item">Padma Enterprises</li>
-      <li class="work-clients__item">Singularity Forge</li>
-      <li class="work-clients__item">JAI Home Care</li>
-      <li class="work-clients__item">Independent clients</li>
-    </ul>
+    <div class="work-fly" data-work-fly aria-roledescription="carousel" aria-label="Project showcase">
+      <div class="work-fly__stage">
+        <div class="work-fly__track">
+          <article class="work-fly__slide work-fly__slide--padma is-active" data-work-slide aria-hidden="false">
+            <div class="work-fly__hero" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1513828583688-c52646db9d91?w=1600&q=85" alt="" loading="lazy" decoding="async" width="1600" height="900">
+              <div class="work-fly__hero-overlay"></div>
+            </div>
+            <div class="work-fly__content">
+              <p class="work-fly__tag">Marketing &amp; online · ongoing</p>
+              <h3 class="work-fly__title">Padma Enterprises</h3>
+              <p class="work-fly__url">padmalights.com</p>
+              <p class="work-fly__body">Cast-aluminium gate lights and outdoor fixtures — 200+ models, trade pricing, international orders. I run the full online presence and marketing.</p>
+              <a class="btn btn--ghost work-fly__cta" href="https://www.padmalights.com" target="_blank" rel="noopener">Visit site →</a>
+            </div>
+          </article>
 
-    <div class="work-parallax" data-work-parallax aria-label="Selected work">
-      <article class="work-panel" data-work-panel>
-        <div class="work-panel__bg" aria-hidden="true">
-          <div class="work-panel__bg-inner work-panel__bg-inner--padma"></div>
-        </div>
-        <div class="work-panel__overlay" aria-hidden="true"></div>
-        <div class="work-panel__content">
-          <p class="work-panel__tag">Marketing &amp; online · ongoing</p>
-          <h3 class="work-panel__title">Padma Enterprises</h3>
-          <p class="work-panel__url">padmalights.com</p>
-          <p class="work-panel__body">Full online presence for a 200+ product lighting manufacturer — catalogue, trade pricing, international orders, and day-to-day marketing since January 2025.</p>
-          <a class="btn btn--ghost work-panel__cta" href="https://www.padmalights.com" target="_blank" rel="noopener">Visit site →</a>
-        </div>
-      </article>
+          <article class="work-fly__slide work-fly__slide--forge" data-work-slide aria-hidden="true">
+            <div class="work-fly__hero" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&q=85" alt="" loading="lazy" decoding="async" width="1600" height="900">
+              <div class="work-fly__hero-overlay"></div>
+            </div>
+            <div class="work-fly__content">
+              <p class="work-fly__tag">Design &amp; build · 2025</p>
+              <h3 class="work-fly__title">Singularity Forge</h3>
+              <p class="work-fly__url">singularityforge.ai</p>
+              <p class="work-fly__body">Marketing site for an AI agency — private LLM workflows, automation, and a dark cinematic look built to match the brand.</p>
+              <a class="btn btn--ghost work-fly__cta" href="https://singularityforge.ai" target="_blank" rel="noopener">Visit site →</a>
+            </div>
+          </article>
 
-      <article class="work-panel" data-work-panel>
-        <div class="work-panel__bg" aria-hidden="true">
-          <div class="work-panel__bg-inner work-panel__bg-inner--forge"></div>
-        </div>
-        <div class="work-panel__overlay" aria-hidden="true"></div>
-        <div class="work-panel__content">
-          <p class="work-panel__tag">Design &amp; build · 2025</p>
-          <h3 class="work-panel__title">Singularity Forge</h3>
-          <p class="work-panel__url">singularityforge.ai</p>
-          <p class="work-panel__body">Marketing site for an AI agency — private LLM workflows, automation positioning, and a dark cinematic look aligned with the brand.</p>
-          <a class="btn btn--ghost work-panel__cta" href="https://singularityforge.ai" target="_blank" rel="noopener">Visit site →</a>
-        </div>
-      </article>
+          <article class="work-fly__slide work-fly__slide--jai" data-work-slide aria-hidden="true">
+            <div class="work-fly__hero" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1631217868264-e5b165bbdf8b?w=1600&q=85" alt="" loading="lazy" decoding="async" width="1600" height="900">
+              <div class="work-fly__hero-overlay"></div>
+            </div>
+            <div class="work-fly__content">
+              <p class="work-fly__tag">Design &amp; build · 2025</p>
+              <h3 class="work-fly__title">JAI Home Care Services</h3>
+              <p class="work-fly__url">Home care · medical assistance</p>
+              <p class="work-fly__body">Trust-focused landing page for 24×7 home nursing and personal care — clear services, WhatsApp booking, mobile-first layout.</p>
+              <a class="btn btn--ghost work-fly__cta" href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">Visit site →</a>
+            </div>
+          </article>
 
-      <article class="work-panel" data-work-panel>
-        <div class="work-panel__bg" aria-hidden="true">
-          <div class="work-panel__bg-inner work-panel__bg-inner--jai"></div>
+          <article class="work-fly__slide work-fly__slide--portfolio" data-work-slide aria-hidden="true">
+            <div class="work-fly__hero" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600&q=85" alt="" loading="lazy" decoding="async" width="1600" height="900">
+              <div class="work-fly__hero-overlay"></div>
+            </div>
+            <div class="work-fly__content">
+              <p class="work-fly__tag">Design &amp; build · 2025</p>
+              <h3 class="work-fly__title">This portfolio</h3>
+              <p class="work-fly__url">lilkunal.github.io</p>
+              <p class="work-fly__body">Layout, motion, and copy — a direct sample of how I design and present a business online.</p>
+              <a class="btn btn--ghost work-fly__cta" href="#contact">Start a project →</a>
+            </div>
+          </article>
         </div>
-        <div class="work-panel__overlay" aria-hidden="true"></div>
-        <div class="work-panel__content">
-          <p class="work-panel__tag">Design &amp; build · 2025</p>
-          <h3 class="work-panel__title">JAI Home Care Services</h3>
-          <p class="work-panel__url">jaihomecareservice-max.github.io/Jai-home-care</p>
-          <p class="work-panel__body">One-page site for a medical and home-care services client — clear services, trust-focused layout, WhatsApp enquiry flow, and mobile-first design.</p>
-          <a class="btn btn--ghost work-panel__cta" href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">Visit site →</a>
-        </div>
-      </article>
+      </div>
 
-      <article class="work-panel work-panel--local" data-work-panel>
-        <div class="work-panel__bg" aria-hidden="true">
-          <div class="work-panel__bg-inner work-panel__bg-inner--portfolio"></div>
+      <div class="work-fly__bar">
+        <div class="work-fly__thumbs" role="tablist" aria-label="Choose project">
+          <button type="button" class="work-fly__thumb is-active" data-work-thumb role="tab" aria-selected="true" aria-label="Padma Enterprises">
+            <img src="https://images.unsplash.com/photo-1513828583688-c52646db9d91?w=200&q=75" alt="" width="200" height="120">
+            <span class="work-fly__thumb-label">Padma</span>
+          </button>
+          <button type="button" class="work-fly__thumb" data-work-thumb role="tab" aria-selected="false" aria-label="Singularity Forge">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=200&q=75" alt="" width="200" height="120">
+            <span class="work-fly__thumb-label">AI</span>
+          </button>
+          <button type="button" class="work-fly__thumb" data-work-thumb role="tab" aria-selected="false" aria-label="JAI Home Care">
+            <img src="https://images.unsplash.com/photo-1631217868264-e5b165bbdf8b?w=200&q=75" alt="" width="200" height="120">
+            <span class="work-fly__thumb-label">Care</span>
+          </button>
+          <button type="button" class="work-fly__thumb" data-work-thumb role="tab" aria-selected="false" aria-label="Portfolio">
+            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=200&q=75" alt="" width="200" height="120">
+            <span class="work-fly__thumb-label">Portfolio</span>
+          </button>
         </div>
-        <div class="work-panel__overlay" aria-hidden="true"></div>
-        <div class="work-panel__content">
-          <p class="work-panel__tag">Design &amp; build · 2025</p>
-          <h3 class="work-panel__title">This portfolio</h3>
-          <p class="work-panel__url">lilkunal.github.io</p>
-          <p class="work-panel__body">Designed and built by me — layout, motion, and copy. A direct sample of craft and how I present client work.</p>
-          <a class="btn btn--ghost work-panel__cta" href="#contact">Start a project →</a>
+
+        <div class="work-fly__nav">
+          <button type="button" class="work-fly__btn" data-work-prev aria-label="Previous project">←</button>
+          <span class="work-fly__count" data-work-counter>1 / 4</span>
+          <button type="button" class="work-fly__btn" data-work-next aria-label="Next project">→</button>
         </div>
-      </article>
+      </div>
     </div>
 
     <p class="work__note">Taking on a limited number of new website projects — scope and price in writing before any build starts.</p>
@@ -675,8 +700,8 @@
 <script src="js/vendor/motion.min.js"></script>
 <script src="js/milo-hero.js"></script>
 <script src="js/main.js"></script>
+<script src="js/work-fly.js"></script>
 <script src="js/carousel.js"></script>
-<script src="js/work-parallax.js"></script>
 <script src="js/animations.js"></script>
 <script src="js/game.js"></script>
 <script>
