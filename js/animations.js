@@ -83,9 +83,9 @@
       [".work__note", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".ask-search", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".faq-entry", "anim-hide-left", { opacity: 1, x: 0 }, 0.05],
-      [".contact__motion-wrap", "anim-hide-up", { opacity: 1, y: 0 }, 0],
+      [".contact__intro", "anim-hide-up", { opacity: 1, y: 0 }, 0],
+      [".contact-action", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
       [".form-field", "anim-hide-up", { opacity: 1, y: 0 }, 0.06],
-      [".contact-card", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
     ];
 
     groups.forEach(function (group) {
