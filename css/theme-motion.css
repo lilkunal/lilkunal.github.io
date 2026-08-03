@@ -24,13 +24,7 @@
 }
 
 .section__title--solo::before {
-  content: "";
-  display: block;
-  width: 2.5rem;
-  height: 3px;
-  border-radius: 999px;
-  margin-bottom: 0.85rem;
-  background: linear-gradient(90deg, var(--motion-glow), var(--accent));
+  display: none;
 }
 
 /* Cards & carousels — lifted product panels */
