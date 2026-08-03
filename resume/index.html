@@ -19,68 +19,41 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/resume-theme.css">
 <link rel="stylesheet" href="../css/cursor-water.css">
-<script>document.documentElement.classList.add("js"); document.documentElement.setAttribute("data-theme", localStorage.getItem("kv-theme") || "dark");</script>
+<script>document.documentElement.classList.add("js"); document.documentElement.setAttribute("data-theme", localStorage.getItem("kv-theme") || "light");</script>
 </head>
-<body>
-<div class="resume-ambient" aria-hidden="true">
-  <span class="resume-ambient__orb resume-ambient__orb--1"></span>
-  <span class="resume-ambient__orb resume-ambient__orb--2"></span>
-</div>
+<body class="dossier">
 <a class="skip-link" href="#intro">Skip to content</a>
 
-<input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-hidden="true">
-
-<header class="rail">
-  <div class="rail__top">
-    <a href="#intro" class="rail__brand" aria-label="Kunal Varshney — back to top">
-      <img class="rail__brand-mark" src="../assets/brand-mark.svg" alt="" width="36" height="36">
-      <span>
-        <span class="rail__brand-name">Kunal Varshney</span>
-      </span>
-    </a>
-    <label for="nav-toggle" class="rail__burger" aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
-    </label>
-  </div>
-
-  <nav class="rail__nav" aria-label="Section navigation">
-    <a href="#intro" class="rail__link" data-section="intro"><span class="rail__num">01</span><span class="rail__label">Intro</span></a>
-    <a href="#experience" class="rail__link" data-section="experience"><span class="rail__num">02</span><span class="rail__label">Experience</span></a>
-    <a href="#venture" class="rail__link" data-section="venture"><span class="rail__num">03</span><span class="rail__label">Venture</span></a>
-    <a href="#skills" class="rail__link" data-section="skills"><span class="rail__num">04</span><span class="rail__label">Skills</span></a>
-    <a href="#credentials" class="rail__link" data-section="credentials"><span class="rail__num">05</span><span class="rail__label">Credentials</span></a>
-    <a href="#project" class="rail__link" data-section="project"><span class="rail__num">06</span><span class="rail__label">Project</span></a>
-    <a href="#contact" class="rail__link" data-section="contact"><span class="rail__num">07</span><span class="rail__label">Contact</span></a>
-    <a href="../index.html" class="rail__link"><span class="rail__num">↗</span><span class="rail__label">Portfolio</span></a>
+<header class="dossier-top">
+  <a href="#intro" class="dossier-top__brand">
+    <img src="../assets/brand-mark.svg" alt="" width="32" height="32">
+    <span>Kunal Varshney</span>
+  </a>
+  <nav class="dossier-nav" aria-label="Sections">
+    <a href="#intro" class="dossier-nav__link" data-section="intro">Intro</a>
+    <a href="#experience" class="dossier-nav__link" data-section="experience">Experience</a>
+    <a href="#venture" class="dossier-nav__link" data-section="venture">Venture</a>
+    <a href="#skills" class="dossier-nav__link" data-section="skills">Skills</a>
+    <a href="#credentials" class="dossier-nav__link" data-section="credentials">Credentials</a>
+    <a href="#project" class="dossier-nav__link" data-section="project">Work</a>
+    <a href="#contact" class="dossier-nav__link" data-section="contact">Contact</a>
   </nav>
-
-  <div class="rail__bottom">
-    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark and light theme">
+  <div class="dossier-top__actions">
+    <a class="dossier-top__portfolio" href="../index.html">← Portfolio</a>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
       <span class="theme-toggle__track"><span class="theme-toggle__thumb"></span></span>
-      <span class="theme-toggle__text">Theme</span>
     </button>
   </div>
 </header>
 
 <main>
+<div class="dossier-sheet">
 
   <section id="intro" class="section hero">
-    <a class="resume-back" href="../index.html">← Back to portfolio</a>
-    <p class="hero__eyebrow">Professional background · the long version</p>
-    <h1 class="hero__name">
-      <span class="u-sr-only">Kunal Varshney</span>
-      <span class="hero__name-chars" aria-hidden="true"><span class="char" style="--i:0">K</span><span class="char" style="--i:1">u</span><span class="char" style="--i:2">n</span><span class="char" style="--i:3">a</span><span class="char" style="--i:4">l</span><span class="char space" style="--i:5">&nbsp;</span><span class="char" style="--i:6">V</span><span class="char" style="--i:7">a</span><span class="char" style="--i:8">r</span><span class="char" style="--i:9">s</span><span class="char" style="--i:10">h</span><span class="char" style="--i:11">n</span><span class="char" style="--i:12">e</span><span class="char" style="--i:13">y</span></span>
-    </h1>
-    <p class="hero__role">Web Designer &amp; Marketing Specialist · Padma Enterprises</p>
-
-    <svg class="signal" viewBox="0 0 600 160" preserveAspectRatio="none" aria-hidden="true">
-      <polyline class="signal__trace" points="0,80 55,80 82,34 110,126 138,42 166,108 194,80 230,80 480,80" />
-      <circle class="signal__ring" cx="500" cy="80" r="26" />
-      <circle class="signal__ring signal__ring--2" cx="500" cy="80" r="26" />
-      <circle class="signal__node" cx="500" cy="80" r="7" />
-    </svg>
-
-    <p class="hero__lede">Since January 2025 I run marketing and the online side for <strong>Padma Enterprises</strong> and build sites for clients — Singularity Forge, JAI Home Care, and whoever needs a landing page that actually loads on mobile. Before that: four years in support and moderation, and nine years growing a lighting catalogue online. <em>Employable. Spoiler confirmed.</em></p>
+    <p class="hero__eyebrow">Professional background</p>
+    <h1 class="hero__name">Kunal Varshney</h1>
+    <p class="hero__role">Web Designer &amp; Marketing · Padma Enterprises</p>
+    <p class="hero__lede">Since January 2025 I run marketing and the online side for <strong>Padma Enterprises</strong> and build sites for clients — Singularity Forge, JAI Home Care, and anyone who needs a landing page that loads on a phone. Before that: four years in support, plus nine years growing a lighting catalogue online. <em>Employable. Spoiler confirmed.</em></p>
 
     <div class="hero__actions">
       <a class="btn btn--primary" href="../index.html#contact">Hire for web design</a>
@@ -91,10 +64,9 @@
 
   <section id="experience" class="section">
     <header class="section__head">
-      <span class="section__index">02</span>
-      <svg class="svg-draw" data-svg-draw viewBox="0 0 120 4" aria-hidden="true"><path d="M0 2 H120" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" pathLength="1"/></svg>
-      <h2 class="section__title">Experience</h2>
-      <p class="section__kicker">Web design since 2025 · support scars since 2021 · still answering tickets in my sleep</p>
+      <span class="section__index">Experience</span>
+      <h2 class="section__title">Where I've worked</h2>
+      <p class="section__kicker">Web design since 2025 · support since 2021 · still closing tickets in my sleep</p>
     </header>
 
     <ol class="timeline">
@@ -184,10 +156,9 @@
 
   <section id="venture" class="section">
     <header class="section__head">
-      <span class="section__index">03</span>
-      <svg class="svg-draw" data-svg-draw viewBox="0 0 120 4" aria-hidden="true"><path d="M0 2 H120" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" pathLength="1"/></svg>
-      <h2 class="section__title">The Venture</h2>
-      <p class="section__kicker">Family business I didn't quit when it got real — gate lights, export orders, the whole operation</p>
+      <span class="section__index">Venture</span>
+      <h2 class="section__title">Padma Lights</h2>
+      <p class="section__kicker">Family business — gate lights, export orders, the whole catalogue</p>
     </header>
 
     <div class="venture">
@@ -221,13 +192,35 @@
 
   <section id="skills" class="section">
     <header class="section__head">
-      <span class="section__index">04</span>
-      <svg class="svg-draw" data-svg-draw viewBox="0 0 120 4" aria-hidden="true"><path d="M0 2 H120" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" pathLength="1"/></svg>
-      <h2 class="section__title">Skills</h2>
-      <p class="section__kicker">Support scars, design muscles, Excel for when CSVs fight back — all of it, slightly smaller on purpose</p>
+      <span class="section__index">Skills</span>
+      <h2 class="section__title">Toolkit</h2>
+      <p class="section__kicker">Everything I actually use — no buzzword padding</p>
     </header>
 
-    <div class="skill-groups">
+    <dl class="skill-matrix">
+      <div class="skill-matrix__row">
+        <dt class="skill-matrix__label">Support</dt>
+        <dd class="skill-matrix__items">PBX · Remote troubleshooting · Ticketing · CRM · Oracle WebLogic · Jenkins · Dashboard monitoring · Log analysis</dd>
+      </div>
+      <div class="skill-matrix__row">
+        <dt class="skill-matrix__label">Web &amp; marketing</dt>
+        <dd class="skill-matrix__items">HTML &amp; CSS · Responsive layout · Landing pages · SEO basics · JavaScript · Photoshop · Digital marketing</dd>
+      </div>
+      <div class="skill-matrix__row">
+        <dt class="skill-matrix__label">Software</dt>
+        <dd class="skill-matrix__items">AutoCAD · MS Excel · MS Word · MS Office</dd>
+      </div>
+      <div class="skill-matrix__row">
+        <dt class="skill-matrix__label">Data</dt>
+        <dd class="skill-matrix__items">Excel data analysis · Digital marketing fundamentals</dd>
+      </div>
+      <div class="skill-matrix__row">
+        <dt class="skill-matrix__label">Soft skills</dt>
+        <dd class="skill-matrix__items">Communication · Creative thinking · Time management · Decision-making · Presentation</dd>
+      </div>
+    </dl>
+
+    <div class="skill-groups" hidden aria-hidden="true">
       <div class="skill-group">
         <h3 class="skill-group__title">Technical Support &amp; Systems</h3>
         <ul class="chip-row">
@@ -290,10 +283,9 @@
 
   <section id="credentials" class="section">
     <header class="section__head">
-      <span class="section__index">05</span>
-      <svg class="svg-draw" data-svg-draw viewBox="0 0 120 4" aria-hidden="true"><path d="M0 2 H120" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" pathLength="1"/></svg>
-      <h2 class="section__title">Credentials</h2>
-      <p class="section__kicker">Paper proof — degrees, certs, and enough Coursera tabs to crash a browser</p>
+      <span class="section__index">Credentials</span>
+      <h2 class="section__title">Education &amp; certs</h2>
+      <p class="section__kicker">Paper proof — degree plus the Coursera tabs</p>
     </header>
 
     <div class="credentials-grid">
@@ -350,10 +342,9 @@
 
   <section id="project" class="section">
     <header class="section__head">
-      <span class="section__index">06</span>
-      <svg class="svg-draw" data-svg-draw viewBox="0 0 120 4" aria-hidden="true"><path d="M0 2 H120" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" pathLength="1"/></svg>
-      <h2 class="section__title">Project</h2>
-      <p class="section__kicker">Client builds and one language I designed because boredom is a motivator</p>
+      <span class="section__index">Work</span>
+      <h2 class="section__title">Projects</h2>
+      <p class="section__kicker">Client builds + one language I designed because boredom is a motivator</p>
     </header>
 
     <article class="project-card">
@@ -381,10 +372,9 @@
 
   <section id="contact" class="section">
     <header class="section__head">
-      <span class="section__index">07</span>
-      <svg class="svg-draw" data-svg-draw viewBox="0 0 120 4" aria-hidden="true"><path d="M0 2 H120" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" pathLength="1"/></svg>
-      <h2 class="section__title">Contact</h2>
-      <p class="section__kicker">Web design inquiries welcome · I reply within a day · English only (Hindi works, typing speed drops)</p>
+      <span class="section__index">Contact</span>
+      <h2 class="section__title">Reach me</h2>
+      <p class="section__kicker">Web design inquiries · reply within a day · English only</p>
     </header>
 
     <div class="contact-grid">
@@ -412,6 +402,7 @@
     </div>
   </section>
 
+</div>
 </main>
 
 <footer class="footer">
@@ -419,8 +410,6 @@
   <p class="footer__aside">Off the clock — football, reading, and a watchlist longer than my résumé.</p>
 </footer>
 
-<script src="../js/vendor/anime.umd.min.js"></script>
-<script src="js/animations.js"></script>
 <script src="js/main.js"></script>
 <script src="../js/cursor-water.js" defer></script>
 </body>
