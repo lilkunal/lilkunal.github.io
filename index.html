@@ -79,6 +79,7 @@
 <link rel="stylesheet" href="css/cv-carousel.css">
 <link rel="stylesheet" href="css/minimal.css">
 <link rel="stylesheet" href="css/theme-motion.css">
+<link rel="stylesheet" href="css/svgator-effects.css">
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -87,7 +88,13 @@
 
 <header class="nav nav--dark">
   <a href="#top" class="nav__brand" id="top">
-    <img class="nav__logo" src="assets/brand-mark.svg" alt="" width="50" height="50">
+    <span class="nav__logo-wrap">
+      <img class="nav__logo" src="assets/brand-mark.svg" alt="" width="50" height="50">
+      <svg class="nav__logo-draw" viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="2" y="2" width="44" height="44" rx="13" fill="none" stroke="#fff" stroke-width="2.5" pathLength="1"/>
+        <path d="M15 30.5c2.2 3.5 5.5 5.5 9 5.5s6.8-2 9-5.5" fill="none" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" pathLength="1"/>
+      </svg>
+    </span>
     <span class="nav__brand-name">Kunal Varshney</span>
   </a>
 
@@ -113,6 +120,11 @@
 <main id="main">
 
   <section class="hero hero--milo" id="top">
+    <div class="hero-ambient" aria-hidden="true">
+      <span class="hero-ambient__orb hero-ambient__orb--1"></span>
+      <span class="hero-ambient__orb hero-ambient__orb--2"></span>
+      <span class="hero-ambient__orb hero-ambient__orb--3"></span>
+    </div>
     <div class="sticker-field" data-sticker-field aria-hidden="true">
       <!-- Work & tech -->
       <figure class="sticker sticker--1 sticker--wide"><img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?w=240&amp;q=80" alt="" loading="lazy" decoding="async" width="240" height="180"></figure>
@@ -196,6 +208,7 @@
   </section>
 
   <section id="experience" class="section experience">
+    <svg class="svg-draw svg-draw--section" data-svg-draw viewBox="0 0 180 4" aria-hidden="true"><path d="M0 2 H180" stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
     <h2 class="section__title section__title--solo">Background</h2>
 
     <div class="cv-carousel-wrap">
@@ -413,7 +426,10 @@
   <section id="work" class="section work">
     <div class="work__head">
       <div class="lottie-accent lottie-accent--work lottie-accent--inline" data-lottie-work aria-hidden="true"></div>
-      <h2 class="section__title section__title--solo">Work</h2>
+      <div>
+        <svg class="svg-draw svg-draw--section" data-svg-draw viewBox="0 0 120 4" aria-hidden="true"><path d="M0 2 H120" stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        <h2 class="section__title section__title--solo">Work</h2>
+      </div>
     </div>
 
     <div class="work-fly" data-work-fly aria-roledescription="carousel" aria-label="Project showcase">
@@ -503,6 +519,7 @@
   </section>
 
   <section id="reels" class="section reels">
+    <svg class="svg-draw svg-draw--section" data-svg-draw viewBox="0 0 160 4" aria-hidden="true"><path d="M0 2 H160" stroke="#f472b6" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
     <h2 class="section__title section__title--solo">Off the clock</h2>
     <p class="reels__lede">Somewhere between support shifts and lighting catalogues, I started making these with friends. Not on the résumé — never going to be — but they're some of the happiest afternoons I've had.</p>
 
@@ -706,6 +723,7 @@
 <script src="js/vendor/anime.umd.min.js"></script>
 <script src="js/vendor/motion.min.js"></script>
 <script src="js/milo-hero.js"></script>
+<script src="js/svgator-effects.js"></script>
 <script src="js/main.js"></script>
 <script src="js/lottie-accents.js"></script>
 <script src="js/cv-carousel.js"></script>
