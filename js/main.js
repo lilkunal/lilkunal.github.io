@@ -285,7 +285,7 @@
   /* Spotlight hover on cards */
   if (window.matchMedia("(pointer: fine)").matches) {
     var spotlightEls = Array.prototype.slice.call(
-      document.querySelectorAll(".service-card, .work-tile, .contact-card, .faq-entry")
+      document.querySelectorAll(".service-card, .work-tile, .contact-card, .faq-entry, .value-pillar")
     );
     spotlightEls.forEach(function (el) {
       el.addEventListener("mousemove", function (e) {
