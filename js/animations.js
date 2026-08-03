@@ -19,25 +19,20 @@
   /* The .js class gates the pre-animation hidden state in CSS. If we bail out
      below, it has to come off or hero text would stay invisible. */
   function revealHeroImmediately() {
-    $$(".hero__name, .hero__greeting, .hero__craft, .hero__creds").forEach(function (el) {
+    $$(".deck__slide.is-active, .deck__title, .sticker").forEach(function (el) {
       el.style.opacity = "1";
     });
   }
 
   if (reduce || (!A && !M)) {
     revealHeroImmediately();
-    return;
+    /* Still run scroll progress + section animations below if Motion available */
+    if (!M) return;
   }
 
-  /* Safety net. CSS hides the hero text until JS animates it in, so anything
-     that stops the animation from finishing — a library error, or rAF being
-     throttled because the page loaded in a background tab — would otherwise
-     leave the headline invisible for good. Force it visible if it hasn't
-     arrived on its own. */
   setTimeout(function () {
-    $$(".hero__name, .hero__greeting, .hero__craft, .hero__creds").forEach(function (el) {
-      if (parseFloat(getComputedStyle(el).opacity) < 0.9) el.style.opacity = "1";
-    });
+    var active = document.querySelector(".deck__slide.is-active");
+    if (active && parseFloat(getComputedStyle(active).opacity) < 0.9) active.style.opacity = "1";
   }, 2200);
 
   var EASE = [0.16, 1, 0.3, 1];
@@ -56,55 +51,17 @@
   }
 
   /* ---------------------------------------------------------------------
-     2. Hero entrance (anime.js) — greeting, then the name character by
-        character on a spring, then the pitch and credential chips.
+     2. Hero entrance — deck card + stickers (anime.js)
      --------------------------------------------------------------------- */
   if (A) {
-    var nameEl = document.querySelector(".hero__name");
-    var chars = null;
-
-    if (nameEl && A.text && A.text.split) {
-      try {
-        /* anime's splitter inserts a visually-hidden copy of the full string
-           and marks the per-character spans aria-hidden, so the name is still
-           announced correctly by screen readers. */
-        var split = A.text.split(nameEl, { chars: true });
-        chars = split && split.chars && split.chars.length ? split.chars : null;
-      } catch (e) { chars = null; }
-    }
-
     var tl = A.createTimeline({ defaults: { ease: "out(3)" } });
-
-    tl.add(".hero__greeting", { opacity: [0, 1], x: [-12, 0], duration: 520 });
-
-    if (chars) {
-      nameEl.style.opacity = "1";
-      tl.add(chars, {
-        opacity: [0, 1],
-        y: [38, 0],
-        rotate: [-8, 0],
-        scale: [0.85, 1],
-        duration: 900,
-        ease: A.createSpring({ stiffness: 130, damping: 14 }),
-        delay: A.stagger(34)
-      }, "-=260");
-    } else {
-      /* Splitting unavailable — fade the whole name in instead. */
-      tl.add(".hero__name", { opacity: [0, 1], y: [24, 0], duration: 700 }, "-=260");
-    }
-
-    tl.add(".hero__craft", { opacity: [0, 1], y: [18, 0], duration: 620 }, "-=420");
-    tl.add(".hero__creds", { opacity: [0, 1], duration: 10 }, "-=300");
-    tl.add(".hero__cred", {
+    tl.add(".sticker", {
       opacity: [0, 1],
-      y: [14, 0],
-      scale: [0.9, 1],
-      duration: 700,
-      ease: A.createSpring({ stiffness: 150, damping: 13 }),
-      delay: A.stagger(60)
-    }, "-=260");
-  } else {
-    revealHeroImmediately();
+      scale: [0.85, 1],
+      delay: A.stagger(40, { from: "random" }),
+      duration: 680
+    }, 0);
+    tl.add(".deck-wrap", { opacity: [0, 1], y: [24, 0], duration: 720 }, 120);
   }
 
   /* ---------------------------------------------------------------------
@@ -214,11 +171,11 @@
         Skipped on coarse pointers — it costs more than it adds on phones.
      --------------------------------------------------------------------- */
   if (M && M.scroll && window.matchMedia("(pointer: fine)").matches) {
-    var photos = document.querySelector(".hero__visual .hero__persona-bg, .hero__persona-bg");
-    var hero = document.querySelector(".hero");
-    if (hero && photos) {
+    var field = document.querySelector("[data-sticker-field]");
+    var hero = document.querySelector(".hero--milo");
+    if (hero && field) {
       M.scroll(function (progress) {
-        photos.style.transform = "scale(" + (1 + progress * 0.06).toFixed(3) + ")";
+        field.style.transform = "scale(" + (1 + progress * 0.04).toFixed(3) + ")";
       }, { target: hero, offset: ["start start", "end start"] });
     }
   }
@@ -234,7 +191,7 @@
         inline transform.
      --------------------------------------------------------------------- */
   if (M && M.animate) {
-    $$(".service-card, .work-panel, .contact-card, .faq-item, .persona-tab, .bg-tab, .hero__cred, .value-pillar").forEach(function (el) {
+    $$(".service-card, .work-panel, .contact-card, .faq-item, .bg-tab, .value-pillar, .deck__btn").forEach(function (el) {
       el.addEventListener("pointerdown", function () {
         M.animate(el, { scale: 0.96 }, { type: "spring", stiffness: 420, damping: 22 });
       });
