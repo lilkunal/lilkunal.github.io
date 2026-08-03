@@ -15,8 +15,10 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/kv-shared.css">
+<script>document.documentElement.setAttribute("data-theme", localStorage.getItem("kv-theme") || "dark");</script>
 </head>
 <body>
 <a class="skip-link" href="#intro">Skip to content</a>
@@ -26,8 +28,11 @@
 <header class="rail">
   <div class="rail__top">
     <a href="#intro" class="rail__brand" aria-label="Kunal Varshney — back to top">
-      <span class="rail__brand-char" style="--i:0">K</span><span class="rail__brand-char" style="--i:1">V</span>
-      <span class="rail__brand-dot" aria-hidden="true"></span>
+      <img class="rail__brand-mark" src="../assets/brand-mark.svg" alt="" width="36" height="36">
+      <span>
+        <span class="rail__brand-name">Kunal Varshney</span>
+        <span class="rail__brand-tag">Résumé · Web &amp; Marketing</span>
+      </span>
     </a>
     <label for="nav-toggle" class="rail__burger" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
@@ -42,6 +47,7 @@
     <a href="#credentials" class="rail__link" data-section="credentials"><span class="rail__num">05</span><span class="rail__label">Credentials</span></a>
     <a href="#project" class="rail__link" data-section="project"><span class="rail__num">06</span><span class="rail__label">Project</span></a>
     <a href="#contact" class="rail__link" data-section="contact"><span class="rail__num">07</span><span class="rail__label">Contact</span></a>
+    <a href="../index.html" class="rail__link"><span class="rail__num">↗</span><span class="rail__label">Portfolio</span></a>
   </nav>
 
   <div class="rail__bottom">
@@ -55,7 +61,8 @@
 <main>
 
   <section id="intro" class="section hero">
-    <p class="hero__eyebrow">Web Design · Marketing · Support</p>
+    <a class="resume-back" href="../index.html">← Back to portfolio</a>
+    <p class="hero__eyebrow">Web Design · Marketing · Cinema</p>
     <h1 class="hero__name">
       <span class="u-sr-only">Kunal Varshney</span>
       <span class="hero__name-chars" aria-hidden="true"><span class="char" style="--i:0">K</span><span class="char" style="--i:1">u</span><span class="char" style="--i:2">n</span><span class="char" style="--i:3">a</span><span class="char" style="--i:4">l</span><span class="char space" style="--i:5">&nbsp;</span><span class="char" style="--i:6">V</span><span class="char" style="--i:7">a</span><span class="char" style="--i:8">r</span><span class="char" style="--i:9">s</span><span class="char" style="--i:10">h</span><span class="char" style="--i:11">n</span><span class="char" style="--i:12">e</span><span class="char" style="--i:13">y</span></span>
