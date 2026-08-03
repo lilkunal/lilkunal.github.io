@@ -2092,7 +2092,15 @@ a.work-tile:hover {
 
 .footer__resume-dl:hover { color: var(--accent); }
 
-.footer__egg {
+.footer__reels {
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.footer__reels:hover {
+  color: var(--accent);
+}
+
   flex-basis: 100%;
   order: 99;
   max-width: 54ch;
