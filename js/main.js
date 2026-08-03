@@ -13,6 +13,11 @@
   try { stored = localStorage.getItem("kv-theme"); } catch (e) {}
   root.setAttribute("data-theme", (stored === "light" || stored === "dark") ? stored : "dark");
 
+  function syncThemeToggle() {
+    if (!toggle) return;
+    toggle.setAttribute("aria-pressed", currentTheme() === "dark" ? "true" : "false");
+  }
+
   function currentTheme() {
     var attr = root.getAttribute("data-theme");
     if (attr) return attr;
