@@ -21,6 +21,9 @@
     if (countEl) countEl.textContent = (idx + 1) + " / " + slides.length;
     if (prevBtn) prevBtn.disabled = idx === 0;
     if (nextBtn) nextBtn.disabled = idx === slides.length - 1;
+    deck.dispatchEvent(new CustomEvent("deck-change", {
+      detail: { index: idx, slide: slides[idx] }
+    }));
   }
 
   if (prevBtn) {
