@@ -1,19 +1,20 @@
 /* =============================================================================
-   Kunal Varshney Portfolio — Nocturne Studio
-   Warm dark editorial aesthetic · Syne + DM Sans · Glass morphism
+   Kunal Varshney Portfolio — Milo-inspired + Nocturne sections
+   Space Grotesk + IBM Plex Mono + DM Sans · Dark grid aesthetic
    ============================================================================= */
 
 /* ===== Design tokens ===== */
 :root {
   /* Typography */
-  --font-display: "Syne", system-ui, sans-serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-body: "DM Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
   /* Palette — dark default */
   --ink: #f4f0ea;
   --ink-soft: #a8a4a0;
   --ink-faint: #6b6864;
-  --paper: #0c0c0f;
+  --paper: #050505;
   --surface: rgba(255, 255, 255, 0.045);
   --surface-2: rgba(255, 255, 255, 0.08);
   --border: rgba(255, 255, 255, 0.1);
@@ -67,7 +68,7 @@
   --ink: #f4f0ea;
   --ink-soft: #a8a4a0;
   --ink-faint: #6b6864;
-  --paper: #0c0c0f;
+  --paper: #050505;
   --surface: rgba(255, 255, 255, 0.045);
   --surface-2: rgba(255, 255, 255, 0.08);
   --border: rgba(255, 255, 255, 0.1);
