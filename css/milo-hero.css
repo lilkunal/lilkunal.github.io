@@ -155,8 +155,9 @@
 .deck {
   position: relative;
   width: 100%;
-  min-height: 280px;
+  min-height: 300px;
   perspective: 1200px;
+  touch-action: pan-y;
 }
 
 .deck__slide {
@@ -231,6 +232,15 @@
 
 .deck__title--name {
   font-size: clamp(1.5rem, 4.5vw, 1.85rem);
+}
+
+.deck__kicker {
+  font-family: var(--font-body, var(--font-sans));
+  font-size: clamp(0.82rem, 0.78rem + 0.25vw, 0.92rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.62);
+  margin: 0;
+  max-width: 36ch;
 }
 
 .deck__label {
