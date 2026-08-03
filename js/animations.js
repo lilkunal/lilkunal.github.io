@@ -73,27 +73,19 @@
     /* [selector, hidden-class, animated properties, stagger seconds] */
     var groups = [
       [".section__title", "anim-hide-up", { opacity: 1, y: 0 }, 0],
-      [".about__lede", "anim-hide-up", { opacity: 1, y: 0 }, 0.08],
       [".fact", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.1],
-      [".value-pillar", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
-      [".about__actions", "anim-hide-up", { opacity: 1, y: 0 }, 0],
-      [".experience__lede", "anim-hide-up", { opacity: 1, y: 0 }, 0],
-      [".experience__cta", "anim-hide-pop", { opacity: 1, scale: 1 }, 0],
-      [".bg-panel-wrap", "anim-hide-up", { opacity: 1, y: 0 }, 0],
-      [".service-card", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.09],
-      [".carousel__slide", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.09],
-      [".step", "anim-hide-up", { opacity: 1, y: 0 }, 0.09],
-      [".process-note", "anim-hide-up", { opacity: 1, y: 0 }, 0],
-      [".work-tile", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.1],
+      [".cv-carousel-wrap", "anim-hide-up", { opacity: 1, y: 0 }, 0],
+      [".cv-carousel__thumb", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.05],
+      [".reels__card", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
+      [".reels__lede", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".work-fly", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".work-fly__thumb", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.06],
       [".work__note", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".ask-search", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".faq-entry", "anim-hide-left", { opacity: 1, x: 0 }, 0.05],
-      [".contact__lede", "anim-hide-up", { opacity: 1, y: 0 }, 0],
+      [".contact__motion-wrap", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".form-field", "anim-hide-up", { opacity: 1, y: 0 }, 0.06],
       [".contact-card", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
-      [".contact__closing", "anim-hide-up", { opacity: 1, y: 0 }, 0]
     ];
 
     groups.forEach(function (group) {
@@ -192,7 +184,7 @@
         inline transform.
      --------------------------------------------------------------------- */
   if (M && M.animate) {
-    $$(".service-card, .work-fly__btn, .work-fly__thumb, .contact-card, .faq-item, .bg-tab, .value-pillar, .deck__btn").forEach(function (el) {
+    $$(".service-card, .work-fly__btn, .work-fly__thumb, .contact-card, .faq-item, .bg-tab, .value-pillar, .deck__btn, .cv-carousel__btn, .cv-carousel__thumb").forEach(function (el) {
       el.addEventListener("pointerdown", function () {
         M.animate(el, { scale: 0.96 }, { type: "spring", stiffness: 420, damping: 22 });
       });
