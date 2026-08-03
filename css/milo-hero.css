@@ -1,0 +1,348 @@
+/* =============================================================================
+   Milo-inspired hero — sticker collage + slide deck (milo.gg reference)
+   Stock imagery only · no personal photos
+   ============================================================================= */
+
+.hero--milo {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--nav-height) + 1rem) 1rem 3rem;
+  overflow: hidden;
+  background: #050505;
+}
+
+.hero--milo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ----- Floating stickers ----- */
+.sticker-field {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sticker {
+  position: absolute;
+  width: var(--sw, 100px);
+  aspect-ratio: 1;
+  border: 4px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  transform: rotate(var(--rot, 0deg));
+  animation: sticker-drift var(--dur, 7s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  will-change: transform;
+}
+
+.sticker img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sticker--icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  font-size: 2.4rem;
+  aspect-ratio: auto;
+  height: auto;
+  min-height: 72px;
+  padding: 0.65rem 0.85rem;
+}
+
+.sticker--wide {
+  aspect-ratio: 4 / 3;
+  width: var(--sw, 130px);
+}
+
+.sticker--1  { top: 6%;  left: 4%;   --rot: -14deg; --sw: 108px; --dur: 6.5s; }
+.sticker--2  { top: 10%; right: 6%;  --rot: 11deg;  --sw: 96px;  --dur: 7.2s; --delay: -1s; }
+.sticker--3  { top: 28%; left: 2%;   --rot: 8deg;   --sw: 118px; --dur: 8s;   --delay: -2s; }
+.sticker--4  { top: 22%; right: 3%; --rot: -9deg;  --sw: 112px; --dur: 6.8s; --delay: -0.5s; }
+.sticker--5  { bottom: 18%; left: 5%;  --rot: 12deg;  --sw: 104px; --dur: 7.5s; }
+.sticker--6  { bottom: 12%; right: 4%; --rot: -11deg; --sw: 120px; --dur: 6.2s; --delay: -1.5s; }
+.sticker--7  { top: 42%; left: 8%;   --rot: -6deg;  --sw: 88px;  --dur: 8.5s; --delay: -3s; }
+.sticker--8  { top: 38%; right: 9%; --rot: 15deg;  --sw: 92px;  --dur: 7s;   --delay: -2.5s; }
+.sticker--9  { bottom: 32%; left: 14%; --rot: 7deg;  --sw: 100px; --dur: 6.9s; }
+.sticker--10 { bottom: 28%; right: 12%; --rot: -8deg; --sw: 106px; --dur: 7.8s; --delay: -1s; }
+.sticker--11 { top: 52%; left: 1%;  --rot: 10deg;  --sw: 84px;  --dur: 8.2s; }
+.sticker--12 { top: 55%; right: 2%; --rot: -13deg; --sw: 90px;  --dur: 6.4s; --delay: -2s; }
+.sticker--13 { top: 4%;  left: 38%; --rot: 5deg;   --sw: 78px;  --dur: 7.1s; }
+.sticker--14 { bottom: 6%; right: 32%; --rot: -7deg; --sw: 82px; --dur: 8s; --delay: -1.2s; }
+
+@keyframes sticker-drift {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+
+/* ----- Slide deck ----- */
+.deck-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: min(440px, 92vw);
+}
+
+.js .deck-wrap {
+  opacity: 0;
+}
+
+.js .sticker {
+  opacity: 0;
+}
+
+.deck {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  perspective: 1200px;
+}
+
+.deck__slide {
+  position: absolute;
+  inset: 0;
+  padding: clamp(1.5rem, 4vw, 2rem);
+  background: rgba(14, 14, 16, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 22px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 28px 80px rgba(0, 0, 0, 0.65),
+    0 8px 24px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.97);
+  transition:
+    opacity 0.45s var(--ease),
+    transform 0.45s var(--ease),
+    visibility 0.45s;
+}
+
+.deck__slide.is-active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.deck__slide:not(.is-active) {
+  pointer-events: none;
+}
+
+/* Stacked card illusion behind active slide */
+.deck::before,
+.deck::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 94%;
+  height: 100%;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(10, 10, 12, 0.85);
+  transform: translateX(-50%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.deck::before {
+  top: 10px;
+  opacity: 0.55;
+}
+
+.deck::after {
+  top: 20px;
+  opacity: 0.3;
+  width: 88%;
+}
+
+.deck__label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 0.85rem;
+}
+
+.deck__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 4vw, 1.65rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.deck__body {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.deck__list {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.deck__list li {
+  position: relative;
+  padding-left: 1.1rem;
+  margin-top: 0.35rem;
+}
+
+.deck__list li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.deck__nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.deck__btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.deck__btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.deck__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.deck__count {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+  min-width: 3.5rem;
+  text-align: center;
+}
+
+.deck__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+}
+
+.deck__actions .btn--primary {
+  background: #fff;
+  color: #050505;
+  border-color: #fff;
+}
+
+.deck__actions .btn--primary:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.deck__actions .btn--ghost {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.deck__actions .btn--ghost:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.hero__scroll-hint {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  animation: scroll-hint 2.5s ease-in-out infinite;
+}
+
+.hero__scroll-hint:hover { color: rgba(255, 255, 255, 0.6); }
+
+@keyframes scroll-hint {
+  0%, 100% { opacity: 0.5; translate: -50% 0; }
+  50% { opacity: 1; translate: -50% 6px; }
+}
+
+/* Nav on Milo hero */
+.hero--milo ~ .marquee,
+body:has(.hero--milo) .nav {
+  --nav-hero-blend: true;
+}
+
+body:has(.hero--milo) .nav {
+  background: rgba(5, 5, 5, 0.72);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+body:has(.hero--milo) .nav__brand,
+body:has(.hero--milo) .nav__links a,
+body:has(.hero--milo) .nav__background {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+body:has(.hero--milo) .nav__cta {
+  background: #fff;
+  color: #050505;
+}
+
+@media (max-width: 720px) {
+  .sticker { opacity: 0.55; }
+  .sticker--13,
+  .sticker--14,
+  .sticker--7,
+  .sticker--8 { display: none; }
+  .deck { min-height: 300px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticker { animation: none; }
+  .hero__scroll-hint { animation: none; }
+  .deck__slide { transition-duration: 0.001ms; }
+}
