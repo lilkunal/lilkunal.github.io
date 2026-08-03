@@ -56,7 +56,7 @@
 
   /* Reveal on scroll */
   var revealTargets = Array.prototype.slice.call(
-    document.querySelectorAll(".timeline__item, .venture, .credential-card, .project-card, .achievements, .contact-card")
+    document.querySelectorAll(".timeline__item, .venture, .skill-group, .credential-card, .project-card, .achievements, .contact-card")
   );
   revealTargets.forEach(function (el) { el.classList.add("reveal"); });
   if ("IntersectionObserver" in window && revealTargets.length) {
@@ -83,7 +83,7 @@
        depended entirely on this observer firing, with nothing to fall back on. */
     setTimeout(function () {
       revealTargets.forEach(function (el) { el.classList.add("is-visible"); });
-    }, 1800);
+    }, 1200);
   } else {
     revealTargets.forEach(function (el) { el.classList.add("is-visible"); });
   }
