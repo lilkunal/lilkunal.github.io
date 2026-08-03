@@ -992,6 +992,14 @@ img, video { max-width: 100%; height: auto; display: block; }
 .faq-entry:hover::before { opacity: 1; }
 
 /* ===== About ===== */
+.about__lede {
+  max-width: 52ch;
+  font-size: 1.12rem;
+  color: var(--ink-soft);
+  margin-top: 0.75rem;
+  line-height: 1.65;
+}
+
 .about__body {
   max-width: 68ch;
   font-size: 1.1rem;
@@ -1004,9 +1012,9 @@ img, video { max-width: 100%; height: auto; display: block; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   border-top: 1px solid var(--border);
-  padding-top: 2.25rem;
+  padding-top: 2rem;
 }
 
 .fact__value {
@@ -1021,9 +1029,52 @@ img, video { max-width: 100%; height: auto; display: block; }
 .fact__label {
   color: var(--ink-soft);
   font-size: 0.92rem;
-  max-width: 18ch;
+  max-width: 22ch;
   margin-top: 0.4rem;
   line-height: 1.45;
+}
+
+.value-pillars {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+.value-pillar {
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1.35rem 1.5rem;
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.value-pillar:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  transform: translateY(-2px);
+}
+
+.value-pillar__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.value-pillar__body {
+  margin-top: 0.45rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  max-width: 34ch;
+}
+
+.about__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.25rem;
+  margin-top: 2.25rem;
 }
 
 .personal-aside {
@@ -2407,6 +2458,7 @@ a.work-tile:hover {
   .contact-grid { grid-template-columns: 1fr; }
   .work-grid { grid-template-columns: 1fr; }
   .fact-strip { grid-template-columns: 1fr; gap: 1.5rem; }
+  .value-pillars { grid-template-columns: 1fr; }
   .cv-skills,
   .cv-creds { grid-template-columns: 1fr; }
   .bg-tab { flex: 1 1 auto; text-align: center; }
