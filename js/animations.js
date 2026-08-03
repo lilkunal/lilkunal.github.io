@@ -116,9 +116,10 @@
     /* [selector, hidden-class, animated properties, stagger seconds] */
     var groups = [
       [".section__title", "anim-hide-up", { opacity: 1, y: 0 }, 0],
-      [".about__body", "anim-hide-up", { opacity: 1, y: 0 }, 0.08],
+      [".about__lede", "anim-hide-up", { opacity: 1, y: 0 }, 0.08],
       [".fact", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.1],
-      [".personal-aside", "anim-hide-up", { opacity: 1, y: 0 }, 0],
+      [".value-pillar", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
+      [".about__actions", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".experience__lede", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".experience__cta", "anim-hide-pop", { opacity: 1, scale: 1 }, 0],
       [".bg-panel-wrap", "anim-hide-up", { opacity: 1, y: 0 }, 0],
@@ -233,7 +234,7 @@
         inline transform.
      --------------------------------------------------------------------- */
   if (M && M.animate) {
-    $$(".service-card, .work-panel, .contact-card, .faq-item, .persona-tab, .bg-tab, .hero__cred").forEach(function (el) {
+    $$(".service-card, .work-panel, .contact-card, .faq-item, .persona-tab, .bg-tab, .hero__cred, .value-pillar").forEach(function (el) {
       el.addEventListener("pointerdown", function () {
         M.animate(el, { scale: 0.96 }, { type: "spring", stiffness: 420, damping: 22 });
       });
