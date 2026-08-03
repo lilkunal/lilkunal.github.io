@@ -42,6 +42,18 @@
     }
   });
 
+  /* Touch swipe — phones & tablets */
+  var touchStartX = 0;
+  deck.addEventListener("touchstart", function (e) {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+
+  deck.addEventListener("touchend", function (e) {
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) < 40) return;
+    show(dx < 0 ? idx + 1 : idx - 1);
+  }, { passive: true });
+
   /* Subtle parallax on stickers — desktop only */
   var field = document.querySelector("[data-sticker-field]");
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
