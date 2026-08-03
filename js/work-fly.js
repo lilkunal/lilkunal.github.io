@@ -68,6 +68,7 @@
       resetSlideStyles(incoming);
       index = next;
       updateUi();
+      animateCopy(incoming);
       busy = false;
       startAutoplay();
       return;

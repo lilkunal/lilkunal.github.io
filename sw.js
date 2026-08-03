@@ -6,11 +6,13 @@
    - Videos are never cached. They are ~21 MB and would blow past the origin's
      storage quota for no benefit.
    Bump CACHE_VERSION to retire every old cache on the next activation. */
-var CACHE_VERSION = "kv-v18";
+var CACHE_VERSION = "kv-v19";
 
 var PRECACHE = [
   "./",
   "./index.html",
+  "./resume/",
+  "./resume/index.html",
   "./css/style.css",
   "./css/milo-hero.css",
   "./css/work-fly.css",
@@ -21,7 +23,10 @@ var PRECACHE = [
   "./css/minimal.css",
   "./css/contact-panel.css",
   "./css/cursor-water.css",
+  "./resume/css/style.css",
+  "./resume/css/resume-theme.css",
   "./assets/brand-mark.svg",
+  "./assets/Kunal-Varshney-Resume.pdf",
   "./assets/work/padma-gate-light.jpg",
   "./assets/work/jai-home-care.jpg",
   "./assets/work/singularity-forge.jpg",
@@ -63,7 +68,9 @@ var PRECACHE = [
   "./js/game.js",
   "./js/vendor/anime.umd.min.js",
   "./js/vendor/motion.min.js",
-  "./assets/favicon.svg"
+  "./resume/js/main.js",
+  "./assets/favicon.svg",
+  "./resume/assets/favicon.svg"
 ];
 
 self.addEventListener("install", function (event) {
