@@ -67,6 +67,37 @@
   padding: 0.65rem 0.85rem;
 }
 
+.sticker--label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: auto;
+  width: auto;
+  min-width: 88px;
+  height: auto;
+  padding: 0.55rem 0.75rem;
+  background: linear-gradient(135deg, #fff 0%, #f4f4f5 100%);
+}
+
+.sticker--label span {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #050505;
+  white-space: nowrap;
+}
+
+.sticker--label-alt {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  border-color: #fff;
+}
+
+.sticker--label-alt span {
+  color: #050505;
+}
+
 .sticker--wide {
   aspect-ratio: 4 / 3;
   width: var(--sw, 130px);
@@ -84,8 +115,18 @@
 .sticker--10 { bottom: 28%; right: 12%; --rot: -8deg; --sw: 106px; --dur: 7.8s; --delay: -1s; }
 .sticker--11 { top: 52%; left: 1%;  --rot: 10deg;  --sw: 84px;  --dur: 8.2s; }
 .sticker--12 { top: 55%; right: 2%; --rot: -13deg; --sw: 90px;  --dur: 6.4s; --delay: -2s; }
-.sticker--13 { top: 4%;  left: 38%; --rot: 5deg;   --sw: 78px;  --dur: 7.1s; }
-.sticker--14 { bottom: 6%; right: 32%; --rot: -7deg; --sw: 82px; --dur: 8s; --delay: -1.2s; }
+.sticker--13 { top: 4%;  left: 22%;  --rot: 6deg;   --sw: 96px;  --dur: 7.4s; }
+.sticker--14 { top: 18%; right: 18%; --rot: -10deg; --sw: 102px; --dur: 6.6s; --delay: -1s; }
+.sticker--15 { bottom: 22%; left: 22%; --rot: 9deg;  --sw: 94px;  --dur: 7.9s; }
+.sticker--16 { bottom: 8%;  left: 28%; --rot: -6deg; --sw: 110px; --dur: 8.1s; --delay: -2s; }
+.sticker--17 { top: 48%; right: 18%; --rot: 14deg; --sw: 86px;  --dur: 6.3s; }
+.sticker--18 { top: 62%; left: 18%;  --rot: -11deg; --sw: 112px; --dur: 7.6s; --delay: -0.8s; }
+.sticker--19 { top: 72%; right: 28%; --rot: 7deg;  --sw: 98px;  --dur: 8.4s; }
+.sticker--20 { top: 16%; left: 12%;  --rot: -16deg; --sw: 72px; --dur: 5.8s; font-size: 2rem; min-height: 64px; }
+.sticker--21 { bottom: 38%; right: 6%; --rot: 12deg; --sw: 68px; --dur: 6.1s; font-size: 2rem; min-height: 60px; }
+.sticker--22 { top: 34%; right: 22%; --rot: -8deg; --sw: 70px; --dur: 7.3s; font-size: 2rem; min-height: 62px; }
+.sticker--23 { top: 8%;  right: 28%; --rot: 8deg;  --delay: -1.2s; --dur: 7s; }
+.sticker--24 { bottom: 14%; right: 20%; --rot: -5deg; --delay: -0.6s; --dur: 6.7s; }
 
 @keyframes sticker-drift {
   0%, 100% { translate: 0 0; }
@@ -180,6 +221,16 @@
   top: 20px;
   opacity: 0.3;
   width: 88%;
+}
+
+.deck__label--name {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.16em;
+}
+
+.deck__title--name {
+  font-size: clamp(1.5rem, 4.5vw, 1.85rem);
 }
 
 .deck__label {
@@ -310,34 +361,13 @@
   50% { opacity: 1; translate: -50% 6px; }
 }
 
-/* Nav on Milo hero */
-.hero--milo ~ .marquee,
-body:has(.hero--milo) .nav {
-  --nav-hero-blend: true;
-}
-
-body:has(.hero--milo) .nav {
-  background: rgba(5, 5, 5, 0.72);
-  border-bottom-color: rgba(255, 255, 255, 0.08);
-}
-
-body:has(.hero--milo) .nav__brand,
-body:has(.hero--milo) .nav__links a,
-body:has(.hero--milo) .nav__background {
-  color: rgba(255, 255, 255, 0.88);
-}
-
-body:has(.hero--milo) .nav__cta {
-  background: #fff;
-  color: #050505;
-}
-
 @media (max-width: 720px) {
-  .sticker { opacity: 0.55; }
-  .sticker--13,
-  .sticker--14,
-  .sticker--7,
-  .sticker--8 { display: none; }
+  .sticker { opacity: 0.48; }
+  .sticker--16,
+  .sticker--18,
+  .sticker--19,
+  .sticker--23,
+  .sticker--24 { display: none; }
   .deck { min-height: 300px; }
 }
 
