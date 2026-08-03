@@ -1,0 +1,292 @@
+/* =============================================================================
+   Work fly carousel — full-bleed hero images + anime.js fly transitions
+   ============================================================================= */
+
+.work-fly {
+  margin-top: 2.25rem;
+  width: 100%;
+}
+
+.work-fly__stage {
+  position: relative;
+  height: clamp(420px, 72vh, 680px);
+  border-radius: calc(var(--radius) + 6px);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  perspective: 1400px;
+  transform-style: preserve-3d;
+  background: #0a0a0c;
+}
+
+.work-fly__track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.work-fly__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+}
+
+.work-fly__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.work-fly__slide.is-entering {
+  z-index: 3;
+}
+
+.work-fly__hero {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.work-fly__hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.06);
+  transition: transform 8s linear;
+}
+
+.work-fly__slide.is-active .work-fly__hero img {
+  animation: work-hero-zoom 14s ease-out forwards;
+}
+
+@keyframes work-hero-zoom {
+  from { transform: scale(1.06); }
+  to { transform: scale(1.14); }
+}
+
+.work-fly__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(5, 5, 5, 0.15) 0%, rgba(5, 5, 5, 0.35) 40%, rgba(5, 5, 5, 0.92) 100%),
+    linear-gradient(90deg, rgba(5, 5, 5, 0.55) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+/* Theme tint per project */
+.work-fly__slide--padma .work-fly__hero-overlay {
+  background:
+    linear-gradient(180deg, rgba(20, 14, 8, 0.1) 0%, rgba(20, 14, 8, 0.4) 45%, rgba(12, 10, 8, 0.94) 100%),
+    linear-gradient(90deg, rgba(30, 20, 10, 0.5) 0%, transparent 50%);
+}
+
+.work-fly__slide--forge .work-fly__hero-overlay {
+  background:
+    linear-gradient(180deg, rgba(8, 6, 20, 0.2) 0%, rgba(8, 6, 20, 0.45) 45%, rgba(6, 5, 14, 0.94) 100%),
+    linear-gradient(90deg, rgba(40, 20, 80, 0.45) 0%, transparent 50%);
+}
+
+.work-fly__slide--jai .work-fly__hero-overlay {
+  background:
+    linear-gradient(180deg, rgba(6, 16, 14, 0.15) 0%, rgba(6, 16, 14, 0.4) 45%, rgba(4, 12, 10, 0.94) 100%),
+    linear-gradient(90deg, rgba(8, 40, 32, 0.45) 0%, transparent 50%);
+}
+
+.work-fly__slide--portfolio .work-fly__hero-overlay {
+  background:
+    linear-gradient(180deg, rgba(5, 5, 8, 0.15) 0%, rgba(5, 5, 8, 0.4) 45%, rgba(5, 5, 8, 0.94) 100%),
+    linear-gradient(90deg, rgba(10, 10, 20, 0.5) 0%, transparent 50%);
+}
+
+.work-fly__content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  max-width: 36rem;
+}
+
+.work-fly__tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  margin-bottom: 0.65rem;
+}
+
+.work-fly__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.85rem, 4.5vw, 2.85rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+}
+
+.work-fly__url {
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.work-fly__body {
+  margin-top: 0.85rem;
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 48ch;
+}
+
+.work-fly__cta {
+  margin-top: 1.35rem;
+  align-self: flex-start;
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.work-fly__cta:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.work-fly__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.work-fly__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.work-fly__btn {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 1.15rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.work-fly__btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  transform: translateY(-1px);
+}
+
+.work-fly__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.work-fly__count {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  min-width: 3.25rem;
+  text-align: center;
+}
+
+.work-fly__thumbs {
+  display: flex;
+  gap: 0.55rem;
+  flex: 1;
+  justify-content: flex-end;
+  overflow-x: auto;
+  padding-bottom: 0.15rem;
+  scrollbar-width: thin;
+}
+
+.work-fly__thumb {
+  flex: none;
+  width: 72px;
+  height: 52px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  opacity: 0.55;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.25s, border-color 0.25s, transform 0.25s;
+  position: relative;
+}
+
+.work-fly__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.work-fly__thumb:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+.work-fly__thumb.is-active {
+  opacity: 1;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.work-fly__thumb-label {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 0.2rem 0.25rem;
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .work-fly__bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .work-fly__thumbs {
+    justify-content: flex-start;
+    order: -1;
+  }
+
+  .work-fly__content {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-fly__slide.is-active .work-fly__hero img {
+    animation: none;
+    transform: scale(1.06);
+  }
+}
