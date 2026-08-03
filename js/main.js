@@ -11,7 +11,7 @@
   var toggle = document.getElementById("theme-toggle");
   var stored = null;
   try { stored = localStorage.getItem("kv-theme"); } catch (e) {}
-  root.setAttribute("data-theme", (stored === "light" || stored === "dark") ? stored : "light");
+  root.setAttribute("data-theme", (stored === "light" || stored === "dark") ? stored : "dark");
 
   function currentTheme() {
     var attr = root.getAttribute("data-theme");
@@ -51,38 +51,6 @@
     }, 2600);
   }
 
-  /* Persona switcher */
-  var personaCaptions = {
-    itguy: "Has fixed more Wi-Fi routers than he'd like to admit.",
-    businessman: "Owns exactly one good watch. Wears it to everything.",
-    funnyguy: "The friend who ruins serious photos on purpose.",
-    nextdoor: "Will help you move furniture. Will judge your paint choice silently."
-  };
-  var personaOrder = ["itguy", "businessman", "funnyguy", "nextdoor"];
-  var personaTabs = Array.prototype.slice.call(document.querySelectorAll(".persona-tab"));
-  var personaPhotos = Array.prototype.slice.call(document.querySelectorAll(".persona-photo"));
-  var personaCaptionEl = document.getElementById("persona-caption");
-
-  function activatePersona(persona) {
-    personaTabs.forEach(function (t) { t.classList.toggle("is-active", t.getAttribute("data-persona") === persona); });
-    personaPhotos.forEach(function (p) { p.classList.toggle("is-active", p.getAttribute("data-persona") === persona); });
-    if (personaCaptionEl && personaCaptions[persona]) personaCaptionEl.textContent = personaCaptions[persona];
-  }
-
-  var personaAutoTimer = null;
-  if (personaTabs.length && !reduceMotion) {
-    var personaAutoIndex = 0;
-    personaAutoTimer = setInterval(function () {
-      personaAutoIndex = (personaAutoIndex + 1) % personaOrder.length;
-      activatePersona(personaOrder[personaAutoIndex]);
-    }, 4200);
-  }
-  personaTabs.forEach(function (tab) {
-    tab.addEventListener("click", function () {
-      if (personaAutoTimer) { clearInterval(personaAutoTimer); personaAutoTimer = null; }
-      activatePersona(tab.getAttribute("data-persona"));
-    });
-  });
 
   /* Project inquiry form -> hands off to the visitor's own email/WhatsApp app */
   var projectForm = document.getElementById("project-form");
