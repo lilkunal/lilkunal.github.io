@@ -6,8 +6,7 @@
 
   var ACCENTS = [
     { sel: "[data-lottie-hero]", src: "https://assets2.lottiefiles.com/packages/lf20_xyadps.json" },
-    { sel: "[data-lottie-work]", src: "https://assets9.lottiefiles.com/packages/lf20_myejiggj.json" },
-    { sel: "[data-lottie-contact]", src: "https://assets4.lottiefiles.com/packages/lf20_uu0x8lqv.json" }
+    { sel: "[data-lottie-work]", src: "https://assets9.lottiefiles.com/packages/lf20_myejiggj.json" }
   ];
 
   function mountPlayers() {
