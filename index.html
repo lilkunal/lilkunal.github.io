@@ -76,6 +76,7 @@
 <link rel="stylesheet" href="css/milo-hero.css">
 <link rel="stylesheet" href="css/work-fly.css">
 <link rel="stylesheet" href="css/nav-theme.css">
+<link rel="stylesheet" href="css/cv-carousel.css">
 <link rel="stylesheet" href="css/minimal.css">
 <script>document.documentElement.classList.add("js");</script>
 </head>
@@ -93,7 +94,7 @@
 
   <nav class="nav__links" aria-label="Primary">
     <a href="#work">Work</a>
-    <a href="#experience">CV</a>
+    <a href="#experience">Background</a>
     <a href="resume/index.html">Résumé</a>
     <a href="#contact" class="nav__cta">Let's talk</a>
     <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark and light theme">
@@ -185,175 +186,106 @@
   </section>
 
   <section id="experience" class="section experience">
-    <h2 class="section__title section__title--solo">CV</h2>
+    <h2 class="section__title section__title--solo">Background</h2>
 
-    <div class="bg-panel-wrap">
-      <div class="bg-tabs" role="tablist" aria-label="Professional background">
-        <button class="bg-tab is-active" type="button" role="tab" id="bgtab-experience" aria-controls="bgpanel-experience" aria-selected="true" data-bg="experience">Experience</button>
-        <button class="bg-tab" type="button" role="tab" id="bgtab-skills" aria-controls="bgpanel-skills" aria-selected="false" tabindex="-1" data-bg="skills">Skills</button>
-        <button class="bg-tab" type="button" role="tab" id="bgtab-credentials" aria-controls="bgpanel-credentials" aria-selected="false" tabindex="-1" data-bg="credentials">Education &amp; certs</button>
-      </div>
+    <div class="cv-carousel-wrap">
+      <p class="cv-carousel__teaser">Swipe if you need proof I’m employable. (Spoiler: I am.)</p>
 
-      <div class="bg-panel is-active" id="bgpanel-experience" role="tabpanel" aria-labelledby="bgtab-experience" data-bg-panel="experience">
-        <ol class="cv-list">
-          <li class="cv-entry">
-            <div class="cv-entry__head">
-              <h3 class="cv-entry__role">Freelance Web Designer</h3>
-              <p class="cv-entry__org">Independent — Singularity Forge, JAI Home Care &amp; others</p>
-              <p class="cv-entry__date">Jan 2025 — Present</p>
-            </div>
-            <ul class="cv-entry__points">
-              <li>Design and build marketing sites and landing pages for small businesses — layout, copy structure, mobile-first UI, and handoff.</li>
-              <li>Recent work includes <a href="https://singularityforge.ai" target="_blank" rel="noopener">Singularity Forge</a> (AI agency) and <a href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">JAI Home Care</a> (home-care services).</li>
-              <li>Scope, timeline, and price agreed in writing before build; support available after go-live.</li>
-            </ul>
-          </li>
-          <li class="cv-entry">
-            <div class="cv-entry__head">
-              <h3 class="cv-entry__role">Marketing &amp; Online Specialist</h3>
-              <p class="cv-entry__org">Padma Enterprises — Padma Lights</p>
-              <p class="cv-entry__date">Jan 2025 — Present</p>
-            </div>
-            <ul class="cv-entry__points">
-              <li>Lead marketing, website, and the full online presence for the family's cast-aluminium outdoor lighting business.</li>
-              <li>Manage a catalogue of 200+ models across 4 categories, including trade pricing for architects, builders and dealers.</li>
-              <li>Handle international orders billed across 8 currencies; ongoing content, listings, and customer-facing updates.</li>
-            </ul>
-          </li>
-          <li class="cv-entry">
-            <div class="cv-entry__head">
-              <h3 class="cv-entry__role">Marketing &amp; Online — Family Business</h3>
-              <p class="cv-entry__org">Padma Enterprises — Padma Lights</p>
-              <p class="cv-entry__date">2017 — Dec 2024</p>
-            </div>
-            <ul class="cv-entry__points">
-              <li>Built and maintained the business online alongside support roles — catalogue, pricing, and export-facing materials.</li>
-              <li>Foundation for the full-time marketing and web lead role from January 2025.</li>
-            </ul>
-          </li>
-          <li class="cv-entry">
-            <div class="cv-entry__head">
-              <h3 class="cv-entry__role">Technical Support Advisor</h3>
-              <p class="cv-entry__org">Teleperformance</p>
-              <p class="cv-entry__date">Aug 2024 — Dec 2024</p>
-            </div>
-            <ul class="cv-entry__points">
-              <li>Diagnosed and resolved customer technical faults, keeping downtime and repeat contacts low.</li>
-              <li>Worked daily across PBX systems, remote troubleshooting tools and ticketing platforms.</li>
-            </ul>
-          </li>
-          <li class="cv-entry">
-            <div class="cv-entry__head">
-              <h3 class="cv-entry__role">Customer Support Executive</h3>
-              <p class="cv-entry__org">Webhelp Pvt. Ltd.</p>
-              <p class="cv-entry__date">Oct 2023 — Jan 2024</p>
-            </div>
-            <ul class="cv-entry__points">
-              <li>Handled support over chat and email, including complaints and cross-team escalations.</li>
-              <li>Maintained detailed interaction and transaction records in CRM.</li>
-            </ul>
-          </li>
-          <li class="cv-entry">
-            <div class="cv-entry__head">
-              <h3 class="cv-entry__role">Content Moderator</h3>
-              <p class="cv-entry__org">Concentrix Daksh Pvt. Ltd.</p>
-              <p class="cv-entry__date">Oct 2021 — Apr 2023</p>
-            </div>
-            <ul class="cv-entry__points">
-              <li>Reviewed content for Google platforms including YouTube Kids, working in the Yurt tool.</li>
-              <li>Produced moderation transcripts and handled team reporting with the team lead.</li>
-            </ul>
-          </li>
-          <li class="cv-entry">
-            <div class="cv-entry__head">
-              <h3 class="cv-entry__role">Technical Support Trainee</h3>
-              <p class="cv-entry__org">Flex Pvt. Ltd.</p>
-              <p class="cv-entry__date">Feb 2021 — Jun 2021</p>
-            </div>
-            <ul class="cv-entry__points">
-              <li>Monitored dashboards, internal tickets and mail queues; produced health-check reports.</li>
-              <li>Worked with Oracle WebLogic 11g and Jenkins jobs, analysing system logs to isolate faults.</li>
-            </ul>
-          </li>
-        </ol>
-      </div>
+      <div class="cv-carousel" data-cv-carousel aria-roledescription="carousel" aria-label="Career highlights" tabindex="0">
+        <div class="cv-carousel__stage">
+          <div class="cv-carousel__track">
+            <article class="cv-carousel__slide cv-carousel__slide--now is-active" data-cv-slide aria-hidden="false">
+              <span class="cv-carousel__emoji" aria-hidden="true">🚀</span>
+              <div class="cv-carousel__content">
+                <p class="cv-carousel__tag">2025 · Now</p>
+                <h3 class="cv-carousel__title">Building sites for clients.</h3>
+                <p class="cv-carousel__sub">Freelance Web Designer · Padma Enterprises</p>
+                <p class="cv-carousel__line">Singularity Forge, JAI Home Care, and a lighting catalogue with <em>200+ products</em> I actually run online.</p>
+              </div>
+            </article>
 
-      <div class="bg-panel" id="bgpanel-skills" role="tabpanel" aria-labelledby="bgtab-skills" data-bg-panel="skills" hidden>
-        <div class="cv-skills">
-          <div class="cv-skillgroup">
-            <h3 class="cv-skillgroup__title">Technical support &amp; systems</h3>
-            <ul class="cv-chips">
-              <li>PBX Systems</li><li>Remote Troubleshooting</li><li>Ticketing Systems</li><li>CRM Software</li>
-              <li>Oracle WebLogic 11g</li><li>Jenkins</li><li>Dashboard Monitoring</li><li>System Log Analysis</li>
-            </ul>
+            <article class="cv-carousel__slide cv-carousel__slide--padma" data-cv-slide aria-hidden="true">
+              <span class="cv-carousel__emoji" aria-hidden="true">💡</span>
+              <div class="cv-carousel__content">
+                <p class="cv-carousel__tag">2017 – 2024</p>
+                <h3 class="cv-carousel__title">Family business, internet edition.</h3>
+                <p class="cv-carousel__sub">Padma Lights · cast-aluminium outdoor lighting</p>
+                <p class="cv-carousel__line">Nine years online before it became my job title. Export orders, trade pricing, the whole catalogue — <em>not a case study, my Tuesday.</em></p>
+              </div>
+            </article>
+
+            <article class="cv-carousel__slide cv-carousel__slide--support" data-cv-slide aria-hidden="true">
+              <span class="cv-carousel__emoji" aria-hidden="true">🎧</span>
+              <div class="cv-carousel__content">
+                <p class="cv-carousel__tag">2021 – 2024</p>
+                <h3 class="cv-carousel__title">Four years fixing things.</h3>
+                <p class="cv-carousel__sub">Teleperformance · Webhelp · Concentrix · Flex</p>
+                <p class="cv-carousel__line">Support, moderation, tickets, PBX, Oracle logs. I don’t ghost after launch — <em>I’ve been the person on the other end of the phone.</em></p>
+              </div>
+            </article>
+
+            <article class="cv-carousel__slide cv-carousel__slide--school" data-cv-slide aria-hidden="true">
+              <span class="cv-carousel__emoji" aria-hidden="true">🎓</span>
+              <div class="cv-carousel__content">
+                <p class="cv-carousel__tag">Education</p>
+                <h3 class="cv-carousel__title">Paper says I know things.</h3>
+                <p class="cv-carousel__sub">B.S. Computer Science · ACET</p>
+                <p class="cv-carousel__line">Plus Google IT Support Professional, Digital Marketing fundamentals, and enough Coursera tabs to crash a browser.</p>
+              </div>
+            </article>
+
+            <article class="cv-carousel__slide cv-carousel__slide--skills" data-cv-slide aria-hidden="true">
+              <span class="cv-carousel__emoji" aria-hidden="true">🛠</span>
+              <div class="cv-carousel__content">
+                <p class="cv-carousel__tag">Toolkit</p>
+                <h3 class="cv-carousel__title">What I actually use.</h3>
+                <ul class="cv-carousel__chips">
+                  <li>HTML &amp; CSS</li><li>JavaScript</li><li>Responsive UI</li><li>SEO basics</li>
+                  <li>Photoshop</li><li>CRM &amp; tickets</li><li>PBX support</li><li>Excel</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="cv-carousel__slide cv-carousel__slide--vault" data-cv-slide aria-hidden="true">
+              <span class="cv-carousel__emoji" aria-hidden="true">📂</span>
+              <div class="cv-carousel__content">
+                <p class="cv-carousel__tag">Director’s cut</p>
+                <h3 class="cv-carousel__title">This carousel is the trailer.</h3>
+                <p class="cv-carousel__line">Every job, skill, cert, and awkward gap year lives on the full résumé page — so you don’t have to interview me twice.</p>
+                <div class="cv-carousel__vault-actions">
+                  <a class="btn btn--primary" href="resume/index.html">Full professional background →</a>
+                  <a class="btn btn--ghost" href="assets/Kunal-Varshney-Resume.pdf" download>PDF ↓</a>
+                </div>
+              </div>
+            </article>
           </div>
-          <div class="cv-skillgroup">
-            <h3 class="cv-skillgroup__title">Web design &amp; marketing</h3>
-            <ul class="cv-chips">
-              <li>HTML &amp; CSS</li><li>Responsive Layout</li><li>Landing Pages</li><li>UI Copy Structure</li>
-              <li>Digital Marketing</li><li>SEO Basics</li><li>Adobe Photoshop</li><li>JavaScript</li>
-            </ul>
+        </div>
+
+        <div class="cv-carousel__bar">
+          <div class="cv-carousel__dots" role="tablist" aria-label="Background slides">
+            <button type="button" class="cv-carousel__dot is-active" data-cv-dot role="tab" aria-selected="true" aria-label="Now">Now</button>
+            <button type="button" class="cv-carousel__dot" data-cv-dot role="tab" aria-selected="false" aria-label="Padma">Padma</button>
+            <button type="button" class="cv-carousel__dot" data-cv-dot role="tab" aria-selected="false" aria-label="Support">Support</button>
+            <button type="button" class="cv-carousel__dot" data-cv-dot role="tab" aria-selected="false" aria-label="School">School</button>
+            <button type="button" class="cv-carousel__dot" data-cv-dot role="tab" aria-selected="false" aria-label="Skills">Skills</button>
+            <button type="button" class="cv-carousel__dot" data-cv-dot role="tab" aria-selected="false" aria-label="Full résumé">All</button>
           </div>
-          <div class="cv-skillgroup">
-            <h3 class="cv-skillgroup__title">Software &amp; tools</h3>
-            <ul class="cv-chips">
-              <li>AutoCAD</li><li>MS Excel</li><li>MS Word</li><li>MS Office</li>
-            </ul>
-          </div>
-          <div class="cv-skillgroup">
-            <h3 class="cv-skillgroup__title">Data &amp; digital</h3>
-            <ul class="cv-chips">
-              <li>Data Analysis (Excel)</li><li>Digital Marketing Fundamentals</li>
-            </ul>
-          </div>
-          <div class="cv-skillgroup">
-            <h3 class="cv-skillgroup__title">Working with people</h3>
-            <ul class="cv-chips">
-              <li>Communication</li><li>Creative Thinking</li><li>Flexibility</li><li>Time Management</li>
-              <li>Decision-Making</li><li>Multi-Tasking</li><li>Presentation</li>
-            </ul>
+          <div class="cv-carousel__nav">
+            <button type="button" class="cv-carousel__btn" data-cv-prev aria-label="Previous slide">←</button>
+            <span class="cv-carousel__count" data-cv-counter>1 / 6</span>
+            <button type="button" class="cv-carousel__btn" data-cv-next aria-label="Next slide">→</button>
           </div>
         </div>
       </div>
 
-      <div class="bg-panel" id="bgpanel-credentials" role="tabpanel" aria-labelledby="bgtab-credentials" data-bg-panel="credentials" hidden>
-        <div class="cv-creds">
-          <article class="cv-cred cv-cred--degree">
-            <p class="cv-cred__eyebrow">Degree</p>
-            <h3 class="cv-cred__title">Bachelor's in Computer Science</h3>
-            <p class="cv-cred__org">Aligarh College of Engineering &amp; Technology</p>
-            <p class="cv-cred__date">Aug 2017 — Sep 2020</p>
-          </article>
-          <article class="cv-cred">
-            <p class="cv-cred__eyebrow">Google / Coursera</p>
-            <h3 class="cv-cred__title">Google IT Support Professional</h3>
-            <ul class="cv-cred__list">
-              <li>Technical Support Fundamentals</li>
-              <li>The Bits and Bytes of Computer Networking</li>
-              <li>Operating Systems and You: Becoming a Power User</li>
-              <li>System Administration and IT Infrastructure Services</li>
-              <li>IT Security: Defense Against the Digital Dark Arts</li>
-            </ul>
-          </article>
-          <article class="cv-cred">
-            <p class="cv-cred__eyebrow">Google Digital Garage</p>
-            <h3 class="cv-cred__title">The Fundamentals of Digital Marketing</h3>
-          </article>
-          <article class="cv-cred">
-            <p class="cv-cred__eyebrow">Coursera</p>
-            <h3 class="cv-cred__title">Data Analysis Using Microsoft Excel</h3>
-            <p class="cv-cred__org">Plus Introduction to Microsoft Excel</p>
-          </article>
-          <article class="cv-cred">
-            <p class="cv-cred__eyebrow">Great Learning Academy</p>
-            <h3 class="cv-cred__title">Programming Basics · ChatGPT for Beginners</h3>
-          </article>
+      <div class="cv-carousel__footer">
+        <p class="cv-carousel__joke"><strong>Want the whole file?</strong> Job history, skills, education, certifications — the works — lives on my professional background page. No signup, no “schedule a call to download.”</p>
+        <div class="cv-carousel__links">
+          <a class="btn btn--primary" href="resume/index.html">Open full résumé →</a>
+          <a class="btn btn--ghost" href="assets/Kunal-Varshney-Resume.pdf" download>Download PDF ↓</a>
         </div>
       </div>
     </div>
-
-    <a class="btn btn--primary experience__cta" href="resume/index.html">Full résumé →</a>
-    <a class="btn btn--ghost experience__cta-secondary" href="assets/Kunal-Varshney-Resume.pdf" download>PDF ↓</a>
   </section>
 
   <section id="services" class="section services" hidden aria-hidden="true">
@@ -639,6 +571,7 @@
 <script src="js/vendor/motion.min.js"></script>
 <script src="js/milo-hero.js"></script>
 <script src="js/main.js"></script>
+<script src="js/cv-carousel.js"></script>
 <script src="js/work-fly.js"></script>
 <script src="js/carousel.js"></script>
 <script src="js/animations.js"></script>
