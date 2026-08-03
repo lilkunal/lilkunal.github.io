@@ -12,7 +12,7 @@
      four values and sitemap.xml / robots.txt are the only things to update. -->
 <link rel="canonical" href="https://lilkunal.github.io/">
 <meta property="og:url" content="https://lilkunal.github.io/">
-<meta property="og:image" content="https://lilkunal.github.io/assets/personas/itguy.jpg">
+<meta property="og:image" content="https://images.unsplash.com/photo-1497215842964-222b430dc094?w=1200&q=80">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Kunal Varshney">
@@ -71,8 +71,9 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/milo-hero.css">
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -109,50 +110,82 @@
 
 <main id="main">
 
-  <section class="hero">
-    <div class="hero__shader-wrap" aria-hidden="true">
-      <canvas id="hero-shader"></canvas>
+  <section class="hero hero--milo" id="top">
+    <div class="sticker-field" data-sticker-field aria-hidden="true">
+      <figure class="sticker sticker--1 sticker--wide"><img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?w=240&q=80" alt="" loading="lazy" decoding="async" width="240" height="180"></figure>
+      <figure class="sticker sticker--2"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=200&q=80" alt="" loading="lazy" decoding="async" width="200" height="200"></figure>
+      <figure class="sticker sticker--3"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=240&q=80" alt="" loading="lazy" decoding="async" width="240" height="240"></figure>
+      <figure class="sticker sticker--4 sticker--wide"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=240&q=80" alt="" loading="lazy" decoding="async" width="240" height="180"></figure>
+      <figure class="sticker sticker--5"><img src="https://images.unsplash.com/photo-1558651716-083f49421a59?w=220&q=80" alt="" loading="lazy" decoding="async" width="220" height="220"></figure>
+      <figure class="sticker sticker--6 sticker--wide"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=260&q=80" alt="" loading="lazy" decoding="async" width="260" height="195"></figure>
+      <figure class="sticker sticker--7"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=200&q=80" alt="" loading="lazy" decoding="async" width="200" height="200"></figure>
+      <figure class="sticker sticker--8"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=200&q=80" alt="" loading="lazy" decoding="async" width="200" height="200"></figure>
+      <figure class="sticker sticker--9"><img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=220&q=80" alt="" loading="lazy" decoding="async" width="220" height="220"></figure>
+      <figure class="sticker sticker--10 sticker--wide"><img src="https://images.unsplash.com/photo-1522542559225-66b1fffdd762?w=240&q=80" alt="" loading="lazy" decoding="async" width="240" height="180"></figure>
+      <figure class="sticker sticker--11 sticker--icon" aria-hidden="true">💻</figure>
+      <figure class="sticker sticker--12 sticker--icon" aria-hidden="true">✉️</figure>
+      <figure class="sticker sticker--13"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=180&q=80" alt="" loading="lazy" decoding="async" width="180" height="180"></figure>
+      <figure class="sticker sticker--14"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=180&q=80" alt="" loading="lazy" decoding="async" width="180" height="180"></figure>
     </div>
-    <div class="hero__grid">
-      <div class="hero__content">
-        <p class="eyebrow">Web design · marketing · small business</p>
-        <h1 class="hero__headline">
-          <span class="hero__greeting">Hi — I'm</span>
-          <span class="hero__name">Kunal Varshney</span>
-          <span class="hero__craft">Web designer &amp; marketing specialist for businesses that need to be found online<span class="squiggle">.<svg viewBox="0 0 20 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2,12 Q10,4 18,12" /></svg></span></span>
-        </h1>
-        <ul class="hero__creds">
-          <li class="hero__cred">Live client sites since 2025</li>
-          <li class="hero__cred">9 yrs running a business online</li>
-          <li class="hero__cred">4+ yrs technical support</li>
-        </ul>
-        <p class="hero__lede">Since January 2025 I've led marketing and the full online presence for Padma Enterprises — and built websites for clients including Singularity Forge and JAI Home Care. I design, ship, and stay reachable after launch.</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="#contact">Start a project</a>
-          <a class="btn btn--ghost" href="https://wa.me/917017662533?text=Hi%20Kunal%2C%20I%20found%20your%20portfolio%20and%20want%20to%20talk%20about%20a%20website%20for%20my%20business." target="_blank" rel="noopener">WhatsApp me</a>
-          <a class="btn btn--text" href="assets/Kunal-Varshney-Resume.pdf" download>Résumé ↓</a>
-        </div>
+
+    <div class="deck-wrap">
+      <div class="deck" data-deck aria-live="polite">
+        <article class="deck__slide is-active" aria-hidden="false">
+          <p class="deck__label">Kunal Varshney</p>
+          <h1 class="deck__title">Web designer &amp; marketing specialist.</h1>
+          <p class="deck__body">Hi — I build websites and run online marketing for small businesses. Since January 2025 I've led Padma Enterprises online and shipped sites for clients including Singularity Forge and JAI Home Care.</p>
+        </article>
+        <article class="deck__slide" aria-hidden="true">
+          <p class="deck__label">What I do</p>
+          <h2 class="deck__title">Design, build, stay reachable.</h2>
+          <ul class="deck__list">
+            <li>Business websites &amp; landing pages</li>
+            <li>Product catalogues &amp; marketing pages</li>
+            <li>Digital marketing &amp; ongoing site care</li>
+            <li>Scope and price agreed before work starts</li>
+          </ul>
+        </article>
+        <article class="deck__slide" aria-hidden="true">
+          <p class="deck__label">Background</p>
+          <h2 class="deck__title">Operator experience, not theory.</h2>
+          <ul class="deck__list">
+            <li>9 years running a business online</li>
+            <li>200+ product live catalogue</li>
+            <li>4+ years technical support</li>
+            <li>B.S. Computer Science · Google IT Support cert</li>
+          </ul>
+        </article>
+        <article class="deck__slide" aria-hidden="true">
+          <p class="deck__label">Selected work</p>
+          <h2 class="deck__title">Live client sites.</h2>
+          <ul class="deck__list">
+            <li>Padma Enterprises — padmalights.com</li>
+            <li>Singularity Forge — singularityforge.ai</li>
+            <li>JAI Home Care — home-care landing page</li>
+            <li>This portfolio — lilkunal.github.io</li>
+          </ul>
+        </article>
+        <article class="deck__slide" aria-hidden="true">
+          <p class="deck__label">Contact</p>
+          <h2 class="deck__title">Let's build your site.</h2>
+          <p class="deck__body">Tell me what you sell and what isn't working about your current site — or that you don't have one yet. Email, call, or WhatsApp. +91 70176 62533</p>
+        </article>
       </div>
 
-      <aside class="hero__visual">
-        <div class="hero__persona-bg" aria-hidden="true">
-          <img class="persona-photo is-active" data-persona="itguy" src="assets/personas/itguy.jpg" alt="">
-          <img class="persona-photo" data-persona="businessman" src="assets/personas/businessman.jpg" alt="">
-          <img class="persona-photo" data-persona="funnyguy" src="assets/personas/funnyguy.jpg" alt="">
-          <img class="persona-photo" data-persona="nextdoor" src="assets/personas/nextdoor.jpg" alt="">
-        </div>
-        <div class="persona-glass">
-          <div class="persona-tabs" role="tablist" aria-label="Pick a side of me">
-            <button class="persona-tab is-active" type="button" data-persona="itguy">IT Guy</button>
-            <button class="persona-tab" type="button" data-persona="businessman">Businessman</button>
-            <button class="persona-tab" type="button" data-persona="funnyguy">Funny Guy</button>
-            <button class="persona-tab" type="button" data-persona="nextdoor">Next Door</button>
-          </div>
-          <p class="persona-caption" id="persona-caption" aria-live="polite">Has fixed more Wi-Fi routers than he'd like to admit.</p>
-          <p class="persona-note">That's actually me behind the glass — four sides, same person.</p>
-        </div>
-      </aside>
+      <div class="deck__nav">
+        <button type="button" class="deck__btn" data-deck-prev aria-label="Previous slide" disabled>←</button>
+        <span class="deck__count" data-deck-count>1 / 5</span>
+        <button type="button" class="deck__btn" data-deck-next aria-label="Next slide">→</button>
+      </div>
+
+      <div class="deck__actions">
+        <a class="btn btn--primary" href="#contact">Start a project</a>
+        <a class="btn btn--ghost" href="#work">See work ↓</a>
+        <a class="btn btn--ghost" href="assets/Kunal-Varshney-Resume.pdf" download>Résumé ↓</a>
+      </div>
     </div>
+
+    <a class="hero__scroll-hint" href="#about">Scroll ↓</a>
   </section>
 
   <div class="marquee" aria-hidden="true">
@@ -632,37 +665,6 @@
   <a href="resume/index.html">Professional background &amp; résumé →</a>
   <a class="footer__resume-dl" href="assets/Kunal-Varshney-Resume.pdf" download>Download PDF résumé ↓</a>
 
-  <div class="footer__secret">
-    <button type="button" class="secret-toggle" id="secret-toggle" aria-expanded="false" aria-controls="secret-panel">
-      <span class="secret-toggle__caret" aria-hidden="true">▸</span> One more thing
-    </button>
-    <div class="secret-panel" id="secret-panel" hidden>
-      <div class="secret-panel__words">
-        <p class="secret-panel__lede">Not on the résumé. Never going to be.</p>
-        <p>Somewhere between support shifts and lighting catalogues, I started making these with friends. I'll be honest — the afternoons spent shooting them are some of the happiest I've had. There's no plan behind it and nothing riding on it, which is probably exactly why it's the part I look forward to most.</p>
-        <p>I think it's the switching off. For a few minutes you're not the person answering tickets or chasing an order — you're someone else entirely, doing something ridiculous, and if it lands, a few people laugh. That's the whole return on it. It's more than enough.</p>
-        <p>I'm not calling myself an actor. I'm saying that on a slow afternoon, given the choice, this is what I'd pick every time.</p>
-      </div>
-      <div class="secret-videos">
-        <figure class="secret-video">
-          <video controls preload="metadata" playsinline>
-            <source src="assets/videos/non-iphone-user.mp4" type="video/mp4">
-            Your browser can't play this clip.
-          </video>
-          <figcaption>How a non-iPhone user talks · 3 min</figcaption>
-        </figure>
-        <figure class="secret-video">
-          <video controls preload="metadata" playsinline>
-            <source src="assets/videos/filmy-keeda.mp4" type="video/mp4">
-            Your browser can't play this clip.
-          </video>
-          <figcaption>If everyone had filmy keeda · 5 min</figcaption>
-        </figure>
-      </div>
-      <p class="secret-panel__foot">Shot on whatever was in someone's pocket at the time. No crew, no budget, no retakes worth mentioning.</p>
-    </div>
-  </div>
-
   <button type="button" class="footer__egg" id="footer-egg">
     Psst — click my name at the very top three times. There's a masked man up there who cannot clear a single wall, and honestly, same.
     <span class="footer__egg-cta">or just press this, I don't judge</span>
@@ -671,7 +673,7 @@
 
 <script src="js/vendor/anime.umd.min.js"></script>
 <script src="js/vendor/motion.min.js"></script>
-<script src="js/shader.js"></script>
+<script src="js/milo-hero.js"></script>
 <script src="js/main.js"></script>
 <script src="js/carousel.js"></script>
 <script src="js/work-parallax.js"></script>
