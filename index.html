@@ -78,6 +78,7 @@
 <link rel="stylesheet" href="css/nav-theme.css">
 <link rel="stylesheet" href="css/cv-carousel.css">
 <link rel="stylesheet" href="css/minimal.css">
+<link rel="stylesheet" href="css/theme-motion.css">
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -95,6 +96,7 @@
   <nav class="nav__links" aria-label="Primary">
     <a href="#work">Work</a>
     <a href="#experience">Background</a>
+    <a href="#reels">Reels</a>
     <a href="resume/index.html">Résumé</a>
     <a href="#contact" class="nav__cta">Let's talk</a>
     <button type="button" class="theme-toggle theme-toggle--switch" id="theme-toggle" aria-label="Switch light or dark theme" aria-pressed="true">
@@ -141,6 +143,7 @@
     </div>
 
     <div class="deck-wrap">
+      <div class="lottie-accent lottie-accent--hero" data-lottie-hero aria-hidden="true"></div>
       <div class="deck" data-deck aria-live="polite">
         <article class="deck__slide is-active" aria-hidden="false">
           <p class="deck__label deck__label--name">Introduction</p>
@@ -408,7 +411,10 @@
   </section>
 
   <section id="work" class="section work">
-    <h2 class="section__title section__title--solo">Work</h2>
+    <div class="work__head">
+      <div class="lottie-accent lottie-accent--work lottie-accent--inline" data-lottie-work aria-hidden="true"></div>
+      <h2 class="section__title section__title--solo">Work</h2>
+    </div>
 
     <div class="work-fly" data-work-fly aria-roledescription="carousel" aria-label="Project showcase">
       <div class="work-fly__stage">
@@ -573,7 +579,11 @@
   </section>
 
   <section id="contact" class="section contact">
-    <h2 class="section__title section__title--solo">Let's talk</h2>
+    <div class="contact__motion-wrap">
+      <div class="lottie-accent lottie-accent--contact" data-lottie-contact aria-hidden="true"></div>
+      <h2 class="section__title section__title--solo">Let's talk</h2>
+      <p class="contact__motion-tag">Reply within a day · English only</p>
+    </div>
 
     <form class="project-form" id="project-form">
       <div class="form-row">
@@ -658,10 +668,38 @@
 <footer class="footer">
   <a href="resume/index.html">Résumé →</a>
   <a class="footer__resume-dl" href="assets/Kunal-Varshney-Resume.pdf" download>PDF ↓</a>
+  <a href="#reels" class="footer__reels">Off-the-clock clips ↓</a>
+
+  <div class="footer__secret">
+    <button type="button" class="secret-toggle" id="secret-toggle" aria-expanded="false" aria-controls="secret-panel">
+      <span class="secret-toggle__caret" aria-hidden="true">▸</span> One more thing
+    </button>
+    <div class="secret-panel" id="secret-panel" hidden>
+      <div class="secret-panel__words">
+        <p class="secret-panel__lede">The same clips — tucked here for people who scroll all the way down.</p>
+        <p>There's no plan behind these and nothing riding on them, which is probably exactly why they're the part I look forward to most.</p>
+      </div>
+      <div class="secret-videos">
+        <figure class="secret-video">
+          <video controls preload="metadata" playsinline>
+            <source src="assets/videos/non-iphone-user.mp4" type="video/mp4">
+          </video>
+          <figcaption>How a non-iPhone user talks · 3 min</figcaption>
+        </figure>
+        <figure class="secret-video">
+          <video controls preload="metadata" playsinline>
+            <source src="assets/videos/filmy-keeda.mp4" type="video/mp4">
+          </video>
+          <figcaption>If everyone had filmy keeda · 5 min</figcaption>
+        </figure>
+      </div>
+      <p class="secret-panel__foot">Shot on whatever was in someone's pocket at the time.</p>
+    </div>
+  </div>
 
   <button type="button" class="footer__egg" id="footer-egg">
-    Psst — click my name at the very top three times. There's a masked man up there who cannot clear a single wall, and honestly, same.
-    <span class="footer__egg-cta">or just press this, I don't judge</span>
+    Psst — triple-click my name at the top for a hidden game. Or scroll to the clips above if you came for the cinema bit.
+    <span class="footer__egg-cta">or just press this for the game, I don't judge</span>
   </button>
 </footer>
 
@@ -669,6 +707,7 @@
 <script src="js/vendor/motion.min.js"></script>
 <script src="js/milo-hero.js"></script>
 <script src="js/main.js"></script>
+<script src="js/lottie-accents.js"></script>
 <script src="js/cv-carousel.js"></script>
 <script src="js/work-fly.js"></script>
 <script src="js/carousel.js"></script>
