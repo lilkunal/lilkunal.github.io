@@ -12,7 +12,6 @@
   --ink: #000;
   --body: #1a1a1a;
   --muted: #333;
-  /* Chrome / Edge “Default” margin on A4 ≈ 10 mm (0.39 in) */
   --page-margin: 10mm;
 }
 
@@ -61,8 +60,18 @@ body {
   flex-direction: column;
 }
 
-/* —— Header —— */
-.doc-header { flex-shrink: 0; margin-bottom: 0.5rem; }
+.sheet--2 { margin-top: 0; }
+
+.page-2-name {
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--ink);
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+.doc-header { flex-shrink: 0; margin-bottom: 0.45rem; }
 .name {
   font-size: 24pt;
   font-weight: 700;
@@ -78,19 +87,17 @@ body {
 }
 .contact {
   font-size: 10.5pt;
-  margin-top: 0.45rem;
+  margin-top: 0.4rem;
   color: var(--muted);
   line-height: 1.55;
 }
 .head-rule {
   border: none;
   border-top: 2px solid var(--ink);
-  margin: 0.55rem 0 0.6rem;
+  margin: 0.5rem 0 0.55rem;
 }
 
-/* —— Sections —— */
-.doc-body { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
-
+.doc-body { flex: 1; display: flex; flex-direction: column; gap: 0.48rem; }
 section { flex-shrink: 0; }
 
 h2 {
@@ -100,24 +107,18 @@ h2 {
   letter-spacing: 0.05em;
   color: var(--ink);
   border-bottom: 1px solid var(--ink);
-  padding-bottom: 0.12rem;
-  margin-bottom: 0.35rem;
+  padding-bottom: 0.1rem;
+  margin-bottom: 0.32rem;
 }
 
 p, li { font-size: 10.5pt; }
 
-.summary p {
-  text-align: justify;
-  line-height: 1.5;
-}
-
-/* Skills — full width rows */
 .skill-row {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 0.22rem;
+  margin-bottom: 0.2rem;
   font-size: 10.5pt;
-  line-height: 1.4;
+  line-height: 1.38;
 }
 .skill-row dt {
   flex: 0 0 7.5rem;
@@ -126,8 +127,11 @@ p, li { font-size: 10.5pt; }
 }
 .skill-row dd { flex: 1; color: var(--body); }
 
-/* Jobs */
-.job { margin-bottom: 0.42rem; }
+.job {
+  margin-bottom: 0.38rem;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
 .job:last-child { margin-bottom: 0; }
 
 .job-top {
@@ -136,84 +140,39 @@ p, li { font-size: 10.5pt; }
   align-items: baseline;
   gap: 0.75rem;
 }
-.job-title {
-  font-size: 11pt;
-  font-weight: 700;
-  color: var(--ink);
-}
-.job-when {
-  font-size: 10.5pt;
-  font-weight: 600;
-  color: var(--muted);
-  white-space: nowrap;
-}
-.job-company {
-  font-size: 10.5pt;
-  font-style: italic;
-  color: var(--muted);
-  margin: 0.05rem 0 0.12rem;
-}
-.job ul {
-  padding-left: 1.15rem;
-  margin-top: 0.08rem;
-}
-.job li {
-  margin-bottom: 0.12rem;
-  line-height: 1.42;
-}
+.job-title { font-size: 11pt; font-weight: 700; color: var(--ink); }
+.job-when { font-size: 10.5pt; font-weight: 600; color: var(--muted); white-space: nowrap; }
+.job-company { font-size: 10.5pt; font-style: italic; color: var(--muted); margin: 0.04rem 0 0.1rem; }
+.job ul { padding-left: 1.15rem; margin-top: 0.06rem; }
+.job li { margin-bottom: 0.1rem; line-height: 1.4; }
 
-/* Projects */
-.project { margin-bottom: 0.38rem; }
+.project { margin-bottom: 0.35rem; break-inside: avoid; page-break-inside: avoid; }
 .project-title { font-size: 10.5pt; font-weight: 700; color: var(--ink); }
 .project-sub { font-size: 10pt; font-style: italic; color: var(--muted); }
-.project-desc { font-size: 10.5pt; margin-top: 0.06rem; line-height: 1.42; }
+.project-desc { font-size: 10.5pt; margin-top: 0.05rem; line-height: 1.4; }
 
-/* Education & certs side by side */
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem 1.5rem;
+  gap: 0.85rem 1.25rem;
 }
-.edu-block strong {
-  display: block;
-  font-size: 10.5pt;
-  font-weight: 700;
-}
-.edu-block span {
-  font-size: 10.5pt;
-  color: var(--muted);
-}
+.edu-block strong { display: block; font-size: 10.5pt; font-weight: 700; }
+.edu-block span { font-size: 10.5pt; color: var(--muted); }
 
-.cert-list {
-  list-style: none;
-  padding: 0;
-}
+.cert-list { list-style: none; padding: 0; }
 .cert-list li {
   font-size: 10.5pt;
   padding-left: 0.85rem;
   position: relative;
-  margin-bottom: 0.14rem;
-  line-height: 1.4;
-}
-.cert-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  font-weight: 700;
-}
-
-.achievements ul {
-  padding-left: 1.15rem;
-}
-.achievements li {
   margin-bottom: 0.12rem;
-  line-height: 1.42;
+  line-height: 1.38;
 }
+.cert-list li::before { content: "•"; position: absolute; left: 0; font-weight: 700; }
 
-@page {
-  size: A4 portrait;
-  margin: 10mm;
-}
+.achievements ul { padding-left: 1.15rem; }
+.achievements li { margin-bottom: 0.1rem; line-height: 1.4; }
+
+@page { size: A4 portrait; margin: 10mm; }
 
 @media print {
   html { font-size: 11pt; }
@@ -226,12 +185,14 @@ p, li { font-size: 10.5pt; }
     margin: 0;
     padding: 0;
     box-shadow: none;
-    page-break-after: always;
-    break-after: page;
   }
-  .sheet:last-of-type {
-    page-break-after: auto;
-    break-after: auto;
+  .sheet--1 {
+    break-after: page;
+    page-break-after: always;
+  }
+  .sheet--2 {
+    break-before: page;
+    page-break-before: always;
   }
 }
 
@@ -249,8 +210,7 @@ p, li { font-size: 10.5pt; }
 
 <div class="pages">
 
-<!-- ==================== PAGE 1 ==================== -->
-<div class="sheet">
+<div class="sheet sheet--1">
 
   <header class="doc-header">
     <h1 class="name">Kunal Varshney</h1>
@@ -264,19 +224,14 @@ p, li { font-size: 10.5pt; }
 
   <div class="doc-body">
 
-    <section class="summary">
-      <h2>Professional Summary</h2>
-      <p>Web designer with a B.Tech in Computer Science and hands-on experience building mobile-first business websites using an AI-assisted workflow (Claude, Cursor). Responsible for design direction, copy, quality assurance, and post-launch support on every project. Currently leads marketing and online operations for Padma Enterprises, including a 200+ product catalogue and export orders in eight currencies. Four years of technical support experience across Teleperformance, Webhelp, Concentrix, and Flex — dependable communication and follow-through after delivery.</p>
-    </section>
-
     <section>
       <h2>Technical Skills</h2>
       <dl>
         <div class="skill-row"><dt>Web Design</dt><dd>HTML, CSS, JavaScript, responsive layout, landing pages, SEO fundamentals, Adobe Photoshop, Git, GitHub Pages</dd></div>
         <div class="skill-row"><dt>AI Workflow</dt><dd>Claude, Cursor — accelerated build and iteration with personal review before every launch</dd></div>
-        <div class="skill-row"><dt>Marketing</dt><dd>Digital marketing, product catalogues, trade pricing, Excel, client communication, scope and pricing documentation</dd></div>
-        <div class="skill-row"><dt>Support</dt><dd>PBX systems, remote troubleshooting, ticketing, CRM, Oracle WebLogic, Jenkins, log analysis, dashboard monitoring</dd></div>
-        <div class="skill-row"><dt>Soft Skills</dt><dd>Written and verbal communication, time management, presentation, creative problem-solving, decision-making</dd></div>
+        <div class="skill-row"><dt>Marketing</dt><dd>Digital marketing, product catalogues, trade pricing, Excel, client communication</dd></div>
+        <div class="skill-row"><dt>Support</dt><dd>PBX systems, remote troubleshooting, ticketing, CRM, Oracle WebLogic, Jenkins, log analysis</dd></div>
+        <div class="skill-row"><dt>Soft Skills</dt><dd>Communication, time management, presentation, creative problem-solving, decision-making</dd></div>
       </dl>
     </section>
 
@@ -291,9 +246,8 @@ p, li { font-size: 10.5pt; }
         <p class="job-company">Independent · Remote · JAI Home Care &amp; small-business clients</p>
         <ul>
           <li>Design and develop marketing websites and landing pages for small businesses, from initial brief through launch.</li>
-          <li>Use Claude and Cursor for layout, components, and iteration; personally verify code quality, copy accuracy, and mobile behaviour on real devices.</li>
-          <li>Delivered JAI Home Care services landing page — mobile-first layout, clear contact paths, and post-launch support.</li>
-          <li>Agree scope, price, and timeline in writing before work begins; remain available for updates after go-live.</li>
+          <li>Use Claude and Cursor for layout and iteration; verify code quality, copy, and mobile behaviour before launch.</li>
+          <li>Delivered JAI Home Care landing page with post-launch support; scope and pricing agreed in writing.</li>
         </ul>
       </article>
 
@@ -304,9 +258,8 @@ p, li { font-size: 10.5pt; }
         </div>
         <p class="job-company">Padma Enterprises (Padma Lights) · India</p>
         <ul>
-          <li>Lead website, digital marketing, and full online presence for a cast-aluminium outdoor lighting manufacturer.</li>
-          <li>Manage 200+ model catalogue across four product categories; maintain trade pricing for architects, builders, and dealers.</li>
-          <li>Process international orders and export documentation; website supports pricing in eight currencies.</li>
+          <li>Lead website, digital marketing, and online presence for cast-aluminium outdoor lighting manufacturer.</li>
+          <li>Manage 200+ model catalogue, trade pricing, and international orders in eight currencies.</li>
           <li>Grew the business online for nine years before assuming this role full-time in January 2025.</li>
         </ul>
       </article>
@@ -318,9 +271,8 @@ p, li { font-size: 10.5pt; }
         </div>
         <p class="job-company">Teleperformance</p>
         <ul>
-          <li>Diagnosed and resolved technical issues for customers, minimising downtime while maintaining service quality standards.</li>
-          <li>Used remote troubleshooting tools and ticketing systems; worked within PBX and telephony environments.</li>
-          <li>Adapted quickly to changing tools and procedures in a high-volume support setting.</li>
+          <li>Diagnosed and resolved technical issues; remote troubleshooting and ticketing in PBX environments.</li>
+          <li>Maintained service quality in a high-volume support setting with changing tools and procedures.</li>
         </ul>
       </article>
 
@@ -329,8 +281,9 @@ p, li { font-size: 10.5pt; }
   </div>
 </div>
 
-<!-- ==================== PAGE 2 ==================== -->
-<div class="sheet">
+<div class="sheet sheet--2">
+
+  <p class="page-2-name">Kunal Varshney</p>
 
   <div class="doc-body">
 
@@ -392,17 +345,17 @@ p, li { font-size: 10.5pt; }
       <article class="project">
         <p class="project-title">Padma Enterprises — Padma Lights (padmalights.com)</p>
         <p class="project-sub">Marketing &amp; online operations · Ongoing</p>
-        <p class="project-desc">End-to-end website and digital operations for outdoor lighting manufacturer — 200+ SKU catalogue, trade pricing, export-facing content, and ongoing catalogue updates.</p>
+        <p class="project-desc">Website and digital operations for outdoor lighting — 200+ SKU catalogue, trade pricing, and export-facing content.</p>
       </article>
       <article class="project">
         <p class="project-title">JAI Home Care Services</p>
         <p class="project-sub">Web design &amp; development · 2025</p>
-        <p class="project-desc">Landing page for home-care and medical assistance services — service overview, contact forms, and phone-optimised layout for local customer enquiries.</p>
+        <p class="project-desc">Home-care landing page — services, contact, and phone-optimised layout for local enquiries.</p>
       </article>
       <article class="project">
         <p class="project-title">Personal Portfolio (lilkunal.github.io)</p>
         <p class="project-sub">Web design &amp; development · 2025</p>
-        <p class="project-desc">Professional portfolio showcasing client work, skills, and background — designed and built using AI-assisted development with full personal oversight of content and quality.</p>
+        <p class="project-desc">Portfolio showcasing client work and professional background — AI-assisted build with full personal QA.</p>
       </article>
     </section>
 
@@ -418,11 +371,10 @@ p, li { font-size: 10.5pt; }
       <section>
         <h2>Certifications</h2>
         <ul class="cert-list">
-          <li>Google IT Support Professional Certificate (full programme)</li>
-          <li>Google Digital Garage — Fundamentals of Digital Marketing</li>
-          <li>Introduction to Data Analysis Using Microsoft Excel (Coursera)</li>
-          <li>Introduction to Microsoft Excel (Coursera)</li>
-          <li>ChatGPT for Beginners (Great Learning Academy)</li>
+          <li>Google IT Support Professional Certificate</li>
+          <li>Google Digital Garage — Digital Marketing</li>
+          <li>Data Analysis Using Microsoft Excel (Coursera)</li>
+          <li>ChatGPT for Beginners (Great Learning)</li>
         </ul>
       </section>
     </div>
@@ -430,11 +382,10 @@ p, li { font-size: 10.5pt; }
     <section class="achievements">
       <h2>Honours &amp; Activities</h2>
       <ul>
-        <li>1st Prize — Computer Science Quiz Competition, Vivekananda College of Technology &amp; Management (25 participants)</li>
-        <li>2nd Prize — Debate Competition, Varshney College (50 participants)</li>
-        <li>One-day workshop on Computer Networking — Aptron</li>
-        <li>One-day workshop on Blockchain and Machine Learning — Training Basket</li>
-        <li>Participant — Endeavour 2018, KIET College, Ghaziabad; CAD Desk Techno Quiz</li>
+        <li>1st Prize — Computer Science Quiz, Vivekananda College of Technology &amp; Management</li>
+        <li>2nd Prize — Debate Competition, Varshney College</li>
+        <li>Workshops: Networking (Aptron), Blockchain &amp; ML (Training Basket)</li>
+        <li>Participant — Endeavour 2018, KIET College; CAD Desk Techno Quiz</li>
       </ul>
     </section>
 
