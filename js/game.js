@@ -463,7 +463,7 @@
     g.font = "8px " + C.pixelFont;
     g.textAlign = "left";
     g.fillStyle = C.ink;
-    g.fillText("KUNAL", rowL, y1);
+    g.fillText("Kunal", rowL, y1);
     g.textAlign = "right";
     g.fillText(String(S.score + 1), rowR, y1);
 
