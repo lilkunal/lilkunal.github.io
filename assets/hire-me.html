@@ -15,14 +15,14 @@
   --page-w: 210mm;
   --page-h: 297mm;
   --margin: 14mm;
-  --fs-name: 22pt;
-  --fs-head: 11pt;
-  --fs-body: 10.5pt;
-  --fs-sm: 10pt;
-  --lh: 1.5;
-  --gap-section: 4.5mm;
-  --gap-item: 3mm;
-  --gap-line: 1.5mm;
+  --fs-name: 23pt;
+  --fs-head: 11.5pt;
+  --fs-body: 11pt;
+  --fs-sm: 10.5pt;
+  --lh: 1.55;
+  --gap-section: 5mm;
+  --gap-item: 3.5mm;
+  --gap-line: 2mm;
 }
 
 html { font-size: var(--fs-body); }
@@ -79,6 +79,20 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--gap-section);
+  min-height: 0;
+}
+
+/* Page 1: stretch content to fill full A4 height */
+.page-1 .page__inner {
+  justify-content: space-between;
+  height: 100%;
+}
+
+.page-1 .r-sec--grow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Header */
@@ -212,17 +226,30 @@ body {
   .page {
     width: auto;
     height: auto;
-    min-height: 0;
     margin: 0;
     padding: 0;
     box-shadow: none;
     overflow: visible;
     display: block;
   }
-  .page__inner { display: block; gap: 0; }
-  .page__inner > * + * { margin-top: var(--gap-section); }
-  .r-sec > * + * { margin-top: var(--gap-item); }
+  .page-1 {
+    min-height: calc(297mm - 28mm);
+    display: flex;
+    flex-direction: column;
+  }
+  .page-1 .page__inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: calc(297mm - 28mm);
+  }
+  .page-1 .r-sec--grow {
+    flex: 1;
+    justify-content: space-between;
+  }
   .page-2 { break-before: page; page-break-before: always; }
+  .page-2 .page__inner { display: flex; flex-direction: column; gap: var(--gap-section); }
   .r-job, .r-proj { break-inside: avoid; page-break-inside: avoid; }
 }
 
@@ -265,7 +292,7 @@ body {
       </table>
     </section>
 
-    <section class="r-sec">
+    <section class="r-sec r-sec--grow">
       <h2>Professional Experience</h2>
 
       <article class="r-job">
