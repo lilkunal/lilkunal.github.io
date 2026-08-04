@@ -13,7 +13,7 @@ Marketing and online specialist for Padma Enterprises — 200+ product catalogue
 ## Highlights
 
 - **Padma Lights:** full online operation — catalogue, pricing, export orders, marketing assets  
-- **Freelance:** Singularity Forge, JAI Home Care — landing pages, mobile-first UI  
+- **Freelance:** JAI Home Care — landing pages, mobile-first UI  
 - **AI-assisted production:** Claude + Cursor for faster page builds and content iteration  
 - **Certs:** Google Digital Marketing, Google IT Support, Excel/data analysis (Coursera)
 

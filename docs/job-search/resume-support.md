@@ -40,7 +40,7 @@ Technical support · Remote troubleshooting · Ticketing systems · CRM · PBX �
 
 ## Education & certs
 
-B.S. Computer Science · ACET  
+B.Tech in Computer Science · Aligarh College of Engineering & Technology · 2020  
 Google IT Support Professional Certificate (full stack of 5 courses)
 
 ---

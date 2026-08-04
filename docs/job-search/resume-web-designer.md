@@ -23,7 +23,7 @@ HTML · CSS · JavaScript · Responsive UI · Landing pages · SEO basics · Pho
 **Freelance Web Designer** · Remote · Jan 2025 – Present  
 - Design and build marketing sites and landing pages for small businesses.  
 - **AI-assisted workflow:** use Claude and Cursor for layout, components, and iteration; personally review code, copy, mobile behaviour, and launch checklist.  
-- Clients: Singularity Forge (AI agency), JAI Home Care (home-care landing page), this portfolio.  
+- Clients: JAI Home Care (home-care landing page), this portfolio, and other small businesses.  
 - Scope, timeline, and pricing agreed in writing; support after launch.
 
 **Marketing & Online Specialist** · Padma Enterprises (Padma Lights) · Jan 2025 – Present  
@@ -43,7 +43,6 @@ HTML · CSS · JavaScript · Responsive UI · Landing pages · SEO basics · Pho
 | Project | URL | Role |
 |---------|-----|------|
 | Padma Lights | padmalights.com | Marketing, catalogue, export ops |
-| Singularity Forge | singularityforge.ai | Design & build |
 | JAI Home Care | jaihomecareservice-max.github.io/Jai-home-care/ | Design & build |
 | Portfolio | lilkunal.github.io | Design, build, AI-assisted |
 
@@ -51,7 +50,7 @@ HTML · CSS · JavaScript · Responsive UI · Landing pages · SEO basics · Pho
 
 ## Education & certs
 
-B.S. Computer Science · Aligarh College of Engineering & Technology  
+B.Tech in Computer Science · Aligarh College of Engineering & Technology · 2020  
 Google IT Support Professional Certificate · Google Digital Garage (Digital Marketing) · ChatGPT for Beginners (Great Learning)
 
 ---

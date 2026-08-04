@@ -23,7 +23,7 @@ Remote Web Designer | AI-Assisted Builds | Small Business Sites | 4yr Support Ba
 ```
 I design and ship websites for small businesses — fast, mobile-first, and built to convert.
 
-Since 2025 I’ve led marketing and the full online side for Padma Enterprises (padmalights.com): 200+ product catalogue, export orders, trade pricing in 8 currencies. I also build for clients including Singularity Forge (AI agency) and JAI Home Care.
+Since 2025 I’ve led marketing and the full online side for Padma Enterprises (padmalights.com): 200+ product catalogue, export orders, trade pricing in 8 currencies. I also build landing pages for clients including JAI Home Care.
 
 How I work: AI-assisted development with Claude and Cursor. I use AI to move faster on layout, components, and iteration — but I own the design direction, copy, QA, accessibility checks, and post-launch support. Nothing goes live without my review.
 
@@ -63,7 +63,7 @@ kunalvrshn@gmail.com · +91 70176 62533
 ## Experience entries to align (copy tweaks)
 
 **Freelance Web Designer** · Self-employed · Jan 2025 – Present · Remote  
-Design and build marketing sites and landing pages using an AI-assisted workflow (Claude, Cursor). Clients: Singularity Forge, JAI Home Care. HTML/CSS/JS, mobile-first, SEO basics, post-launch support.
+Design and build marketing sites and landing pages using an AI-assisted workflow (Claude, Cursor). Clients: JAI Home Care and small businesses. HTML/CSS/JS, mobile-first, SEO basics, post-launch support.
 
 **Marketing & Online Specialist** · Padma Enterprises · Jan 2025 – Present  
 Lead website, catalogue (200+ SKUs), and online marketing for cast-aluminium outdoor lighting. Export-facing pricing and operations.
