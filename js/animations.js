@@ -61,7 +61,18 @@
       delay: A.stagger(40, { from: "random" }),
       duration: 680
     }, 0);
-    tl.add(".deck-wrap", { opacity: [0, 1], y: [24, 0], duration: 720 }, 120);
+    tl.add(".hero-float--headphones", {
+      opacity: [0, 0.22],
+      scale: [0.92, 1],
+      duration: 900
+    }, 0);
+    tl.add(".hero-portrait", {
+      opacity: [0, 1],
+      scale: [0.9, 1],
+      y: [16, 0],
+      duration: 640
+    }, 80);
+    tl.add(".hero-center", { opacity: [0, 1], duration: 720 }, 160);
   }
 
   /* ---------------------------------------------------------------------

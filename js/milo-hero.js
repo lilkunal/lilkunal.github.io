@@ -57,11 +57,14 @@
     show(dx < 0 ? idx + 1 : idx - 1);
   }, { passive: true });
 
-  /* Subtle parallax on stickers — desktop only */
+  /* Parallax on stickers + headphone bg — desktop only */
   var field = document.querySelector("[data-sticker-field]");
+  var heroFloat = document.querySelector("[data-hero-float]");
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (field && !reduce && window.matchMedia("(pointer: fine)").matches) {
-    var stickers = Array.prototype.slice.call(field.querySelectorAll(".sticker"));
+  if (!reduce && window.matchMedia("(pointer: fine)").matches) {
+    var stickers = field
+      ? Array.prototype.slice.call(field.querySelectorAll(".sticker"))
+      : [];
     var baseRot = stickers.map(function (st) {
       var rot = getComputedStyle(st).getPropertyValue("--rot").trim() || "0deg";
       return parseFloat(rot) || 0;
@@ -72,6 +75,7 @@
       var cy = window.innerHeight * 0.5;
       var dx = (e.clientX - cx) / cx;
       var dy = (e.clientY - cy) / cy;
+
       stickers.forEach(function (st, i) {
         var factor = 6 + (i % 4) * 3;
         st.style.transform =
@@ -79,6 +83,13 @@
           (dx * factor).toFixed(1) + "px," +
           (dy * factor).toFixed(1) + "px)";
       });
+
+      if (heroFloat) {
+        var hf = 18 + Math.abs(dx) * 8;
+        heroFloat.style.transform =
+          "translate(calc(-50% + " + (dx * hf).toFixed(1) + "px), calc(-50% + " +
+          (dy * hf).toFixed(1) + "px))";
+      }
     });
   }
 

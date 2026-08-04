@@ -251,18 +251,37 @@ body.dossier .svg-draw {
 }
 
 /* Hero */
-body.dossier .resume-back {
-  font-size: 0.65rem;
-  margin-bottom: 0.75rem;
+body.dossier .hero__portrait {
+  width: clamp(120px, 22vw, 160px);
+  margin: 0 auto 1rem;
+  border: 3px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 8px 24px var(--shadow);
 }
 
-body.dossier .hero__eyebrow {
-  font-size: 0.62rem;
-  margin-bottom: 0.4rem;
+body.dossier .hero__portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 body.dossier .hero__name {
   font-size: clamp(1.65rem, 1.4rem + 1vw, 2.1rem);
+  text-wrap: balance;
+  text-align: center;
+  line-height: 1.2;
+}
+
+body.dossier .hero__eyebrow,
+body.dossier .hero__role,
+body.dossier .hero__lede {
+  text-align: center;
+  max-width: 52ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 body.dossier .hero__name-chars .char {
@@ -287,6 +306,7 @@ body.dossier .hero__lede {
 body.dossier .hero__actions {
   margin-top: 1rem;
   gap: 0.5rem;
+  justify-content: center;
 }
 
 body.dossier .btn {
