@@ -52,12 +52,11 @@ body {
 
 .sheet {
   width: 210mm;
-  height: 297mm;
+  min-height: 297mm;
   margin: 12px auto;
-  padding: 16mm 18mm 14mm;
+  padding: var(--page-margin);
   background: #fff;
   box-shadow: 0 2px 20px rgba(0,0,0,.15);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -90,7 +89,7 @@ body {
 }
 
 /* —— Sections —— */
-.doc-body { flex: 1; display: flex; flex-direction: column; gap: 0.55rem; }
+.doc-body { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
 
 section { flex-shrink: 0; }
 
@@ -213,18 +212,19 @@ p, li { font-size: 10.5pt; }
 
 @page {
   size: A4 portrait;
-  margin: 0;
+  margin: 10mm;
 }
 
 @media print {
   html { font-size: 11pt; }
-  body { background: #fff; }
+  body { background: #fff; margin: 0; }
   .toolbar { display: none !important; }
+  .pages { padding: 0; }
   .sheet {
-    width: 210mm;
-    height: 297mm;
+    width: auto;
+    min-height: auto;
     margin: 0;
-    padding: 16mm 18mm 14mm;
+    padding: 0;
     box-shadow: none;
     page-break-after: always;
     break-after: page;
@@ -243,7 +243,7 @@ p, li { font-size: 10.5pt; }
 <body>
 
 <div class="toolbar no-print">
-  <span>Professional résumé · 2 pages · A4</span>
+  <span>A4 · Margins: Default (10 mm) · Headers/footers: Off</span>
   <button type="button" id="btn-print">Download PDF</button>
 </div>
 
@@ -324,18 +324,6 @@ p, li { font-size: 10.5pt; }
         </ul>
       </article>
 
-      <article class="job">
-        <div class="job-top">
-          <span class="job-title">Customer Support Executive</span>
-          <span class="job-when">Oct 2023 – Jan 2024</span>
-        </div>
-        <p class="job-company">Webhelp Pvt. Ltd.</p>
-        <ul>
-          <li>Provided customer service via chat and email — product enquiries, complaints, and step-by-step troubleshooting.</li>
-          <li>Maintained accurate CRM records; escalated complex cases and coordinated with internal teams until resolution.</li>
-        </ul>
-      </article>
-
     </section>
 
   </div>
@@ -348,6 +336,18 @@ p, li { font-size: 10.5pt; }
 
     <section>
       <h2>Professional Experience</h2>
+
+      <article class="job">
+        <div class="job-top">
+          <span class="job-title">Customer Support Executive</span>
+          <span class="job-when">Oct 2023 – Jan 2024</span>
+        </div>
+        <p class="job-company">Webhelp Pvt. Ltd.</p>
+        <ul>
+          <li>Provided customer service via chat and email — product enquiries, complaints, and step-by-step troubleshooting.</li>
+          <li>Maintained accurate CRM records; escalated complex cases and coordinated with internal teams until resolution.</li>
+        </ul>
+      </article>
 
       <article class="job">
         <div class="job-top">
