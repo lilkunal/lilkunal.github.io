@@ -35,6 +35,7 @@ Open to remote web design roles (India & global). Based in India · English pref
 
 Portfolio: https://lilkunal.github.io/
 Résumé: https://lilkunal.github.io/resume/
+GitHub: https://github.com/lilkunal
 Hire-me one-pager: https://lilkunal.github.io/assets/hire-me.html
 
 kunalvrshn@gmail.com · +91 70176 62533

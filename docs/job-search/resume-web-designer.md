@@ -2,7 +2,7 @@
 
 **Kunal Varshney**  
 India · Remote · kunalvrshn@gmail.com · +91 70176 62533  
-Portfolio: https://lilkunal.github.io/ · LinkedIn: linkedin.com/in/kunalvrshn/
+Portfolio: https://lilkunal.github.io/ · LinkedIn: linkedin.com/in/kunalvrshn/ · GitHub: https://github.com/lilkunal
 
 ---
 

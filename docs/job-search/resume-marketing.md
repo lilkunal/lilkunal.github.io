@@ -1,6 +1,7 @@
 # Résumé — Marketing & Online (Web + Catalogue)
 
-**Kunal Varshney** · kunalvrshn@gmail.com · +91 70176 62533 · Remote
+**Kunal Varshney** · kunalvrshn@gmail.com · +91 70176 62533 · Remote  
+GitHub: https://github.com/lilkunal · Portfolio: https://lilkunal.github.io/
 
 ---
 
