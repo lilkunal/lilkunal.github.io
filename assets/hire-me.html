@@ -48,6 +48,17 @@ body {
   color: #fff;
   font-size: 10pt;
 }
+.toolbar__dl {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  padding: 0.45rem 1.1rem;
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+}
 .toolbar button {
   font: inherit;
   cursor: pointer;
@@ -261,8 +272,9 @@ body {
 <body>
 
 <div class="toolbar no-print">
-  <span>A4 · 14 mm margins · Scale 100% · Headers/footers off</span>
-  <button type="button" id="btn-print">Download PDF</button>
+  <span>A4 résumé · Download Word for applications · Print optional</span>
+  <a class="toolbar__dl" href="Kunal-Varshney-Resume.docx" download>Download Word (.docx)</a>
+  <button type="button" id="btn-print">Print preview</button>
 </div>
 
 <div class="pages">
@@ -330,7 +342,8 @@ body {
         <p class="r-job-org">Teleperformance</p>
         <ul>
           <li>Diagnosed and resolved technical issues via remote troubleshooting and ticketing in PBX environments.</li>
-          <li>Maintained service quality in a high-volume setting; documented resolutions in CRM for audit trails.</li>
+          <li>Maintained service quality in a high-volume setting with changing tools and procedures.</li>
+          <li>Documented resolutions and follow-ups in CRM for handoffs and audit trails.</li>
         </ul>
       </article>
 
