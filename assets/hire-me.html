@@ -10,265 +10,300 @@
 
 :root {
   --ink: #000;
-  --body: #1a1a1a;
-  --muted: #333;
-  --page-margin: 10mm;
+  --text: #1a1a1a;
+  --muted: #444;
+  --page-w: 210mm;
+  --page-h: 297mm;
+  --margin: 14mm;
+  --fs-name: 22pt;
+  --fs-head: 11pt;
+  --fs-body: 10.5pt;
+  --fs-sm: 10pt;
+  --lh: 1.5;
+  --gap-section: 4.5mm;
+  --gap-item: 3mm;
+  --gap-line: 1.5mm;
 }
 
-html { font-size: 11.5pt; }
+html { font-size: var(--fs-body); }
 
 body {
   font-family: Calibri, "Segoe UI", Arial, sans-serif;
-  color: var(--body);
-  background: #d4d4d4;
-  line-height: 1.45;
+  color: var(--text);
+  background: #bbb;
+  line-height: var(--lh);
 }
 
+/* Screen toolbar */
 .toolbar {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 99;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  padding: 0.7rem 1rem;
-  background: #1a1a1a;
+  padding: 0.65rem 1rem;
+  background: #222;
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 10pt;
 }
 .toolbar button {
   font: inherit;
   cursor: pointer;
   border: none;
   border-radius: 4px;
-  padding: 0.5rem 1.25rem;
-  background: #000;
-  color: #fff;
-  font-weight: 600;
-}
-.toolbar button:hover { background: #333; }
-
-.sheet {
-  width: 210mm;
-  margin: 12px auto;
-  padding: var(--page-margin);
+  padding: 0.45rem 1.1rem;
   background: #fff;
-  box-shadow: 0 2px 20px rgba(0,0,0,.15);
-}
-
-.sheet--2 { margin-top: 0; }
-
-.page-2-name {
-  font-size: 11pt;
-  font-weight: 700;
-  color: var(--ink);
-  padding-bottom: 0.25rem;
-  margin-bottom: 0.35rem;
-  border-bottom: 1px solid var(--ink);
-}
-
-.doc-header { flex-shrink: 0; margin-bottom: 0.45rem; }
-.name {
-  font-size: 26pt;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: -0.01em;
-  line-height: 1.05;
-}
-.headline {
-  font-size: 12pt;
+  color: #000;
   font-weight: 600;
-  margin-top: 0.2rem;
-  color: var(--muted);
 }
-.contact {
+
+/* Exact A4 page box — screen matches print */
+.page {
+  width: var(--page-w);
+  height: var(--page-h);
+  margin: 10px auto;
+  padding: var(--margin);
+  background: #fff;
+  box-shadow: 0 1px 8px rgba(0,0,0,.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.page + .page { margin-top: 0; }
+
+.page__inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-section);
+}
+
+/* Header */
+.r-head { flex-shrink: 0; }
+.r-name {
+  font-size: var(--fs-name);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.r-title {
   font-size: 11pt;
-  margin-top: 0.4rem;
+  font-weight: 600;
   color: var(--muted);
-  line-height: 1.55;
+  margin-top: 1mm;
 }
-.head-rule {
+.r-contact {
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  margin-top: 2mm;
+  line-height: var(--lh);
+}
+.r-rule {
   border: none;
-  border-top: 2px solid var(--ink);
-  margin: 0.5rem 0 0.55rem;
+  border-top: 1.5pt solid var(--ink);
+  margin-top: 3mm;
 }
 
-.doc-body { display: flex; flex-direction: column; gap: 0.52rem; }
-section { flex-shrink: 0; }
+.r-mini {
+  font-size: var(--fs-head);
+  font-weight: 700;
+  color: var(--ink);
+  padding-bottom: 1mm;
+  border-bottom: 0.5pt solid var(--ink);
+  flex-shrink: 0;
+}
 
-h2 {
-  font-size: 12pt;
+/* Sections */
+.r-sec { display: flex; flex-direction: column; gap: var(--gap-item); }
+
+.r-sec h2 {
+  font-size: var(--fs-head);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   color: var(--ink);
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 0.1rem;
-  margin-bottom: 0.32rem;
+  border-bottom: 0.5pt solid var(--ink);
+  padding-bottom: 0.5mm;
+  line-height: var(--lh);
 }
 
-p, li { font-size: 11.5pt; }
-
-.skill-row {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.22rem;
-  font-size: 11.5pt;
-  line-height: 1.38;
-}
-.skill-row dt {
-  flex: 0 0 7.5rem;
+/* Skills table */
+.r-skills { width: 100%; border-collapse: collapse; font-size: var(--fs-body); line-height: var(--lh); }
+.r-skills td { vertical-align: top; padding-bottom: var(--gap-line); }
+.r-skills td:first-child {
+  width: 28mm;
   font-weight: 700;
   color: var(--ink);
+  padding-right: 2mm;
 }
-.skill-row dd { flex: 1; color: var(--body); }
 
-.job {
-  margin-bottom: 0.42rem;
-  break-inside: avoid;
-  page-break-inside: avoid;
-}
-.job:last-child { margin-bottom: 0; }
-
-.job-top {
+/* Jobs */
+.r-job { display: flex; flex-direction: column; gap: 0.5mm; }
+.r-job-head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 0.75rem;
+  gap: 3mm;
 }
-.job-title { font-size: 12pt; font-weight: 700; color: var(--ink); }
-.job-when { font-size: 11pt; font-weight: 600; color: var(--muted); white-space: nowrap; }
-.job-company { font-size: 11pt; font-style: italic; color: var(--muted); margin: 0.04rem 0 0.12rem; }
-.job ul { padding-left: 1.15rem; margin-top: 0.08rem; }
-.job li { margin-bottom: 0.12rem; line-height: 1.42; }
+.r-job-title { font-size: 10.5pt; font-weight: 700; color: var(--ink); }
+.r-job-date { font-size: var(--fs-sm); font-weight: 600; color: var(--muted); white-space: nowrap; }
+.r-job-org { font-size: var(--fs-sm); font-style: italic; color: var(--muted); }
+.r-job ul {
+  list-style: disc;
+  padding-left: 4.5mm;
+  margin-top: 0.5mm;
+}
+.r-job li {
+  font-size: var(--fs-body);
+  line-height: var(--lh);
+  margin-bottom: var(--gap-line);
+}
+.r-job li:last-child { margin-bottom: 0; }
 
-.project { margin-bottom: 0.35rem; break-inside: avoid; page-break-inside: avoid; }
-.project-title { font-size: 11.5pt; font-weight: 700; color: var(--ink); }
-.project-sub { font-size: 11pt; font-style: italic; color: var(--muted); }
-.project-desc { font-size: 11.5pt; margin-top: 0.05rem; line-height: 1.42; }
+/* Projects */
+.r-proj { display: flex; flex-direction: column; gap: 0.5mm; }
+.r-proj-name { font-size: var(--fs-body); font-weight: 700; color: var(--ink); }
+.r-proj-meta { font-size: var(--fs-sm); font-style: italic; color: var(--muted); }
+.r-proj-desc { font-size: var(--fs-body); line-height: var(--lh); color: var(--text); }
 
-.split {
+/* Two columns */
+.r-cols {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.85rem 1.25rem;
+  gap: 5mm 8mm;
 }
-.edu-block strong { display: block; font-size: 11.5pt; font-weight: 700; }
-.edu-block span { font-size: 11.5pt; color: var(--muted); }
+.r-cols .r-sec { gap: var(--gap-item); }
 
-.cert-list { list-style: none; padding: 0; }
-.cert-list li {
-  font-size: 11.5pt;
-  padding-left: 0.85rem;
+.r-edu strong { display: block; font-size: var(--fs-body); font-weight: 700; }
+.r-edu span { display: block; font-size: var(--fs-body); color: var(--muted); line-height: var(--lh); }
+
+.r-certs { list-style: none; }
+.r-certs li {
+  font-size: var(--fs-body);
+  line-height: var(--lh);
+  padding-left: 3.5mm;
   position: relative;
-  margin-bottom: 0.12rem;
-  line-height: 1.38;
+  margin-bottom: var(--gap-line);
 }
-.cert-list li::before { content: "•"; position: absolute; left: 0; font-weight: 700; }
+.r-certs li::before { content: "•"; position: absolute; left: 0; }
 
-.achievements ul { padding-left: 1.15rem; }
-.achievements li { margin-bottom: 0.1rem; line-height: 1.4; }
+.r-honours ul {
+  list-style: disc;
+  padding-left: 4.5mm;
+}
+.r-honours li {
+  font-size: var(--fs-body);
+  line-height: var(--lh);
+  margin-bottom: var(--gap-line);
+}
 
-@page { size: A4 portrait; margin: 10mm; }
+@page {
+  size: A4 portrait;
+  margin: 14mm;
+}
 
 @media print {
-  html { font-size: 11.5pt; }
-  body { background: #fff; margin: 0; }
+  body { background: #fff; }
   .toolbar { display: none !important; }
-  .pages { padding: 0; }
-  .sheet {
+  .pages { margin: 0; padding: 0; }
+  .page {
     width: auto;
+    height: auto;
+    min-height: 0;
     margin: 0;
     padding: 0;
     box-shadow: none;
+    overflow: visible;
     display: block;
   }
-  .doc-body { display: block; }
-  .sheet--2 {
-    break-before: page;
-    page-break-before: always;
-  }
+  .page__inner { display: block; gap: 0; }
+  .page__inner > * + * { margin-top: var(--gap-section); }
+  .r-sec > * + * { margin-top: var(--gap-item); }
+  .page-2 { break-before: page; page-break-before: always; }
+  .r-job, .r-proj { break-inside: avoid; page-break-inside: avoid; }
 }
 
 @media screen {
-  .pages { padding-bottom: 1.5rem; }
+  .pages { padding-bottom: 12px; }
 }
 </style>
 </head>
 <body>
 
 <div class="toolbar no-print">
-  <span>A4 · Margins: Default (10 mm) · Headers/footers: Off</span>
+  <span>A4 · 14 mm margins · Scale 100% · Headers/footers off</span>
   <button type="button" id="btn-print">Download PDF</button>
 </div>
 
 <div class="pages">
 
-<div class="sheet sheet--1">
+<!-- PAGE 1 -->
+<div class="page page-1">
+  <div class="page__inner">
 
-  <header class="doc-header">
-    <h1 class="name">Kunal Varshney</h1>
-    <p class="headline">Web Designer · AI-Assisted Development</p>
-    <p class="contact">
-      kunalvrshn@gmail.com &nbsp;|&nbsp; +91 70176 62533 &nbsp;|&nbsp; India (Remote)<br>
-      lilkunal.github.io &nbsp;|&nbsp; linkedin.com/in/kunalvrshn &nbsp;|&nbsp; github.com/lilkunal
-    </p>
-    <hr class="head-rule">
-  </header>
+    <header class="r-head">
+      <h1 class="r-name">Kunal Varshney</h1>
+      <p class="r-title">Web Designer · AI-Assisted Development</p>
+      <p class="r-contact">
+        kunalvrshn@gmail.com &nbsp;|&nbsp; +91 70176 62533 &nbsp;|&nbsp; India (Remote)<br>
+        lilkunal.github.io &nbsp;|&nbsp; linkedin.com/in/kunalvrshn &nbsp;|&nbsp; github.com/lilkunal
+      </p>
+      <hr class="r-rule">
+    </header>
 
-  <div class="doc-body">
-
-    <section>
+    <section class="r-sec">
       <h2>Technical Skills</h2>
-      <dl>
-        <div class="skill-row"><dt>Web Design</dt><dd>HTML, CSS, JavaScript, responsive layout, landing pages, SEO fundamentals, Adobe Photoshop, Git, GitHub Pages</dd></div>
-        <div class="skill-row"><dt>AI Workflow</dt><dd>Claude, Cursor — accelerated build and iteration with personal review before every launch</dd></div>
-        <div class="skill-row"><dt>Marketing</dt><dd>Digital marketing, product catalogues, trade pricing, Excel, client communication</dd></div>
-        <div class="skill-row"><dt>Support</dt><dd>PBX systems, remote troubleshooting, ticketing, CRM, Oracle WebLogic, Jenkins, log analysis</dd></div>
-        <div class="skill-row"><dt>Soft Skills</dt><dd>Communication, time management, presentation, creative problem-solving, decision-making</dd></div>
-      </dl>
+      <table class="r-skills">
+        <tr><td>Web Design</td><td>HTML, CSS, JavaScript, responsive layout, landing pages, SEO, Photoshop, Git, GitHub Pages</td></tr>
+        <tr><td>AI Workflow</td><td>Claude, Cursor — faster build and iteration with personal review before launch</td></tr>
+        <tr><td>Marketing</td><td>Digital marketing, product catalogues, trade pricing, Excel, client communication</td></tr>
+        <tr><td>Support</td><td>PBX, remote troubleshooting, ticketing, CRM, Oracle WebLogic, Jenkins, log analysis</td></tr>
+        <tr><td>Soft Skills</td><td>Communication, time management, presentation, problem-solving, decision-making</td></tr>
+      </table>
     </section>
 
-    <section>
+    <section class="r-sec">
       <h2>Professional Experience</h2>
 
-      <article class="job">
-        <div class="job-top">
-          <span class="job-title">Freelance Web Designer</span>
-          <span class="job-when">Jan 2025 – Present</span>
+      <article class="r-job">
+        <div class="r-job-head">
+          <span class="r-job-title">Freelance Web Designer</span>
+          <span class="r-job-date">Jan 2025 – Present</span>
         </div>
-        <p class="job-company">Independent · Remote · JAI Home Care &amp; small-business clients</p>
+        <p class="r-job-org">Independent · Remote · JAI Home Care &amp; small-business clients</p>
         <ul>
-          <li>Design and develop marketing websites and landing pages for small businesses, from initial brief through launch.</li>
-          <li>Use Claude and Cursor for layout and iteration; verify code quality, copy, and mobile behaviour before launch.</li>
-          <li>Delivered JAI Home Care landing page with post-launch support; scope and pricing agreed in writing.</li>
+          <li>Design and build marketing websites and landing pages from brief through launch.</li>
+          <li>Use Claude and Cursor for layout and iteration; verify code, copy, and mobile behaviour before go-live.</li>
+          <li>Delivered JAI Home Care landing page; scope, pricing, and post-launch support agreed in writing.</li>
         </ul>
       </article>
 
-      <article class="job">
-        <div class="job-top">
-          <span class="job-title">Marketing &amp; Online Specialist</span>
-          <span class="job-when">Jan 2025 – Present</span>
+      <article class="r-job">
+        <div class="r-job-head">
+          <span class="r-job-title">Marketing &amp; Online Specialist</span>
+          <span class="r-job-date">Jan 2025 – Present</span>
         </div>
-        <p class="job-company">Padma Enterprises (Padma Lights) · India</p>
+        <p class="r-job-org">Padma Enterprises (Padma Lights) · India</p>
         <ul>
-          <li>Lead website, digital marketing, and online presence for cast-aluminium outdoor lighting manufacturer.</li>
+          <li>Lead website, digital marketing, and online presence for cast-aluminium outdoor lighting.</li>
           <li>Manage 200+ model catalogue, trade pricing, and international orders in eight currencies.</li>
           <li>Coordinate product photography and catalogue updates with manufacturing and export teams.</li>
-          <li>Grew the business online for nine years before assuming this role full-time in January 2025.</li>
+          <li>Grew the business online for nine years before assuming this role full-time in 2025.</li>
         </ul>
       </article>
 
-      <article class="job">
-        <div class="job-top">
-          <span class="job-title">Technical Support Advisor</span>
-          <span class="job-when">Aug 2024 – Dec 2024</span>
+      <article class="r-job">
+        <div class="r-job-head">
+          <span class="r-job-title">Technical Support Advisor</span>
+          <span class="r-job-date">Aug 2024 – Dec 2024</span>
         </div>
-        <p class="job-company">Teleperformance</p>
+        <p class="r-job-org">Teleperformance</p>
         <ul>
-          <li>Diagnosed and resolved technical issues; remote troubleshooting and ticketing in PBX environments.</li>
-          <li>Maintained service quality in a high-volume support setting with changing tools and procedures.</li>
-          <li>Documented resolutions and follow-ups in CRM for handoffs and audit trails.</li>
+          <li>Diagnosed and resolved technical issues via remote troubleshooting and ticketing in PBX environments.</li>
+          <li>Maintained service quality in a high-volume setting; documented resolutions in CRM for audit trails.</li>
         </ul>
       </article>
 
@@ -277,111 +312,105 @@ p, li { font-size: 11.5pt; }
   </div>
 </div>
 
-<div class="sheet sheet--2">
+<!-- PAGE 2 -->
+<div class="page page-2">
+  <div class="page__inner">
 
-  <p class="page-2-name">Kunal Varshney</p>
+    <p class="r-mini">Kunal Varshney</p>
 
-  <div class="doc-body">
-
-    <section>
+    <section class="r-sec">
       <h2>Professional Experience</h2>
 
-      <article class="job">
-        <div class="job-top">
-          <span class="job-title">Customer Support Executive</span>
-          <span class="job-when">Oct 2023 – Jan 2024</span>
+      <article class="r-job">
+        <div class="r-job-head">
+          <span class="r-job-title">Customer Support Executive</span>
+          <span class="r-job-date">Oct 2023 – Jan 2024</span>
         </div>
-        <p class="job-company">Webhelp Pvt. Ltd.</p>
+        <p class="r-job-org">Webhelp Pvt. Ltd.</p>
         <ul>
-          <li>Provided customer service via chat and email — product enquiries, complaints, and step-by-step troubleshooting.</li>
-          <li>Maintained accurate CRM records; escalated complex cases and coordinated with internal teams until resolution.</li>
+          <li>Customer service via chat and email — product enquiries, complaints, and troubleshooting.</li>
+          <li>Maintained CRM records; escalated complex cases and coordinated with teams until resolution.</li>
         </ul>
       </article>
 
-      <article class="job">
-        <div class="job-top">
-          <span class="job-title">Content Moderator</span>
-          <span class="job-when">Oct 2021 – Apr 2023</span>
+      <article class="r-job">
+        <div class="r-job-head">
+          <span class="r-job-title">Content Moderator</span>
+          <span class="r-job-date">Oct 2021 – Apr 2023</span>
         </div>
-        <p class="job-company">Concentrix Daksh Pvt. Ltd.</p>
+        <p class="r-job-org">Concentrix Daksh Pvt. Ltd.</p>
         <ul>
-          <li>Reviewed and verified content for Google platforms, including YouTube Kids, using internal moderation tools.</li>
-          <li>Prepared team reports; coordinated schedules and time-management tasks with team leadership.</li>
-          <li>Created transcripts for moderation videos and aligned content for production workflows.</li>
+          <li>Reviewed content for Google platforms including YouTube Kids using internal moderation tools.</li>
+          <li>Prepared team reports; created transcripts and aligned content for production workflows.</li>
         </ul>
       </article>
 
-      <article class="job">
-        <div class="job-top">
-          <span class="job-title">Technical Support Trainee</span>
-          <span class="job-when">Feb 2021 – Jun 2021</span>
+      <article class="r-job">
+        <div class="r-job-head">
+          <span class="r-job-title">Technical Support Trainee</span>
+          <span class="r-job-date">Feb 2021 – Jun 2021</span>
         </div>
-        <p class="job-company">Flex Pvt. Ltd.</p>
+        <p class="r-job-org">Flex Pvt. Ltd.</p>
         <ul>
-          <li>Supported Oracle WebLogic 11g applications and Jenkins job monitoring alongside dashboard and mail alerts.</li>
-          <li>Analysed system logs to identify root causes; produced health-check and filtering reports for internal tickets.</li>
+          <li>Supported Oracle WebLogic 11g and Jenkins monitoring; analysed logs and produced health-check reports.</li>
         </ul>
       </article>
 
-      <article class="job">
-        <div class="job-top">
-          <span class="job-title">Intern</span>
-          <span class="job-when">Jun 2019 – Aug 2019</span>
+      <article class="r-job">
+        <div class="r-job-head">
+          <span class="r-job-title">Intern</span>
+          <span class="r-job-date">Jun 2019 – Aug 2019</span>
         </div>
-        <p class="job-company">Parag Dairy · UP Rajya Vidyut Utpadan Nigam Ltd.</p>
+        <p class="r-job-org">Parag Dairy · UP Rajya Vidyut Utpadan Nigam Ltd.</p>
         <ul>
-          <li>Operated quality-control equipment and maintained delivery records at Parag Dairy.</li>
-          <li>Prepared project progress reports at Harduaganj Thermal Power Station; coordinated with coal department on material transfer.</li>
+          <li>Quality-control operations and delivery records at Parag Dairy; progress reports at thermal power station.</li>
         </ul>
       </article>
     </section>
 
-    <section>
+    <section class="r-sec">
       <h2>Selected Projects</h2>
-      <article class="project">
-        <p class="project-title">Padma Enterprises — Padma Lights (padmalights.com)</p>
-        <p class="project-sub">Marketing &amp; online operations · Ongoing</p>
-        <p class="project-desc">Website and digital operations for outdoor lighting — 200+ SKU catalogue, trade pricing, and export-facing content.</p>
+      <article class="r-proj">
+        <p class="r-proj-name">Padma Enterprises — Padma Lights (padmalights.com)</p>
+        <p class="r-proj-meta">Marketing &amp; online operations · Ongoing</p>
+        <p class="r-proj-desc">Website and digital ops for outdoor lighting — 200+ SKU catalogue, trade pricing, export content.</p>
       </article>
-      <article class="project">
-        <p class="project-title">JAI Home Care Services</p>
-        <p class="project-sub">Web design &amp; development · 2025</p>
-        <p class="project-desc">Home-care landing page — services, contact, and phone-optimised layout for local enquiries.</p>
+      <article class="r-proj">
+        <p class="r-proj-name">JAI Home Care Services · Web design · 2025</p>
+        <p class="r-proj-desc">Home-care landing page — services, contact, phone-optimised layout for local enquiries.</p>
       </article>
-      <article class="project">
-        <p class="project-title">Personal Portfolio (lilkunal.github.io)</p>
-        <p class="project-sub">Web design &amp; development · 2025</p>
-        <p class="project-desc">Portfolio showcasing client work and professional background — AI-assisted build with full personal QA.</p>
+      <article class="r-proj">
+        <p class="r-proj-name">Personal Portfolio (lilkunal.github.io) · 2025</p>
+        <p class="r-proj-desc">Professional portfolio — AI-assisted build with full personal QA on design and content.</p>
       </article>
     </section>
 
-    <div class="split">
-      <section>
+    <div class="r-cols">
+      <section class="r-sec">
         <h2>Education</h2>
-        <div class="edu-block">
+        <div class="r-edu">
           <strong>B.Tech in Computer Science</strong>
           <span>Aligarh College of Engineering &amp; Technology</span>
           <span>Graduated 2020</span>
         </div>
       </section>
-      <section>
+      <section class="r-sec">
         <h2>Certifications</h2>
-        <ul class="cert-list">
-          <li>Google IT Support Professional Certificate</li>
-          <li>Google Digital Garage — Digital Marketing</li>
-          <li>Data Analysis Using Microsoft Excel (Coursera)</li>
-          <li>ChatGPT for Beginners (Great Learning)</li>
+        <ul class="r-certs">
+          <li>Google IT Support Professional</li>
+          <li>Google Digital Garage — Marketing</li>
+          <li>Excel Data Analysis (Coursera)</li>
+          <li>ChatGPT for Beginners</li>
         </ul>
       </section>
     </div>
 
-    <section class="achievements">
+    <section class="r-sec r-honours">
       <h2>Honours &amp; Activities</h2>
       <ul>
-        <li>1st Prize — Computer Science Quiz, Vivekananda College of Technology &amp; Management</li>
+        <li>1st Prize — CS Quiz, Vivekananda College of Technology &amp; Management</li>
         <li>2nd Prize — Debate Competition, Varshney College</li>
         <li>Workshops: Networking (Aptron), Blockchain &amp; ML (Training Basket)</li>
-        <li>Participant — Endeavour 2018, KIET College; CAD Desk Techno Quiz</li>
       </ul>
     </section>
 
@@ -393,7 +422,7 @@ p, li { font-size: 11.5pt; }
 <script>
 document.getElementById("btn-print").addEventListener("click", function () { window.print(); });
 if (new URLSearchParams(location.search).has("download")) {
-  window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 500); });
+  window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 400); });
 }
 </script>
 </body>
