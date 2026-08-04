@@ -2262,6 +2262,13 @@ a.work-tile:hover {
   color: var(--ink);
 }
 
+.kvgame__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.kvgame__mute,
 .kvgame__close {
   font-size: 0.82rem;
   font-weight: 600;
@@ -2271,8 +2278,15 @@ a.work-tile:hover {
   background: var(--surface);
   padding: 0.45rem 0.75rem;
   transition: background 0.15s var(--ease), border-color 0.15s var(--ease);
+  line-height: 1;
+  min-width: 2.25rem;
 }
 
+.kvgame__mute[aria-pressed="true"] {
+  opacity: 0.65;
+}
+
+.kvgame__mute:hover,
 .kvgame__close:hover {
   background: var(--accent);
   border-color: transparent;

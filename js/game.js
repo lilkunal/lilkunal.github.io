@@ -20,12 +20,91 @@
   var PLAYER_X = 96;
   var PLAYER_R = 15;
   var BEST_KEY = "kv-flap-best";
+  var MUTE_KEY = "kv-flap-muted";
 
   var brand = document.querySelector(".nav__brand");
   if (!brand) return;
 
   var clicks = 0, lastClick = 0, overlay = null, canvas = null, ctx = null;
+  var muteBtn = null;
   var raf = null, running = false;
+
+  /* ------------------------------------------------------------------
+     Sound — Web Audio, no external files; respects mute toggle
+     ------------------------------------------------------------------ */
+  var audioCtx = null;
+  var muted = false;
+
+  function loadMuted() {
+    try { muted = localStorage.getItem(MUTE_KEY) === "1"; } catch (e) { muted = false; }
+    return muted;
+  }
+
+  function saveMuted() {
+    try { localStorage.setItem(MUTE_KEY, muted ? "1" : "0"); } catch (e) {}
+  }
+
+  function getAudio() {
+    if (muted) return null;
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === "suspended") audioCtx.resume();
+    return audioCtx;
+  }
+
+  function playTone(freq, dur, type, vol, delay) {
+    var ac = getAudio();
+    if (!ac) return;
+    var t0 = ac.currentTime + (delay || 0);
+    var osc = ac.createOscillator();
+    var gain = ac.createGain();
+    osc.type = type || "square";
+    osc.frequency.setValueAtTime(freq, t0);
+    gain.gain.setValueAtTime(vol || 0.07, t0);
+    gain.gain.exponentialRampToValueAtTime(0.001, t0 + dur);
+    osc.connect(gain);
+    gain.connect(ac.destination);
+    osc.start(t0);
+    osc.stop(t0 + dur + 0.02);
+  }
+
+  function sfxFlap() {
+    playTone(520, 0.07, "square", 0.05);
+    playTone(740, 0.05, "square", 0.035, 0.04);
+  }
+
+  function sfxScore() {
+    playTone(880, 0.09, "square", 0.06);
+    playTone(1175, 0.07, "square", 0.045, 0.07);
+  }
+
+  function sfxLose() {
+    playTone(240, 0.22, "sawtooth", 0.09);
+    playTone(160, 0.28, "sawtooth", 0.07, 0.14);
+    playTone(100, 0.35, "sawtooth", 0.05, 0.3);
+  }
+
+  function sfxWin() {
+    playTone(523, 0.1, "square", 0.06);
+    playTone(659, 0.1, "square", 0.06, 0.1);
+    playTone(784, 0.1, "square", 0.06, 0.2);
+    playTone(988, 0.14, "square", 0.07, 0.3);
+  }
+
+  function updateMuteBtn() {
+    if (!muteBtn) return;
+    muteBtn.setAttribute("aria-pressed", muted ? "true" : "false");
+    muteBtn.setAttribute("aria-label", muted ? "Unmute sound" : "Mute sound");
+    muteBtn.textContent = muted ? "🔇" : "🔊";
+  }
+
+  function toggleMute() {
+    muted = !muted;
+    saveMuted();
+    updateMuteBtn();
+    if (!muted) getAudio();
+  }
+
+  loadMuted();
 
   /* ------------------------------------------------------------------
      Theme — pulled live from the stylesheet so the game always matches
@@ -118,9 +197,9 @@
   }
 
   function flap() {
-    if (S.mode === "ready") { S.mode = "playing"; }
-    if (S.mode === "playing") { S.vy = FLAP; S.webT = 10; }
-    else if (S.mode === "dead" && S.t > 40) { reset(); S.mode = "playing"; S.vy = FLAP; }
+    if (S.mode === "ready") { S.mode = "playing"; sfxFlap(); return; }
+    if (S.mode === "playing") { S.vy = FLAP; S.webT = 10; sfxFlap(); }
+    else if (S.mode === "dead" && S.t > 40) { reset(); S.mode = "playing"; S.vy = FLAP; sfxFlap(); }
   }
 
   function die() {
@@ -128,10 +207,13 @@
     S.mode = "dead";
     S.t = 0;
     S.shake = 12;
-    if (S.score > S.best) {
+    var wasBest = S.score > S.best;
+    if (wasBest) {
       S.best = S.score;
       try { localStorage.setItem(BEST_KEY, String(S.best)); } catch (e) {}
     }
+    sfxLose();
+    if (wasBest && S.score > 0) sfxWin();
   }
 
   /* One simulation step. Kept separate from rendering so the physics can be
@@ -171,6 +253,7 @@
       if (!p.scored && p.x + PIPE_W < PLAYER_X - PLAYER_R) {
         p.scored = true;
         S.score++;
+        sfxScore();
       }
     }
     while (S.pipes.length && S.pipes[0].x < -PIPE_W - 10) S.pipes.shift();
@@ -304,16 +387,43 @@
 
     drawHero(g, PLAYER_X, S.y, S.rot);
 
-    /* HUD */
-    g.fillStyle = C.ink;
-    g.font = "20px " + C.pixelFont;
-    g.textAlign = "center";
-    g.fillText(String(S.score), W / 2, 52);
+    /* Live scoreboard — Kunal is always exactly one ahead */
+    if (S.mode === "playing" || S.mode === "ready") {
+      drawLiveScore(g);
+    } else {
+      g.fillStyle = C.ink;
+      g.font = "20px " + C.pixelFont;
+      g.textAlign = "center";
+      g.fillText(String(S.score), W / 2, 52);
+    }
 
     if (S.mode === "ready") panel(g, "TAP TO SWING", ["Click, tap or press space", "Mind the towers"]);
     else if (S.mode === "dead") deathPanel(g);
 
     g.restore();
+  }
+
+  function drawLiveScore(g) {
+    var rowL = 22, rowR = W - 22, kunalScore = S.score + 1;
+
+    g.font = "8px " + C.pixelFont;
+
+    g.fillStyle = C.accent2;
+    g.globalAlpha = 0.35;
+    g.fillRect(14, 24, W - 28, 22);
+    g.globalAlpha = 1;
+
+    g.textAlign = "left";
+    g.fillStyle = C.ink;
+    g.fillText("KUNAL", rowL, 40);
+    g.textAlign = "right";
+    g.fillText(String(kunalScore), rowR, 40);
+
+    g.textAlign = "left";
+    g.fillStyle = C.inkSoft;
+    g.fillText("YOU", rowL, 58);
+    g.textAlign = "right";
+    g.fillText(String(S.score), rowR, 58);
   }
 
   /* However well you do, the leaderboard has other ideas. */
@@ -344,8 +454,7 @@
     g.font = "7px " + C.pixelFont;
     g.fillText(funnyLine(S.score), W / 2, by + 58);
 
-    /* Leaderboard. Lil_Kunal always finishes exactly one ahead — beating you
-       without ever appearing to try is the entire joke. */
+    /* Leaderboard. Kunal always finishes exactly one ahead. */
     var rowL = bx + 18, rowR = bx + bw - 18, y1 = by + 92, y2 = by + 116;
 
     g.fillStyle = C.accent2;
@@ -354,7 +463,7 @@
     g.font = "8px " + C.pixelFont;
     g.textAlign = "left";
     g.fillStyle = C.ink;
-    g.fillText("🥱 LIL_KUNAL", rowL, y1);
+    g.fillText("KUNAL", rowL, y1);
     g.textAlign = "right";
     g.fillText(String(S.score + 1), rowR, y1);
 
@@ -426,15 +535,20 @@
       '<div class="kvgame__box">' +
         '<div class="kvgame__bar">' +
           '<span class="kvgame__title">Kunal’s little secret</span>' +
-          '<button type="button" class="kvgame__close" aria-label="Close game">✕</button>' +
+          '<div class="kvgame__actions">' +
+            '<button type="button" class="kvgame__mute" aria-label="Mute sound" aria-pressed="false">🔊</button>' +
+            '<button type="button" class="kvgame__close" aria-label="Close game">✕</button>' +
+          '</div>' +
         '</div>' +
         '<canvas class="kvgame__canvas" width="' + W + '" height="' + H + '" aria-label="Mini-game canvas"></canvas>' +
-        '<p class="kvgame__hint">Space / click to swing · Esc to close</p>' +
+        '<p class="kvgame__hint">Space / click to swing · Esc to close · Kunal is always +1</p>' +
       '</div>';
     document.body.appendChild(overlay);
 
     canvas = overlay.querySelector(".kvgame__canvas");
     ctx = canvas.getContext("2d");
+    muteBtn = overlay.querySelector(".kvgame__mute");
+    updateMuteBtn();
 
     /* Sharpen on high-density screens without changing world coordinates. */
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -443,6 +557,7 @@
     ctx.scale(dpr, dpr);
 
     overlay.querySelector(".kvgame__close").addEventListener("click", close);
+    if (muteBtn) muteBtn.addEventListener("click", function (e) { e.stopPropagation(); toggleMute(); });
     overlay.addEventListener("mousedown", function (e) {
       if (e.target === overlay) { close(); return; }
       if (e.target === canvas) { e.preventDefault(); flap(); }
@@ -471,6 +586,8 @@
     document.body.style.overflow = "hidden";
     reset();
     readTheme();
+    updateMuteBtn();
+    getAudio();
     start();
     var c = overlay.querySelector(".kvgame__close");
     if (c) c.focus();
@@ -509,6 +626,8 @@
     theme: function () { return C; },
     state: function () { return S; },
     reset: reset,
+    toggleMute: toggleMute,
+    isMuted: function () { return muted; },
     consts: { W: W, H: H, GROUND: GROUND, PIPE_W: PIPE_W, PIPE_GAP: PIPE_GAP, PLAYER_X: PLAYER_X, PLAYER_R: PLAYER_R }
   };
 })();
