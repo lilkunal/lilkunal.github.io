@@ -3,153 +3,377 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kunal Varshney — Hire Me (Web Designer)</title>
-<meta name="description" content="One-page overview — web designer, AI-assisted builds, three live projects. Remote · India.">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<title>Kunal Varshney — Résumé</title>
+<meta name="robots" content="noindex">
 <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
-  --ink: #0f172a;
-  --muted: #475569;
-  --accent: #2563eb;
-  --border: #e2e8f0;
-  --bg: #fff;
+  --ink: #111;
+  --muted: #333;
+  --rule: #ccc;
 }
-* { box-sizing: border-box; margin: 0; }
+
+html { font-size: 10pt; }
+
 body {
-  font-family: "DM Sans", system-ui, sans-serif;
-  font-size: 10.5pt;
-  line-height: 1.45;
+  font-family: "Segoe UI", Calibri, Arial, sans-serif;
   color: var(--ink);
-  background: var(--bg);
-  max-width: 8.5in;
-  margin: 0 auto;
-  padding: 0.55in 0.6in;
+  background: #e8e8e8;
+  line-height: 1.35;
 }
-h1, h2, h3 { font-family: "Space Grotesk", sans-serif; font-weight: 700; line-height: 1.15; }
-h1 { font-size: 22pt; letter-spacing: -0.02em; }
-.tagline { font-size: 11pt; color: var(--muted); margin-top: 0.25rem; max-width: 36rem; }
-.header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; border-bottom: 2px solid var(--ink); padding-bottom: 0.65rem; margin-bottom: 0.75rem; }
-.contact { text-align: right; font-size: 9pt; line-height: 1.5; }
-.contact a { color: var(--accent); text-decoration: none; }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem 1.25rem; margin-bottom: 0.85rem; }
-section { margin-bottom: 0.75rem; }
-section h2 { font-size: 9pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.35rem; }
-.summary p { max-width: 42rem; }
-.workflow { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 0.55rem 0.65rem; }
-.workflow ol { padding-left: 1.1rem; margin: 0; }
-.workflow li { margin: 0.15rem 0; }
-.skills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-.skills span { font-size: 8.5pt; padding: 0.15rem 0.45rem; border: 1px solid var(--border); border-radius: 999px; background: #fff; }
-.project { border-top: 1px solid var(--border); padding-top: 0.5rem; margin-top: 0.5rem; }
-.project:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
-.project h3 { font-size: 11pt; margin-bottom: 0.1rem; }
-.project .meta { font-size: 9pt; color: var(--accent); margin-bottom: 0.2rem; }
-.project p { font-size: 9.5pt; color: var(--muted); }
-.footer-note { margin-top: 0.65rem; padding-top: 0.5rem; border-top: 1px solid var(--border); font-size: 8.5pt; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
-.print-hint { font-size: 8.5pt; color: var(--muted); margin-bottom: 0.75rem; }
+
+/* —— Screen toolbar only —— */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  background: #1e293b;
+  color: #fff;
+  font-size: 0.85rem;
+}
+.toolbar button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem 1rem;
+  background: #2563eb;
+  color: #fff;
+}
+.toolbar button:hover { background: #1d4ed8; }
+.toolbar span { align-self: center; opacity: 0.85; }
+
+/* —— A4 pages —— */
+.sheet {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 1rem auto;
+  padding: 14mm 16mm;
+  background: #fff;
+  box-shadow: 0 2px 24px rgba(0,0,0,.12);
+}
+.sheet + .sheet { margin-top: 0; }
+
+.name {
+  font-size: 20pt;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.title {
+  font-size: 11pt;
+  font-weight: 600;
+  margin-top: 0.15rem;
+  color: var(--muted);
+}
+.contact-line {
+  font-size: 9pt;
+  margin-top: 0.45rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.head-rule {
+  border: none;
+  border-top: 1.5px solid var(--ink);
+  margin: 0.55rem 0 0.65rem;
+}
+
+section { margin-bottom: 0.65rem; }
+section:last-child { margin-bottom: 0; }
+
+h2 {
+  font-size: 9.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.15rem;
+  margin-bottom: 0.35rem;
+}
+
+p, li { font-size: 9.5pt; }
+.summary p { text-align: justify; }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.15rem 1rem;
+  font-size: 9pt;
+}
+.skills-grid dt { font-weight: 600; }
+.skills-grid dd { color: var(--muted); margin-bottom: 0.2rem; }
+
+.job { margin-bottom: 0.45rem; }
+.job:last-child { margin-bottom: 0; }
+.job-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.job-role { font-weight: 700; font-size: 10pt; }
+.job-date { font-size: 9pt; color: var(--muted); white-space: nowrap; }
+.job-org { font-size: 9pt; font-style: italic; color: var(--muted); margin-bottom: 0.12rem; }
+.job ul {
+  padding-left: 1.1rem;
+  margin-top: 0.1rem;
+}
+.job li { margin-bottom: 0.08rem; }
+
+.project { margin-bottom: 0.35rem; }
+.project-name { font-weight: 700; font-size: 9.5pt; }
+.project-meta { font-size: 9pt; color: var(--muted); }
+.project p { font-size: 9pt; color: var(--muted); margin-top: 0.05rem; }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1.25rem;
+}
+
+.edu-item { margin-bottom: 0.3rem; }
+.edu-item strong { font-size: 9.5pt; }
+.edu-item span { font-size: 9pt; color: var(--muted); display: block; }
+
+.certs { font-size: 9pt; color: var(--muted); }
+.certs li { margin-bottom: 0.1rem; list-style: none; padding-left: 0; }
+.certs li::before { content: "• "; }
+
+.achievements ul {
+  padding-left: 1.1rem;
+  font-size: 9pt;
+}
+.achievements li { margin-bottom: 0.08rem; }
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
 @media print {
-  body { padding: 0.45in 0.5in; }
-  .print-hint, .no-print { display: none !important; }
-  a { color: var(--ink); }
+  html { font-size: 10pt; }
+  body { background: #fff; }
+  .toolbar { display: none !important; }
+  .sheet {
+    width: 100%;
+    min-height: auto;
+    margin: 0;
+    padding: 14mm 16mm;
+    box-shadow: none;
+    page-break-after: always;
+  }
+  .sheet:last-of-type { page-break-after: auto; }
+  a { color: inherit; text-decoration: none; }
 }
+
 @media screen {
-  body { box-shadow: 0 8px 40px rgba(15,23,42,.08); margin: 1.5rem auto; }
+  .pages { padding-bottom: 2rem; }
 }
 </style>
 </head>
 <body>
-<p class="print-hint no-print">Print or Save as PDF: <kbd>Ctrl+P</kbd> → Destination: Save as PDF · Margins: Default · Background graphics: on</p>
 
-<header class="header">
-  <div>
-    <h1>Kunal Varshney</h1>
-    <p class="tagline">Web Designer · AI-Assisted Builds · Remote · Open to hire</p>
-  </div>
-  <div class="contact">
-    <div>kunalvrshn@gmail.com</div>
-    <div>+91 70176 62533</div>
-    <div><a href="https://lilkunal.github.io/">lilkunal.github.io</a></div>
-    <div><a href="https://linkedin.com/in/kunalvrshn/">linkedin.com/in/kunalvrshn</a></div>
-    <div><a href="https://github.com/lilkunal">github.com/lilkunal</a></div>
-  </div>
-</header>
-
-<div class="grid-2">
-  <section class="summary">
-    <h2>Summary</h2>
-    <p>I design and ship mobile-first business websites using an <strong>AI-assisted workflow</strong> (Claude, Cursor) — faster delivery without skipping QA or post-launch support. Live proof: 200+ product catalogue at Padma Lights plus client sites below. Four years technical support before design.</p>
-  </section>
-  <section class="workflow">
-    <h2>How I build</h2>
-    <ol>
-      <li>Scope &amp; price in writing</li>
-      <li>Design direction + copy (mine)</li>
-      <li>Build with Claude &amp; Cursor</li>
-      <li>Review, mobile QA, launch</li>
-      <li>Stay reachable after go-live</li>
-    </ol>
-  </section>
+<div class="toolbar no-print">
+  <span>2-page A4 résumé — ready to save as PDF</span>
+  <button type="button" id="btn-print">Download PDF</button>
 </div>
 
-<section>
-  <h2>Skills</h2>
-  <div class="skills">
-    <span>HTML &amp; CSS</span>
-    <span>JavaScript</span>
-    <span>Responsive UI</span>
-    <span>Landing pages</span>
-    <span>SEO basics</span>
-    <span>Photoshop</span>
-    <span>Git / GitHub Pages</span>
-    <span>AI-assisted dev</span>
-    <span>Claude</span>
-    <span>Cursor</span>
-    <span>Technical support</span>
-    <span>Client communication</span>
+<div class="pages">
+
+<!-- ========== PAGE 1 ========== -->
+<div class="sheet" id="page-1">
+
+  <header>
+    <h1 class="name">Kunal Varshney</h1>
+    <p class="title">Web Designer · AI-Assisted Development · Remote</p>
+    <p class="contact-line">
+      kunalvrshn@gmail.com · +91 70176 62533 · India<br>
+      lilkunal.github.io · linkedin.com/in/kunalvrshn · github.com/lilkunal
+    </p>
+    <hr class="head-rule">
+  </header>
+
+  <section class="summary">
+    <h2>Professional Summary</h2>
+    <p>Web designer who builds and launches mobile-first business websites using an AI-assisted workflow (Claude, Cursor). Owns design direction, copy, mobile QA, accessibility checks, and post-launch support. Since 2025, leads marketing and online operations for Padma Enterprises (200+ product catalogue, export orders). Four years of technical support experience before design — reliable after go-live.</p>
+  </section>
+
+  <section>
+    <h2>Core Skills</h2>
+    <dl class="skills-grid">
+      <dt>Web &amp; design</dt>
+      <dd>HTML, CSS, JavaScript, responsive UI, landing pages, SEO basics, Photoshop, Git, GitHub Pages</dd>
+      <dt>AI-assisted build</dt>
+      <dd>Claude, Cursor — faster delivery with human review before launch</dd>
+      <dt>Marketing &amp; ops</dt>
+      <dd>Digital marketing, catalogue management, Excel, client communication</dd>
+      <dt>Support &amp; systems</dt>
+      <dd>PBX, remote troubleshooting, ticketing, CRM, Oracle WebLogic, Jenkins, log analysis</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Professional Experience</h2>
+
+    <article class="job">
+      <div class="job-head">
+        <span class="job-role">Freelance Web Designer</span>
+        <span class="job-date">Jan 2025 – Present</span>
+      </div>
+      <p class="job-org">Independent · Remote · JAI Home Care &amp; small-business clients</p>
+      <ul>
+        <li>Design and build marketing sites and landing pages for small businesses.</li>
+        <li>AI-assisted workflow: Claude and Cursor for layout and iteration; personally review code, copy, and mobile behaviour before launch.</li>
+        <li>Recent client: JAI Home Care — home-care services landing page.</li>
+        <li>Scope, price, and timeline agreed in writing; ongoing support after go-live.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <span class="job-role">Marketing &amp; Online Specialist</span>
+        <span class="job-date">Jan 2025 – Present</span>
+      </div>
+      <p class="job-org">Padma Enterprises — Padma Lights · Remote / India</p>
+      <ul>
+        <li>Lead website, digital marketing, and full online presence for cast-aluminium outdoor lighting.</li>
+        <li>Manage 200+ model catalogue, trade pricing, and international orders in 8 currencies.</li>
+        <li>Nine years growing the business online before it became my full-time role.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <span class="job-role">Technical Support Advisor</span>
+        <span class="job-date">Aug 2024 – Dec 2024</span>
+      </div>
+      <p class="job-org">Teleperformance</p>
+      <ul>
+        <li>Diagnosed and resolved technical issues; remote troubleshooting and ticketing systems.</li>
+        <li>Worked with PBX environments in a fast-paced support setting.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <span class="job-role">Customer Support Executive</span>
+        <span class="job-date">Oct 2023 – Jan 2024</span>
+      </div>
+      <p class="job-org">Webhelp Pvt. Ltd.</p>
+      <ul>
+        <li>Chat and email support; CRM records; cross-team escalation of complex cases.</li>
+      </ul>
+    </article>
+
+  </section>
+
+</div>
+
+<!-- ========== PAGE 2 ========== -->
+<div class="sheet" id="page-2">
+
+  <section>
+    <h2>Professional Experience (continued)</h2>
+
+    <article class="job">
+      <div class="job-head">
+        <span class="job-role">Content Moderator</span>
+        <span class="job-date">Oct 2021 – Apr 2023</span>
+      </div>
+      <p class="job-org">Concentrix Daksh Pvt. Ltd.</p>
+      <ul>
+        <li>Verified content for Google platforms including YouTube Kids; team reporting and coordination.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <span class="job-role">Technical Support Trainee</span>
+        <span class="job-date">Feb 2021 – Jun 2021</span>
+      </div>
+      <p class="job-org">Flex Pvt. Ltd.</p>
+      <ul>
+        <li>Oracle WebLogic 11g and Jenkins monitoring; log analysis and internal ticket reporting.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <span class="job-role">Intern</span>
+        <span class="job-date">Jun 2019 – Aug 2019</span>
+      </div>
+      <p class="job-org">Parag Dairy · UP Rajya Vidyut Utpadan Nigam Ltd.</p>
+      <ul>
+        <li>Quality operations and project progress reporting at industrial sites.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section>
+    <h2>Selected Projects</h2>
+    <article class="project">
+      <p class="project-name">Padma Enterprises — Padma Lights</p>
+      <p class="project-meta">padmalights.com · Marketing &amp; online operations · Ongoing</p>
+      <p>200+ product catalogue, trade pricing, export-facing website and digital marketing for outdoor lighting manufacturer.</p>
+    </article>
+    <article class="project">
+      <p class="project-name">JAI Home Care Services</p>
+      <p class="project-meta">Design &amp; build · AI-assisted · 2025</p>
+      <p>Home-care landing page — services, contact, mobile-first layout for local enquiries.</p>
+    </article>
+    <article class="project">
+      <p class="project-name">Personal Portfolio</p>
+      <p class="project-meta">lilkunal.github.io · Design &amp; build · AI-assisted · 2025</p>
+      <p>Portfolio site with project showcase and professional background — built with Claude and Cursor.</p>
+    </article>
+  </section>
+
+  <div class="two-col">
+    <section>
+      <h2>Education</h2>
+      <div class="edu-item">
+        <strong>B.Tech in Computer Science</strong>
+        <span>Aligarh College of Engineering &amp; Technology · 2020</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Certifications</h2>
+      <ul class="certs">
+        <li>Google IT Support Professional Certificate</li>
+        <li>Google Digital Garage — Fundamentals of Digital Marketing</li>
+        <li>Introduction to Data Analysis Using Microsoft Excel (Coursera)</li>
+        <li>ChatGPT for Beginners (Great Learning Academy)</li>
+      </ul>
+    </section>
   </div>
-</section>
 
-<section>
-  <h2>Selected projects</h2>
+  <section class="achievements">
+    <h2>Achievements</h2>
+    <ul>
+      <li>1st Prize — Computer Science Quiz, Vivekananda College of Technology &amp; Management</li>
+      <li>2nd Prize — Debate Competition, Varshney College</li>
+      <li>Workshops: Networking (Aptron), Blockchain &amp; ML (Training Basket)</li>
+    </ul>
+  </section>
 
-  <article class="project">
-    <h3>Padma Enterprises — Padma Lights</h3>
-    <p class="meta">padmalights.com · Marketing &amp; online · Ongoing</p>
-    <p>Lead website and digital operations for cast-aluminium outdoor lighting — 200+ model catalogue, trade pricing, export orders in 8 currencies. Nine years online before it became my job title.</p>
-  </article>
+</div>
 
-  <article class="project">
-    <h3>JAI Home Care Services</h3>
-    <p class="meta">jaihomecareservice-max.github.io · Design &amp; build · AI-assisted · 2025</p>
-    <p>Home-care landing page — services, contact, phone-friendly layout for local enquiries.</p>
-  </article>
+</div>
 
-  <article class="project">
-    <h3>This portfolio</h3>
-    <p class="meta">lilkunal.github.io · Design &amp; build · AI-assisted · 2025</p>
-    <p>Personal portfolio — hero, project showcase, résumé, hidden game. Built with Claude &amp; Cursor; design and copy are mine.</p>
-  </article>
-</section>
-
-<section>
-  <h2>Experience snapshot</h2>
-  <p><strong>Freelance Web Designer</strong> · Jan 2025 – Present · JAI Home Care &amp; small-business clients<br>
-  <strong>Marketing &amp; Online Specialist</strong> · Padma Enterprises · Jan 2025 – Present<br>
-  <strong>Technical Support</strong> · Teleperformance, Webhelp, Concentrix, Flex · 2021 – 2024</p>
-</section>
-
-<section>
-  <h2>Education &amp; certs</h2>
-  <p>B.Tech in Computer Science · Aligarh College of Engineering &amp; Technology · 2020<br>
-  Google IT Support Professional · Google Digital Garage (Marketing) · ChatGPT for Beginners</p>
-</section>
-
-<footer class="footer-note">
-  <span>Remote · India · English preferred · Available for web design roles</span>
-  <span>Full résumé: lilkunal.github.io/resume/</span>
-</footer>
+<script>
+document.getElementById("btn-print").addEventListener("click", function () {
+  window.print();
+});
+if (new URLSearchParams(location.search).has("download")) {
+  window.addEventListener("load", function () { setTimeout(function () { window.print(); }, 400); });
+}
+</script>
 </body>
 </html>
