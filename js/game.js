@@ -415,7 +415,7 @@
 
     g.textAlign = "left";
     g.fillStyle = C.ink;
-    g.fillText("KUNAL", rowL, 40);
+    g.fillText("Kunal", rowL, 40);
     g.textAlign = "right";
     g.fillText(String(kunalScore), rowR, 40);
 
