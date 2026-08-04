@@ -15,7 +15,7 @@
   --page-margin: 10mm;
 }
 
-html { font-size: 11pt; }
+html { font-size: 11.5pt; }
 
 body {
   font-family: Calibri, "Segoe UI", Arial, sans-serif;
@@ -51,13 +51,10 @@ body {
 
 .sheet {
   width: 210mm;
-  min-height: 297mm;
   margin: 12px auto;
   padding: var(--page-margin);
   background: #fff;
   box-shadow: 0 2px 20px rgba(0,0,0,.15);
-  display: flex;
-  flex-direction: column;
 }
 
 .sheet--2 { margin-top: 0; }
@@ -73,7 +70,7 @@ body {
 
 .doc-header { flex-shrink: 0; margin-bottom: 0.45rem; }
 .name {
-  font-size: 24pt;
+  font-size: 26pt;
   font-weight: 700;
   color: var(--ink);
   letter-spacing: -0.01em;
@@ -86,7 +83,7 @@ body {
   color: var(--muted);
 }
 .contact {
-  font-size: 10.5pt;
+  font-size: 11pt;
   margin-top: 0.4rem;
   color: var(--muted);
   line-height: 1.55;
@@ -97,11 +94,11 @@ body {
   margin: 0.5rem 0 0.55rem;
 }
 
-.doc-body { flex: 1; display: flex; flex-direction: column; gap: 0.48rem; }
+.doc-body { display: flex; flex-direction: column; gap: 0.52rem; }
 section { flex-shrink: 0; }
 
 h2 {
-  font-size: 11pt;
+  font-size: 12pt;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -111,13 +108,13 @@ h2 {
   margin-bottom: 0.32rem;
 }
 
-p, li { font-size: 10.5pt; }
+p, li { font-size: 11.5pt; }
 
 .skill-row {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 0.2rem;
-  font-size: 10.5pt;
+  margin-bottom: 0.22rem;
+  font-size: 11.5pt;
   line-height: 1.38;
 }
 .skill-row dt {
@@ -128,7 +125,7 @@ p, li { font-size: 10.5pt; }
 .skill-row dd { flex: 1; color: var(--body); }
 
 .job {
-  margin-bottom: 0.38rem;
+  margin-bottom: 0.42rem;
   break-inside: avoid;
   page-break-inside: avoid;
 }
@@ -140,28 +137,28 @@ p, li { font-size: 10.5pt; }
   align-items: baseline;
   gap: 0.75rem;
 }
-.job-title { font-size: 11pt; font-weight: 700; color: var(--ink); }
-.job-when { font-size: 10.5pt; font-weight: 600; color: var(--muted); white-space: nowrap; }
-.job-company { font-size: 10.5pt; font-style: italic; color: var(--muted); margin: 0.04rem 0 0.1rem; }
-.job ul { padding-left: 1.15rem; margin-top: 0.06rem; }
-.job li { margin-bottom: 0.1rem; line-height: 1.4; }
+.job-title { font-size: 12pt; font-weight: 700; color: var(--ink); }
+.job-when { font-size: 11pt; font-weight: 600; color: var(--muted); white-space: nowrap; }
+.job-company { font-size: 11pt; font-style: italic; color: var(--muted); margin: 0.04rem 0 0.12rem; }
+.job ul { padding-left: 1.15rem; margin-top: 0.08rem; }
+.job li { margin-bottom: 0.12rem; line-height: 1.42; }
 
 .project { margin-bottom: 0.35rem; break-inside: avoid; page-break-inside: avoid; }
-.project-title { font-size: 10.5pt; font-weight: 700; color: var(--ink); }
-.project-sub { font-size: 10pt; font-style: italic; color: var(--muted); }
-.project-desc { font-size: 10.5pt; margin-top: 0.05rem; line-height: 1.4; }
+.project-title { font-size: 11.5pt; font-weight: 700; color: var(--ink); }
+.project-sub { font-size: 11pt; font-style: italic; color: var(--muted); }
+.project-desc { font-size: 11.5pt; margin-top: 0.05rem; line-height: 1.42; }
 
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.85rem 1.25rem;
 }
-.edu-block strong { display: block; font-size: 10.5pt; font-weight: 700; }
-.edu-block span { font-size: 10.5pt; color: var(--muted); }
+.edu-block strong { display: block; font-size: 11.5pt; font-weight: 700; }
+.edu-block span { font-size: 11.5pt; color: var(--muted); }
 
 .cert-list { list-style: none; padding: 0; }
 .cert-list li {
-  font-size: 10.5pt;
+  font-size: 11.5pt;
   padding-left: 0.85rem;
   position: relative;
   margin-bottom: 0.12rem;
@@ -175,21 +172,18 @@ p, li { font-size: 10.5pt; }
 @page { size: A4 portrait; margin: 10mm; }
 
 @media print {
-  html { font-size: 11pt; }
+  html { font-size: 11.5pt; }
   body { background: #fff; margin: 0; }
   .toolbar { display: none !important; }
   .pages { padding: 0; }
   .sheet {
     width: auto;
-    min-height: auto;
     margin: 0;
     padding: 0;
     box-shadow: none;
+    display: block;
   }
-  .sheet--1 {
-    break-after: page;
-    page-break-after: always;
-  }
+  .doc-body { display: block; }
   .sheet--2 {
     break-before: page;
     page-break-before: always;
@@ -260,6 +254,7 @@ p, li { font-size: 10.5pt; }
         <ul>
           <li>Lead website, digital marketing, and online presence for cast-aluminium outdoor lighting manufacturer.</li>
           <li>Manage 200+ model catalogue, trade pricing, and international orders in eight currencies.</li>
+          <li>Coordinate product photography and catalogue updates with manufacturing and export teams.</li>
           <li>Grew the business online for nine years before assuming this role full-time in January 2025.</li>
         </ul>
       </article>
@@ -273,6 +268,7 @@ p, li { font-size: 10.5pt; }
         <ul>
           <li>Diagnosed and resolved technical issues; remote troubleshooting and ticketing in PBX environments.</li>
           <li>Maintained service quality in a high-volume support setting with changing tools and procedures.</li>
+          <li>Documented resolutions and follow-ups in CRM for handoffs and audit trails.</li>
         </ul>
       </article>
 
