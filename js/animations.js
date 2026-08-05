@@ -16,12 +16,51 @@
     return Array.prototype.slice.call((root || document).querySelectorAll(sel));
   }
 
+  function splitIntoChars(el, charClass) {
+    if (!el || el.dataset.splitDone) return;
+    var text = el.textContent;
+    if (!text || !text.trim()) return;
+    el.dataset.splitDone = "1";
+    el.textContent = "";
+    el.setAttribute("aria-label", text);
+    for (var i = 0; i < text.length; i++) {
+      var ch = text.charAt(i);
+      var span = document.createElement("span");
+      span.className = charClass;
+      span.setAttribute("aria-hidden", "true");
+      span.textContent = ch === " " ? "\u00a0" : ch;
+      if (ch === " ") span.style.minWidth = "0.28em";
+      el.appendChild(span);
+    }
+  }
+
+  function revealDeckTitle(slide, staggerMs) {
+    if (!slide) return;
+    var title = slide.querySelector(".deck__title");
+    if (!title) return;
+    if (!title.dataset.splitDone) splitIntoChars(title, "deck__char");
+    title.classList.add("is-chars-ready");
+    if (reduce || !A) return;
+    var chars = title.querySelectorAll(".deck__char");
+    if (!chars.length) return;
+    A.animate(chars, {
+      opacity: [0, 1],
+      y: ["0.85em", "0"],
+      filter: ["blur(4px)", "blur(0px)"],
+      duration: 620,
+      ease: "out(4)",
+      delay: A.stagger(staggerMs || 22)
+    });
+  }
+
   /* The .js class gates the pre-animation hidden state in CSS. If we bail out
      below, it has to come off or hero text would stay invisible. */
   function revealHeroImmediately() {
-    $$(".deck__slide.is-active, .deck__title, .sticker").forEach(function (el) {
+    $$(".hero-center, .deck__slide.is-active, .deck__title, .sticker").forEach(function (el) {
       el.style.opacity = "1";
     });
+    var curtain = document.querySelector(".hero-curtain");
+    if (curtain) curtain.style.display = "none";
   }
 
   if (reduce || (!A && !M)) {
@@ -33,6 +72,10 @@
   setTimeout(function () {
     var active = document.querySelector(".deck__slide.is-active");
     if (active && parseFloat(getComputedStyle(active).opacity) < 0.9) active.style.opacity = "1";
+    var heroCenter = document.querySelector(".hero-center");
+    if (heroCenter && parseFloat(getComputedStyle(heroCenter).opacity) < 0.9) {
+      heroCenter.style.opacity = "1";
+    }
   }, 2200);
 
   var EASE = [0.16, 1, 0.3, 1];
@@ -55,24 +98,58 @@
      --------------------------------------------------------------------- */
   if (A) {
     var tl = A.createTimeline({ defaults: { ease: "out(3)" } });
+    tl.add(".hero-curtain", {
+      scaleY: [1, 0],
+      opacity: [1, 0],
+      duration: 1100,
+      ease: "inOut(3)"
+    }, 350);
+    tl.call(function () {
+      var curtain = document.querySelector(".hero-curtain");
+      if (curtain) curtain.style.display = "none";
+    }, 1500);
     tl.add(".sticker", {
       opacity: [0, 1],
       scale: [0.85, 1],
       delay: A.stagger(40, { from: "random" }),
       duration: 680
-    }, 0);
+    }, 420);
     tl.add(".hero-float--headphones", {
       opacity: [0, 0.22],
       scale: [0.92, 1],
       duration: 900
-    }, 0);
+    }, 420);
     tl.add(".hero-portrait", {
       opacity: [0, 1],
-      scale: [0.9, 1],
-      y: [16, 0],
-      duration: 640
-    }, 80);
-    tl.add(".hero-center", { opacity: [0, 1], duration: 720 }, 160);
+      scale: [0.88, 1],
+      y: [24, 0],
+      filter: ["blur(8px)", "blur(0px)"],
+      duration: 780
+    }, 520);
+    tl.add(".hero-center", { opacity: [0, 1], duration: 720 }, 640);
+    tl.add(".deck__slide.is-active", {
+      scale: [0.94, 1],
+      y: [18, 0],
+      filter: ["blur(6px)", "blur(0px)"],
+      duration: 820,
+      ease: "out(4)"
+    }, 720);
+    tl.call(function () {
+      var active = document.querySelector(".deck__slide.is-active");
+      revealDeckTitle(active, 24);
+      var label = active && active.querySelector(".deck__label");
+      var kicker = active && active.querySelector(".deck__kicker");
+      var extras = [label, kicker].filter(Boolean);
+      if (extras.length && A) {
+        A.animate(extras, {
+          opacity: [0, 1],
+          y: [14, 0],
+          duration: 560,
+          ease: "out(4)",
+          delay: A.stagger(80)
+        });
+      }
+    }, 980);
   }
 
   /* ---------------------------------------------------------------------
@@ -84,6 +161,9 @@
     /* [selector, hidden-class, animated properties, stagger seconds] */
     var groups = [
       [".section__title", "anim-hide-up", { opacity: 1, y: 0 }, 0],
+      [".eyebrow", "anim-hide-up", { opacity: 1, y: 0 }, 0],
+      [".how-build__lede", "anim-hide-up", { opacity: 1, y: 0 }, 0],
+      [".how-build__list li", "anim-hide-left", { opacity: 1, x: 0 }, 0.06],
       [".fact", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.1],
       [".cv-carousel-wrap", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".cv-carousel__thumb", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.05],
@@ -127,12 +207,25 @@
             ease: EASE,
             delay: stagger ? M.stagger(stagger) : 0
           }).then(function () {
-            /* Drop the helper class and inline transforms so hover states and
-               the FAQ accordion's own grid animation aren't fighting leftovers. */
             siblings.forEach(function (el) {
               el.classList.remove(hideClass);
               el.style.transform = "";
               el.style.opacity = "";
+              if (el.classList.contains("section__title") && !el.dataset.splitDone) {
+                splitIntoChars(el, "title-char");
+                el.classList.add("is-revealed");
+                var chars = el.querySelectorAll(".title-char");
+                if (chars.length && M) {
+                  M.animate(chars, {
+                    clipPath: ["inset(0 0 100% 0)", "inset(0 0 0 0)"],
+                    y: ["0.6em", "0"]
+                  }, {
+                    duration: 0.55,
+                    ease: EASE,
+                    delay: M.stagger(0.018)
+                  });
+                }
+              }
             });
           });
           if (typeof stop === "function") stop();
@@ -182,6 +275,56 @@
         field.style.transform = "scale(" + (1 + progress * 0.04).toFixed(3) + ")";
       }, { target: hero, offset: ["start start", "end start"] });
     }
+
+    var portrait = document.querySelector(".hero-portrait");
+    if (portrait && hero) {
+      M.scroll(function (progress) {
+        var y = (progress * -36).toFixed(1);
+        var sc = (1 + progress * 0.03).toFixed(3);
+        portrait.style.transform = "translateY(" + y + "px) scale(" + sc + ")";
+      }, { target: hero, offset: ["start start", "end start"] });
+    }
+
+    var cvCarousel = document.querySelector("[data-cv-carousel]");
+    if (cvCarousel) {
+      $$(".cv-carousel__bg img", cvCarousel).forEach(function (img) {
+        M.scroll(function (progress) {
+          var sc = (1.06 + progress * 0.12).toFixed(3);
+          img.style.transform = "scale(" + sc + ")";
+        }, { target: cvCarousel, offset: ["start end", "end start"] });
+      });
+    }
+
+    var workFly = document.querySelector("[data-work-fly]");
+    if (workFly) {
+      $$(".work-fly__hero img", workFly).forEach(function (img) {
+        M.scroll(function (progress) {
+          var y = (progress * -12 - 6).toFixed(1);
+          img.style.transform = "translateY(" + y + "%) scale(1.06)";
+        }, { target: workFly, offset: ["start end", "end start"] });
+      });
+    }
+  }
+
+  /* Deck slide changes — re-run theatrical title split */
+  var deck = document.querySelector("[data-deck]");
+  if (deck && !reduce) {
+    deck.addEventListener("deck-change", function (e) {
+      if (!e.detail || !e.detail.slide) return;
+      revealDeckTitle(e.detail.slide, 18);
+      if (A) {
+        var bits = e.detail.slide.querySelectorAll(".deck__label, .deck__kicker, .deck__list li");
+        if (bits.length) {
+          A.animate(bits, {
+            opacity: [0, 1],
+            y: [12, 0],
+            duration: 520,
+            ease: "out(4)",
+            delay: A.stagger(55)
+          });
+        }
+      }
+    });
   }
 
   /* ---------------------------------------------------------------------

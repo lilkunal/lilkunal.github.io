@@ -391,16 +391,68 @@
 
 @media (max-width: 720px) {
   .cv-carousel__stage {
-    height: clamp(340px, 62vh, 460px);
+    height: clamp(320px, 58vh, 440px);
+    border-radius: var(--radius);
+  }
+
+  .cv-carousel__content {
+    padding: 1.15rem 1.1rem 1.25rem;
+  }
+
+  .cv-carousel__title {
+    font-size: clamp(1.25rem, 5.5vw, 1.65rem);
   }
 
   .cv-carousel__bar {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .cv-carousel__thumbs {
+    order: -1;
+    gap: 0.5rem;
+    padding-bottom: 0.25rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cv-carousel__thumb {
+    width: 3rem;
+    height: 3rem;
+    min-width: 48px;
+    min-height: 48px;
   }
 
   .cv-carousel__nav {
     margin-left: 0;
+    justify-content: center;
+  }
+
+  .cv-carousel__btn {
+    width: 3rem;
+    height: 3rem;
+    min-width: 48px;
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+
+  .cv-carousel__vault-actions {
+    flex-direction: column;
+  }
+
+  .cv-carousel__vault-actions .btn {
+    width: 100%;
+    min-height: 48px;
+    justify-content: center;
+  }
+
+  .cv-carousel__links {
+    flex-direction: column;
+  }
+
+  .cv-carousel__links .btn {
+    width: 100%;
+    min-height: 48px;
     justify-content: center;
   }
 

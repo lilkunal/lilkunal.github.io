@@ -42,6 +42,11 @@
       if (navToggleInput) navToggleInput.checked = false;
     });
   });
+  if (toggle && navToggleInput) {
+    toggle.addEventListener("click", function () {
+      navToggleInput.checked = false;
+    });
+  }
 
   /* Identity ticker */
   var tickerWords = ["web designer", "football regular", "cinephile", "Padma Enterprises' online guy", "technical support veteran", "old soul"];

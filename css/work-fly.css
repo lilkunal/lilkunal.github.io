@@ -113,6 +113,9 @@
   justify-content: flex-end;
   padding: clamp(1.5rem, 4vw, 2.75rem);
   max-width: 36rem;
+  border-left: 3px solid var(--accent);
+  padding-left: clamp(1.35rem, 3.5vw, 2rem);
+  margin-left: clamp(0.35rem, 1.5vw, 0.75rem);
 }
 
 .work-fly__tag {
@@ -251,7 +254,9 @@
 .work-fly__thumb.is-active {
   opacity: 1;
   border-color: var(--accent);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent),
+    0 0 20px color-mix(in srgb, var(--accent) 25%, transparent);
 }
 
 .work-fly__thumb-label {
@@ -269,18 +274,48 @@
 }
 
 @media (max-width: 640px) {
+  .work-fly__stage {
+    height: clamp(360px, 62vh, 520px);
+    border-radius: var(--radius);
+  }
+
+  .work-fly__content {
+    max-width: none;
+    padding: 1.15rem 1.1rem 1.35rem;
+  }
+
+  .work-fly__title {
+    font-size: clamp(1.45rem, 6vw, 2rem);
+  }
+
   .work-fly__bar {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.75rem;
   }
 
   .work-fly__thumbs {
     justify-content: flex-start;
     order: -1;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .work-fly__content {
-    max-width: none;
+  .work-fly__thumb {
+    width: 4.5rem;
+    height: 3.25rem;
+    min-height: 48px;
+  }
+
+  .work-fly__nav {
+    justify-content: center;
+  }
+
+  .work-fly__btn {
+    width: 3rem;
+    height: 3rem;
+    min-width: 48px;
+    min-height: 48px;
+    touch-action: manipulation;
   }
 }
 

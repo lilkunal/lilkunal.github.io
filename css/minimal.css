@@ -35,7 +35,7 @@
   max-width: 42rem;
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--text-muted, #64748b);
+  color: var(--ink-soft);
   margin-bottom: 1rem;
 }
 

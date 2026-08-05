@@ -10,20 +10,90 @@
   var nextBtn = document.querySelector("[data-deck-next]");
   var countEl = document.querySelector("[data-deck-count]");
   var idx = 0;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var A = window.anime && window.anime.animate ? window.anime : null;
+  var animating = false;
 
   function show(next) {
-    idx = Math.max(0, Math.min(slides.length - 1, next));
-    slides.forEach(function (slide, n) {
-      var active = n === idx;
-      slide.classList.toggle("is-active", active);
-      slide.setAttribute("aria-hidden", active ? "false" : "true");
+    var target = Math.max(0, Math.min(slides.length - 1, next));
+    if (target === idx || animating) return;
+
+    var outgoing = slides[idx];
+    var incoming = slides[target];
+    var dir = target > idx ? 1 : -1;
+
+    function finish() {
+      outgoing.classList.remove("is-active", "is-leaving");
+      outgoing.setAttribute("aria-hidden", "true");
+      outgoing.style.transform = "";
+      outgoing.style.opacity = "";
+      outgoing.style.filter = "";
+
+      incoming.classList.add("is-active");
+      incoming.classList.remove("is-entering");
+      incoming.setAttribute("aria-hidden", "false");
+      incoming.style.transform = "";
+      incoming.style.opacity = "";
+      incoming.style.filter = "";
+
+      idx = target;
+      if (countEl) countEl.textContent = (idx + 1) + " / " + slides.length;
+      if (prevBtn) prevBtn.disabled = idx === 0;
+      if (nextBtn) nextBtn.disabled = idx === slides.length - 1;
+
+      deck.dispatchEvent(new CustomEvent("deck-change", {
+        detail: { index: idx, slide: incoming, direction: dir }
+      }));
+      animating = false;
+    }
+
+    if (reduce || !A) {
+      slides.forEach(function (slide, n) {
+        var active = n === target;
+        slide.classList.toggle("is-active", active);
+        slide.setAttribute("aria-hidden", active ? "false" : "true");
+      });
+      idx = target;
+      if (countEl) countEl.textContent = (idx + 1) + " / " + slides.length;
+      if (prevBtn) prevBtn.disabled = idx === 0;
+      if (nextBtn) nextBtn.disabled = idx === slides.length - 1;
+      deck.dispatchEvent(new CustomEvent("deck-change", {
+        detail: { index: idx, slide: incoming, direction: dir }
+      }));
+      return;
+    }
+
+    animating = true;
+    outgoing.classList.add("is-leaving");
+    incoming.classList.add("is-entering");
+    incoming.classList.add("is-active");
+    incoming.setAttribute("aria-hidden", "false");
+
+    var outY = dir > 0 ? -14 : 14;
+    var inY = dir > 0 ? 18 : -18;
+
+    A.animate(outgoing, {
+      opacity: [1, 0],
+      y: [0, outY],
+      scale: [1, 0.96],
+      filter: ["blur(0px)", "blur(4px)"],
+      duration: 380,
+      ease: "in(3)"
     });
-    if (countEl) countEl.textContent = (idx + 1) + " / " + slides.length;
-    if (prevBtn) prevBtn.disabled = idx === 0;
-    if (nextBtn) nextBtn.disabled = idx === slides.length - 1;
-    deck.dispatchEvent(new CustomEvent("deck-change", {
-      detail: { index: idx, slide: slides[idx] }
-    }));
+
+    incoming.style.opacity = "0";
+    incoming.style.transform = "translateY(" + inY + "px) scale(0.96)";
+    incoming.style.filter = "blur(4px)";
+
+    A.animate(incoming, {
+      opacity: [0, 1],
+      y: [inY, 0],
+      scale: [0.96, 1],
+      filter: ["blur(4px)", "blur(0px)"],
+      duration: 520,
+      ease: "out(4)",
+      delay: 70
+    }).then(finish);
   }
 
   if (prevBtn) {
@@ -60,7 +130,6 @@
   /* Parallax on stickers + headphone bg — desktop only */
   var field = document.querySelector("[data-sticker-field]");
   var heroFloat = document.querySelector("[data-hero-float]");
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!reduce && window.matchMedia("(pointer: fine)").matches) {
     var stickers = field
       ? Array.prototype.slice.call(field.querySelectorAll(".sticker"))
@@ -93,5 +162,11 @@
     });
   }
 
-  show(0);
+  slides.forEach(function (slide, n) {
+    slide.classList.toggle("is-active", n === 0);
+    slide.setAttribute("aria-hidden", n === 0 ? "false" : "true");
+  });
+  if (countEl) countEl.textContent = "1 / " + slides.length;
+  if (prevBtn) prevBtn.disabled = true;
+  if (nextBtn) nextBtn.disabled = slides.length <= 1;
 })();

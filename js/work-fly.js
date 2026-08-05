@@ -36,12 +36,13 @@
     if (!A || reduce) return;
     var copy = slide.querySelector(".work-fly__content");
     if (!copy) return;
+    copy.style.setProperty("--panel-glow", "1");
     A.animate(copy.children, {
       opacity: [0, 1],
-      y: [20, 0],
-      duration: 640,
+      y: [24, 0],
+      duration: 680,
       ease: "out(4)",
-      delay: A.stagger(55)
+      delay: A.stagger(60)
     });
   }
 

@@ -2526,11 +2526,20 @@ a.work-tile:hover {
   .steps { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: 1fr; }
   .work-grid { grid-template-columns: 1fr; }
-  .fact-strip { grid-template-columns: 1fr; gap: 1.5rem; }
+  .fact-strip {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    text-align: center;
+  }
+  .fact__label { max-width: none; margin-inline: auto; }
   .value-pillars { grid-template-columns: 1fr; }
   .cv-skills,
   .cv-creds { grid-template-columns: 1fr; }
   .bg-tab { flex: 1 1 auto; text-align: center; }
+  .how-build__lede { font-size: 1rem; line-height: 1.6; }
+  .section { padding-inline: clamp(1rem, 4vw, 1.5rem); }
 }
 
 @media (max-width: 680px) {

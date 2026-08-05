@@ -193,6 +193,25 @@ body {
   background-image:
     linear-gradient(rgba(26, 24, 20, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(26, 24, 20, 0.04) 1px, transparent 1px);
+  color: var(--ink);
+}
+
+/* Below the dark hero, sections inherit light tokens — carousels keep cinematic overlays */
+:root[data-theme="light"] .section {
+  color: var(--ink);
+}
+
+:root[data-theme="light"] .cv-carousel__btn,
+:root[data-theme="light"] .work-fly__btn {
+  background: var(--surface-2);
+  color: var(--ink);
+  border-color: var(--border);
+}
+
+:root[data-theme="light"] .cv-carousel__btn:hover,
+:root[data-theme="light"] .work-fly__btn:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--paper);
 }
 
 @media (max-width: 720px) {
