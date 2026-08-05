@@ -2019,6 +2019,86 @@ a.work-tile:hover {
   color: var(--ink-faint);
 }
 
+/* ===== Instagram ===== */
+.ig-feed { margin-top: 3rem; }
+.ig-feed__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+.ig-feed__intro {
+  margin-top: 0.3rem;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--ink-faint);
+}
+.ig-feed__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1.1rem;
+  align-items: start;
+}
+/* Instagram's own embed sets inline width/margin on the blockquote it takes
+   over; without this it escapes the grid cell on narrow screens. */
+.ig-feed__grid .instagram-media {
+  min-width: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  border-radius: var(--radius-sm) !important;
+}
+.ig-feed__cta {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  color: var(--accent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.ig-feed__cta:hover { color: var(--accent-strong); border-color: var(--accent-strong); }
+
+/* Fallback shown until real post URLs are added — an intentional, on-brand
+   card rather than an empty gap, so the section is never half-built. */
+.ig-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  transition: transform 0.25s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.ig-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+.ig-card__glyph {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  color: var(--accent);
+}
+.ig-card__glyph svg { width: 19px; height: 19px; }
+.ig-card__body { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.ig-card__handle { font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink); }
+.ig-card__note { font-size: 0.76rem; color: var(--ink-faint); }
+.ig-card__go { margin-left: auto; flex: none; font-size: 0.76rem; color: var(--accent); }
+@media (max-width: 480px) {
+  .ig-card { flex-wrap: wrap; }
+  .ig-card__go { margin-left: 0; width: 100%; }
+}
+
+/* Deliberately a new class, not .social-float__label — minimal.css hides that
+   one as part of its strip-the-verbose-copy pass, and un-hiding it there
+   would undo that intent for everything else in the same rule. */
 .social-intro {
   margin-top: 2.25rem;
   font-size: 0.82rem;
