@@ -150,8 +150,7 @@
 }
 
 /* Cards & carousels — lifted product panels */
-.deck__slide.is-active,
-.cv-carousel__stage,
+.cv-scroll__pin,
 .work-fly__stage,
 .project-form,
 .contact-grid .contact-card {

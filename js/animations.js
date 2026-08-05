@@ -165,8 +165,7 @@
       [".how-build__lede", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".how-build__list li", "anim-hide-left", { opacity: 1, x: 0 }, 0.06],
       [".fact", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.1],
-      [".cv-carousel-wrap", "anim-hide-up", { opacity: 1, y: 0 }, 0],
-      [".cv-carousel__thumb", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.05],
+      [".cv-scroll", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".reels__card", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
       [".reels__lede", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".work-fly", "anim-hide-up", { opacity: 1, y: 0 }, 0],
@@ -285,13 +284,13 @@
       }, { target: hero, offset: ["start start", "end start"] });
     }
 
-    var cvCarousel = document.querySelector("[data-cv-carousel]");
-    if (cvCarousel) {
-      $$(".cv-carousel__bg img", cvCarousel).forEach(function (img) {
+    var cvScroll = document.querySelector("[data-cv-scroll]");
+    if (cvScroll) {
+      $$(".cv-scroll__visual img", cvScroll).forEach(function (img) {
         M.scroll(function (progress) {
-          var sc = (1.06 + progress * 0.12).toFixed(3);
+          var sc = (1 + progress * 0.08).toFixed(3);
           img.style.transform = "scale(" + sc + ")";
-        }, { target: cvCarousel, offset: ["start end", "end start"] });
+        }, { target: cvScroll, offset: ["start end", "end start"] });
       });
     }
 
@@ -338,7 +337,7 @@
         inline transform.
      --------------------------------------------------------------------- */
   if (M && M.animate) {
-    $$(".service-card, .work-fly__btn, .work-fly__thumb, .contact-card, .faq-item, .bg-tab, .value-pillar, .deck__btn, .cv-carousel__btn, .cv-carousel__thumb").forEach(function (el) {
+    $$(".service-card, .work-fly__btn, .work-fly__thumb, .contact-card, .faq-item, .bg-tab, .value-pillar, .deck__btn, .cv-scroll__rail-item").forEach(function (el) {
       el.addEventListener("pointerdown", function () {
         M.animate(el, { scale: 0.96 }, { type: "spring", stiffness: 420, damping: 22 });
       });

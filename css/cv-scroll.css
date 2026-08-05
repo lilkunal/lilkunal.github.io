@@ -1,0 +1,364 @@
+/* =============================================================================
+   Background — horizontal scroll-pinned timeline (Awwwards-style scrollytelling)
+   Vertical scroll drives sideways motion. Work section keeps the carousel pattern.
+   ============================================================================= */
+
+.cv-scroll {
+  --cv-panel-count: 7;
+  position: relative;
+  margin-top: 1.25rem;
+  margin-inline: calc(-1 * clamp(1.25rem, 4vw, 3rem));
+}
+
+.cv-scroll__teaser {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  margin: 0 clamp(1.25rem, 4vw, 3rem) 1rem;
+  max-width: 52ch;
+  line-height: 1.55;
+}
+
+.cv-scroll__teaser strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Tall scroll runway — height set in JS for accuracy */
+.cv-scroll__runway {
+  position: relative;
+}
+
+.cv-scroll__pin {
+  position: sticky;
+  top: calc(var(--nav-height) + 0.5rem);
+  height: calc(100svh - var(--nav-height) - 1rem);
+  max-height: 820px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: calc(var(--radius) + 4px);
+  margin-inline: clamp(1.25rem, 4vw, 3rem);
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 55%),
+    color-mix(in srgb, var(--paper) 96%, var(--accent) 4%);
+  box-shadow: 0 24px 80px color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+:root[data-theme="light"] .cv-scroll__pin {
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 55%),
+    #f0e8dc;
+}
+
+.cv-scroll__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.15rem 0.65rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.cv-scroll__hint {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.cv-scroll__hint em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.cv-scroll__progress {
+  flex: 1;
+  max-width: 12rem;
+  height: 3px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  overflow: hidden;
+}
+
+.cv-scroll__progress-bar {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transform-origin: 0 50%;
+  transition: width 0.08s linear;
+}
+
+.cv-scroll__counter {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.cv-scroll__viewport {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.cv-scroll__track {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(1rem, 3vw, 1.75rem);
+  height: 100%;
+  padding: clamp(0.85rem, 2vw, 1.25rem) clamp(1rem, 3vw, 1.5rem) clamp(1rem, 2.5vw, 1.35rem);
+  will-change: transform;
+}
+
+.cv-scroll__panel {
+  flex: 0 0 min(72vw, 420px);
+  display: flex;
+  min-height: 0;
+}
+
+.cv-scroll__panel-inner {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  transform: scale(0.94);
+  opacity: 0.55;
+  transition: transform 0.35s var(--ease), opacity 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.cv-scroll__panel.is-near .cv-scroll__panel-inner,
+.cv-scroll__panel.is-active .cv-scroll__panel-inner {
+  transform: scale(1);
+  opacity: 1;
+  box-shadow: 0 20px 50px color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.cv-scroll__panel.is-active .cv-scroll__panel-inner {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+
+.cv-scroll__visual {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.cv-scroll__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.cv-scroll__year {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
+.cv-scroll__copy {
+  padding: 1rem 1.1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cv-scroll__tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.cv-scroll__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.cv-scroll__sub,
+.cv-scroll__line {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.cv-scroll__line em {
+  font-style: italic;
+  color: var(--ink);
+}
+
+.cv-scroll__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cv-scroll__chips li {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.28rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  color: var(--ink-soft);
+}
+
+.cv-scroll__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.cv-scroll__actions .btn {
+  font-size: 0.78rem;
+  padding: 0.45rem 0.85rem;
+}
+
+.cv-scroll__rail {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0 1.15rem 0.85rem;
+  margin: 0;
+  list-style: none;
+  flex-shrink: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.cv-scroll__rail::-webkit-scrollbar {
+  display: none;
+}
+
+.cv-scroll__rail-item {
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  color: var(--ink-faint);
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.cv-scroll__rail-item.is-active {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.cv-scroll__footer {
+  margin: 2rem clamp(1.25rem, 4vw, 3rem) 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  max-width: 56rem;
+}
+
+.cv-scroll__footer p {
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  max-width: 48ch;
+}
+
+.cv-scroll__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+/* Mobile — native horizontal snap, no scroll pin */
+@media (max-width: 860px) {
+  .cv-scroll__runway {
+    height: auto !important;
+  }
+
+  .cv-scroll__pin {
+    position: relative;
+    top: auto;
+    height: auto;
+    max-height: none;
+  }
+
+  .cv-scroll__hint em {
+    display: none;
+  }
+
+  .cv-scroll__hint::after {
+    content: " · swipe the cards →";
+  }
+
+  .cv-scroll__viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cv-scroll__track {
+    transform: none !important;
+    width: max-content;
+  }
+
+  .cv-scroll__panel {
+    flex: 0 0 min(82vw, 340px);
+    scroll-snap-align: center;
+  }
+
+  .cv-scroll__panel-inner {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .cv-scroll__progress-bar {
+    width: 100% !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-scroll__panel-inner {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+
+  .cv-scroll__track {
+    transform: none !important;
+  }
+}

@@ -1,6 +1,68 @@
 /* =============================================================================
    Work fly carousel — full-bleed hero images + anime.js fly transitions
+   Showcase mode: cinematic dark stage (contrasts with cv-scroll timeline above)
    ============================================================================= */
+
+.work--showcase {
+  position: relative;
+  margin-inline: calc(-1 * clamp(1.25rem, 4vw, 3rem));
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+  padding-bottom: clamp(3rem, 8vw, 5rem);
+}
+
+.work--showcase::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 90% 10%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 55%),
+    linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--paper) 40%, #0a0a0c) 100%);
+  pointer-events: none;
+  border-radius: calc(var(--radius) + 8px);
+}
+
+.work__eyebrow {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.work__sub {
+  margin: 0.5rem 0 0;
+  max-width: 42ch;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.work--showcase .work-fly__stage {
+  border-radius: calc(var(--radius) + 10px);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 15%, var(--border)),
+    0 32px 90px rgba(0, 0, 0, 0.45);
+}
+
+.work--showcase .work-fly__content {
+  position: relative;
+}
+
+.work--showcase .work-fly__slide.is-active .work-fly__content::before {
+  content: attr(data-index);
+  position: absolute;
+  top: -0.25rem;
+  right: 0;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+}
 
 .work-fly {
   margin-top: 2.25rem;

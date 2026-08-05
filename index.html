@@ -82,7 +82,7 @@
 <link rel="stylesheet" href="css/milo-hero.css">
 <link rel="stylesheet" href="css/work-fly.css">
 <link rel="stylesheet" href="css/nav-theme.css">
-<link rel="stylesheet" href="css/cv-carousel.css">
+<link rel="stylesheet" href="css/cv-scroll.css">
 <link rel="stylesheet" href="css/minimal.css">
 <link rel="stylesheet" href="css/theme-motion.css">
 <link rel="stylesheet" href="css/svgator-effects.css">
@@ -241,162 +241,109 @@
     <svg class="svg-draw svg-draw--section" data-svg-draw viewBox="0 0 180 4" aria-hidden="true"><path d="M0 2 H180" stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
     <h2 class="section__title section__title--solo">Background</h2>
 
-    <div class="cv-carousel-wrap">
-      <p class="cv-carousel__teaser">The highlight reel — swipe through. Full job history, skills, and certifications are on the résumé page. (Yes, I'm employable. Spoiler confirmed.)</p>
+    <div class="cv-scroll" data-cv-scroll aria-label="Career timeline">
+      <p class="cv-scroll__teaser"><strong>Not a carousel.</strong> Scroll down and this section moves sideways — like the timelines on Awwwards portfolios. Full job history still lives on the résumé page.</p>
 
-      <div class="cv-carousel" data-cv-carousel aria-roledescription="carousel" aria-label="Career highlights" tabindex="0">
-        <div class="cv-carousel__stage">
-          <div class="cv-carousel__track">
-            <article class="cv-carousel__slide cv-carousel__slide--now is-active" data-cv-slide aria-hidden="false">
-              <div class="cv-carousel__bg" aria-hidden="true">
-                <img src="assets/cv/cv-now.jpg" alt="" loading="lazy" decoding="async" width="1400" height="900">
-              </div>
-              <div class="cv-carousel__overlay" aria-hidden="true"></div>
-              <span class="cv-carousel__stat" aria-hidden="true">2025</span>
-              <div class="cv-carousel__content">
-                <p class="cv-carousel__tag">Now · Web design · AI-assisted</p>
-                <h3 class="cv-carousel__title">Building sites for real clients.</h3>
-                <p class="cv-carousel__sub">Claude &amp; Cursor · JAI Home Care &amp; freelance clients</p>
-                <p class="cv-carousel__line">Plus I run <em>Padma Lights</em> online — 200+ products, export orders, and the whole operation.</p>
-              </div>
-            </article>
-
-            <article class="cv-carousel__slide cv-carousel__slide--padma" data-cv-slide aria-hidden="true">
-              <div class="cv-carousel__bg" aria-hidden="true">
-                <img src="assets/work/padma-gate-light.jpg" alt="" loading="lazy" decoding="async" width="1400" height="900">
-              </div>
-              <div class="cv-carousel__overlay" aria-hidden="true"></div>
-              <span class="cv-carousel__stat" aria-hidden="true">9yr</span>
-              <div class="cv-carousel__content">
-                <p class="cv-carousel__tag">2017 – 2024 · Operator</p>
-                <h3 class="cv-carousel__title">Family business, internet edition.</h3>
-                <p class="cv-carousel__sub">Padma Enterprises · outdoor lighting</p>
-                <p class="cv-carousel__line">Nine years online before it was my job title. <em>Not a case study — my Tuesday.</em></p>
-              </div>
-            </article>
-
-            <article class="cv-carousel__slide cv-carousel__slide--support" data-cv-slide aria-hidden="true">
-              <div class="cv-carousel__bg" aria-hidden="true">
-                <img src="assets/cv/cv-support.jpg" alt="" loading="lazy" decoding="async" width="1400" height="900">
-              </div>
-              <div class="cv-carousel__overlay" aria-hidden="true"></div>
-              <span class="cv-carousel__stat" aria-hidden="true">4+</span>
-              <div class="cv-carousel__content">
-                <p class="cv-carousel__tag">2021 – 2024 · Support</p>
-                <h3 class="cv-carousel__title">Four years fixing things.</h3>
-                <p class="cv-carousel__sub">Teleperformance · Webhelp · Concentrix · Flex</p>
-                <p class="cv-carousel__line">Tickets, PBX, Oracle logs, YouTube Kids moderation. <em>I don't ghost after launch.</em></p>
-              </div>
-            </article>
-
-            <article class="cv-carousel__slide cv-carousel__slide--school" data-cv-slide aria-hidden="true">
-              <div class="cv-carousel__bg" aria-hidden="true">
-                <img src="assets/cv/cv-school.jpg" alt="" loading="lazy" decoding="async" width="1400" height="900">
-              </div>
-              <div class="cv-carousel__overlay" aria-hidden="true"></div>
-              <span class="cv-carousel__stat" aria-hidden="true">B.Tech</span>
-              <div class="cv-carousel__content">
-                <p class="cv-carousel__tag">Education</p>
-                <h3 class="cv-carousel__title">Paper says I know things.</h3>
-                <p class="cv-carousel__sub">B.Tech · Computer Science · ACET · 2020</p>
-                <p class="cv-carousel__line">Google IT Support Professional, digital marketing certs, and enough Coursera tabs to crash a browser.</p>
-              </div>
-            </article>
-
-            <article class="cv-carousel__slide cv-carousel__slide--skills" data-cv-slide aria-hidden="true">
-              <div class="cv-carousel__bg" aria-hidden="true">
-                <img src="assets/cv/cv-skills.jpg" alt="" loading="lazy" decoding="async" width="1400" height="900">
-              </div>
-              <div class="cv-carousel__overlay" aria-hidden="true"></div>
-              <span class="cv-carousel__stat" aria-hidden="true">🛠</span>
-              <div class="cv-carousel__content">
-                <p class="cv-carousel__tag">Toolkit</p>
-                <h3 class="cv-carousel__title">What I actually use.</h3>
-                <ul class="cv-carousel__chips">
-                  <li>HTML &amp; CSS</li><li>JavaScript</li><li>Responsive UI</li><li>SEO</li>
-                  <li>AI-assisted dev</li><li>Claude / Cursor</li><li>Photoshop</li><li>Support tools</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="cv-carousel__slide cv-carousel__slide--reels" data-cv-slide aria-hidden="true">
-              <div class="cv-carousel__bg" aria-hidden="true">
-                <img src="assets/cv/cv-reels.jpg" alt="" loading="lazy" decoding="async" width="1400" height="900">
-              </div>
-              <div class="cv-carousel__overlay" aria-hidden="true"></div>
-              <span class="cv-carousel__stat" aria-hidden="true">🎬</span>
-              <div class="cv-carousel__content">
-                <p class="cv-carousel__tag">Off the clock</p>
-                <h3 class="cv-carousel__title">Not on the résumé. Never will be.</h3>
-                <p class="cv-carousel__line">Short films with friends — no crew, no budget, maximum joy. <em>Scroll to the bottom for one more thing.</em></p>
-                <div class="cv-carousel__vault-actions">
-                  <a class="btn btn--primary" href="#footer-clips">Watch the clips ↓</a>
+      <div class="cv-scroll__runway" data-cv-scroll-runway>
+        <div class="cv-scroll__pin">
+          <div class="cv-scroll__top">
+            <p class="cv-scroll__hint"><em>Scroll</em> to walk the timeline</p>
+            <div class="cv-scroll__progress" aria-hidden="true"><span class="cv-scroll__progress-bar" data-cv-scroll-bar></span></div>
+            <span class="cv-scroll__counter" data-cv-scroll-counter>01 / 07</span>
+          </div>
+          <div class="cv-scroll__viewport">
+            <div class="cv-scroll__track" data-cv-scroll-track>
+              <article class="cv-scroll__panel cv-scroll__panel--now is-active is-near" data-cv-panel>
+                <div class="cv-scroll__panel-inner">
+                  <div class="cv-scroll__visual"><img src="assets/cv/cv-now.jpg" alt="" loading="lazy" decoding="async" width="800" height="600"><span class="cv-scroll__year">2025</span></div>
+                  <div class="cv-scroll__copy">
+                    <p class="cv-scroll__tag">Now · Web design · AI-assisted</p>
+                    <h3 class="cv-scroll__title">Building sites for real clients.</h3>
+                    <p class="cv-scroll__sub">Claude &amp; Cursor · JAI Home Care &amp; freelance clients</p>
+                    <p class="cv-scroll__line">Plus I run <em>Padma Lights</em> online — 200+ products, export orders, and the whole operation.</p>
+                  </div>
                 </div>
-              </div>
-            </article>
-
-            <article class="cv-carousel__slide cv-carousel__slide--vault" data-cv-slide aria-hidden="true">
-              <div class="cv-carousel__bg" aria-hidden="true">
-                <img src="assets/cv/cv-vault.jpg" alt="" loading="lazy" decoding="async" width="1400" height="900">
-              </div>
-              <div class="cv-carousel__overlay" aria-hidden="true"></div>
-              <span class="cv-carousel__stat" aria-hidden="true">PDF</span>
-              <div class="cv-carousel__content">
-                <p class="cv-carousel__tag">Director's cut</p>
-                <h3 class="cv-carousel__title">This carousel is the trailer.</h3>
-                <p class="cv-carousel__line">Every job, skill, certification, and detail — on the full professional background page.</p>
-                <div class="cv-carousel__vault-actions">
-                  <a class="btn btn--primary" href="resume/index.html">Full background →</a>
-                  <a class="btn btn--ghost" href="assets/Kunal-Varshney-Resume.docx" download>Word résumé ↓</a>
-                  <a class="btn btn--ghost" href="assets/hire-me.html">Preview →</a>
+              </article>
+              <article class="cv-scroll__panel cv-scroll__panel--padma" data-cv-panel>
+                <div class="cv-scroll__panel-inner">
+                  <div class="cv-scroll__visual"><img src="assets/work/padma-gate-light.jpg" alt="" loading="lazy" decoding="async" width="800" height="600"><span class="cv-scroll__year">9yr</span></div>
+                  <div class="cv-scroll__copy">
+                    <p class="cv-scroll__tag">2017 – 2024 · Operator</p>
+                    <h3 class="cv-scroll__title">Family business, internet edition.</h3>
+                    <p class="cv-scroll__sub">Padma Enterprises · outdoor lighting</p>
+                    <p class="cv-scroll__line">Nine years online before it was my job title. <em>Not a case study — my Tuesday.</em></p>
+                  </div>
                 </div>
-              </div>
-            </article>
+              </article>
+              <article class="cv-scroll__panel cv-scroll__panel--support" data-cv-panel>
+                <div class="cv-scroll__panel-inner">
+                  <div class="cv-scroll__visual"><img src="assets/cv/cv-support.jpg" alt="" loading="lazy" decoding="async" width="800" height="600"><span class="cv-scroll__year">4+</span></div>
+                  <div class="cv-scroll__copy">
+                    <p class="cv-scroll__tag">2021 – 2024 · Support</p>
+                    <h3 class="cv-scroll__title">Four years fixing things.</h3>
+                    <p class="cv-scroll__sub">Teleperformance · Webhelp · Concentrix · Flex</p>
+                    <p class="cv-scroll__line">Tickets, PBX, Oracle logs, YouTube Kids moderation. <em>I don't ghost after launch.</em></p>
+                  </div>
+                </div>
+              </article>
+              <article class="cv-scroll__panel cv-scroll__panel--school" data-cv-panel>
+                <div class="cv-scroll__panel-inner">
+                  <div class="cv-scroll__visual"><img src="assets/cv/cv-school.jpg" alt="" loading="lazy" decoding="async" width="800" height="600"><span class="cv-scroll__year">B.Tech</span></div>
+                  <div class="cv-scroll__copy">
+                    <p class="cv-scroll__tag">Education</p>
+                    <h3 class="cv-scroll__title">Paper says I know things.</h3>
+                    <p class="cv-scroll__sub">B.Tech · Computer Science · ACET · 2020</p>
+                    <p class="cv-scroll__line">Google IT Support Professional, digital marketing certs, and enough Coursera tabs to crash a browser.</p>
+                  </div>
+                </div>
+              </article>
+              <article class="cv-scroll__panel cv-scroll__panel--skills" data-cv-panel>
+                <div class="cv-scroll__panel-inner">
+                  <div class="cv-scroll__visual"><img src="assets/cv/cv-skills.jpg" alt="" loading="lazy" decoding="async" width="800" height="600"><span class="cv-scroll__year">🛠</span></div>
+                  <div class="cv-scroll__copy">
+                    <p class="cv-scroll__tag">Toolkit</p>
+                    <h3 class="cv-scroll__title">What I actually use.</h3>
+                    <ul class="cv-scroll__chips">
+                      <li>HTML &amp; CSS</li><li>JavaScript</li><li>Responsive UI</li><li>SEO</li>
+                      <li>AI-assisted dev</li><li>Claude / Cursor</li><li>Photoshop</li><li>Support tools</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+              <article class="cv-scroll__panel cv-scroll__panel--reels" data-cv-panel>
+                <div class="cv-scroll__panel-inner">
+                  <div class="cv-scroll__visual"><img src="assets/cv/cv-reels.jpg" alt="" loading="lazy" decoding="async" width="800" height="600"><span class="cv-scroll__year">🎬</span></div>
+                  <div class="cv-scroll__copy">
+                    <p class="cv-scroll__tag">Off the clock</p>
+                    <h3 class="cv-scroll__title">Not on the résumé. Never will be.</h3>
+                    <p class="cv-scroll__line">Short films with friends — no crew, no budget, maximum joy. <em>Scroll to the bottom for one more thing.</em></p>
+                    <div class="cv-scroll__actions"><a class="btn btn--primary" href="#footer-clips">Watch the clips ↓</a></div>
+                  </div>
+                </div>
+              </article>
+              <article class="cv-scroll__panel cv-scroll__panel--vault" data-cv-panel>
+                <div class="cv-scroll__panel-inner">
+                  <div class="cv-scroll__visual"><img src="assets/cv/cv-vault.jpg" alt="" loading="lazy" decoding="async" width="800" height="600"><span class="cv-scroll__year">PDF</span></div>
+                  <div class="cv-scroll__copy">
+                    <p class="cv-scroll__tag">Director's cut</p>
+                    <h3 class="cv-scroll__title">This timeline is the trailer.</h3>
+                    <p class="cv-scroll__line">Every job, skill, certification, and detail — on the full professional background page.</p>
+                    <div class="cv-scroll__actions">
+                      <a class="btn btn--primary" href="resume/index.html">Full background →</a>
+                      <a class="btn btn--ghost" href="assets/Kunal-Varshney-Resume.docx" download>Word ↓</a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
           </div>
-        </div>
-
-        <div class="cv-carousel__bar">
-          <div class="cv-carousel__thumbs" role="tablist" aria-label="Background slides">
-            <button type="button" class="cv-carousel__thumb is-active" data-cv-dot role="tab" aria-selected="true" aria-label="Now">
-              <img src="assets/cv/cv-now.jpg" alt="" width="120" height="120">
-              <span class="cv-carousel__thumb-label">Now</span>
-            </button>
-            <button type="button" class="cv-carousel__thumb" data-cv-dot role="tab" aria-selected="false" aria-label="Padma">
-              <img src="assets/work/padma-gate-light.jpg" alt="" width="120" height="120">
-              <span class="cv-carousel__thumb-label">Padma</span>
-            </button>
-            <button type="button" class="cv-carousel__thumb" data-cv-dot role="tab" aria-selected="false" aria-label="Support">
-              <img src="assets/cv/cv-support.jpg" alt="" width="120" height="120">
-              <span class="cv-carousel__thumb-label">Support</span>
-            </button>
-            <button type="button" class="cv-carousel__thumb" data-cv-dot role="tab" aria-selected="false" aria-label="School">
-              <img src="assets/cv/cv-school.jpg" alt="" width="120" height="120">
-              <span class="cv-carousel__thumb-label">School</span>
-            </button>
-            <button type="button" class="cv-carousel__thumb" data-cv-dot role="tab" aria-selected="false" aria-label="Skills">
-              <img src="assets/cv/cv-skills.jpg" alt="" width="120" height="120">
-              <span class="cv-carousel__thumb-label">Skills</span>
-            </button>
-            <button type="button" class="cv-carousel__thumb" data-cv-dot role="tab" aria-selected="false" aria-label="Reels">
-              <img src="assets/cv/cv-reels.jpg" alt="" width="120" height="120">
-              <span class="cv-carousel__thumb-label">Reels</span>
-            </button>
-            <button type="button" class="cv-carousel__thumb" data-cv-dot role="tab" aria-selected="false" aria-label="Full résumé">
-              <img src="assets/cv/cv-vault.jpg" alt="" width="120" height="120">
-              <span class="cv-carousel__thumb-label">Résumé</span>
-            </button>
-          </div>
-          <div class="cv-carousel__nav">
-            <button type="button" class="cv-carousel__btn" data-cv-prev aria-label="Previous slide">←</button>
-            <span class="cv-carousel__count" data-cv-counter>1 / 7</span>
-            <button type="button" class="cv-carousel__btn" data-cv-next aria-label="Next slide">→</button>
-          </div>
+          <div class="cv-scroll__rail-wrap"><ol class="cv-scroll__rail" data-cv-scroll-rail aria-label="Timeline chapters"></ol></div>
         </div>
       </div>
 
-      <div class="cv-carousel__footer">
-        <p class="cv-carousel__joke"><strong>Need the whole file?</strong> Job history, skills, education, and certifications — all on the professional background page. No signup required.</p>
-        <div class="cv-carousel__links">
+      <div class="cv-scroll__footer">
+        <p><strong>Need the whole file?</strong> Job history, skills, education, and certifications — all on the professional background page. No signup required.</p>
+        <div class="cv-scroll__links">
           <a class="btn btn--primary" href="resume/index.html">Open full background →</a>
           <a class="btn btn--ghost" href="assets/Kunal-Varshney-Resume.docx" download>Download Word ↓</a>
           <a class="btn btn--ghost" href="assets/hire-me.html">Preview →</a>
@@ -455,12 +402,14 @@
     </div>
   </section>
 
-  <section id="work" class="section work section--dark">
+  <section id="work" class="section work work--showcase section--dark">
     <div class="work__head">
       <div class="lottie-accent lottie-accent--work lottie-accent--inline" data-lottie-work aria-hidden="true"></div>
       <div>
         <svg class="svg-draw svg-draw--section" data-svg-draw viewBox="0 0 120 4" aria-hidden="true"><path d="M0 2 H120" stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        <p class="work__eyebrow">Featured projects</p>
         <h2 class="section__title section__title--solo">Work</h2>
+        <p class="work__sub">Classic carousel — tap the thumbnails or use the arrows. Images stretch open as you scroll.</p>
       </div>
     </div>
 
@@ -472,7 +421,7 @@
               <img src="assets/work/padma-gate-light.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
               <div class="work-fly__hero-overlay"></div>
             </div>
-            <div class="work-fly__content">
+            <div class="work-fly__content" data-index="01">
               <p class="work-fly__tag">Marketing &amp; online · Ongoing</p>
               <h3 class="work-fly__title">Padma Enterprises</h3>
               <p class="work-fly__url">padmalights.com</p>
@@ -485,7 +434,7 @@
               <img src="assets/work/jai-home-care.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
               <div class="work-fly__hero-overlay"></div>
             </div>
-            <div class="work-fly__content">
+            <div class="work-fly__content" data-index="02">
               <p class="work-fly__tag">Design &amp; build · AI-assisted · 2025</p>
               <h3 class="work-fly__title">JAI Home Care Services</h3>
               <p class="work-fly__url">Home care · medical assistance</p>
@@ -498,7 +447,7 @@
               <img src="assets/work/portfolio.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
               <div class="work-fly__hero-overlay"></div>
             </div>
-            <div class="work-fly__content">
+            <div class="work-fly__content" data-index="03">
               <p class="work-fly__tag">Design &amp; build · AI-assisted · 2025</p>
               <h3 class="work-fly__title">This portfolio</h3>
               <p class="work-fly__url">lilkunal.github.io</p>
@@ -750,7 +699,7 @@
 <script src="js/svgator-effects.js"></script>
 <script src="js/main.js"></script>
 <script src="js/lottie-accents.js"></script>
-<script src="js/cv-carousel.js"></script>
+<script src="js/cv-scroll.js"></script>
 <script src="js/work-fly.js"></script>
 <script src="js/carousel.js"></script>
 <script src="js/animations.js"></script>
