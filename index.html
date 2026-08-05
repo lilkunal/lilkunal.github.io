@@ -80,7 +80,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/milo-hero.css">
-<link rel="stylesheet" href="css/work-fly.css">
+<link rel="stylesheet" href="css/work-stack.css">
 <link rel="stylesheet" href="css/nav-theme.css">
 <link rel="stylesheet" href="css/cv-scroll.css">
 <link rel="stylesheet" href="css/minimal.css">
@@ -242,8 +242,6 @@
     <h2 class="section__title section__title--solo">Background</h2>
 
     <div class="cv-scroll" data-cv-scroll aria-label="Career timeline">
-      <p class="cv-scroll__teaser"><strong>Not a carousel.</strong> Scroll down and this section moves sideways — like the timelines on Awwwards portfolios. Full job history still lives on the résumé page.</p>
-
       <div class="cv-scroll__runway" data-cv-scroll-runway>
         <div class="cv-scroll__pin">
           <div class="cv-scroll__top">
@@ -402,83 +400,54 @@
     </div>
   </section>
 
-  <section id="work" class="section work work--showcase section--dark">
+  <section id="work" class="section work work--stack section--dark">
     <div class="work__head">
       <div class="lottie-accent lottie-accent--work lottie-accent--inline" data-lottie-work aria-hidden="true"></div>
       <div>
         <svg class="svg-draw svg-draw--section" data-svg-draw viewBox="0 0 120 4" aria-hidden="true"><path d="M0 2 H120" stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-        <p class="work__eyebrow">Featured projects</p>
         <h2 class="section__title section__title--solo">Work</h2>
-        <p class="work__sub">Classic carousel — tap the thumbnails or use the arrows. Images stretch open as you scroll.</p>
       </div>
     </div>
 
-    <div class="work-fly" data-work-fly aria-roledescription="carousel" aria-label="Project showcase">
-      <div class="work-fly__stage">
-        <div class="work-fly__track">
-          <article class="work-fly__slide work-fly__slide--padma is-active" data-work-slide data-index="01" aria-hidden="false">
-            <div class="work-fly__hero" aria-hidden="true">
-              <img src="assets/work/padma-gate-light.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
-              <div class="work-fly__hero-overlay"></div>
-            </div>
-            <div class="work-fly__content">
-              <p class="work-fly__tag">Marketing &amp; online · Ongoing</p>
-              <h3 class="work-fly__title">Padma Enterprises</h3>
-              <p class="work-fly__url">padmalights.com</p>
-              <a class="btn btn--ghost work-fly__cta" href="https://www.padmalights.com" target="_blank" rel="noopener">Visit →</a>
-            </div>
-          </article>
-
-          <article class="work-fly__slide work-fly__slide--jai" data-work-slide data-index="02" aria-hidden="true">
-            <div class="work-fly__hero" aria-hidden="true">
-              <img src="assets/work/jai-home-care.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
-              <div class="work-fly__hero-overlay"></div>
-            </div>
-            <div class="work-fly__content">
-              <p class="work-fly__tag">Design &amp; build · AI-assisted · 2025</p>
-              <h3 class="work-fly__title">JAI Home Care Services</h3>
-              <p class="work-fly__url">Home care · medical assistance</p>
-              <a class="btn btn--ghost work-fly__cta" href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">Visit →</a>
-            </div>
-          </article>
-
-          <article class="work-fly__slide work-fly__slide--portfolio" data-work-slide data-index="03" aria-hidden="true">
-            <div class="work-fly__hero" aria-hidden="true">
-              <img src="assets/work/portfolio.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
-              <div class="work-fly__hero-overlay"></div>
-            </div>
-            <div class="work-fly__content">
-              <p class="work-fly__tag">Design &amp; build · AI-assisted · 2025</p>
-              <h3 class="work-fly__title">This portfolio</h3>
-              <p class="work-fly__url">lilkunal.github.io</p>
-              <a class="btn btn--ghost work-fly__cta" href="#contact">Let's talk →</a>
-            </div>
-          </article>
+    <div class="work-stack" data-work-stack aria-label="Selected projects">
+      <article class="work-stack__row" data-work-row>
+        <span class="work-stack__num" aria-hidden="true">01</span>
+        <a class="work-stack__visual" href="https://www.padmalights.com" target="_blank" rel="noopener" data-stretch>
+          <img src="assets/work/padma-gate-light.jpg" alt="Padma Enterprises outdoor lighting" loading="lazy" decoding="async" width="1200" height="750">
+        </a>
+        <div class="work-stack__copy">
+          <p class="work-stack__tag">Marketing &amp; online · Ongoing</p>
+          <h3 class="work-stack__title">Padma Enterprises</h3>
+          <p class="work-stack__url">padmalights.com</p>
+          <a class="work-stack__cta" href="https://www.padmalights.com" target="_blank" rel="noopener">Visit live site <span class="work-stack__cta-arrow" aria-hidden="true">↗</span></a>
         </div>
-      </div>
+      </article>
 
-      <div class="work-fly__bar">
-        <div class="work-fly__thumbs" role="tablist" aria-label="Choose project">
-          <button type="button" class="work-fly__thumb is-active" data-work-thumb role="tab" aria-selected="true" aria-label="Padma Enterprises">
-            <img src="assets/work/padma-gate-light.jpg" alt="" width="200" height="120">
-            <span class="work-fly__thumb-label">Gate lights</span>
-          </button>
-          <button type="button" class="work-fly__thumb" data-work-thumb role="tab" aria-selected="false" aria-label="JAI Home Care">
-            <img src="assets/work/jai-home-care.jpg" alt="" width="200" height="120">
-            <span class="work-fly__thumb-label">Home care</span>
-          </button>
-          <button type="button" class="work-fly__thumb" data-work-thumb role="tab" aria-selected="false" aria-label="Portfolio">
-            <img src="assets/work/portfolio.jpg" alt="" width="200" height="120">
-            <span class="work-fly__thumb-label">Portfolio</span>
-          </button>
+      <article class="work-stack__row work-stack__row--flip" data-work-row>
+        <span class="work-stack__num" aria-hidden="true">02</span>
+        <a class="work-stack__visual" href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener" data-stretch>
+          <img src="assets/work/jai-home-care.jpg" alt="JAI Home Care Services website" loading="lazy" decoding="async" width="1200" height="750">
+        </a>
+        <div class="work-stack__copy">
+          <p class="work-stack__tag">Design &amp; build · AI-assisted · 2025</p>
+          <h3 class="work-stack__title">JAI Home Care Services</h3>
+          <p class="work-stack__url">Home care · medical assistance</p>
+          <a class="work-stack__cta" href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">Visit live site <span class="work-stack__cta-arrow" aria-hidden="true">↗</span></a>
         </div>
+      </article>
 
-        <div class="work-fly__nav">
-          <button type="button" class="work-fly__btn" data-work-prev aria-label="Previous project">←</button>
-          <span class="work-fly__count" data-work-counter>1 / 3</span>
-          <button type="button" class="work-fly__btn" data-work-next aria-label="Next project">→</button>
+      <article class="work-stack__row" data-work-row>
+        <span class="work-stack__num" aria-hidden="true">03</span>
+        <a class="work-stack__visual" href="#contact" data-stretch>
+          <img src="assets/work/portfolio.jpg" alt="This portfolio website" loading="lazy" decoding="async" width="1200" height="750">
+        </a>
+        <div class="work-stack__copy">
+          <p class="work-stack__tag">Design &amp; build · AI-assisted · 2025</p>
+          <h3 class="work-stack__title">This portfolio</h3>
+          <p class="work-stack__url">lilkunal.github.io</p>
+          <a class="work-stack__cta" href="#contact">Let's talk <span class="work-stack__cta-arrow" aria-hidden="true">→</span></a>
         </div>
-      </div>
+      </article>
     </div>
   </section>
 
@@ -612,12 +581,26 @@
       <button class="contact-chip contact-chip--copy copy-btn" type="button" data-copy="7017662533" aria-label="Copy phone number">Copy number</button>
     </div>
 
-    <section class="ig-feed" data-ig-feed aria-labelledby="ig-feed-title">
-      <h3 class="ig-feed__title" id="ig-feed-title">Meanwhile, on Instagram</h3>
-      <p class="ig-feed__intro">Where the résumé voice goes to die. Fair warning.</p>
-      <div class="ig-feed__grid" data-ig-grid></div>
-      <a class="ig-feed__cta" href="https://www.instagram.com/old_soul_______/" target="_blank" rel="noopener">See the rest on Instagram →</a>
-    </section>
+    <div class="offclock" aria-label="Personal links">
+      <div class="offclock__grid">
+        <a class="offclock__tile offclock__tile--wide" href="https://www.instagram.com/old_soul_______/" target="_blank" rel="noopener">
+          <span class="offclock__emoji" aria-hidden="true">📸</span>
+          <span class="offclock__label">@old_soul_______</span>
+          <span class="offclock__desc">Films, football, questionable acting</span>
+          <span class="offclock__go" aria-hidden="true">↗</span>
+        </a>
+        <a class="offclock__tile" href="#footer-clips">
+          <span class="offclock__emoji" aria-hidden="true">🎬</span>
+          <span class="offclock__label">Short films</span>
+          <span class="offclock__desc">Not on the résumé</span>
+        </a>
+        <div class="offclock__tile offclock__tile--stat">
+          <span class="offclock__emoji" aria-hidden="true">🌍</span>
+          <span class="offclock__label">Remote · India</span>
+          <span class="offclock__desc">Open for web projects</span>
+        </div>
+      </div>
+    </div>
 
     <p class="social-intro">Elsewhere on the internet, with decreasing levels of professionalism:</p>
     <div class="social-float">
@@ -700,12 +683,11 @@
 <script src="js/main.js"></script>
 <script src="js/lottie-accents.js"></script>
 <script src="js/cv-scroll.js"></script>
-<script src="js/work-fly.js"></script>
+<script src="js/work-stack.js"></script>
 <script src="js/carousel.js"></script>
 <script src="js/animations.js"></script>
 <script src="js/game.js?v=22"></script>
 <script src="js/cursor-water.js" defer></script>
-<script src="js/instagram.js" defer></script>
 <script src="js/stretch-reveal.js" defer></script>
 <script>
   /* Offline support. Registered after load so it never competes with the

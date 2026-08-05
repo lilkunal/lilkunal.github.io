@@ -168,8 +168,7 @@
       [".cv-scroll", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".reels__card", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
       [".reels__lede", "anim-hide-up", { opacity: 1, y: 0 }, 0],
-      [".work-fly", "anim-hide-up", { opacity: 1, y: 0 }, 0],
-      [".work-fly__thumb", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.06],
+      [".work-stack", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".work__note", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".ask-search", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".faq-entry", "anim-hide-left", { opacity: 1, x: 0 }, 0.05],
@@ -294,13 +293,13 @@
       });
     }
 
-    var workFly = document.querySelector("[data-work-fly]");
-    if (workFly) {
-      $$(".work-fly__hero img", workFly).forEach(function (img) {
+    var workStack = document.querySelector("[data-work-stack]");
+    if (workStack) {
+      $$(".work-stack__visual img", workStack).forEach(function (img) {
         M.scroll(function (progress) {
-          var y = (progress * -12 - 6).toFixed(1);
+          var y = (progress * -8 - 4).toFixed(1);
           img.style.transform = "translateY(" + y + "%) scale(1.06)";
-        }, { target: workFly, offset: ["start end", "end start"] });
+        }, { target: workStack, offset: ["start end", "end start"] });
       });
     }
   }
@@ -337,7 +336,7 @@
         inline transform.
      --------------------------------------------------------------------- */
   if (M && M.animate) {
-    $$(".service-card, .work-fly__btn, .work-fly__thumb, .contact-card, .faq-item, .bg-tab, .value-pillar, .deck__btn, .cv-scroll__rail-item").forEach(function (el) {
+    $$(".service-card, .contact-card, .faq-item, .bg-tab, .value-pillar, .deck__btn, .cv-scroll__rail-item, .work-stack__cta, .offclock__tile").forEach(function (el) {
       el.addEventListener("pointerdown", function () {
         M.animate(el, { scale: 0.96 }, { type: "spring", stiffness: 420, damping: 22 });
       });

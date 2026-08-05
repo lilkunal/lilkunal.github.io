@@ -217,7 +217,92 @@
   margin-top: 0.9rem;
 }
 
+/* Off-clock bento — replaces Instagram embed block */
+.offclock {
+  margin-top: 2rem;
+  max-width: 56rem;
+}
+
+.offclock__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+}
+
+.offclock__tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.1rem;
+  min-height: 96px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+a.offclock__tile:hover,
+a.offclock__tile:focus-visible {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--ink) 6%, transparent);
+}
+
+.offclock__tile--wide {
+  grid-column: span 2;
+}
+
+.offclock__tile--stat {
+  background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 10%, transparent), color-mix(in srgb, var(--surface) 90%, transparent));
+}
+
+.offclock__emoji {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.offclock__label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.offclock__desc {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+.offclock__go {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.9rem;
+  font-size: 1rem;
+  color: var(--accent);
+  opacity: 0.7;
+  transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
+}
+
+a.offclock__tile:hover .offclock__go {
+  transform: translate(2px, -2px);
+  opacity: 1;
+}
+
 @media (max-width: 820px) {
+  .offclock__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offclock__tile--wide {
+    grid-column: span 1;
+  }
+
   .contact-actions {
     grid-template-columns: 1fr;
   }
