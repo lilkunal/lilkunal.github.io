@@ -2019,9 +2019,6 @@ a.work-tile:hover {
   color: var(--ink-faint);
 }
 
-/* Deliberately a new class, not .social-float__label — minimal.css hides that
-   one as part of its strip-the-verbose-copy pass, and un-hiding it there
-   would undo that intent for everything else in the same rule. */
 .social-intro {
   margin-top: 2.25rem;
   font-size: 0.82rem;
@@ -2032,6 +2029,7 @@ a.work-tile:hover {
 
 .social-float {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
   margin-top: 0.9rem;
 }
@@ -2060,8 +2058,8 @@ a.work-tile:hover {
 }
 
 .social-bubble {
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
@@ -2073,7 +2071,7 @@ a.work-tile:hover {
   transition: transform 0.25s var(--ease), background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
 }
 
-.social-bubble svg { width: 17px; height: 17px; }
+.social-bubble svg { width: 22px; height: 22px; }
 
 .social-bubble:hover {
   transform: scale(1.12) rotate(-4deg);
