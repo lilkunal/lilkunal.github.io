@@ -21,6 +21,7 @@
     var outgoing = slides[idx];
     var incoming = slides[target];
     var dir = target > idx ? 1 : -1;
+    var safety;
 
     function finish() {
       outgoing.classList.remove("is-active", "is-leaving");
@@ -45,6 +46,7 @@
         detail: { index: idx, slide: incoming, direction: dir }
       }));
       animating = false;
+      clearTimeout(safety);
     }
 
     if (reduce || !A) {
@@ -64,6 +66,10 @@
     }
 
     animating = true;
+    var safety = setTimeout(function () {
+      if (animating) finish();
+    }, 900);
+
     outgoing.classList.add("is-leaving");
     incoming.classList.add("is-entering");
     incoming.classList.add("is-active");
@@ -97,10 +103,18 @@
   }
 
   if (prevBtn) {
-    prevBtn.addEventListener("click", function () { show(idx - 1); });
+    prevBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      show(idx - 1);
+    });
   }
   if (nextBtn) {
-    nextBtn.addEventListener("click", function () { show(idx + 1); });
+    nextBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      show(idx + 1);
+    });
   }
 
   document.addEventListener("keydown", function (e) {
@@ -115,17 +129,41 @@
     }
   });
 
-  /* Touch swipe — phones & tablets */
+  /* Touch swipe — deck-wrap so card + nav row share horizontal intent */
+  var deckWrap = deck.closest(".deck-wrap") || deck;
   var touchStartX = 0;
-  deck.addEventListener("touchstart", function (e) {
-    touchStartX = e.changedTouches[0].clientX;
-  }, { passive: true });
+  var touchStartY = 0;
+  var touchMoved = false;
+  var SWIPE_MIN = 48;
+  var SWIPE_RATIO = 1.25;
 
-  deck.addEventListener("touchend", function (e) {
-    var dx = e.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(dx) < 40) return;
+  function onTouchStart(e) {
+    if (!e.changedTouches || !e.changedTouches.length) return;
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+    touchMoved = false;
+  }
+
+  function onTouchMove(e) {
+    if (!e.changedTouches || !e.changedTouches.length) return;
+    var dx = Math.abs(e.changedTouches[0].clientX - touchStartX);
+    var dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+    if (dx > 12 && dx > dy * SWIPE_RATIO) touchMoved = true;
+  }
+
+  function onTouchEnd(e) {
+    if (!e.changedTouches || !e.changedTouches.length) return;
+    var touch = e.changedTouches[0];
+    var dx = touch.clientX - touchStartX;
+    var dy = touch.clientY - touchStartY;
+    if (Math.abs(dx) < SWIPE_MIN || Math.abs(dx) < Math.abs(dy) * SWIPE_RATIO) return;
+    if (touchMoved) e.preventDefault();
     show(dx < 0 ? idx + 1 : idx - 1);
-  }, { passive: true });
+  }
+
+  deckWrap.addEventListener("touchstart", onTouchStart, { passive: true });
+  deckWrap.addEventListener("touchmove", onTouchMove, { passive: true });
+  deckWrap.addEventListener("touchend", onTouchEnd, { passive: false });
 
   /* Parallax on stickers + headphone bg — desktop only */
   var field = document.querySelector("[data-sticker-field]");
