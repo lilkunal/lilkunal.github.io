@@ -454,6 +454,54 @@
   background: rgba(255, 255, 255, 0.06);
 }
 
+/* Corner hints — scroll empty grid to flip deck */
+.hero-scroll-beacons {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-scroll-beacons span {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.22);
+  animation: beacon-pulse 3.2s ease-in-out infinite;
+}
+
+.hero-scroll-beacons__n { top: 18%; left: 50%; transform: translateX(-50%); animation-delay: 0s; }
+.hero-scroll-beacons__e { top: 50%; right: 8%; transform: translateY(-50%); animation-delay: 0.8s; }
+.hero-scroll-beacons__s { bottom: 22%; left: 50%; transform: translateX(-50%); animation-delay: 1.6s; }
+.hero-scroll-beacons__w { top: 50%; left: 8%; transform: translateY(-50%); font-size: 0.85rem; animation-delay: 2.4s; }
+
+@keyframes beacon-pulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.55; }
+}
+
+.hero--milo.is-deck-wheel::before {
+  animation: grid-flash 0.45s var(--ease);
+}
+
+@keyframes grid-flash {
+  0% { opacity: 1; }
+  40% { opacity: 0.55; filter: brightness(1.35); }
+  100% { opacity: 1; filter: none; }
+}
+
+.hero--milo.is-deck-wheel .deck-wrap {
+  animation: deck-nudge 0.45s var(--ease);
+}
+
+@keyframes deck-nudge {
+  0% { transform: translateY(0); }
+  35% { transform: translateY(6px); }
+  100% { transform: translateY(0); }
+}
+
 .hero__scroll-hint {
   position: absolute;
   bottom: 1.5rem;

@@ -66,7 +66,7 @@
     }
 
     animating = true;
-    var safety = setTimeout(function () {
+    safety = setTimeout(function () {
       if (animating) finish();
     }, 900);
 
@@ -164,6 +164,72 @@
   deckWrap.addEventListener("touchstart", onTouchStart, { passive: true });
   deckWrap.addEventListener("touchmove", onTouchMove, { passive: true });
   deckWrap.addEventListener("touchend", onTouchEnd, { passive: false });
+
+  /* Wheel on empty hero space flips the deck (not the page) */
+  var hero = deck.closest(".hero--milo");
+  var portrait = document.querySelector(".hero-portrait");
+  var wheelLock = false;
+  var WHEEL_COOLDOWN = 520;
+
+  function isDeckInteractiveTarget(el) {
+    if (!el || !el.closest) return false;
+    if (el.closest(".deck-wrap")) return true;
+    if (el.closest(".nav")) return true;
+    if (el.closest("a, button, input, textarea, select, label")) return true;
+    return false;
+  }
+
+  function pulseHeroScroll() {
+    if (!hero) return;
+    hero.classList.remove("is-deck-wheel");
+    void hero.offsetWidth;
+    hero.classList.add("is-deck-wheel");
+    window.setTimeout(function () {
+      if (hero) hero.classList.remove("is-deck-wheel");
+    }, 480);
+  }
+
+  if (hero && window.matchMedia("(pointer: fine)").matches) {
+    hero.addEventListener("wheel", function (e) {
+      if (reduce || animating || wheelLock) return;
+      if (isDeckInteractiveTarget(e.target)) return;
+
+      var rect = hero.getBoundingClientRect();
+      if (rect.bottom < 80 || rect.top > window.innerHeight * 0.35) return;
+
+      var down = e.deltaY > 28;
+      var up = e.deltaY < -28;
+      if (!down && !up) return;
+
+      if (down && idx >= slides.length - 1) return;
+      if (up && idx <= 0) return;
+
+      e.preventDefault();
+      wheelLock = true;
+      pulseHeroScroll();
+      show(down ? idx + 1 : idx - 1);
+      window.setTimeout(function () { wheelLock = false; }, WHEEL_COOLDOWN);
+    }, { passive: false });
+  }
+
+  /* Portrait scroll also flips — feels like spinning the card stack */
+  if (portrait && window.matchMedia("(pointer: fine)").matches) {
+    portrait.style.cursor = "ns-resize";
+    portrait.addEventListener("wheel", function (e) {
+      if (reduce || animating || wheelLock) return;
+      var down = e.deltaY > 20;
+      var up = e.deltaY < -20;
+      if (!down && !up) return;
+      if (down && idx >= slides.length - 1) return;
+      if (up && idx <= 0) return;
+      e.preventDefault();
+      e.stopPropagation();
+      wheelLock = true;
+      pulseHeroScroll();
+      show(down ? idx + 1 : idx - 1);
+      window.setTimeout(function () { wheelLock = false; }, WHEEL_COOLDOWN);
+    }, { passive: false });
+  }
 
   /* Parallax on stickers + headphone bg — desktop only */
   var field = document.querySelector("[data-sticker-field]");
