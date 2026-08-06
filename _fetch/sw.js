@@ -1,4 +1,4 @@
-/* Offline support. Deliberately conservative:
+﻿/* Offline support. Deliberately conservative:
    - HTML is network-first, so a fresh deploy is never masked by a stale cache;
      the cached copy is only used when the network genuinely fails.
    - Static assets are cache-first, which is what makes the site (and the hidden
@@ -6,67 +6,18 @@
    - Videos are never cached. They are ~21 MB and would blow past the origin's
      storage quota for no benefit.
    Bump CACHE_VERSION to retire every old cache on the next activation. */
-var CACHE_VERSION = "kv-v41";
+var CACHE_VERSION = "kv-v1";
 
 var PRECACHE = [
   "./",
   "./index.html",
-  "./work/padma.html",
-  "./resume/",
-  "./resume/index.html",
   "./css/style.css",
-  "./css/milo-hero.css",
-  "./css/work-stack.css",
-  "./css/nav-theme.css",
-  "./css/cv-scroll.css",
-  "./css/svgator-effects.css",
-  "./css/theme-motion.css",
-  "./css/minimal.css",
-  "./css/contact-panel.css",
-  "./css/cursor-water.css",
-  "./css/upgrade-sections.css",
-  "./resume/css/style.css",
-  "./resume/css/resume-theme.css",
-  "./assets/brand-mark.svg",
-  "./assets/portraits/kunal-portrait.png",
-  "./assets/portraits/kunal-headphones.png",
-  "./assets/Kunal-Varshney-Resume.docx",
-  "./assets/Kunal-Varshney-Resume.pdf",
-  "./assets/work/padma-gate-light.jpg",
-  "./assets/work/jai-home-care.jpg",
-  "./assets/work/portfolio.jpg",
-  "./assets/cv/cv-now.jpg",
-  "./assets/cv/cv-support.jpg",
-  "./assets/cv/cv-school.jpg",
-  "./assets/cv/cv-skills.jpg",
-  "./assets/cv/cv-reels.jpg",
-  "./assets/cv/cv-vault.jpg",
-  "./assets/cv/cv-poster-1.jpg",
-  "./assets/cv/cv-poster-2.jpg",
-  "./assets/stickers/sticker-01.jpg",
-  "./assets/stickers/sticker-02.jpg",
-  "./assets/stickers/sticker-04.jpg",
-  "./assets/stickers/sticker-06.jpg",
-  "./assets/stickers/sticker-10.jpg",
-  "./assets/stickers/sticker-13.jpg",
-  "./assets/stickers/sticker-16.jpg",
   "./js/main.js",
   "./js/animations.js",
-  "./js/milo-hero.js",
-  "./js/carousel.js",
-  "./js/svgator-effects.js",
-  "./js/lottie-accents.js",
-  "./js/cv-scroll.js",
-  "./js/work-stack.js",
-  "./js/cursor-water.js",
-  "./js/stretch-reveal.js",
-  "./js/site-tour.js",
   "./js/game.js",
   "./js/vendor/anime.umd.min.js",
   "./js/vendor/motion.min.js",
-  "./resume/js/main.js",
-  "./assets/favicon.svg",
-  "./resume/assets/favicon.svg"
+  "./assets/favicon.svg"
 ];
 
 self.addEventListener("install", function (event) {
@@ -135,3 +86,4 @@ self.addEventListener("fetch", function (event) {
     })
   );
 });
+

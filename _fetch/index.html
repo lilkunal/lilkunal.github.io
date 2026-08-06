@@ -1,0 +1,593 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kunal Varshney — Web Design for Small Businesses</title>
+<meta name="description" content="Kunal Varshney designs and builds websites for small businesses — informed by years running one himself.">
+<meta property="og:title" content="Kunal Varshney — Web Design for Small Businesses">
+<meta property="og:description" content="Websites for small businesses, designed by someone who runs one.">
+<meta property="og:type" content="website">
+<!-- Absolute URLs are required here. If the site moves to another host, these
+     four values and sitemap.xml / robots.txt are the only things to update. -->
+<link rel="canonical" href="https://lilkunal.github.io/">
+<meta property="og:url" content="https://lilkunal.github.io/">
+<meta property="og:image" content="https://lilkunal.github.io/assets/personas/itguy.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Kunal Varshney">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://lilkunal.github.io/#kunal",
+      "name": "Kunal Varshney",
+      "url": "https://lilkunal.github.io/",
+      "jobTitle": "Web Designer",
+      "email": "kunalvrshn@gmail.com",
+      "telephone": "+91-70176-62533",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN"
+      },
+      "sameAs": ["https://www.linkedin.com/in/kunalvrshn/"],
+      "knowsAbout": [
+        "Web Design",
+        "Small Business Websites",
+        "Landing Pages",
+        "Technical Support",
+        "Digital Marketing"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Aligarh College of Engineering & Technology"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Padma Enterprises",
+        "url": "https://www.padmalights.com"
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "name": "Kunal Varshney — Web Design for Small Businesses",
+      "url": "https://lilkunal.github.io/",
+      "description": "Websites for small businesses — business sites, landing pages, product catalogues, and ongoing care — built by someone who runs a small business online himself.",
+      "provider": { "@id": "https://lilkunal.github.io/#kunal" },
+      "areaServed": {
+        "@type": "Place",
+        "name": "India"
+      },
+      "telephone": "+91-70176-62533",
+      "email": "kunalvrshn@gmail.com"
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Hanken+Grotesk:wght@400;500;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-hidden="true">
+
+<header class="nav">
+  <a href="#top" class="nav__brand" id="top">Kunal Varshney</a>
+
+  <label for="nav-toggle" class="nav__burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#about">About</a>
+    <div class="nav__dropdown">
+      <button type="button" class="nav__background" id="bg-menu-btn" aria-expanded="false" aria-haspopup="true" aria-controls="bg-menu">Background <span class="nav__caret" aria-hidden="true">▾</span></button>
+      <div class="nav__menu" id="bg-menu" role="menu" hidden>
+        <a role="menuitem" href="#experience" data-bg-jump="experience">Experience</a>
+        <a role="menuitem" href="#experience" data-bg-jump="skills">Skills</a>
+        <a role="menuitem" href="#experience" data-bg-jump="credentials">Education &amp; certifications</a>
+        <a role="menuitem" href="resume/index.html" class="nav__menu-out">Full résumé ↗</a>
+      </div>
+    </div>
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#work">Work</a>
+    <a href="#ask">Ask</a>
+    <a href="#contact" class="nav__cta">Start a project</a>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark and light theme">
+      <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1.5" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.5" y2="12"/><line x1="4.2" y1="4.2" x2="6" y2="6"/><line x1="18" y1="18" x2="19.8" y2="19.8"/><line x1="4.2" y1="19.8" x2="6" y2="18"/><line x1="18" y1="6" x2="19.8" y2="4.2"/></g></svg>
+      <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="hero__persona-bg" aria-hidden="true">
+      <img class="persona-photo is-active" data-persona="itguy" src="assets/personas/itguy.jpg" alt="">
+      <img class="persona-photo" data-persona="businessman" src="assets/personas/businessman.jpg" alt="">
+      <img class="persona-photo" data-persona="funnyguy" src="assets/personas/funnyguy.jpg" alt="">
+      <img class="persona-photo" data-persona="nextdoor" src="assets/personas/nextdoor.jpg" alt="">
+    </div>
+    <div class="hero__grain" aria-hidden="true"></div>
+    <div class="ghibli-dust" aria-hidden="true">
+      <span class="dust-mote" style="left:8%; top:74%; animation-delay:0s; animation-duration:7.2s;"></span>
+      <span class="dust-mote" style="left:17%; top:34%; animation-delay:1.1s; animation-duration:6.4s;"></span>
+      <span class="dust-mote" style="left:27%; top:82%; animation-delay:2.3s; animation-duration:8s;"></span>
+      <span class="dust-mote" style="left:38%; top:18%; animation-delay:0.6s; animation-duration:6.8s;"></span>
+      <span class="dust-mote" style="left:50%; top:62%; animation-delay:3.1s; animation-duration:7.6s;"></span>
+      <span class="dust-mote" style="left:61%; top:24%; animation-delay:1.8s; animation-duration:6.6s;"></span>
+      <span class="dust-mote" style="left:71%; top:78%; animation-delay:2.6s; animation-duration:7.9s;"></span>
+      <span class="dust-mote" style="left:81%; top:38%; animation-delay:0.3s; animation-duration:6.9s;"></span>
+      <span class="dust-mote" style="left:91%; top:66%; animation-delay:3.6s; animation-duration:7.3s;"></span>
+      <span class="dust-mote" style="left:95%; top:20%; animation-delay:1.4s; animation-duration:8.4s;"></span>
+    </div>
+    <p class="hero__quote" id="hero-quote" aria-hidden="true">"May the Force be with you." — everyone, forever</p>
+    <div class="hero__content">
+      <p class="eyebrow eyebrow--visitor" id="visitor-note" aria-live="polite"><span class="dot dot--alt"></span><span id="visitor-text">Figuring out where you're joining from…</span></p>
+      <h1 class="hero__headline">
+        <span class="hero__greeting">Hi — I'm</span>
+        <span class="hero__name">Kunal Varshney</span>
+        <span class="hero__tags" aria-hidden="true">[ web design ] [ small business sites ] [ still answers the phone ]</span>
+        <span class="hero__craft">I build websites that make small businesses easy to find, understand and trust<span class="squiggle">.<svg viewBox="0 0 20 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2,12 Q10,4 18,12" /></svg></span></span>
+      </h1>
+      <ul class="hero__creds">
+        <li class="hero__cred">9 yrs running a real business online</li>
+        <li class="hero__cred">4+ yrs technical support</li>
+        <li class="hero__cred">200+ product catalogue</li>
+              </ul>
+      <p class="identity-ticker">I am also a <span id="ticker-word">web designer</span></p>
+      <p class="hero__tagline">An old soul trying to keep up with a fast, vast world — my words, not just an Instagram bio.</p>
+
+      <div class="persona-glass">
+        <div class="persona-tabs" role="tablist" aria-label="Pick a side of me">
+          <button class="persona-tab is-active" type="button" data-persona="itguy">IT Guy</button>
+          <button class="persona-tab" type="button" data-persona="businessman">Businessman</button>
+          <button class="persona-tab" type="button" data-persona="funnyguy">Funny Guy</button>
+          <button class="persona-tab" type="button" data-persona="nextdoor">Next Door</button>
+        </div>
+        <p class="persona-caption" id="persona-caption" aria-live="polite">Has fixed more Wi-Fi routers than he'd like to admit.</p>
+        <p class="persona-note">That blur behind all this — yes, that's actually me. Not trying to steal focus from the point.</p>
+      </div>
+
+      <p class="hero__lede">I'm not a designer who has only ever designed. For nine years I've run the marketing and online side of Padma Enterprises — our family's lighting business — so I know what a small business actually needs from a website, not just how one should look. And four years in technical support means I'm still around when something breaks.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#contact">Start a project</a>
+        <a class="btn btn--ghost" href="https://wa.me/917017662533?text=Hi%20Kunal%2C%20I%20found%20your%20portfolio%20and%20want%20to%20talk%20about%20a%20website%20for%20my%20business." target="_blank" rel="noopener">WhatsApp me</a>
+        <a class="btn btn--text" href="#process">See how it works ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span class="marquee__group">NOW SCREENING • WEBSITES FOR SMALL BUSINESSES • BUSINESS SITES • LANDING PAGES • PRODUCT CATALOGUES • CARE &amp; SUPPORT • </span>
+      <span class="marquee__group">NOW SCREENING • WEBSITES FOR SMALL BUSINESSES • BUSINESS SITES • LANDING PAGES • PRODUCT CATALOGUES • CARE &amp; SUPPORT • </span>
+    </div>
+  </div>
+
+  <section id="about" class="section about">
+    <p class="eyebrow">Why work with me</p>
+    <h2 class="section__title">I've been the customer on the other end of a bad website.</h2>
+    <p class="about__body">I've spent years in technical support — Teleperformance, Webhelp, Concentrix — talking to people whose systems weren't working. Alongside that, I handle marketing and the online side of Padma Enterprises, our family's manufacturing business — one that lives or dies by whether customers can find, understand and trust what's on offer online, and nothing keeps you humble like customers — every single one of them. When I told people I was walking away from steady work to build this instead, plenty asked why. I knew what I was capable of; that part never wavered.</p>
+    <p class="about__body">That combination means I don't design sites just to look good in a screenshot. I build them to load fast, explain the business clearly, and hold up long after launch — because I know exactly what it's like to be the one who answers for it when something breaks. None of that came from one mentor or one big break, either — I'm mostly the sum of everyone I've met and everyone who's travelled with me this far.</p>
+
+    <dl class="fact-strip">
+      <div class="fact"><dd class="fact__value"><span class="count-num" data-count-to="4">0</span>+</dd><dt class="fact__label">Years in technical &amp; customer support</dt></div>
+      <div class="fact"><dd class="fact__value"><span class="count-num" data-count-to="9">0</span></dd><dt class="fact__label">Years running the online side of Padma Enterprises</dt></div>
+      <div class="fact"><dd class="fact__value"><span class="count-num" data-count-to="200">0</span>+</dd><dt class="fact__label">Products in a catalogue I manage</dt></div>
+    </dl>
+
+    <aside class="personal-aside">
+      <div class="ghibli-motes" aria-hidden="true"><span class="mote"></span><span class="mote"></span><span class="mote"></span></div>
+      <svg class="personal-aside__icon" viewBox="0 0 56 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M12 4 L12 20 M4 12 L20 12 M6.3 6.3 L17.7 17.7 M17.7 6.3 L6.3 17.7" stroke="currentColor" stroke-width="1" opacity="0.55" stroke-linecap="round"/>
+        <circle cx="44" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M41 8 L49 12 L41 16 Z" fill="currentColor"/>
+      </svg>
+      <p class="personal-aside__title">Off the clock</p>
+      <p class="personal-aside__body">Most weekends I'm either on a football pitch, filming something ridiculous with friends, or three films deep into a marathon I swore would be one. I'm not just a Ghibli guy — Ghibli's just where it started. I'm a real cinephile: the camera work and the choices behind a shot interest me almost as much as the story does. So go watch more. Watch the weird one, the old one, the one everyone said was boring — some of it will wreck you in the best way, and you won't know which until you're in it.</p>
+    </aside>
+  </section>
+
+  <section id="experience" class="section experience">
+    <p class="eyebrow">Professional background</p>
+    <h2 class="section__title">The formal record.</h2>
+    <p class="experience__lede">A computer science degree, four years across technical support and content moderation, nine years running a real business online, and the certifications to back it. Laid out properly — pick a tab.</p>
+
+    <div class="bg-panel-wrap">
+      <div class="bg-tabs" role="tablist" aria-label="Professional background">
+        <button class="bg-tab is-active" type="button" role="tab" id="bgtab-experience" aria-controls="bgpanel-experience" aria-selected="true" data-bg="experience">Experience</button>
+        <button class="bg-tab" type="button" role="tab" id="bgtab-skills" aria-controls="bgpanel-skills" aria-selected="false" tabindex="-1" data-bg="skills">Skills</button>
+        <button class="bg-tab" type="button" role="tab" id="bgtab-credentials" aria-controls="bgpanel-credentials" aria-selected="false" tabindex="-1" data-bg="credentials">Education &amp; certs</button>
+      </div>
+
+      <div class="bg-panel is-active" id="bgpanel-experience" role="tabpanel" aria-labelledby="bgtab-experience" data-bg-panel="experience">
+        <ol class="cv-list">
+          <li class="cv-entry">
+            <div class="cv-entry__head">
+              <h3 class="cv-entry__role">Marketing Designer &amp; Online Lead</h3>
+              <p class="cv-entry__org">Padma Enterprises — Padma Lights</p>
+              <p class="cv-entry__date">2017 — Present</p>
+            </div>
+            <ul class="cv-entry__points">
+              <li>Run marketing and the entire online presence for the family's cast-aluminium outdoor lighting business.</li>
+              <li>Manage a catalogue of 200+ models across 4 categories, including trade pricing for architects, builders and dealers.</li>
+              <li>Handle international orders billed across 8 currencies.</li>
+            </ul>
+          </li>
+          <li class="cv-entry">
+            <div class="cv-entry__head">
+              <h3 class="cv-entry__role">Technical Support Advisor</h3>
+              <p class="cv-entry__org">Teleperformance</p>
+              <p class="cv-entry__date">Aug 2024 — Dec 2024</p>
+            </div>
+            <ul class="cv-entry__points">
+              <li>Diagnosed and resolved customer technical faults, keeping downtime and repeat contacts low.</li>
+              <li>Worked daily across PBX systems, remote troubleshooting tools and ticketing platforms.</li>
+            </ul>
+          </li>
+          <li class="cv-entry">
+            <div class="cv-entry__head">
+              <h3 class="cv-entry__role">Customer Support Executive</h3>
+              <p class="cv-entry__org">Webhelp Pvt. Ltd.</p>
+              <p class="cv-entry__date">Oct 2023 — Jan 2024</p>
+            </div>
+            <ul class="cv-entry__points">
+              <li>Handled support over chat and email, including complaints and cross-team escalations.</li>
+              <li>Maintained detailed interaction and transaction records in CRM.</li>
+            </ul>
+          </li>
+          <li class="cv-entry">
+            <div class="cv-entry__head">
+              <h3 class="cv-entry__role">Content Moderator</h3>
+              <p class="cv-entry__org">Concentrix Daksh Pvt. Ltd.</p>
+              <p class="cv-entry__date">Oct 2021 — Apr 2023</p>
+            </div>
+            <ul class="cv-entry__points">
+              <li>Reviewed content for Google platforms including YouTube Kids, working in the Yurt tool.</li>
+              <li>Produced moderation transcripts and handled team reporting with the team lead.</li>
+            </ul>
+          </li>
+          <li class="cv-entry">
+            <div class="cv-entry__head">
+              <h3 class="cv-entry__role">Technical Support Trainee</h3>
+              <p class="cv-entry__org">Flex Pvt. Ltd.</p>
+              <p class="cv-entry__date">Feb 2021 — Jun 2021</p>
+            </div>
+            <ul class="cv-entry__points">
+              <li>Monitored dashboards, internal tickets and mail queues; produced health-check reports.</li>
+              <li>Worked with Oracle WebLogic 11g and Jenkins jobs, analysing system logs to isolate faults.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <div class="bg-panel" id="bgpanel-skills" role="tabpanel" aria-labelledby="bgtab-skills" data-bg-panel="skills" hidden>
+        <div class="cv-skills">
+          <div class="cv-skillgroup">
+            <h3 class="cv-skillgroup__title">Technical support &amp; systems</h3>
+            <ul class="cv-chips">
+              <li>PBX Systems</li><li>Remote Troubleshooting</li><li>Ticketing Systems</li><li>CRM Software</li>
+              <li>Oracle WebLogic 11g</li><li>Jenkins</li><li>Dashboard Monitoring</li><li>System Log Analysis</li>
+            </ul>
+          </div>
+          <div class="cv-skillgroup">
+            <h3 class="cv-skillgroup__title">Software &amp; design</h3>
+            <ul class="cv-chips">
+              <li>HTML</li><li>CSS</li><li>Adobe Photoshop</li><li>AutoCAD</li>
+              <li>MS Excel</li><li>MS Word</li><li>MS Office</li>
+            </ul>
+          </div>
+          <div class="cv-skillgroup">
+            <h3 class="cv-skillgroup__title">Data &amp; digital</h3>
+            <ul class="cv-chips">
+              <li>Data Analysis (Excel)</li><li>Digital Marketing Fundamentals</li>
+            </ul>
+          </div>
+          <div class="cv-skillgroup">
+            <h3 class="cv-skillgroup__title">Working with people</h3>
+            <ul class="cv-chips">
+              <li>Communication</li><li>Creative Thinking</li><li>Flexibility</li><li>Time Management</li>
+              <li>Decision-Making</li><li>Multi-Tasking</li><li>Presentation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-panel" id="bgpanel-credentials" role="tabpanel" aria-labelledby="bgtab-credentials" data-bg-panel="credentials" hidden>
+        <div class="cv-creds">
+          <article class="cv-cred cv-cred--degree">
+            <p class="cv-cred__eyebrow">Degree</p>
+            <h3 class="cv-cred__title">Bachelor's in Computer Science</h3>
+            <p class="cv-cred__org">Aligarh College of Engineering &amp; Technology</p>
+            <p class="cv-cred__date">Aug 2017 — Sep 2020</p>
+          </article>
+          <article class="cv-cred">
+            <p class="cv-cred__eyebrow">Google / Coursera</p>
+            <h3 class="cv-cred__title">Google IT Support Professional</h3>
+            <ul class="cv-cred__list">
+              <li>Technical Support Fundamentals</li>
+              <li>The Bits and Bytes of Computer Networking</li>
+              <li>Operating Systems and You: Becoming a Power User</li>
+              <li>System Administration and IT Infrastructure Services</li>
+              <li>IT Security: Defense Against the Digital Dark Arts</li>
+            </ul>
+          </article>
+          <article class="cv-cred">
+            <p class="cv-cred__eyebrow">Google Digital Garage</p>
+            <h3 class="cv-cred__title">The Fundamentals of Digital Marketing</h3>
+          </article>
+          <article class="cv-cred">
+            <p class="cv-cred__eyebrow">Coursera</p>
+            <h3 class="cv-cred__title">Data Analysis Using Microsoft Excel</h3>
+            <p class="cv-cred__org">Plus Introduction to Microsoft Excel</p>
+          </article>
+          <article class="cv-cred">
+            <p class="cv-cred__eyebrow">Great Learning Academy</p>
+            <h3 class="cv-cred__title">Programming Basics · ChatGPT for Beginners</h3>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <a class="btn btn--primary experience__cta" href="resume/index.html">Open the full résumé →</a>
+  </section>
+
+  <section id="services" class="section services">
+    <p class="eyebrow">What I do</p>
+    <h2 class="section__title">Services</h2>
+    <div class="card-grid">
+      <article class="service-card">
+        <h3 class="service-card__title">Business Websites</h3>
+        <p class="service-card__body">A complete site for your business — home, about, products or services, contact — designed around what you actually sell and who you're selling to.</p>
+      </article>
+      <article class="service-card">
+        <h3 class="service-card__title">Landing Pages</h3>
+        <p class="service-card__body">One focused page for a launch, an offer, or a campaign. Built to get one clear action, fast.</p>
+      </article>
+      <article class="service-card">
+        <h3 class="service-card__title">Product &amp; Catalogue Sites</h3>
+        <p class="service-card__body">For makers and sellers who want their full range browsable online — built from real experience running a 200+ product catalogue.</p>
+      </article>
+      <article class="service-card">
+        <h3 class="service-card__title">Care &amp; Support</h3>
+        <p class="service-card__body">Updates, fixes, and someone who actually answers. Years in technical support means I don't disappear after launch.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="process" class="section process">
+    <p class="eyebrow">How this works</p>
+    <h2 class="section__title">Four steps, no jargon.</h2>
+    <ol class="steps">
+      <li class="step"><span class="step__num">01</span><h3 class="step__title">We talk</h3><p class="step__body">A call or WhatsApp message. You tell me what you sell, who buys it, and what isn't working right now. Free, and there's no obligation after it.</p></li>
+      <li class="step"><span class="step__num">02</span><h3 class="step__title">You get a price in writing</h3><p class="step__body">What I'll build, what it costs, and how long it takes — agreed before I start. The number doesn't move unless you ask for more.</p></li>
+      <li class="step"><span class="step__num">03</span><h3 class="step__title">You see it before anyone else</h3><p class="step__body">I send you a real link you can click and try on your own phone. You tell me what to change, and I change it.</p></li>
+      <li class="step"><span class="step__num">04</span><h3 class="step__title">It goes live — and I stay reachable</h3><p class="step__body">Your site goes up, and my number still works afterwards. Four years in technical support taught me that launch day isn't the finish line.</p></li>
+    </ol>
+    <div class="process-note">
+      <p class="process-note__title">What I need from you</p>
+      <p class="process-note__body">Your logo if you have one, photos of what you sell, and the details you want customers to see — address, hours, phone. No logo or photos? Say so and we'll work it out; that's a normal starting point, not a problem.</p>
+    </div>
+  </section>
+
+  <section id="work" class="section work">
+    <p class="eyebrow">Proof, honestly</p>
+    <h2 class="section__title">What's actually real right now.</h2>
+    <div class="work-grid">
+      <a class="work-tile" href="https://www.padmalights.com" target="_blank" rel="noopener">
+        <span class="work-tile__label">The business, not a design credit</span>
+        <span class="work-tile__title">Padma Enterprises — padmalights.com</span>
+        <span class="work-tile__body">I handle marketing and the online side of this — our family's business. I didn't design the site itself — what it proves instead is nine years of actually running a business's online presence, not just designing for one.</span>
+      </a>
+      <div class="work-tile">
+        <span class="work-tile__label">Proof, honestly</span>
+        <span class="work-tile__title">This portfolio</span>
+        <span class="work-tile__body">Every layout, animation and line of type here — designed and built by me. If it feels considered to use, that's a fair preview of what I'd build for you.</span>
+      </div>
+    </div>
+    <p class="work__note">I'm currently taking on a small number of new projects — if you're one of the first, you get my full attention on it.</p>
+  </section>
+
+  <section id="ask" class="section ask">
+    <p class="eyebrow">Ask anything</p>
+    <h2 class="section__title">Things people usually ask.</h2>
+
+    <div class="ask-search">
+      <input type="text" id="ask-input" placeholder="Ask me anything — e.g. what does a website cost?">
+      <button type="button" class="btn btn--primary" id="ask-search-btn">Ask</button>
+    </div>
+    <p class="ask-search__note">It checks the answers on this page first. If nothing here fits, it opens WhatsApp with your question already typed out — send it and I'll answer you myself.</p>
+    <p class="ask-search__status" id="ask-status" aria-live="polite"></p>
+
+    <div class="faq-list">
+      <div class="faq-entry is-active">
+        <button class="faq-item" type="button" aria-expanded="true">Are you a designer, or do you just handle marketing for a lighting business?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>Both — and don't make me pick, I'm bad at picking favourites. Padma Enterprises is our family business, and running its marketing and online side pays the bills I already know how to pay. This is the one I actually want to build.</p></div></div>
+      </div>
+      <div class="faq-entry">
+        <button class="faq-item" type="button" aria-expanded="false">Do you have client design work yet?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>Not yet — you'd be one of the first, and I'm not going to pretend otherwise. What I do have: years of technical support and a real business, so I don't vanish after launch, and I actually know how small businesses run, not just how they look in a portfolio.</p></div></div>
+      </div>
+      <div class="faq-entry">
+        <button class="faq-item" type="button" aria-expanded="false">What happens after the site goes live — do you just disappear?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>No. Once it's live, I'll show you how to make the small changes yourself — swap a photo, update a price, edit a line of text — so you're not stuck waiting on me for every little thing. And if you want to keep building with AI tools the way I did here, I'll teach you how to actually prompt something like Claude to get useful results instead of generic ones. Handing you the keys is the point, not keeping you dependent on me.</p></div></div>
+      </div>
+      <div class="faq-entry">
+        <button class="faq-item" type="button" aria-expanded="false">Are you always this responsive?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>Personally? No — I go quiet sometimes when things pile up, ask anyone who knows me. Professionally, it's different: if you're paying me to keep your site running, I show up. That's a decision, not a personality trait.</p></div></div>
+      </div>
+      <div class="faq-entry">
+        <button class="faq-item" type="button" aria-expanded="false">Why does a web designer's site mention football and films?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>Because a portfolio that only talks about work is a LinkedIn profile with better fonts. I'm a genuine cinephile — Ghibli's just where it started — and ask me about football and I won't stop either. You've been warned.</p></div></div>
+      </div>
+      <div class="faq-entry">
+        <button class="faq-item" type="button" aria-expanded="false">Where do you actually like to travel?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>Every trip's changed something in me, one way or another — ask me about the last one when we talk.</p></div></div>
+      </div>
+      <div class="faq-entry">
+        <button class="faq-item" type="button" aria-expanded="false">Did you use AI to build this?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>This site: yes, heavily, and I'm not hiding it — it's part of how I build client sites fast without cutting corners on care. The direction, the writing, the judgment calls stay mine.</p></div></div>
+      </div>
+      <div class="faq-entry">
+        <button class="faq-item" type="button" aria-expanded="false">Why are you doing all of this at once?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>Honestly? Because I'm more capable than I give myself credit for — I think most people are. Support work, a lighting business, a hidden game coded from scratch, a habit of picking up a camera on weekends — none of it waited for permission from me first. "Whether you think you can, or you think you can't — you're right." That's Henry Ford, not me, but I'd rather find out by doing than by asking if I'm allowed to.</p></div></div>
+      </div>
+      <div class="faq-entry">
+        <button class="faq-item" type="button" aria-expanded="false">How do you know where I'm visiting from?</button>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>A quick, keyless IP lookup guesses your city, right there in your browser — it's not sent to me or stored anywhere. If that lookup ever fails or gets blocked, the site just falls back to your device's own time zone instead. Either way, nothing about you leaves your browser except the request your browser makes to that lookup service directly.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact">
+    <p class="eyebrow">Get in touch</p>
+    <h2 class="section__title">Tell me about your business.</h2>
+    <p class="contact__lede">Email, call, or WhatsApp — whichever's easiest. Let me know what you sell and what isn't working about your current site, or that you don't have one yet.</p>
+
+    <form class="project-form" id="project-form">
+      <div class="form-row">
+        <label class="form-field">
+          <span class="form-field__label">Your name</span>
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label class="form-field">
+          <span class="form-field__label">Business name</span>
+          <input type="text" name="business" autocomplete="organization">
+        </label>
+      </div>
+      <label class="form-field">
+        <span class="form-field__label">Email or phone, so I can reply</span>
+        <input type="text" name="contact" autocomplete="email" required>
+      </label>
+      <label class="form-field">
+        <span class="form-field__label">What do you need?</span>
+        <textarea name="message" rows="4" required placeholder="e.g. a site for my shop, a landing page for a launch, a redesign of what I already have..."></textarea>
+      </label>
+      <div class="form-actions">
+        <button type="button" class="btn btn--primary" id="form-send-email">Send via email</button>
+        <button type="button" class="btn btn--ghost" id="form-send-whatsapp">Send via WhatsApp</button>
+      </div>
+      <p class="form-note">This fills in your own email or WhatsApp app with everything above — you hit send yourself. Nothing here gets stored or sent anywhere else; there's no backend on this site to store it in.</p>
+    </form>
+
+    <p class="contact__divider">or reach me directly</p>
+
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:kunalvrshn@gmail.com?subject=Let%27s%20build%20my%20website">
+        <span class="contact-card__label">Email</span>
+        <span class="contact-card__value">kunalvrshn@gmail.com</span>
+      </a>
+      <div class="contact-card">
+        <span class="contact-card__label">Phone &amp; WhatsApp</span>
+        <span class="contact-card__value">+91 70176 62533</span>
+        <button class="copy-btn" type="button" data-copy="7017662533">Copy</button>
+        <div class="contact-card__actions">
+          <a class="contact-card__mini" href="tel:+917017662533">Call</a>
+          <a class="contact-card__mini" href="https://wa.me/917017662533?text=Hi%20Kunal%2C%20I%20found%20your%20portfolio%20and%20want%20to%20talk%20about%20a%20website%20for%20my%20business." target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <a class="contact-card" href="https://linkedin.com/in/kunalvrshn/" target="_blank" rel="noopener">
+        <span class="contact-card__label">LinkedIn</span>
+        <span class="contact-card__value">linkedin.com/in/kunalvrshn</span>
+      </a>
+    </div>
+
+    <p class="social-float__label">Also floating around here</p>
+    <div class="social-float">
+      <span class="social-float__item">
+        <a class="social-bubble social-bubble--instagram" href="https://www.instagram.com/old_soul_______/" target="_blank" rel="noopener" aria-label="Instagram — @old_soul_______">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5.5"/>
+            <circle cx="12" cy="12" r="4.2"/>
+            <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+      </span>
+      <span class="social-float__item">
+        <a class="social-bubble social-bubble--facebook" href="https://www.facebook.com/kunal.varshney.588539/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.5c0-.9.25-1.5 1.55-1.5H16.5V4.3c-.3-.04-1.3-.13-2.5-.13-2.5 0-4.1 1.51-4.1 4.03v2.3H7.3v3h2.6V21h3.6z"/>
+          </svg>
+        </a>
+      </span>
+      <span class="social-float__item">
+        <a class="social-bubble social-bubble--linkedin" href="https://linkedin.com/in/kunalvrshn/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <rect x="3" y="9" width="3.2" height="11"/>
+            <circle cx="4.6" cy="4.8" r="2"/>
+            <path d="M10.5 9h3.1v1.7h.05c.43-.78 1.5-1.7 3.1-1.7 3.3 0 3.9 2.05 3.9 4.7V20h-3.2v-5.6c0-1.35-.03-3.1-1.95-3.1-1.95 0-2.25 1.45-2.25 3v5.7h-3.2V9z"/>
+          </svg>
+        </a>
+      </span>
+    </div>
+
+    <p class="contact__closing">The plan for the next year is simple: know exactly what I'm working on, keep growing, and actually enjoy the work. If that's the kind of person you want building your site, let's talk.</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <a href="resume/index.html">My professional background →</a>
+
+  <div class="footer__secret">
+    <button type="button" class="secret-toggle" id="secret-toggle" aria-expanded="false" aria-controls="secret-panel">
+      <span class="secret-toggle__caret" aria-hidden="true">▸</span> One more thing
+    </button>
+    <div class="secret-panel" id="secret-panel" hidden>
+      <div class="secret-panel__words">
+        <p class="secret-panel__lede">Not on the résumé. Never going to be.</p>
+        <p>Somewhere between support shifts and lighting catalogues, I started making these with friends. I'll be honest — the afternoons spent shooting them are some of the happiest I've had. There's no plan behind it and nothing riding on it, which is probably exactly why it's the part I look forward to most.</p>
+        <p>I think it's the switching off. For a few minutes you're not the person answering tickets or chasing an order — you're someone else entirely, doing something ridiculous, and if it lands, a few people laugh. That's the whole return on it. It's more than enough.</p>
+        <p>I'm not calling myself an actor. I'm saying that on a slow afternoon, given the choice, this is what I'd pick every time.</p>
+      </div>
+      <div class="secret-videos">
+        <figure class="secret-video">
+          <video controls preload="metadata" playsinline>
+            <source src="assets/videos/non-iphone-user.mp4" type="video/mp4">
+            Your browser can't play this clip.
+          </video>
+          <figcaption>How a non-iPhone user talks · 3 min</figcaption>
+        </figure>
+        <figure class="secret-video">
+          <video controls preload="metadata" playsinline>
+            <source src="assets/videos/filmy-keeda.mp4" type="video/mp4">
+            Your browser can't play this clip.
+          </video>
+          <figcaption>If everyone had filmy keeda · 5 min</figcaption>
+        </figure>
+      </div>
+      <p class="secret-panel__foot">Shot on whatever was in someone's pocket at the time. No crew, no budget, no retakes worth mentioning.</p>
+    </div>
+  </div>
+
+  <button type="button" class="footer__egg" id="footer-egg">
+    Psst — click my name at the very top three times. There's a masked man up there who cannot clear a single wall, and honestly, same.
+    <span class="footer__egg-cta">or just press this, I don't judge</span>
+  </button>
+</footer>
+
+<script src="js/vendor/anime.umd.min.js"></script>
+<script src="js/vendor/motion.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/game.js"></script>
+<script>
+  /* Offline support. Registered after load so it never competes with the
+     first paint, and only where the browser supports it. */
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("sw.js").catch(function () {});
+    });
+  }
+</script>
+</body>
+</html>
+

@@ -87,7 +87,7 @@
 <link rel="stylesheet" href="css/theme-motion.css">
 <link rel="stylesheet" href="css/svgator-effects.css">
 <link rel="stylesheet" href="css/contact-panel.css">
-<link rel="stylesheet" href="css/cursor-water.css">
+<link rel="stylesheet" href="css/upgrade-sections.css">
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -110,6 +110,7 @@
   <label for="nav-toggle" class="nav__burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
 
   <nav class="nav__links" aria-label="Primary">
+    <span class="nav__avail" aria-label="Open for remote projects"><span class="nav__avail-dot" aria-hidden="true"></span> Open · Remote</span>
     <a href="#work">Work</a>
     <a href="#experience">Background</a>
     <a href="resume/index.html">Résumé</a>
@@ -140,33 +141,19 @@
       <span class="hero-scroll-beacons__s">cards</span>
       <span class="hero-scroll-beacons__w">↕</span>
     </div>
-      <img src="assets/portraits/kunal-headphones.png" alt="" width="520" height="520" loading="eager" decoding="async">
+    <figure class="hero-float hero-float--headphones" data-hero-float aria-hidden="true">
+      <img src="assets/portraits/kunal-headphones.png" alt="" width="520" height="520" loading="lazy" decoding="async">
     </figure>
     <div class="sticker-field" data-sticker-field aria-hidden="true">
-      <!-- Work & tech -->
       <figure class="sticker sticker--1 sticker--wide"><img src="assets/stickers/sticker-01.jpg" alt="" loading="lazy" decoding="async" width="240" height="180"></figure>
       <figure class="sticker sticker--2"><img src="assets/stickers/sticker-02.jpg" alt="" loading="lazy" decoding="async" width="200" height="200"></figure>
-      <figure class="sticker sticker--3"><img src="assets/stickers/sticker-03.jpg" alt="" loading="lazy" decoding="async" width="240" height="240"></figure>
       <figure class="sticker sticker--4 sticker--wide"><img src="assets/stickers/sticker-04.jpg" alt="" loading="lazy" decoding="async" width="240" height="180"></figure>
-      <figure class="sticker sticker--5"><img src="assets/stickers/sticker-05.jpg" alt="" loading="lazy" decoding="async" width="220" height="220"></figure>
       <figure class="sticker sticker--6 sticker--wide"><img src="assets/stickers/sticker-06.jpg" alt="" loading="lazy" decoding="async" width="260" height="195"></figure>
-      <figure class="sticker sticker--7"><img src="assets/stickers/sticker-07.jpg" alt="" loading="lazy" decoding="async" width="200" height="200"></figure>
-      <figure class="sticker sticker--8"><img src="assets/stickers/sticker-08.jpg" alt="" loading="lazy" decoding="async" width="200" height="200"></figure>
-      <figure class="sticker sticker--9"><img src="assets/stickers/sticker-09.jpg" alt="" loading="lazy" decoding="async" width="220" height="220"></figure>
       <figure class="sticker sticker--10 sticker--wide"><img src="assets/stickers/sticker-10.jpg" alt="" loading="lazy" decoding="async" width="240" height="180"></figure>
       <figure class="sticker sticker--11 sticker--icon" aria-hidden="true">💻</figure>
-      <figure class="sticker sticker--12 sticker--icon" aria-hidden="true">✉️</figure>
-      <!-- Cinema & Bollywood -->
       <figure class="sticker sticker--13 sticker--wide"><img src="assets/stickers/sticker-13.jpg" alt="" loading="lazy" decoding="async" width="220" height="165"></figure>
-      <figure class="sticker sticker--14"><img src="assets/stickers/sticker-14.jpg" alt="" loading="lazy" decoding="async" width="200" height="200"></figure>
-      <figure class="sticker sticker--15"><img src="assets/stickers/sticker-15.jpg" alt="" loading="lazy" decoding="async" width="200" height="200"></figure>
       <figure class="sticker sticker--16 sticker--wide"><img src="assets/stickers/sticker-16.jpg" alt="" loading="lazy" decoding="async" width="240" height="180"></figure>
-      <figure class="sticker sticker--17"><img src="assets/stickers/sticker-17.jpg" alt="" loading="lazy" decoding="async" width="200" height="200"></figure>
-      <figure class="sticker sticker--18 sticker--wide"><img src="assets/stickers/sticker-18.jpg" alt="" loading="lazy" decoding="async" width="240" height="180"></figure>
-      <figure class="sticker sticker--19"><img src="assets/stickers/sticker-19.jpg" alt="" loading="lazy" decoding="async" width="200" height="200"></figure>
       <figure class="sticker sticker--20 sticker--icon" aria-hidden="true">🎬</figure>
-      <figure class="sticker sticker--21 sticker--icon" aria-hidden="true">🍿</figure>
-      <figure class="sticker sticker--22 sticker--icon" aria-hidden="true">🎭</figure>
       <figure class="sticker sticker--23 sticker--label" aria-hidden="true"><span>Bollywood</span></figure>
       <figure class="sticker sticker--24 sticker--label sticker--label-alt" aria-hidden="true"><span>24 FPS</span></figure>
     </div>
@@ -223,21 +210,63 @@
   </section>
 
   <section id="about" class="section about section--tight section--warm">
-    <dl class="fact-strip">
+    <dl class="fact-strip fact-strip--proof">
       <div class="fact"><dd class="fact__value"><span class="count-num" data-count-to="9">0</span></dd><dt class="fact__label">Years online</dt></div>
-      <div class="fact"><dd class="fact__value"><span class="count-num" data-count-to="4">0</span>+</dd><dt class="fact__label">Years support</dt></div>
       <div class="fact"><dd class="fact__value"><span class="count-num" data-count-to="200">0</span>+</dd><dt class="fact__label">Products live</dt></div>
+      <div class="fact"><dd class="fact__value"><span class="count-num" data-count-to="3">0</span></dd><dt class="fact__label">Live client sites</dt></div>
+      <div class="fact"><dd class="fact__value">100%</dd><dt class="fact__label">Human QA before launch</dt></div>
     </dl>
+
+    <div class="site-tour">
+      <div>
+        <h3 class="site-tour__title">60-second site tour</h3>
+        <p class="site-tour__lede">No Loom yet? Hit play — I'll walk you through hero, process, work, background, and contact in about a minute.</p>
+        <div class="site-tour__progress" aria-hidden="true"><span class="site-tour__progress-bar" data-site-tour-bar></span></div>
+        <p class="site-tour__status" data-site-tour-status aria-live="polite"></p>
+      </div>
+      <div class="site-tour__actions">
+        <button type="button" class="btn btn--primary" data-site-tour-start>▶ Start tour</button>
+        <button type="button" class="btn btn--ghost" data-site-tour-stop hidden>Stop tour</button>
+      </div>
+    </div>
   </section>
 
   <section id="how-i-build" class="section how-build section--tight section--dark">
     <p class="eyebrow">How I build</p>
     <h2 class="section__title section__title--solo">AI-assisted. Human-reviewed.</h2>
-    <p class="how-build__lede">I use Claude and Cursor to move faster on layout, components, and iteration — then I own design direction, copy, mobile QA, and launch. Nothing goes live without my sign-off. Four years in support means I stay reachable after go-live.</p>
+    <p class="how-build__lede">Claude and Cursor handle speed — layout drafts, components, iteration. I own design direction, copy, mobile QA, performance checks, and launch. Nothing ships without my sign-off.</p>
+
+    <div class="ai-process" aria-label="AI build process">
+      <article class="ai-process__step">
+        <span class="ai-process__num">01</span>
+        <h3 class="ai-process__title">Scope &amp; prompt</h3>
+        <p class="ai-process__body">Written brief, price, and success criteria before a single line of code.</p>
+        <span class="ai-process__tool">Claude · Cursor chat</span>
+      </article>
+      <article class="ai-process__step">
+        <span class="ai-process__num">02</span>
+        <h3 class="ai-process__title">Build &amp; iterate</h3>
+        <p class="ai-process__body">Components, responsive layout, and copy drafts — reviewed and edited by me.</p>
+        <span class="ai-process__tool">Cursor agent · Composer</span>
+      </article>
+      <article class="ai-process__step">
+        <span class="ai-process__num">03</span>
+        <h3 class="ai-process__title">Mobile QA</h3>
+        <p class="ai-process__body">Real phone testing: touch targets, theme contrast, scroll behaviour, forms.</p>
+        <span class="ai-process__tool">Manual checklist</span>
+      </article>
+      <article class="ai-process__step">
+        <span class="ai-process__num">04</span>
+        <h3 class="ai-process__title">Deploy &amp; support</h3>
+        <p class="ai-process__body">Live link on GitHub Pages or client hosting — I stay reachable after launch.</p>
+        <span class="ai-process__tool">Git · GitHub Pages</span>
+      </article>
+    </div>
+
     <ul class="how-build__list">
-      <li><strong>Scope</strong> — written price before I start</li>
-      <li><strong>Build</strong> — AI tools for speed, my checklist for quality</li>
-      <li><strong>Launch</strong> — you approve on a real link, on your phone</li>
+      <li><strong>You get</strong> — a live link, mobile-first layout, and direct contact with the person who built it</li>
+      <li><strong>I use AI for</strong> — speed on layout and components, not as a substitute for judgment</li>
+      <li><strong>After launch</strong> — updates, fixes, and new pages — four years in support taught me to stay reachable</li>
     </ul>
     <a class="btn btn--ghost" href="assets/Kunal-Varshney-Resume.docx" download>Download Word résumé →</a>
   </section>
@@ -423,7 +452,8 @@
         <div class="work-stack__copy">
           <p class="work-stack__tag">Marketing &amp; online · Ongoing</p>
           <h3 class="work-stack__title">Padma Enterprises</h3>
-          <p class="work-stack__url">padmalights.com</p>
+          <p class="work-stack__url">padmalights.com · 200+ SKUs · export enquiries</p>
+          <a class="work-stack__case" href="work/padma.html">Read case study →</a>
           <a class="work-stack__cta" href="https://www.padmalights.com" target="_blank" rel="noopener">Visit live site <span class="work-stack__cta-arrow" aria-hidden="true">↗</span></a>
         </div>
       </article>
@@ -452,6 +482,28 @@
           <p class="work-stack__url">lilkunal.github.io</p>
           <a class="work-stack__cta" href="#contact">Let's talk <span class="work-stack__cta-arrow" aria-hidden="true">→</span></a>
         </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="proof" class="section proof-section section--warm">
+    <p class="eyebrow">Proof</p>
+    <h2 class="section__title section__title--solo">What clients &amp; operators say</h2>
+    <div class="proof-grid">
+      <article class="proof-card">
+        <p class="proof-card__metric">200+</p>
+        <p class="proof-card__quote">Products browsable online without a phone call first — export enquiries became self-serve instead of word-of-mouth only.</p>
+        <p class="proof-card__meta">Padma Enterprises · catalogue &amp; marketing</p>
+      </article>
+      <article class="proof-card">
+        <p class="proof-card__metric">Live in weeks</p>
+        <p class="proof-card__quote">Clear home-care site on mobile — families could understand services and reach out without hunting for a number.</p>
+        <p class="proof-card__meta">JAI Home Care · design &amp; build · 2025</p>
+      </article>
+      <article class="proof-card">
+        <p class="proof-card__metric">4+ yrs</p>
+        <p class="proof-card__quote">I don't ghost after launch — support background means tickets, fixes, and follow-ups are normal for me, not exceptions.</p>
+        <p class="proof-card__meta">Teleperformance · Webhelp · Concentrix · Flex</p>
       </article>
     </div>
   </section>
@@ -693,6 +745,7 @@
 <script src="js/animations.js"></script>
 <script src="js/game.js?v=22"></script>
 <script src="js/cursor-water.js" defer></script>
+<script src="js/site-tour.js" defer></script>
 <script src="js/stretch-reveal.js" defer></script>
 <script>
   /* Offline support. Registered after load so it never competes with the

@@ -151,7 +151,7 @@
 
 /* Cards & carousels — lifted product panels */
 .cv-scroll__pin,
-.work-fly__stage,
+.work-stack__visual,
 .project-form,
 .contact-grid .contact-card {
   box-shadow: var(--motion-shadow);

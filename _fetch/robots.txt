@@ -1,0 +1,8 @@
+﻿User-agent: *
+Allow: /
+
+# Large media — no value in search results, and crawling it wastes budget.
+Disallow: /assets/videos/
+
+Sitemap: https://lilkunal.github.io/sitemap.xml
+
