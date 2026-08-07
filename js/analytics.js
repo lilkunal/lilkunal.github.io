@@ -6,11 +6,34 @@
   var id = (cfg.gaMeasurementId || "").trim();
   if (!id || !/^G-[A-Z0-9]+$/i.test(id)) return;
 
+  /* EEA/GDPR ISO 3166-2 — no consent banner; deny all storage in these regions. */
+  var GDPR_REGIONS = [
+    "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR",
+    "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK",
+    "SI", "ES", "SE", "GB", "IS", "LI", "NO", "CH"
+  ];
+
   window.dataLayer = window.dataLayer || [];
   function gtag() {
     window.dataLayer.push(arguments);
   }
   window.gtag = gtag;
+
+  /* Consent defaults MUST run before gtag("config", …). */
+  gtag("consent", "default", {
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    analytics_storage: "granted"
+  });
+  gtag("consent", "default", {
+    region: GDPR_REGIONS,
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    analytics_storage: "denied"
+  });
+
   gtag("js", new Date());
   gtag("config", id, {
     anonymize_ip: true,
