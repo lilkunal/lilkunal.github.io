@@ -3,6 +3,6 @@
    Search Console: https://search.google.com/search-console → Add property → HTML tag method
    Paste only the content= value from the meta tag (not the whole tag). */
 window.KV_SITE = {
-  gaMeasurementId: "",
+  gaMeasurementId: "G-RH703GQFRV",
   gscVerification: ""
 };
