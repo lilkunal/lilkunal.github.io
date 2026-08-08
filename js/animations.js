@@ -56,7 +56,7 @@
   /* The .js class gates the pre-animation hidden state in CSS. If we bail out
      below, it has to come off or hero text would stay invisible. */
   function revealHeroImmediately() {
-    $$(".hero-editorial__intro, .hero-editorial__type, .hero-editorial__photo, .hero-editorial__foot, .hero-center, .deck__slide.is-active, .deck__title, .sticker").forEach(function (el) {
+    $$(".hero-editorial__intro, .hero-editorial__type, .hero-editorial__photo-bg, .hero-editorial__foot, .hero-center, .deck__slide.is-active, .deck__title, .sticker").forEach(function (el) {
       el.style.opacity = "1";
       el.style.transform = "";
     });
@@ -73,7 +73,7 @@
   setTimeout(function () {
     var editorial = document.querySelector(".hero--editorial");
     if (editorial) {
-      $$(".hero-editorial__intro, .hero-editorial__type, .hero-editorial__photo, .hero-editorial__foot", editorial).forEach(function (el) {
+      $$(".hero-editorial__intro, .hero-editorial__type, .hero-editorial__photo-bg, .hero-editorial__foot", editorial).forEach(function (el) {
         if (parseFloat(getComputedStyle(el).opacity) < 0.9) el.style.opacity = "1";
       });
       return;
@@ -135,12 +135,10 @@
         duration: 820,
         ease: "out(4)"
       }, 680);
-      tl.add(".hero-editorial__photo", {
+      tl.add(".hero-editorial__photo-bg", {
         opacity: [0, 1],
-        scale: [0.92, 1],
-        y: [24, 0],
-        filter: ["blur(6px)", "blur(0px)"],
-        duration: 880,
+        scale: [1.04, 1],
+        duration: 1200,
         ease: "out(4)"
       }, 720);
       tl.add(".hero-editorial__foot", {

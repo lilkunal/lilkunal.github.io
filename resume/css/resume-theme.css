@@ -251,21 +251,37 @@ body.dossier .svg-draw {
 }
 
 /* Hero */
-body.dossier .hero__portrait {
-  width: clamp(120px, 22vw, 160px);
-  margin: 0 auto 1rem;
-  border: 3px solid var(--border);
-  border-radius: 14px;
+body.dossier .hero--resume {
+  position: relative;
   overflow: hidden;
-  background: var(--surface);
-  box-shadow: 0 8px 24px var(--shadow);
+  isolation: isolate;
 }
 
-body.dossier .hero__portrait img {
+body.dossier .hero__photo-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+body.dossier .hero__photo-bg img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
+  object-position: center 20%;
+  opacity: 0.08;
+  filter: grayscale(1) contrast(1.04);
+}
+
+:root[data-theme="dark"] body.dossier .hero__photo-bg img {
+  opacity: 0.1;
+}
+
+body.dossier .hero--resume > :not(.hero__photo-bg) {
+  position: relative;
+  z-index: 1;
 }
 
 body.dossier .hero__name {
