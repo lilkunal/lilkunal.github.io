@@ -34,7 +34,7 @@
   }
 
   function scrollToId(id) {
-    var el = id === "top" ? document.querySelector(".hero--milo") : document.getElementById(id);
+    var el = id === "top" ? (document.querySelector(".hero--editorial") || document.querySelector(".hero--milo")) : document.getElementById(id);
     if (!el) return;
     el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
   }

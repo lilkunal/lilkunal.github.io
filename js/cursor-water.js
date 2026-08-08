@@ -108,6 +108,10 @@
       setMode("default");
       return;
     }
+    if (el.closest(".hero--editorial") && !el.closest("a, button")) {
+      setMode("hero-flip");
+      return;
+    }
     if (el.closest(".hero--milo") && !el.closest(".deck-wrap") && !el.closest("a, button")) {
       setMode("hero-flip");
       return;
@@ -116,7 +120,7 @@
       setMode("magnetic");
       return;
     }
-    if (el.closest(".work-stack__visual, .cv-scroll__panel")) {
+    if (el.closest(".work-stack__visual, .cv-scroll__panel, .hero-editorial__photo")) {
       setMode("focus");
       return;
     }
@@ -133,14 +137,33 @@
   document.addEventListener("mouseleave", hide);
   window.addEventListener("blur", hide);
 
-  /* Sticker spotlight — brighten stickers near pointer in hero */
-  var hero = document.querySelector(".hero--milo");
-  var stickers = hero
+  /* Portrait spotlight in editorial hero */
+  var hero = document.querySelector(".hero--editorial") || document.querySelector(".hero--milo");
+  var photo = hero && hero.querySelector(".hero-editorial__photo img");
+  var stickers = hero && !photo
     ? Array.prototype.slice.call(hero.querySelectorAll(".sticker"))
     : [];
   var spotlightR = 140;
 
-  if (hero && stickers.length) {
+  if (hero && photo) {
+    window.addEventListener("mousemove", function (e) {
+      var hr = hero.getBoundingClientRect();
+      if (e.clientY < hr.top || e.clientY > hr.bottom) {
+        photo.style.filter = "";
+        return;
+      }
+      var r = photo.getBoundingClientRect();
+      var cx = r.left + r.width / 2;
+      var cy = r.top + r.height / 2;
+      var dist = Math.hypot(e.clientX - cx, e.clientY - cy);
+      if (dist < spotlightR * 1.4) {
+        var t = 1 - dist / (spotlightR * 1.4);
+        photo.style.filter = "brightness(" + (1 + t * 0.12).toFixed(2) + ")";
+      } else {
+        photo.style.filter = "";
+      }
+    }, { passive: true });
+  } else if (hero && stickers.length) {
     window.addEventListener("mousemove", function (e) {
       if (!hero.contains(e.target) && e.target !== hero) {
         stickers.forEach(function (st) {

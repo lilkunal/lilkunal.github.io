@@ -1,4 +1,4 @@
-/* Nav — always dark, high contrast, minimal */
+/* Nav — theme-aware on editorial hero; dark bar elsewhere */
 
 :root {
   --nav-height: 76px;
@@ -13,7 +13,7 @@ body {
   background-attachment: fixed;
 }
 
-/* Nav stays dark in every theme — readable on hero + light pages */
+/* Default nav — dark glass (below hero / legacy pages) */
 .nav {
   min-height: var(--nav-height);
   padding: 0.55rem clamp(1rem, 3vw, 2rem);
@@ -21,6 +21,79 @@ body {
   backdrop-filter: blur(22px) saturate(150%);
   -webkit-backdrop-filter: blur(22px) saturate(150%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Editorial hero — nav follows light/dark theme tokens */
+.nav.nav--on-editorial {
+  background: color-mix(in srgb, var(--paper) 88%, transparent) !important;
+  border-bottom-color: color-mix(in srgb, var(--ink) 10%, transparent) !important;
+}
+
+.nav.nav--on-editorial .nav__brand,
+.nav.nav--on-editorial .nav__brand-name {
+  color: var(--ink) !important;
+}
+
+.nav.nav--on-editorial .nav__links a:not(.nav__cta) {
+  color: color-mix(in srgb, var(--ink) 72%, transparent) !important;
+}
+
+.nav.nav--on-editorial .nav__links a:not(.nav__cta):hover {
+  color: var(--ink) !important;
+}
+
+.nav.nav--on-editorial .nav__links a:not(.nav__cta)::after {
+  background: color-mix(in srgb, var(--ink) 85%, transparent);
+}
+
+.nav.nav--on-editorial .nav__cta {
+  background: var(--ink) !important;
+  color: var(--paper) !important;
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--ink) 18%, transparent);
+}
+
+.nav.nav--on-editorial .nav__cta:hover {
+  background: color-mix(in srgb, var(--ink) 92%, var(--paper)) !important;
+  color: var(--paper) !important;
+}
+
+.nav.nav--on-editorial .nav__burger span {
+  background: var(--ink) !important;
+}
+
+.nav.nav--on-editorial .theme-toggle {
+  border-color: color-mix(in srgb, var(--ink) 18%, transparent) !important;
+  color: color-mix(in srgb, var(--ink) 85%, transparent) !important;
+}
+
+.nav.nav--on-editorial .theme-toggle:hover {
+  border-color: color-mix(in srgb, var(--ink) 32%, transparent) !important;
+  color: var(--ink) !important;
+  background: color-mix(in srgb, var(--ink) 6%, transparent) !important;
+}
+
+.nav.nav--on-editorial .theme-toggle__track {
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  border-color: color-mix(in srgb, var(--ink) 14%, transparent);
+}
+
+.nav.nav--on-editorial .theme-toggle__thumb {
+  background: var(--ink);
+}
+
+.nav.nav--on-editorial .theme-toggle__text {
+  color: color-mix(in srgb, var(--ink) 65%, transparent);
+}
+
+.nav.nav--on-editorial .nav__brand:hover {
+  color: var(--ink) !important;
+}
+
+@media (max-width: 1080px) {
+  .nav.nav--on-editorial .nav__links {
+    background: color-mix(in srgb, var(--paper) 96%, transparent) !important;
+    border-bottom-color: color-mix(in srgb, var(--ink) 10%, transparent) !important;
+  }
 }
 
 .nav__brand {

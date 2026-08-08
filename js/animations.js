@@ -56,8 +56,9 @@
   /* The .js class gates the pre-animation hidden state in CSS. If we bail out
      below, it has to come off or hero text would stay invisible. */
   function revealHeroImmediately() {
-    $$(".hero-center, .deck__slide.is-active, .deck__title, .sticker").forEach(function (el) {
+    $$(".hero-editorial__intro, .hero-editorial__type, .hero-editorial__photo, .hero-editorial__foot, .hero-center, .deck__slide.is-active, .deck__title, .sticker").forEach(function (el) {
       el.style.opacity = "1";
+      el.style.transform = "";
     });
     var curtain = document.querySelector(".hero-curtain");
     if (curtain) curtain.style.display = "none";
@@ -70,6 +71,13 @@
   }
 
   setTimeout(function () {
+    var editorial = document.querySelector(".hero--editorial");
+    if (editorial) {
+      $$(".hero-editorial__intro, .hero-editorial__type, .hero-editorial__photo, .hero-editorial__foot", editorial).forEach(function (el) {
+        if (parseFloat(getComputedStyle(el).opacity) < 0.9) el.style.opacity = "1";
+      });
+      return;
+    }
     var active = document.querySelector(".deck__slide.is-active");
     if (active && parseFloat(getComputedStyle(active).opacity) < 0.9) active.style.opacity = "1";
     var heroCenter = document.querySelector(".hero-center");
@@ -97,59 +105,110 @@
      2. Hero entrance — deck card + stickers (anime.js)
      --------------------------------------------------------------------- */
   if (A) {
-    var tl = A.createTimeline({ defaults: { ease: "out(3)" } });
-    tl.add(".hero-curtain", {
-      scaleY: [1, 0],
-      opacity: [1, 0],
-      duration: 1100,
-      ease: "inOut(3)"
-    }, 350);
-    tl.call(function () {
-      var curtain = document.querySelector(".hero-curtain");
-      if (curtain) curtain.style.display = "none";
-    }, 1500);
-    tl.add(".sticker", {
-      opacity: [0, 1],
-      scale: [0.85, 1],
-      delay: A.stagger(40, { from: "random" }),
-      duration: 680
-    }, 420);
-    tl.add(".hero-float--headphones", {
-      opacity: [0, 0.22],
-      scale: [0.92, 1],
-      duration: 900
-    }, 420);
-    tl.add(".hero-portrait", {
-      opacity: [0, 1],
-      scale: [0.88, 1],
-      y: [24, 0],
-      filter: ["blur(8px)", "blur(0px)"],
-      duration: 780
-    }, 520);
-    tl.add(".hero-center", { opacity: [0, 1], duration: 720 }, 640);
-    tl.add(".deck__slide.is-active", {
-      scale: [0.94, 1],
-      y: [18, 0],
-      filter: ["blur(6px)", "blur(0px)"],
-      duration: 820,
-      ease: "out(4)"
-    }, 720);
-    tl.call(function () {
-      var active = document.querySelector(".deck__slide.is-active");
-      revealDeckTitle(active, 24);
-      var label = active && active.querySelector(".deck__label");
-      var kicker = active && active.querySelector(".deck__kicker");
-      var extras = [label, kicker].filter(Boolean);
-      if (extras.length && A) {
-        A.animate(extras, {
-          opacity: [0, 1],
-          y: [14, 0],
-          duration: 560,
-          ease: "out(4)",
-          delay: A.stagger(80)
-        });
-      }
-    }, 980);
+    var editorialHero = document.querySelector(".hero--editorial");
+    if (editorialHero) {
+      var tl = A.createTimeline({ defaults: { ease: "out(3)" } });
+      tl.add(".hero-curtain", {
+        scaleY: [1, 0],
+        opacity: [1, 0],
+        duration: 1100,
+        ease: "inOut(3)"
+      }, 350);
+      tl.call(function () {
+        var curtain = document.querySelector(".hero-curtain");
+        if (curtain) curtain.style.display = "none";
+      }, 1500);
+      tl.add(".hero-editorial__intro", {
+        opacity: [0, 1],
+        y: [18, 0],
+        duration: 680
+      }, 480);
+      tl.add(".hero-editorial__solid", {
+        opacity: [0, 1],
+        y: [36, 0],
+        duration: 900,
+        ease: "out(4)"
+      }, 560);
+      tl.add(".hero-editorial__outline", {
+        opacity: [0, 1],
+        y: [28, 0],
+        duration: 820,
+        ease: "out(4)"
+      }, 680);
+      tl.add(".hero-editorial__photo", {
+        opacity: [0, 1],
+        scale: [0.92, 1],
+        y: [24, 0],
+        filter: ["blur(6px)", "blur(0px)"],
+        duration: 880,
+        ease: "out(4)"
+      }, 720);
+      tl.add(".hero-editorial__foot", {
+        opacity: [0, 1],
+        y: [16, 0],
+        duration: 640
+      }, 920);
+      tl.add(".hero-editorial__proof li", {
+        opacity: [0, 1],
+        y: [10, 0],
+        delay: A.stagger(70),
+        duration: 520
+      }, 1040);
+    } else {
+      var tl = A.createTimeline({ defaults: { ease: "out(3)" } });
+      tl.add(".hero-curtain", {
+        scaleY: [1, 0],
+        opacity: [1, 0],
+        duration: 1100,
+        ease: "inOut(3)"
+      }, 350);
+      tl.call(function () {
+        var curtain = document.querySelector(".hero-curtain");
+        if (curtain) curtain.style.display = "none";
+      }, 1500);
+      tl.add(".sticker", {
+        opacity: [0, 1],
+        scale: [0.85, 1],
+        delay: A.stagger(40, { from: "random" }),
+        duration: 680
+      }, 420);
+      tl.add(".hero-float--headphones", {
+        opacity: [0, 0.22],
+        scale: [0.92, 1],
+        duration: 900
+      }, 420);
+      tl.add(".hero-portrait", {
+        opacity: [0, 1],
+        scale: [0.88, 1],
+        y: [24, 0],
+        filter: ["blur(8px)", "blur(0px)"],
+        duration: 780
+      }, 520);
+      tl.add(".hero-center", { opacity: [0, 1], duration: 720 }, 640);
+      tl.add(".deck__slide.is-active", {
+        scale: [0.94, 1],
+        y: [18, 0],
+        filter: ["blur(6px)", "blur(0px)"],
+        duration: 820,
+        ease: "out(4)"
+      }, 720);
+      tl.call(function () {
+        var active = document.querySelector(".deck__slide.is-active");
+        revealDeckTitle(active, 24);
+        var label = active && active.querySelector(".deck__label");
+        var kicker = active && active.querySelector(".deck__kicker");
+        var extras = [label, kicker].filter(Boolean);
+        if (extras.length && A) {
+          A.animate(extras, {
+            opacity: [0, 1],
+            y: [14, 0],
+            duration: 560,
+            ease: "out(4)",
+            delay: A.stagger(80)
+          });
+        }
+      }, 980);
+    }
   }
 
   /* ---------------------------------------------------------------------
@@ -173,6 +232,8 @@
       [".ai-process__step", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
       [".proof-grid", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".proof-card", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
+      [".ai-lens", "anim-hide-up", { opacity: 1, y: 0 }, 0],
+      [".ai-lens__tile", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.06],
       [".site-tour", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".work__note", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".ask-search", "anim-hide-up", { opacity: 1, y: 0 }, 0],
@@ -267,27 +328,9 @@
   }
 
   /* ---------------------------------------------------------------------
-     5. Hero parallax on decorative layers only (Motion `scroll`)
-        Skipped on coarse pointers — it costs more than it adds on phones.
+     5. Section parallax (Motion `scroll`) — editorial hero handled in scroll-motion.js
      --------------------------------------------------------------------- */
   if (M && M.scroll && window.matchMedia("(pointer: fine)").matches) {
-    var field = document.querySelector("[data-sticker-field]");
-    var hero = document.querySelector(".hero--milo");
-    if (hero && field) {
-      M.scroll(function (progress) {
-        field.style.transform = "scale(" + (1 + progress * 0.04).toFixed(3) + ")";
-      }, { target: hero, offset: ["start start", "end start"] });
-    }
-
-    var portrait = document.querySelector(".hero-portrait");
-    if (portrait && hero) {
-      M.scroll(function (progress) {
-        var y = (progress * -36).toFixed(1);
-        var sc = (1 + progress * 0.03).toFixed(3);
-        portrait.style.transform = "translateY(" + y + "px) scale(" + sc + ")";
-      }, { target: hero, offset: ["start start", "end start"] });
-    }
-
     var cvScroll = document.querySelector("[data-cv-scroll]");
     if (cvScroll) {
       $$(".cv-scroll__visual img", cvScroll).forEach(function (img) {

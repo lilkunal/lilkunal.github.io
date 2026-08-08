@@ -6,7 +6,7 @@
    - Videos are never cached. They are ~21 MB and would blow past the origin's
      storage quota for no benefit.
    Bump CACHE_VERSION to retire every old cache on the next activation. */
-var CACHE_VERSION = "kv-v47";
+var CACHE_VERSION = "kv-v48";
 
 var PRECACHE = [
   "./",
@@ -14,8 +14,9 @@ var PRECACHE = [
   "./work/padma.html",
   "./resume/",
   "./resume/index.html",
+  "./assets/hire-me.html",
   "./css/style.css",
-  "./css/milo-hero.css",
+  "./css/editorial-hero.css",
   "./css/work-stack.css",
   "./css/nav-theme.css",
   "./css/cv-scroll.css",
@@ -28,9 +29,14 @@ var PRECACHE = [
   "./resume/css/style.css",
   "./resume/css/resume-theme.css",
   "./assets/brand-mark.svg",
-  "./assets/portraits/kunal-portrait.png",
-  "./assets/portraits/kunal-headphones.png",
-  "./assets/Kunal-Varshney-Resume.docx",
+  "./assets/photos/kunal-hero-profile.png",
+  "./assets/photos/ai-lens-gemini.png",
+  "./assets/photos/ai-lens-golden.jpg",
+  "./assets/photos/ai-lens-matrix.jpg",
+  "./assets/photos/ai-lens-mono.jpg",
+  "./assets/photos/ai-lens-street.jpg",
+  "./assets/photos/ai-lens-casual.jpg",
+  "./assets/photos/ai-lens-studio.jpg",
   "./assets/Kunal-Varshney-Resume.pdf",
   "./assets/work/padma-gate-light.jpg",
   "./assets/work/jai-home-care.jpg",
@@ -44,16 +50,9 @@ var PRECACHE = [
   "./assets/cv/cv-vault.jpg",
   "./assets/cv/cv-poster-1.jpg",
   "./assets/cv/cv-poster-2.jpg",
-  "./assets/stickers/sticker-01.jpg",
-  "./assets/stickers/sticker-02.jpg",
-  "./assets/stickers/sticker-04.jpg",
-  "./assets/stickers/sticker-06.jpg",
-  "./assets/stickers/sticker-10.jpg",
-  "./assets/stickers/sticker-13.jpg",
-  "./assets/stickers/sticker-16.jpg",
   "./js/main.js",
   "./js/animations.js",
-  "./js/milo-hero.js",
+  "./js/scroll-motion.js",
   "./js/carousel.js",
   "./js/svgator-effects.js",
   "./js/lottie-accents.js",
