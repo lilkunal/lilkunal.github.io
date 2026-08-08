@@ -6,7 +6,7 @@
    - Videos are never cached. They are ~21 MB and would blow past the origin's
      storage quota for no benefit.
    Bump CACHE_VERSION to retire every old cache on the next activation. */
-var CACHE_VERSION = "kv-v46";
+var CACHE_VERSION = "kv-v47";
 
 var PRECACHE = [
   "./",
@@ -66,9 +66,6 @@ var PRECACHE = [
   "./js/seo-head.js",
   "./js/analytics.js",
   "./js/game.js",
-  "./js/sky-glide.js",
-  "./js/sky-glide-pose.js",
-  "./js/game-launcher.js",
   "./js/vendor/anime.umd.min.js",
   "./js/vendor/motion.min.js",
   "./resume/js/main.js",

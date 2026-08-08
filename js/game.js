@@ -600,7 +600,22 @@
     if (brand) brand.focus();
   }
 
-  /* Triggers live in game-launcher.js (picker → this game or Sky Glide). */
+  /* ------------------------------------------------------------------
+     Trigger: three quick clicks on the wordmark
+     ------------------------------------------------------------------ */
+  brand.addEventListener("click", function (e) {
+    var now = Date.now();
+    clicks = (now - lastClick < CLICK_WINDOW) ? clicks + 1 : 1;
+    lastClick = now;
+    if (clicks >= TRIGGER_CLICKS) {
+      clicks = 0;
+      e.preventDefault();
+      open();
+    }
+  });
+
+  var egg = document.getElementById("footer-egg");
+  if (egg) egg.addEventListener("click", open);
 
   /* Exposed purely so the physics and rendering can be verified without a live
      animation frame (headless checks drive step/draw directly). */
