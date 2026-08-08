@@ -73,7 +73,8 @@
   }
 
   registerTrigger(document.querySelector(".nav__brand"));
-  registerTrigger(document.getElementById("footer-egg"));
+  var egg = document.getElementById("footer-egg");
+  if (egg) egg.addEventListener("click", function () { openPicker(); });
 
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && picker && !picker.hasAttribute("hidden")) closePicker();
