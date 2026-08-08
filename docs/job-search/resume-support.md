@@ -1,7 +1,7 @@
-# Résumé — Technical Support (Remote)
+﻿# Résumé — Technical Support (Remote)
 
 **Kunal Varshney**  
-India · Remote · kunalvrshn@gmail.com · +91 70176 62533  
+India · Remote · kunalvrshn@gmail.com · +91 85340 49747  
 Portfolio: https://lilkunal.github.io/ · LinkedIn: linkedin.com/in/kunalvrshn/ · GitHub: https://github.com/lilkunal
 
 ---

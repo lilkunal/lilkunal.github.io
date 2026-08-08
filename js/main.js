@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   "use strict";
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -103,7 +103,7 @@
       waBtn.addEventListener("click", function () {
         if (!validateInquiry()) return;
         var text = encodeURIComponent(buildInquiryMessage());
-        window.open("https://wa.me/917017662533?text=" + text, "_blank", "noopener");
+        window.open("https://wa.me/918534049747?text=" + text, "_blank", "noopener");
       });
     }
   }
@@ -157,7 +157,7 @@
      fits, hands the question off to WhatsApp with the text pre-filled so Kunal
      can answer it directly. Not a live AI, and it can't send on the visitor's
      behalf — they still hit send in their own WhatsApp. */
-  var WHATSAPP_NUMBER = "917017662533";
+  var WHATSAPP_NUMBER = "918534049747";
   var askInput = document.getElementById("ask-input");
   var askBtn = document.getElementById("ask-search-btn");
   var askStatus = document.getElementById("ask-status");

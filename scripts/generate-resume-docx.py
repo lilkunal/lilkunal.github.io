@@ -1,4 +1,4 @@
-"""Generate Kunal-Varshney-Resume.docx from current résumé content."""
+﻿"""Generate Kunal-Varshney-Resume.docx from current résumé content."""
 from pathlib import Path
 
 from docx import Document
@@ -101,7 +101,7 @@ def main() -> None:
     style_paragraph(p, size=BODY, bold=True, space_after=Pt(2))
 
     p = doc.add_paragraph(
-        "kunalvrshn@gmail.com | +91 70176 62533 | India (Remote)\n"
+        "kunalvrshn@gmail.com | +91 85340 49747 | India (Remote)\n"
         "lilkunal.github.io | linkedin.com/in/kunalvrshn | github.com/lilkunal"
     )
     style_paragraph(p, size=SMALL, space_after=Pt(10))

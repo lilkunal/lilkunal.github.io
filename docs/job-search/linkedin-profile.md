@@ -1,4 +1,4 @@
-# LinkedIn profile — paste-ready (Web Designer · AI-assisted)
+﻿# LinkedIn profile — paste-ready (Web Designer · AI-assisted)
 
 ## Headline (220 chars max)
 
@@ -38,7 +38,7 @@ Résumé: https://lilkunal.github.io/resume/
 GitHub: https://github.com/lilkunal
 Hire-me one-pager: https://lilkunal.github.io/assets/hire-me.html
 
-kunalvrshn@gmail.com · +91 70176 62533
+kunalvrshn@gmail.com · +91 85340 49747
 ```
 
 ---

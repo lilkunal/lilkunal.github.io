@@ -1,11 +1,11 @@
-# Cover letter — ElevenLabs Website Designer
+﻿# Cover letter — ElevenLabs Website Designer
 
 **Role:** [Website Designer (Remote, global)](https://elevenlabs.io/careers/e5185eb9-dcbb-47c7-a623-244fd90e2e13/website-designer)  
 **Applicant:** Kunal Varshney · India · Remote  
 **Portfolio:** https://lilkunal.github.io/  
 **Hire sheet:** https://lilkunal.github.io/assets/hire-me.html  
 **Résumé:** https://lilkunal.github.io/resume/  
-**Contact:** kunalvrshn@gmail.com · +91 70176 62533 · linkedin.com/in/kunalvrshn
+**Contact:** kunalvrshn@gmail.com · +91 85340 49747 · linkedin.com/in/kunalvrshn
 
 ---
 
@@ -30,7 +30,7 @@ I'm based in India, available for global remote collaboration, and happy to over
 Thank you for your time.
 
 Kunal Varshney  
-kunalvrshn@gmail.com · +91 70176 62533  
+kunalvrshn@gmail.com · +91 85340 49747  
 https://lilkunal.github.io/
 
 ---
