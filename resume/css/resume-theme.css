@@ -57,13 +57,111 @@ html {
 body.dossier {
   margin: 0;
   min-height: 100vh;
-  position: relative;
-  background: var(--paper-0);
+  background:
+    /* faint column guides — layout / web-design cue */
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent calc(50% - 360px - 1px),
+      color-mix(in srgb, var(--ink-900) 4%, transparent) calc(50% - 360px),
+      color-mix(in srgb, var(--ink-900) 4%, transparent) calc(50% - 360px + 1px),
+      transparent calc(50% - 360px + 1px),
+      transparent calc(50% + 360px - 1px),
+      color-mix(in srgb, var(--ink-900) 4%, transparent) calc(50% + 360px),
+      color-mix(in srgb, var(--ink-900) 4%, transparent) calc(50% + 360px + 1px),
+      transparent calc(50% + 360px + 1px)
+    ),
+    /* dot grid — blueprint / craft */
+    radial-gradient(
+      circle at center,
+      color-mix(in srgb, var(--ink-900) 7%, transparent) 0.6px,
+      transparent 0.6px
+    ),
+    /* warm paper grain via micro-noise dots */
+    radial-gradient(
+      circle at 20% 30%,
+      color-mix(in srgb, var(--ink-900) 3%, transparent) 0.4px,
+      transparent 0.4px
+    ),
+    /* teal glow — AI + tools */
+    radial-gradient(
+      ellipse 80% 50% at 50% -10%,
+      color-mix(in srgb, var(--teal-600) 8%, transparent),
+      transparent
+    ),
+    /* brass glow — human craft / warm desk */
+    radial-gradient(
+      ellipse 60% 40% at 100% 100%,
+      color-mix(in srgb, var(--brass-500) 10%, transparent),
+      transparent
+    ),
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--paper-sheet) 40%, var(--paper-0)) 0%,
+      var(--paper-0) 45%,
+      color-mix(in srgb, var(--brass-500) 4%, var(--paper-0)) 100%
+    );
+  background-size:
+    100% 100%,
+    24px 24px,
+    3px 3px,
+    100% 100%,
+    100% 100%,
+    100% 100%;
   color: var(--ink-900);
   font-family: var(--font-body);
   font-size: 0.9rem;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+}
+
+:root[data-theme="dark"] body.dossier {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent calc(50% - 360px - 1px),
+      color-mix(in srgb, var(--ink-900) 5%, transparent) calc(50% - 360px),
+      color-mix(in srgb, var(--ink-900) 5%, transparent) calc(50% - 360px + 1px),
+      transparent calc(50% - 360px + 1px),
+      transparent calc(50% + 360px - 1px),
+      color-mix(in srgb, var(--ink-900) 5%, transparent) calc(50% + 360px),
+      color-mix(in srgb, var(--ink-900) 5%, transparent) calc(50% + 360px + 1px),
+      transparent calc(50% + 360px + 1px)
+    ),
+    radial-gradient(
+      circle at center,
+      color-mix(in srgb, var(--ink-900) 9%, transparent) 0.6px,
+      transparent 0.6px
+    ),
+    radial-gradient(
+      circle at 20% 30%,
+      color-mix(in srgb, var(--ink-900) 4%, transparent) 0.4px,
+      transparent 0.4px
+    ),
+    radial-gradient(
+      ellipse 80% 50% at 50% -10%,
+      color-mix(in srgb, var(--teal-600) 10%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 55% 35% at 100% 100%,
+      color-mix(in srgb, var(--brass-500) 12%, transparent),
+      transparent
+    ),
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--paper-sheet) 30%, var(--paper-0)) 0%,
+      var(--paper-0) 50%,
+      color-mix(in srgb, var(--brass-500) 5%, var(--paper-0)) 100%
+    );
+  background-size:
+    100% 100%,
+    24px 24px,
+    3px 3px,
+    100% 100%,
+    100% 100%,
+    100% 100%;
 }
 
 /* Hide old sidebar layout */
@@ -207,9 +305,7 @@ body.dossier main {
 .dossier-sheet {
   max-width: var(--sheet-max);
   margin: 0 auto;
-  background: color-mix(in srgb, var(--paper-sheet) 93%, transparent);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: var(--paper-sheet);
   border: 1px solid var(--border);
   border-radius: var(--sheet-radius);
   box-shadow: 0 20px 50px var(--shadow);
@@ -251,29 +347,6 @@ body.dossier .section__kicker {
 
 body.dossier .svg-draw {
   display: none;
-}
-
-/* Full-page illustrated portrait — scrolls with content (not fixed) */
-.site-bg-scroll {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image: url("../../assets/photos/site-bg-illustration.png");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 0.09;
-  filter: grayscale(0.15);
-}
-
-:root[data-theme="dark"] .site-bg-scroll {
-  opacity: 0.11;
-}
-
-body.dossier > :not(.site-bg-scroll) {
-  position: relative;
-  z-index: 1;
 }
 
 /* Hero */
