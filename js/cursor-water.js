@@ -120,7 +120,7 @@
       setMode("magnetic");
       return;
     }
-    if (el.closest(".work-stack__visual, .cv-scroll__panel, .hero-editorial__photo-bg")) {
+    if (el.closest(".work-stack__visual, .cv-scroll__panel")) {
       setMode("focus");
       return;
     }

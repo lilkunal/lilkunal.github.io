@@ -56,7 +56,7 @@
   /* The .js class gates the pre-animation hidden state in CSS. If we bail out
      below, it has to come off or hero text would stay invisible. */
   function revealHeroImmediately() {
-    $$(".hero-editorial__intro, .hero-editorial__type, .hero-editorial__photo-bg, .hero-editorial__foot, .hero-center, .deck__slide.is-active, .deck__title, .sticker").forEach(function (el) {
+    $$(".hero-editorial__eyebrow, .hero-editorial__type, .hero-editorial__pitch, .hero-editorial__foot, .hero-center, .deck__slide.is-active, .deck__title, .sticker").forEach(function (el) {
       el.style.opacity = "1";
       el.style.transform = "";
     });
@@ -73,7 +73,7 @@
   setTimeout(function () {
     var editorial = document.querySelector(".hero--editorial");
     if (editorial) {
-      $$(".hero-editorial__intro, .hero-editorial__type, .hero-editorial__photo-bg, .hero-editorial__foot", editorial).forEach(function (el) {
+      $$(".hero-editorial__eyebrow, .hero-editorial__type, .hero-editorial__pitch, .hero-editorial__foot", editorial).forEach(function (el) {
         if (parseFloat(getComputedStyle(el).opacity) < 0.9) el.style.opacity = "1";
       });
       return;
@@ -118,29 +118,34 @@
         var curtain = document.querySelector(".hero-curtain");
         if (curtain) curtain.style.display = "none";
       }, 1500);
-      tl.add(".hero-editorial__intro", {
+      tl.add(".hero-editorial__eyebrow", {
         opacity: [0, 1],
-        y: [18, 0],
-        duration: 680
-      }, 480);
-      tl.add(".hero-editorial__solid", {
+        y: [12, 0],
+        duration: 560
+      }, 420);
+      tl.add(".hero-editorial__name", {
         opacity: [0, 1],
-        y: [36, 0],
-        duration: 900,
+        y: [40, 0],
+        duration: 920,
         ease: "out(4)"
-      }, 560);
-      tl.add(".hero-editorial__outline", {
+      }, 500);
+      tl.add(".hero-editorial__solid", {
         opacity: [0, 1],
         y: [28, 0],
         duration: 820,
         ease: "out(4)"
-      }, 680);
-      tl.add(".hero-editorial__photo-bg", {
+      }, 640);
+      tl.add(".hero-editorial__outline", {
         opacity: [0, 1],
-        scale: [1.04, 1],
-        duration: 1200,
+        y: [22, 0],
+        duration: 780,
         ease: "out(4)"
       }, 720);
+      tl.add(".hero-editorial__pitch", {
+        opacity: [0, 1],
+        y: [18, 0],
+        duration: 680
+      }, 820);
       tl.add(".hero-editorial__foot", {
         opacity: [0, 1],
         y: [16, 0],
@@ -230,8 +235,6 @@
       [".ai-process__step", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
       [".proof-grid", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".proof-card", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
-      [".ai-lens", "anim-hide-up", { opacity: 1, y: 0 }, 0],
-      [".ai-lens__tile", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.06],
       [".site-tour", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".work__note", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".ask-search", "anim-hide-up", { opacity: 1, y: 0 }, 0],

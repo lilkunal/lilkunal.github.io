@@ -6,7 +6,7 @@
    - Videos are never cached. They are ~21 MB and would blow past the origin's
      storage quota for no benefit.
    Bump CACHE_VERSION to retire every old cache on the next activation. */
-var CACHE_VERSION = "kv-v49";
+var CACHE_VERSION = "kv-v50";
 
 var PRECACHE = [
   "./",
@@ -30,13 +30,7 @@ var PRECACHE = [
   "./resume/css/resume-theme.css",
   "./assets/brand-mark.svg",
   "./assets/photos/kunal-hero-profile.png",
-  "./assets/photos/ai-lens-gemini.png",
-  "./assets/photos/ai-lens-golden.jpg",
-  "./assets/photos/ai-lens-matrix.jpg",
-  "./assets/photos/ai-lens-mono.jpg",
-  "./assets/photos/ai-lens-street.jpg",
-  "./assets/photos/ai-lens-casual.jpg",
-  "./assets/photos/ai-lens-studio.jpg",
+  "./assets/photos/site-bg-illustration.png",
   "./assets/Kunal-Varshney-Resume.pdf",
   "./assets/work/padma-gate-light.jpg",
   "./assets/work/jai-home-care.jpg",

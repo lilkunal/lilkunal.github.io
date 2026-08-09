@@ -250,38 +250,34 @@ body.dossier .svg-draw {
   display: none;
 }
 
+/* Full-site illustrated texture (shared with portfolio home) */
+body.dossier:has(.site-bg) {
+  background: transparent;
+}
+
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--paper);
+}
+
+.site-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../../assets/photos/site-bg-illustration.png");
+  background-size: cover;
+  background-position: center 22%;
+  background-repeat: no-repeat;
+  opacity: 0.07;
+}
+
 /* Hero */
 body.dossier .hero--resume {
   position: relative;
   overflow: hidden;
-  isolation: isolate;
-}
-
-body.dossier .hero__photo-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  margin: 0;
-  pointer-events: none;
-}
-
-body.dossier .hero__photo-bg img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  opacity: 0.08;
-  filter: grayscale(1) contrast(1.04);
-}
-
-:root[data-theme="dark"] body.dossier .hero__photo-bg img {
-  opacity: 0.1;
-}
-
-body.dossier .hero--resume > :not(.hero__photo-bg) {
-  position: relative;
-  z-index: 1;
 }
 
 body.dossier .hero__name {

@@ -15,8 +15,8 @@
   var hero = document.querySelector(".hero--editorial");
   if (hero) {
     var type = hero.querySelector(".hero-editorial__type");
-    var photoBg = hero.querySelector(".hero-editorial__photo-bg");
-    var intro = hero.querySelector(".hero-editorial__intro");
+    var pitch = hero.querySelector(".hero-editorial__pitch");
+    var eyebrow = hero.querySelector(".hero-editorial__eyebrow");
     var foot = hero.querySelector(".hero-editorial__foot");
 
     M.scroll(
@@ -26,12 +26,8 @@
             "translateY(" + (p * -48).toFixed(1) + "px) scale(" + (1 - p * 0.08).toFixed(3) + ")";
           type.style.opacity = (1 - p * 0.35).toFixed(2);
         }
-        if (photoBg) {
-          photoBg.style.transform =
-            "translateY(" + (p * 28).toFixed(1) + "px) scale(" + (1 + p * 0.05).toFixed(3) + ")";
-          photoBg.style.opacity = (1 - p * 0.65).toFixed(2);
-        }
-        if (intro) intro.style.opacity = (1 - p * 0.9).toFixed(2);
+        if (pitch) pitch.style.opacity = (1 - p * 0.45).toFixed(2);
+        if (eyebrow) eyebrow.style.opacity = (1 - p * 0.9).toFixed(2);
         if (foot) foot.style.opacity = (1 - p * 0.55).toFixed(2);
       },
       { target: hero, offset: ["start start", "end start"] }
