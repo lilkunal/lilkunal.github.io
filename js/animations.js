@@ -235,7 +235,7 @@
       [".ai-process__step", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
       [".proof-grid", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".proof-card", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
-      [".how-build__scene", "anim-hide-pop", { opacity: 0.2, scale: 1 }, 0],
+      [".how-build__runner", "anim-hide-up", { opacity: 0.34, y: 0 }, 0],
       [".work__note", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".ask-search", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".faq-entry", "anim-hide-left", { opacity: 1, x: 0 }, 0.05],
