@@ -57,6 +57,7 @@ html {
 body.dossier {
   margin: 0;
   min-height: 100vh;
+  position: relative;
   background: var(--paper-0);
   color: var(--ink-900);
   font-family: var(--font-body);
@@ -206,7 +207,9 @@ body.dossier main {
 .dossier-sheet {
   max-width: var(--sheet-max);
   margin: 0 auto;
-  background: var(--paper-sheet);
+  background: color-mix(in srgb, var(--paper-sheet) 93%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid var(--border);
   border-radius: var(--sheet-radius);
   box-shadow: 0 20px 50px var(--shadow);
@@ -250,28 +253,38 @@ body.dossier .svg-draw {
   display: none;
 }
 
-/* Full-site illustrated texture (shared with portfolio home) */
-body.dossier:has(.site-bg) {
-  background: transparent;
-}
-
-.site-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: var(--paper);
-}
-
-.site-bg::after {
-  content: "";
+/* Full-page illustrated portrait — scrolls with content (not fixed) */
+.site-bg-scroll {
   position: absolute;
-  inset: 0;
-  background-image: url("../../assets/photos/site-bg-illustration.png");
-  background-size: cover;
-  background-position: center 22%;
-  background-repeat: no-repeat;
-  opacity: 0.07;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(96vw, 820px);
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.site-bg-scroll img {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  object-fit: contain;
+  object-position: center top;
+  opacity: 0.09;
+  filter: grayscale(0.15);
+}
+
+:root[data-theme="dark"] .site-bg-scroll img {
+  opacity: 0.11;
+}
+
+body.dossier > :not(.site-bg-scroll) {
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero */
