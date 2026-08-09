@@ -145,6 +145,40 @@
     }
   }
 
+  function drawCompanionBlob(x, y) {
+    var bounce = Math.sin(frame * 0.18) * 3;
+    y += bounce;
+
+    ctx.fillStyle = "rgba(90, 138, 154, 0.9)";
+    ctx.beginPath();
+    ctx.ellipse(x + 14, y + 14, 14, 12, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "#f4f0ea";
+    ctx.beginPath();
+    ctx.arc(x + 9, y + 11, 2.5, 0, Math.PI * 2);
+    ctx.arc(x + 19, y + 11, 2.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "#1a1814";
+    ctx.fillRect(x + 8, y + 10, 2, 2);
+    ctx.fillRect(x + 18, y + 10, 2, 2);
+
+    ctx.strokeStyle = "#f4f0ea";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(x + 14, y + 17, 4, 0.2, Math.PI - 0.2);
+    ctx.stroke();
+
+    var wave = Math.sin(frame * 0.15) * 0.4;
+    ctx.fillStyle = palette.bullet;
+    ctx.save();
+    ctx.translate(x + 26, y + 8);
+    ctx.rotate(-0.5 + wave);
+    ctx.fillRect(0, 0, 10, 4);
+    ctx.restore();
+  }
+
   function render() {
     scroll += reduce ? 0 : 1.8;
     frame += 1;
@@ -159,6 +193,7 @@
 
     var legFrame = Math.floor(frame / 6);
     drawSoldier(52, H - 138, legFrame);
+    drawCompanionBlob(18, H - 128);
 
     var enemyX = W - ((scroll * 1.2) % (W + 80));
     drawEnemy(enemyX, H - 132);
