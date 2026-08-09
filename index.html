@@ -125,6 +125,7 @@
 <link rel="stylesheet" href="css/svgator-effects.css">
 <link rel="stylesheet" href="css/contact-panel.css">
 <link rel="stylesheet" href="css/upgrade-sections.css">
+<link rel="stylesheet" href="css/how-build-scene.css">
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -192,9 +193,9 @@
       </div>
 
       <ul class="hero-editorial__proof">
-        <li><a href="https://www.padmalights.com" target="_blank" rel="noopener">padmalights.com ↗</a></li>
-        <li><a href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">JAI Home Care ↗</a></li>
-        <li><a href="https://lilkunal.github.io/ace-factor-fitness/" target="_blank" rel="noopener">Ace Factor Fitness ↗</a></li>
+        <li>padmalights.com</li>
+        <li>JAI Home Care</li>
+        <li>Ace Factor Fitness</li>
       </ul>
     </div>
     <a class="hero-editorial__scroll" href="#about" aria-label="Scroll to content">↓</a>
@@ -207,22 +208,11 @@
       <div class="fact"><dd class="fact__value"><span class="count-num" data-count-to="4">0</span></dd><dt class="fact__label">Live client sites</dt></div>
       <div class="fact"><dd class="fact__value">100%</dd><dt class="fact__label">Human QA before launch</dt></div>
     </dl>
-
-    <div class="site-tour">
-      <div>
-        <h3 class="site-tour__title">60-second site tour</h3>
-        <p class="site-tour__lede">No Loom yet? Hit play — I'll walk you through hero, process, work, background, and contact in about a minute.</p>
-        <div class="site-tour__progress" aria-hidden="true"><span class="site-tour__progress-bar" data-site-tour-bar></span></div>
-        <p class="site-tour__status" data-site-tour-status aria-live="polite"></p>
-      </div>
-      <div class="site-tour__actions">
-        <button type="button" class="btn btn--primary" data-site-tour-start>▶ Start tour</button>
-        <button type="button" class="btn btn--ghost" data-site-tour-stop hidden>Stop tour</button>
-      </div>
-    </div>
   </section>
 
   <section id="how-i-build" class="section how-build section--tight section--dark">
+    <div class="how-build__shell">
+      <div class="how-build__main">
     <p class="eyebrow">How I build</p>
     <h2 class="section__title section__title--solo section__title--scroll">AI-assisted. Human-reviewed.</h2>
     <p class="how-build__lede">Claude and Cursor handle speed — layout drafts, components, iteration. I own design direction, copy, mobile QA, performance checks, and launch. Nothing ships without my sign-off.</p>
@@ -260,6 +250,11 @@
       <li><strong>After launch</strong> — updates, fixes, and new pages — four years in support taught me to stay reachable</li>
     </ul>
     <a class="btn btn--ghost" href="assets/Kunal-Varshney-Resume.pdf" download>Download résumé PDF →</a>
+      </div>
+      <aside class="how-build__scene" aria-hidden="true">
+        <canvas data-how-build-scene width="320" height="400"></canvas>
+      </aside>
+    </div>
   </section>
 
   <section id="experience" class="section experience section--warm">
@@ -437,9 +432,9 @@
     <div class="work-stack" data-work-stack aria-label="Selected projects">
       <article class="work-stack__row" data-work-row>
         <span class="work-stack__num" aria-hidden="true">01</span>
-        <a class="work-stack__visual" href="https://www.padmalights.com" target="_blank" rel="noopener" data-stretch>
+        <div class="work-stack__visual" data-stretch>
           <img src="assets/work/padma-gate-light.jpg" alt="Padma Enterprises outdoor lighting" loading="lazy" decoding="async" width="1200" height="750">
-        </a>
+        </div>
         <div class="work-stack__copy">
           <p class="work-stack__tag">Marketing &amp; online · Ongoing</p>
           <h3 class="work-stack__title">Padma Enterprises</h3>
@@ -451,9 +446,9 @@
 
       <article class="work-stack__row work-stack__row--flip" data-work-row>
         <span class="work-stack__num" aria-hidden="true">02</span>
-        <a class="work-stack__visual" href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener" data-stretch>
+        <div class="work-stack__visual" data-stretch>
           <img src="assets/work/jai-home-care.jpg" alt="JAI Home Care Services website" loading="lazy" decoding="async" width="1200" height="750">
-        </a>
+        </div>
         <div class="work-stack__copy">
           <p class="work-stack__tag">Design &amp; build · AI-assisted · 2025</p>
           <h3 class="work-stack__title">JAI Home Care Services</h3>
@@ -464,9 +459,9 @@
 
       <article class="work-stack__row" data-work-row>
         <span class="work-stack__num" aria-hidden="true">03</span>
-        <a class="work-stack__visual" href="https://lilkunal.github.io/ace-factor-fitness/" target="_blank" rel="noopener" data-stretch>
+        <div class="work-stack__visual" data-stretch>
           <img src="assets/work/ace-factor-fitness.png" alt="Ace Factor Fitness gym website" loading="lazy" decoding="async" width="1200" height="750">
-        </a>
+        </div>
         <div class="work-stack__copy">
           <p class="work-stack__tag">Design &amp; build · React · 2025</p>
           <h3 class="work-stack__title">Ace Factor Fitness</h3>
@@ -477,9 +472,9 @@
 
       <article class="work-stack__row work-stack__row--flip" data-work-row>
         <span class="work-stack__num" aria-hidden="true">04</span>
-        <a class="work-stack__visual" href="#contact" data-stretch>
+        <div class="work-stack__visual" data-stretch>
           <img src="assets/work/portfolio.jpg" alt="This portfolio website" loading="lazy" decoding="async" width="1200" height="750">
-        </a>
+        </div>
         <div class="work-stack__copy">
           <p class="work-stack__tag">Design &amp; build · AI-assisted · 2025</p>
           <h3 class="work-stack__title">This portfolio</h3>
@@ -749,8 +744,8 @@
 <script src="js/animations.js"></script>
 <script src="js/scroll-motion.js"></script>
 <script src="js/game.js?v=24"></script>
+<script src="js/how-build-scene.js" defer></script>
 <script src="js/cursor-water.js" defer></script>
-<script src="js/site-tour.js" defer></script>
 <script src="js/stretch-reveal.js" defer></script>
 <script src="js/analytics.js" defer></script>
 <script>

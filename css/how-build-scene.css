@@ -1,0 +1,56 @@
+/* How I build — centered layout + decorative retro game scene */
+
+.how-build__shell {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 980px) {
+  .how-build__shell {
+    grid-template-columns: minmax(0, 1fr) min(280px, 30%);
+    gap: 2rem 2.5rem;
+    align-items: start;
+  }
+
+  .how-build__scene {
+    position: sticky;
+    top: calc(var(--nav-height) + 1rem);
+    grid-column: 2;
+    grid-row: 1 / span 12;
+    justify-self: center;
+  }
+}
+
+.how-build__scene {
+  opacity: 0.2;
+  pointer-events: none;
+  user-select: none;
+  border-radius: calc(var(--radius) + 2px);
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--border) 80%, transparent);
+}
+
+.how-build__scene canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+@media (max-width: 979px) {
+  .how-build__scene {
+    max-width: 240px;
+    margin: 0.5rem auto 0;
+    opacity: 0.16;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .how-build__scene {
+    opacity: 0.14;
+  }
+}
