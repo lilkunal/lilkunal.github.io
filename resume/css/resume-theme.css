@@ -256,29 +256,18 @@ body.dossier .svg-draw {
 /* Full-page illustrated portrait — scrolls with content (not fixed) */
 .site-bg-scroll {
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(96vw, 820px);
-  bottom: 0;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.site-bg-scroll img {
-  width: 100%;
-  height: auto;
-  min-height: 100%;
-  object-fit: contain;
-  object-position: center top;
+  background-image: url("../../assets/photos/site-bg-illustration.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   opacity: 0.09;
   filter: grayscale(0.15);
 }
 
-:root[data-theme="dark"] .site-bg-scroll img {
+:root[data-theme="dark"] .site-bg-scroll {
   opacity: 0.11;
 }
 
