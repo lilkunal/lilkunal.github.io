@@ -3,41 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case study — Padma Enterprises · Kunal Varshney</title>
-<meta name="description" content="Padma Enterprises case study — 200+ products online at padmalights.com. Problem, build, and results by Kunal Varshney, freelance web designer.">
-<meta property="og:title" content="Case study — Padma Enterprises · Kunal Varshney">
-<meta property="og:description" content="How a family lighting business went from catalogue chaos to 200+ products online — marketing and web by Kunal Varshney.">
+<title>Case study — Atul Shiv Shakti · Kunal Varshney</title>
+<meta name="description" content="Atul Shiv Shakti case study — Vedic astrology marketing site demo (React). Services, booking, dual theme. Design &amp; build by Kunal Varshney. Demo · WIP.">
+<meta property="og:title" content="Case study — Atul Shiv Shakti · Kunal Varshney">
+<meta property="og:description" content="Premium astrology marketing site demo — services, WhatsApp booking, Kundli tools. Work in progress.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://lilkunal.github.io/work/padma.html">
-<meta property="og:locale" content="en_IN">
+<meta property="og:url" content="https://lilkunal.github.io/work/atul-shiv-shakti.html">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Kunal Varshney">
 <script src="../js/site-config.js"></script>
 <script src="../js/seo-head.js"></script>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Portfolio", "item": "https://lilkunal.github.io/" },
-        { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://lilkunal.github.io/#work" },
-        { "@type": "ListItem", "position": 3, "name": "Padma Enterprises", "item": "https://lilkunal.github.io/work/padma.html" }
-      ]
-    },
-    {
-      "@type": "Article",
-      "headline": "Padma Enterprises — 200+ products online",
-      "author": { "@type": "Person", "name": "Kunal Varshney", "url": "https://lilkunal.github.io/" },
-      "publisher": { "@type": "Person", "name": "Kunal Varshney" },
-      "url": "https://lilkunal.github.io/work/padma.html",
-      "description": "Case study: catalogue, marketing, and web operations for Padma Enterprises cast-aluminium lighting."
-    }
-  ]
-}
+{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Portfolio","item":"https://lilkunal.github.io/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://lilkunal.github.io/#work"},{"@type":"ListItem","position":3,"name":"Atul Shiv Shakti","item":"https://lilkunal.github.io/work/atul-shiv-shakti.html"}]},{"@type":"Article","headline":"Atul Shiv Shakti — astrology site demo","author":{"@type":"Person","name":"Kunal Varshney","url":"https://lilkunal.github.io/"},"url":"https://lilkunal.github.io/work/atul-shiv-shakti.html","description":"Demo marketing site for a Vedic astrologer — React, Motion, dual theme, WhatsApp booking."}]}
 </script>
-<link rel="canonical" href="https://lilkunal.github.io/work/padma.html">
+<link rel="canonical" href="https://lilkunal.github.io/work/atul-shiv-shakti.html">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +34,7 @@
 .case-hero__title { margin: 0; font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; }
 .case-hero__sub { margin: 0.75rem 0 0; max-width: 52ch; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.6; }
 .case-hero__img { margin: 2rem 0; border-radius: calc(var(--radius) + 6px); overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/9; }
-.case-hero__img img { width: 100%; height: 100%; object-fit: cover; }
+.case-hero__img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
 .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
 .case-block { padding: 1.25rem; border-radius: var(--radius); border: 1px solid var(--border); background: color-mix(in srgb, var(--surface) 88%, transparent); }
 .case-block h2 { margin: 0 0 0.5rem; font-size: 0.72rem; font-family: var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
@@ -65,6 +44,7 @@
 .case-body h2 { font-family: var(--font-display); color: var(--ink); font-size: 1.35rem; margin: 2rem 0 0.65rem; }
 .case-body p { margin: 0 0 1rem; }
 .case-cta { display: flex; flex-wrap: wrap; gap: 0.65rem; margin: 2.5rem 0 4rem; }
+.case-note { margin: 1.5rem 0; padding: 1rem 1.15rem; border-radius: var(--radius); border: 1px dashed color-mix(in srgb, var(--accent) 45%, var(--border)); font-size: 0.92rem; color: var(--ink-soft); }
 @media (max-width: 760px) { .case-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -73,56 +53,51 @@
   <a href="../index.html" class="nav__brand"><span class="nav__brand-name">Kunal Varshney</span></a>
   <nav class="nav__links" aria-label="Primary">
     <a href="../index.html#work">← Back to portfolio</a>
-    <a href="https://www.padmalights.com" target="_blank" rel="noopener" class="nav__cta">Visit live site</a>
+    <a href="https://lilkunal.github.io/Atulshivshakti/" target="_blank" rel="noopener" class="nav__cta">View demo</a>
   </nav>
 </header>
-
 <main class="case-hero">
   <a class="case-hero__back" href="../index.html#work">← All work</a>
-  <p class="case-hero__tag">Case study · Live · padmalights.com · Ongoing</p>
-  <h1 class="case-hero__title">Padma Enterprises — 200+ products online</h1>
-  <p class="case-hero__sub">Family cast-aluminium lighting business. I run the full online operation: catalogue, marketing, export-facing product pages, and day-to-day updates. This is the live client/operator site on this portfolio — other builds are demos until they go live.</p>
-
+  <p class="case-hero__tag">Case study · Demo · Work in progress</p>
+  <h1 class="case-hero__title">Atul Shiv Shakti — Vedic astrology site</h1>
+  <p class="case-hero__sub">A premium marketing site for an astrologer: services, pricing, WhatsApp booking, and trust content — built as a React demo while the product and copy keep evolving.</p>
   <figure class="case-hero__img">
-    <img src="../assets/work/padma-gate-light.jpg" alt="Padma gate lighting installation at night" width="1200" height="675" loading="eager" decoding="async">
+    <img src="../assets/work/atul-shiv-shakti.png" alt="Atul Shiv Shakti demo site" width="1200" height="675" loading="eager" decoding="async">
   </figure>
-
+  <p class="case-note"><strong>Status:</strong> Demo on GitHub Pages — not a finished client launch. Features and content are still in progress.</p>
   <div class="case-grid">
     <div class="case-block">
       <h2>Problem</h2>
-      <p>Customers needed to browse the full range without calling first. Export buyers wanted specs and photos on demand — not PDFs over WhatsApp.</p>
+      <p>Astrology practices need a mobile-first presence that feels trustworthy: clear services, prices, and a booking path that doesn’t force people through a PDF or Instagram DM maze.</p>
     </div>
     <div class="case-block">
       <h2>What I built</h2>
       <ul>
-        <li>200+ product catalogue at padmalights.com</li>
-        <li>Mobile-first browsing &amp; category structure</li>
-        <li>Marketing, SEO, and ongoing content updates</li>
+        <li>Service cards (e.g. Kundali Vishleshan)</li>
+        <li>WhatsApp-oriented booking CTAs</li>
+        <li>Dual themes (cosmic / temple dawn)</li>
+        <li>Motion-led scroll presentation</li>
       </ul>
     </div>
     <div class="case-block">
-      <h2>Results</h2>
+      <h2>Current state</h2>
       <ul>
-        <li>9 years operating the business online</li>
-        <li>Self-serve product discovery for domestic &amp; export</li>
-        <li>Real operator proof — not a one-off freelance mockup</li>
+        <li>Public React demo</li>
+        <li>Kundli / Panchang / Rashifal surfaces in progress</li>
+        <li>Client-ready polish still ongoing</li>
       </ul>
     </div>
   </div>
-
   <div class="case-body">
     <h2>My role</h2>
-    <p>Marketing lead and online operator for Padma Enterprises since 2017, full-time focus since 2025. I handle website updates, product photography coordination, catalogue structure, and the campaigns that drive enquiries.</p>
-
+    <p>Design system, front-end implementation (React, TypeScript, Vite, Tailwind, Motion), and AI-assisted iteration with human QA on mobile and booking flow clarity.</p>
     <h2>Why this matters for hire</h2>
-    <p>Most designers show mockups. This is a live business I run — when something breaks on mobile or a product page is wrong, I fix it the same day. That same discipline goes into freelance and demo builds; only Padma is labeled live on the portfolio until others ship for real.</p>
-
+    <p>Shows I can ship a niche service business site with conversion-minded CTAs — and label demos honestly until the client is ready to go live.</p>
     <h2>Stack &amp; process</h2>
-    <p>HTML/CSS/JS storefront, AI-assisted iteration in Cursor for speed, manual QA on real phones before anything goes live. No launch-and-disappear — four years in technical support before this.</p>
+    <p>React + Vite + Tailwind v4 + Motion. Deployed to GitHub Pages. Claude / Cursor for speed; I own direction, copy tone, and launch checklist.</p>
   </div>
-
   <div class="case-cta">
-    <a class="btn btn--primary" href="https://www.padmalights.com" target="_blank" rel="noopener">Visit padmalights.com ↗</a>
+    <a class="btn btn--primary" href="https://lilkunal.github.io/Atulshivshakti/" target="_blank" rel="noopener">View demo ↗</a>
     <a class="btn btn--ghost" href="../index.html#contact">Hire me for your project</a>
     <a class="btn btn--ghost" href="../assets/Kunal-Varshney-Resume.pdf" download>Download résumé</a>
   </div>
