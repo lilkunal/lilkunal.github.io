@@ -41,6 +41,14 @@
   margin-right: auto;
 }
 
+.how-build__lede a,
+.how-build__list a,
+.faq-panel__inner a {
+  color: var(--accent, #2563eb);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
 .how-build {
   text-align: center;
 }
