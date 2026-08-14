@@ -108,6 +108,92 @@ body:has(.site-bg) .hero--editorial::before {
   color: var(--ink);
 }
 
+/* Nickname flap — hover / focus / tap flips Kunal Varshney → Little */
+.hero-editorial__type,
+.hero-editorial__name.name-flip {
+  transform-style: preserve-3d;
+}
+
+.name-flip {
+  display: inline-block;
+  max-width: 100%;
+  perspective: 1200px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.name-flip:focus {
+  outline: none;
+}
+
+.name-flip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 0.12em;
+  border-radius: 4px;
+}
+
+.name-flip__inner {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: name-flip-hint 1.35s var(--ease) 2.45s 1;
+}
+
+.name-flip__face {
+  grid-area: 1 / 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.name-flip__face--back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotateX(180deg);
+  color: var(--accent);
+}
+
+.name-flip__aka {
+  display: block;
+  margin-bottom: 0.12em;
+  font-family: var(--font-mono);
+  font-size: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.hero-editorial__name.name-flip:is(:hover, :focus-visible, .is-flipped) .name-flip__inner,
+.nav__brand:is(:hover, :focus-visible) .name-flip--nav .name-flip__inner {
+  animation: none;
+  transform: rotateX(180deg);
+}
+
+@keyframes name-flip-hint {
+  0%, 100% { transform: rotateX(0); }
+  35% { transform: rotateX(-16deg); }
+  62% { transform: rotateX(7deg); }
+}
+
+.name-flip--nav {
+  perspective: 640px;
+  cursor: inherit;
+}
+
+.name-flip--nav .name-flip__inner {
+  animation: none;
+}
+
+.name-flip--nav .name-flip__face--back {
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 0.92em;
+  letter-spacing: -0.03em;
+}
+
 .hero-editorial__roles {
   margin: 0;
   display: flex;
@@ -232,6 +318,27 @@ body:has(.site-bg) .hero--editorial::before {
 
   .hero-editorial__scroll {
     animation: none;
+  }
+
+  .name-flip__inner {
+    animation: none;
+    transition: none;
+    transform: none !important;
+  }
+
+  .name-flip__face--back {
+    transform: none;
+    opacity: 0;
+  }
+
+  .hero-editorial__name.name-flip:is(:hover, :focus-visible, .is-flipped) .name-flip__face--front,
+  .nav__brand:is(:hover, :focus-visible) .name-flip--nav .name-flip__face--front {
+    opacity: 0;
+  }
+
+  .hero-editorial__name.name-flip:is(:hover, :focus-visible, .is-flipped) .name-flip__face--back,
+  .nav__brand:is(:hover, :focus-visible) .name-flip--nav .name-flip__face--back {
+    opacity: 1;
   }
 }
 

@@ -48,6 +48,19 @@
     });
   }
 
+  /* Hero name flap — tap / keyboard toggles Kunal → Little on touch */
+  var nameFlip = document.querySelector(".hero-editorial__name.name-flip");
+  if (nameFlip) {
+    var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    function toggleNameFlip(e) {
+      if (e.type === "keydown" && e.key !== "Enter" && e.key !== " ") return;
+      if (e.type === "keydown") e.preventDefault();
+      nameFlip.classList.toggle("is-flipped");
+    }
+    if (!finePointer) nameFlip.addEventListener("click", toggleNameFlip);
+    nameFlip.addEventListener("keydown", toggleNameFlip);
+  }
+
   /* Identity ticker */
   var tickerWords = ["web designer", "football regular", "cinephile", "Padma Enterprises' online guy", "technical support veteran", "old soul"];
   var tickerEl = document.getElementById("ticker-word");
