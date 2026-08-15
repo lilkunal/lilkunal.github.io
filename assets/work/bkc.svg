@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img">
+  <rect width="1600" height="1000" fill="#f3eee6"/>
+  <rect x="0" y="860" width="1600" height="140" fill="#f5d000"/>
+  <rect x="72" y="72" width="200" height="52" fill="#f5d000"/>
+  <text x="88" y="108" fill="#111" font-family="Arial Black,sans-serif" font-size="22">DROP 01</text>
+  <path d="M1040 220 h240 l40 80 v420 h-80 v-40 h-160 v40 h-80 V300 z" fill="#f7f7f4" stroke="#111" stroke-width="10"/>
+  <rect x="1100" y="380" width="200" height="28" fill="#111"/>
+  <text x="72" y="320" fill="#111" font-family="Arial Black,sans-serif" font-size="120">BKC</text>
+  <text x="80" y="430" fill="#111" font-family="Arial,sans-serif" font-size="36" font-weight="700">Hinglish streetwear tees</text>
+  <text x="80" y="520" fill="#444" font-family="Arial,sans-serif" font-size="30">186 designs · 4 fits · cart</text>
+  <text x="80" y="950" fill="#111" font-family="Arial Black,sans-serif" font-size="28">THE TEE THAT SAYS IT OUT LOUD</text>
+</svg>

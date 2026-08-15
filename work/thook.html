@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case study — THOOK · Kunal Varshney</title>
+<meta name="description" content="THOOK case study — citizen campaign and PWA against public spitting in India. Home, report, wall, gyaan, why, and pledge. Design &amp; build by Kunal Varshney.">
+<meta property="og:title" content="Case study — THOOK · Kunal Varshney">
+<meta property="og:description" content="A live civic campaign: report stains, wall of stains, parody posters, sources, and a pledge. Personal product · live.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://lilkunal.github.io/work/thook.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Kunal Varshney">
+<script src="../js/site-config.js"></script>
+<script src="../js/seo-head.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Portfolio","item":"https://lilkunal.github.io/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://lilkunal.github.io/#work"},{"@type":"ListItem","position":3,"name":"THOOK","item":"https://lilkunal.github.io/work/thook.html"}]},{"@type":"Article","headline":"THOOK — citizen campaign against public spitting","author":{"@type":"Person","name":"Kunal Varshney","url":"https://lilkunal.github.io/"},"url":"https://lilkunal.github.io/work/thook.html"}]}
+</script>
+<link rel="canonical" href="https://lilkunal.github.io/work/thook.html">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/nav-theme.css">
+<link rel="stylesheet" href="../css/work-stack.css">
+<link rel="stylesheet" href="../css/upgrade-sections.css">
+<script>document.documentElement.classList.add("js"); document.documentElement.setAttribute("data-theme", localStorage.getItem("kv-theme") || "dark");</script>
+<style>
+.case-hero { padding-top: calc(var(--nav-height) + 2rem); max-width: var(--content-max); margin: 0 auto; padding-inline: clamp(1.25rem, 4vw, 3rem); }
+.case-hero__back { font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-soft); text-decoration: none; }
+.case-hero__back:hover { color: var(--accent); }
+.case-hero__tag { margin: 1rem 0 0.35rem; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+.case-hero__title { margin: 0; font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; }
+.case-hero__sub { margin: 0.75rem 0 0; max-width: 52ch; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.6; }
+.case-hero__img { margin: 2rem 0; border-radius: calc(var(--radius) + 6px); overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/9; background: #140a0a; }
+.case-hero__img img { width: 100%; height: 100%; object-fit: cover; object-position: left center; }
+.case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
+.case-block { padding: 1.25rem; border-radius: var(--radius); border: 1px solid var(--border); background: color-mix(in srgb, var(--surface) 88%, transparent); }
+.case-block h2 { margin: 0 0 0.5rem; font-size: 0.72rem; font-family: var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.case-block p, .case-block ul { margin: 0; font-size: 0.92rem; line-height: 1.6; color: var(--ink-soft); }
+.case-block ul { padding-left: 1.1rem; }
+.case-pages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin: 1.5rem 0 0; }
+.case-pages a { display: block; padding: 0.9rem 1rem; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: inherit; background: color-mix(in srgb, var(--surface) 88%, transparent); }
+.case-pages a:hover { border-color: color-mix(in srgb, var(--accent) 50%, var(--border)); }
+.case-pages strong { display: block; font-family: var(--font-display); color: var(--ink); margin-bottom: 0.2rem; }
+.case-pages span { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.45; }
+.case-body { max-width: 62ch; margin: 2rem 0; font-size: 1rem; line-height: 1.7; color: var(--ink-soft); }
+.case-body h2 { font-family: var(--font-display); color: var(--ink); font-size: 1.35rem; margin: 2rem 0 0.65rem; }
+.case-body p { margin: 0 0 1rem; }
+.case-cta { display: flex; flex-wrap: wrap; gap: 0.65rem; margin: 2.5rem 0 4rem; }
+.case-note { margin: 1.5rem 0; padding: 1rem 1.15rem; border-radius: var(--radius); border: 1px dashed color-mix(in srgb, var(--accent) 45%, var(--border)); font-size: 0.92rem; color: var(--ink-soft); }
+@media (max-width: 760px) { .case-grid, .case-pages { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="nav nav--dark">
+  <a href="../index.html" class="nav__brand"><span class="nav__brand-name">Kunal Varshney</span></a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="../index.html#work">← Back to portfolio</a>
+    <a href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener" class="nav__cta">Visit live site</a>
+  </nav>
+</header>
+<main class="case-hero">
+  <a class="case-hero__back" href="../index.html#work">← All work</a>
+  <p class="case-hero__tag">Case study · Personal product · Live</p>
+  <h1 class="case-hero__title">THOOK</h1>
+  <p class="case-hero__sub">A citizen campaign about public spitting in India — funny on the surface, serious underneath. Six pages, a reporting flow, and a PWA you can install like an app.</p>
+  <figure class="case-hero__img">
+    <img src="../assets/work/thook.svg" alt="THOOK campaign wordmark" width="1200" height="750" loading="eager" decoding="async">
+  </figure>
+  <p class="case-note"><strong>Status:</strong> Live personal campaign at /thook/ — not a client deliverable. Shame the habit, never the person.</p>
+  <div class="case-grid">
+    <div class="case-block"><h2>Problem</h2><p>Public spitting is everywhere and nobody counts it. A campaign that photographs people becomes harassment. The product had to map stains, not citizens.</p></div>
+    <div class="case-block"><h2>What I built</h2><ul><li>Six-page campaign site</li><li>Report flow + Wall of Stains</li><li>PWA, offline, no login</li><li>Poster downloads (Thook Gyaan)</li></ul></div>
+    <div class="case-block"><h2>Current state</h2><ul><li>Live on GitHub Pages</li><li>Local reports in the browser</li><li>Optional Node API for a shared wall</li></ul></div>
+  </div>
+  <h2 class="case-hero__tag" style="margin-top:2rem">All THOOK pages</h2>
+  <div class="case-pages">
+    <a href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener"><strong>Home</strong><span>Hero, live estimate, the argument, hard numbers.</span></a>
+    <a href="https://lilkunal.github.io/thook/report.html" target="_blank" rel="noopener"><strong>Report</strong><span>City, situation, severity, photo of the stain, note.</span></a>
+    <a href="https://lilkunal.github.io/thook/wall.html" target="_blank" rel="noopener"><strong>Wall of Stains</strong><span>City leaderboard, abstract scatter, live feed.</span></a>
+    <a href="https://lilkunal.github.io/thook/gyaan.html" target="_blank" rel="noopener"><strong>Thook Gyaan</strong><span>40 parody posters, each downloadable.</span></a>
+    <a href="https://lilkunal.github.io/thook/why.html" target="_blank" rel="noopener"><strong>Why it matters</strong><span>TB, oral cancer, cleaning costs, law, sources.</span></a>
+    <a href="https://lilkunal.github.io/thook/pledge.html" target="_blank" rel="noopener"><strong>Pledge</strong><span>Six-line pledge and a downloadable badge.</span></a>
+  </div>
+  <div class="case-body">
+    <h2>My role</h2>
+    <p>Product, copy, and full front-end — including the reporting app, wall, and PWA. The voice is Hinglish and blunt on purpose so people remember it; the rule is still one: photograph the stain, never a face or a plate.</p>
+    <h2>Why this matters for hire</h2>
+    <p>Shows I can ship a multi-page civic product with a clear ethic, not only brochure sites: forms, local persistence, installable PWA, and a campaign that has to stay legally and socially careful.</p>
+    <h2>Stack &amp; process</h2>
+    <p>Static HTML/CSS/JS in <code>web/</code>, GitHub Actions → Pages. Optional Node server for a shared wall. Claude / Cursor for speed; I own the tone, the no-person rule, and launch.</p>
+  </div>
+  <div class="case-cta">
+    <a class="btn btn--primary" href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener">Visit live site ↗</a>
+    <a class="btn btn--ghost" href="../index.html#contact">Let's talk</a>
+  </div>
+</main>
+<script src="../js/analytics.js" defer></script>
+</body>
+</html>

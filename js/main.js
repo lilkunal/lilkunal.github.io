@@ -61,6 +61,43 @@
     nameFlip.addEventListener("keydown", toggleNameFlip);
   }
 
+  /* Projects dropdown in the nav */
+  var projectsBtn = document.getElementById("projects-menu-btn");
+  var projectsMenu = document.getElementById("projects-menu");
+
+  function closeProjectsMenu() {
+    if (!projectsMenu || !projectsBtn) return;
+    projectsMenu.setAttribute("hidden", "");
+    projectsBtn.setAttribute("aria-expanded", "false");
+  }
+  function openProjectsMenu() {
+    if (!projectsMenu || !projectsBtn) return;
+    projectsMenu.removeAttribute("hidden");
+    projectsBtn.setAttribute("aria-expanded", "true");
+  }
+
+  if (projectsBtn && projectsMenu) {
+    projectsBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (projectsBtn.getAttribute("aria-expanded") === "true") closeProjectsMenu();
+      else openProjectsMenu();
+    });
+    Array.prototype.slice.call(projectsMenu.querySelectorAll("a")).forEach(function (link) {
+      link.addEventListener("click", function () {
+        closeProjectsMenu();
+        if (navToggleInput) navToggleInput.checked = false;
+      });
+    });
+    document.addEventListener("click", function (e) {
+      if (!projectsMenu.contains(e.target) && e.target !== projectsBtn && !projectsBtn.contains(e.target)) {
+        closeProjectsMenu();
+      }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeProjectsMenu();
+    });
+  }
+
   /* Identity ticker */
   var tickerWords = ["web designer", "football regular", "cinephile", "Padma Enterprises' online guy", "technical support veteran", "old soul"];
   var tickerEl = document.getElementById("ticker-word");

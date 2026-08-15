@@ -34,6 +34,15 @@ body {
   color: var(--ink) !important;
 }
 
+.nav.nav--on-editorial .nav__drop-btn {
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+}
+
+.nav.nav--on-editorial .nav__drop-btn:hover,
+.nav.nav--on-editorial .nav__drop-btn[aria-expanded="true"] {
+  color: var(--ink);
+}
+
 .nav.nav--on-editorial .nav__links a:not(.nav__cta) {
   color: color-mix(in srgb, var(--ink) 72%, transparent) !important;
 }

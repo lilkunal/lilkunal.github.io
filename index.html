@@ -105,6 +105,8 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/editorial-hero.css">
 <link rel="stylesheet" href="css/work-stack.css">
+<link rel="stylesheet" href="css/ludo-sprite.css">
+<link rel="stylesheet" href="css/made-for.css">
 <link rel="stylesheet" href="css/nav-theme.css">
 <link rel="stylesheet" href="css/cv-scroll.css">
 <link rel="stylesheet" href="css/minimal.css">
@@ -144,7 +146,27 @@
 
   <nav class="nav__links" aria-label="Primary">
     <span class="nav__avail" aria-label="Open for remote projects"><span class="nav__avail-dot" aria-hidden="true"></span> Open · Remote</span>
-    <a href="#work">Work</a>
+    <div class="nav__dropdown">
+      <button type="button" class="nav__drop-btn" id="projects-menu-btn" aria-expanded="false" aria-controls="projects-menu">
+        Projects <span class="nav__caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="nav__menu" id="projects-menu" hidden>
+        <p class="nav__menu-label">Work</p>
+        <a href="#work">All work</a>
+        <a href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener">THOOK</a>
+        <a href="https://www.padmalights.com" target="_blank" rel="noopener">Padma Enterprises</a>
+        <a href="https://lilkunal.github.io/Bkc/" target="_blank" rel="noopener">BKC</a>
+        <a href="https://lilkunal.github.io/Daftar-The-office/" target="_blank" rel="noopener">Daftar</a>
+        <a href="https://lilkunal.github.io/Atulshivshakti/" target="_blank" rel="noopener">Atul Shiv Shakti</a>
+        <a href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">JAI Home Care</a>
+        <a href="https://lilkunal.github.io/ace-factor-fitness/" target="_blank" rel="noopener">Ace Factor Fitness</a>
+        <p class="nav__menu-label">Portfolios I made</p>
+        <a href="https://tiwarishweta03.github.io/" target="_blank" rel="noopener">Shweta Tiwari</a>
+        <a href="https://antrikshu.github.io/" target="_blank" rel="noopener">Antriksh Upadhyay</a>
+        <a href="#portfolios">See portfolios</a>
+        <a class="nav__menu-out" href="#contact">Want yours? Let's talk</a>
+      </div>
+    </div>
     <a href="#experience">Background</a>
     <a href="resume/index.html">Résumé</a>
     <a href="assets/Kunal-Varshney-Resume.pdf" download>Download résumé</a>
@@ -206,7 +228,11 @@
         </div>
       </div>
 
-      <p class="hero-editorial__pitch">I design and ship mobile-first sites for small businesses — fast with Claude &amp; Cursor, reviewed and launched by me. One live client site you can click today (Padma Lights); more builds in demo / WIP. Four years in support so nothing breaks after go-live.</p>
+      <p class="hero-editorial__pitch">Mobile-first sites for small businesses. Padma Lights is live today. Support background so launch isn't the finish line.</p>
+
+      <div class="ludo-strip" aria-hidden="true">
+        <canvas data-ludo-sprite width="640" height="56"></canvas>
+      </div>
 
       <div class="hero-editorial__foot">
         <div class="hero-editorial__actions">
@@ -217,9 +243,9 @@
       </div>
 
       <ul class="hero-editorial__proof">
-        <li>padmalights.com · live</li>
+        <li>Padma · live</li>
+        <li>THOOK · live</li>
         <li>BKC · demo</li>
-        <li>Daftar · demo</li>
       </ul>
     </div>
     <a class="hero-editorial__scroll" href="#about" aria-label="Scroll to content">↓</a>
@@ -246,7 +272,7 @@
       <div class="how-build__main">
         <p class="eyebrow">How I build</p>
         <h2 class="section__title section__title--solo section__title--scroll">AI-assisted. Human-reviewed.</h2>
-        <p class="how-build__lede">Claude and Cursor handle speed — layout drafts, components, iteration. I'm also exploring <a href="https://github.com/MiniMax-AI/MiniMax-H3" target="_blank" rel="noopener">MiniMax H3</a> (open omni-modal video) for multimodal experiments. I own design direction, copy, mobile QA, performance checks, and launch. Nothing ships without my sign-off.</p>
+        <p class="how-build__lede">Claude and Cursor for speed. I own design, copy, mobile QA, and launch. Nothing ships without my sign-off.</p>
 
         <div class="ai-process" aria-label="AI build process">
           <article class="ai-process__step">
@@ -275,13 +301,8 @@
           </article>
         </div>
 
-        <ul class="how-build__list">
-          <li><strong>You get</strong> — a live link, mobile-first layout, and direct contact with the person who built it</li>
-          <li><strong>I use AI for</strong> — speed on layout and components, not as a substitute for judgment</li>
-          <li><strong>Also exploring</strong> — <a href="https://github.com/MiniMax-AI/MiniMax-H3" target="_blank" rel="noopener">MiniMax H3</a> open multimodal / video generation for creative experiments</li>
-          <li><strong>After launch</strong> — updates, fixes, and new pages — four years in support taught me to stay reachable</li>
-        </ul>
-        <a class="btn btn--ghost" href="assets/Kunal-Varshney-Resume.pdf" download>Download résumé PDF →</a>
+        <p class="how-build__lede">After launch I stay reachable. Exploring <a href="https://github.com/MiniMax-AI/MiniMax-H3" target="_blank" rel="noopener">MiniMax H3</a> for video experiments.</p>
+        <a class="btn btn--ghost" href="assets/Kunal-Varshney-Resume.pdf" download>Résumé PDF →</a>
       </div>
     </div>
 
@@ -460,127 +481,192 @@
       <div>
         <svg class="svg-draw svg-draw--section" data-svg-draw viewBox="0 0 120 4" aria-hidden="true"><path d="M0 2 H120" stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
         <h2 class="section__title section__title--solo section__title--scroll">Work</h2>
+        <p class="work__lede">Live client, live product, and demos. Identity cards — not full-page screenshots.</p>
+        <div class="ludo-strip work__ludo" aria-hidden="true">
+          <canvas data-ludo-sprite="compact" width="320" height="44"></canvas>
+        </div>
       </div>
     </div>
 
     <div class="work-stack" data-work-stack aria-label="Selected projects">
       <article class="work-stack__row" data-work-row>
-        <span class="work-stack__num" aria-hidden="true">01</span>
-        <div class="work-stack__visual" data-stretch>
-          <img src="assets/work/padma-gate-light.jpg" alt="Padma Enterprises outdoor lighting" loading="lazy" decoding="async" width="1200" height="750">
+        <div class="work-stack__visual">
+          <img src="assets/work/padma.svg" alt="Padma Enterprises — outdoor lighting catalogue" loading="lazy" decoding="async" width="1600" height="1000">
         </div>
         <div class="work-stack__copy">
-          <p class="work-stack__tag">Live · Marketing &amp; online · Ongoing</p>
+          <p class="work-stack__tag">Live · family business</p>
           <h3 class="work-stack__title">Padma Enterprises</h3>
-          <p class="work-stack__url">padmalights.com · 200+ SKUs · export enquiries</p>
-          <a class="work-stack__case" href="work/padma.html">Read case study →</a>
-          <a class="work-stack__cta" href="https://www.padmalights.com" target="_blank" rel="noopener">Visit live site <span class="work-stack__cta-arrow" aria-hidden="true">↗</span></a>
+          <p class="work-stack__url">200+ SKUs · export enquiries</p>
+          <div class="work-stack__links">
+            <a class="work-stack__cta" href="https://www.padmalights.com" target="_blank" rel="noopener">Live site ↗</a>
+            <a class="work-stack__case" href="work/padma.html">Case study</a>
+          </div>
         </div>
       </article>
 
-      <article class="work-stack__row work-stack__row--flip" data-work-row>
-        <span class="work-stack__num" aria-hidden="true">02</span>
-        <div class="work-stack__visual" data-stretch>
-          <img src="assets/work/bkc.png" alt="BKC printed tee storefront demo" loading="lazy" decoding="async" width="1200" height="750">
+      <article class="work-stack__row" data-work-row>
+        <div class="work-stack__visual">
+          <img src="assets/work/thook.svg" alt="THOOK citizen campaign" loading="lazy" decoding="async" width="1600" height="1000">
         </div>
         <div class="work-stack__copy">
-          <p class="work-stack__tag">Personal product · Demo · React · 2026</p>
+          <p class="work-stack__tag">Live · PWA</p>
+          <h3 class="work-stack__title">THOOK</h3>
+          <p class="work-stack__url">Report the stain. Never the person.</p>
+          <div class="work-stack__links">
+            <a class="work-stack__cta" href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener">Live site ↗</a>
+            <a class="work-stack__case" href="work/thook.html">Case study</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-stack__row" data-work-row>
+        <div class="work-stack__visual">
+          <img src="assets/work/bkc.svg" alt="BKC Hinglish streetwear tees" loading="lazy" decoding="async" width="1600" height="1000">
+        </div>
+        <div class="work-stack__copy">
+          <p class="work-stack__tag">Demo · React</p>
           <h3 class="work-stack__title">BKC</h3>
-          <p class="work-stack__url">Hinglish streetwear tees · 180+ designs · shop + cart</p>
-          <a class="work-stack__case" href="work/bkc.html">Read case study →</a>
-          <a class="work-stack__cta" href="https://lilkunal.github.io/Bkc/" target="_blank" rel="noopener">View demo <span class="work-stack__cta-arrow" aria-hidden="true">↗</span></a>
+          <p class="work-stack__url">Streetwear tees · 186 designs · cart</p>
+          <div class="work-stack__links">
+            <a class="work-stack__cta" href="https://lilkunal.github.io/Bkc/" target="_blank" rel="noopener">Demo ↗</a>
+            <a class="work-stack__case" href="work/bkc.html">Case study</a>
+          </div>
         </div>
       </article>
 
       <article class="work-stack__row" data-work-row>
-        <span class="work-stack__num" aria-hidden="true">03</span>
-        <div class="work-stack__visual" data-stretch>
-          <img src="assets/work/daftar.png" alt="Daftar — The Office civic web product demo" loading="lazy" decoding="async" width="1200" height="750">
+        <div class="work-stack__visual">
+          <img src="assets/work/daftar.svg" alt="Daftar — The Office civic product" loading="lazy" decoding="async" width="1600" height="1000">
         </div>
         <div class="work-stack__copy">
-          <p class="work-stack__tag">Demo · work in progress · 2025–26</p>
-          <h3 class="work-stack__title">Daftar — The Office</h3>
-          <p class="work-stack__url">Government work, made simple · 36 States &amp; UTs · plain language</p>
-          <a class="work-stack__case" href="work/daftar.html">Read case study →</a>
-          <a class="work-stack__cta" href="https://lilkunal.github.io/Daftar-The-office/" target="_blank" rel="noopener">View demo <span class="work-stack__cta-arrow" aria-hidden="true">↗</span></a>
+          <p class="work-stack__tag">Demo · WIP</p>
+          <h3 class="work-stack__title">Daftar</h3>
+          <p class="work-stack__url">Government work, in plain language</p>
+          <div class="work-stack__links">
+            <a class="work-stack__cta" href="https://lilkunal.github.io/Daftar-The-office/" target="_blank" rel="noopener">Demo ↗</a>
+            <a class="work-stack__case" href="work/daftar.html">Case study</a>
+          </div>
         </div>
       </article>
 
-      <article class="work-stack__row work-stack__row--flip" data-work-row>
-        <span class="work-stack__num" aria-hidden="true">04</span>
-        <div class="work-stack__visual" data-stretch>
-          <img src="assets/work/atul-shiv-shakti.png" alt="Atul Shiv Shakti astrology site demo" loading="lazy" decoding="async" width="1200" height="750">
+      <article class="work-stack__row" data-work-row>
+        <div class="work-stack__visual">
+          <img src="assets/work/atul.svg" alt="Atul Shiv Shakti Vedic astrology" loading="lazy" decoding="async" width="1600" height="1000">
         </div>
         <div class="work-stack__copy">
-          <p class="work-stack__tag">Demo · work in progress · React · 2025–26</p>
+          <p class="work-stack__tag">Demo · WIP</p>
           <h3 class="work-stack__title">Atul Shiv Shakti</h3>
-          <p class="work-stack__url">Vedic astrology · services · WhatsApp booking</p>
-          <a class="work-stack__case" href="work/atul-shiv-shakti.html">Read case study →</a>
-          <a class="work-stack__cta" href="https://lilkunal.github.io/Atulshivshakti/" target="_blank" rel="noopener">View demo <span class="work-stack__cta-arrow" aria-hidden="true">↗</span></a>
+          <p class="work-stack__url">Astrology · WhatsApp booking</p>
+          <div class="work-stack__links">
+            <a class="work-stack__cta" href="https://lilkunal.github.io/Atulshivshakti/" target="_blank" rel="noopener">Demo ↗</a>
+            <a class="work-stack__case" href="work/atul-shiv-shakti.html">Case study</a>
+          </div>
         </div>
       </article>
 
       <article class="work-stack__row" data-work-row>
-        <span class="work-stack__num" aria-hidden="true">05</span>
-        <div class="work-stack__visual" data-stretch>
-          <img src="assets/work/jai-home-care.jpg" alt="JAI Home Care Services website" loading="lazy" decoding="async" width="1200" height="750">
+        <div class="work-stack__visual">
+          <img src="assets/work/jai.svg" alt="JAI Home Care Services" loading="lazy" decoding="async" width="1600" height="1000">
         </div>
         <div class="work-stack__copy">
-          <p class="work-stack__tag">Demo · work in progress · AI-assisted · 2025</p>
-          <h3 class="work-stack__title">JAI Home Care Services</h3>
-          <p class="work-stack__url">Home care · medical assistance landing page</p>
-          <a class="work-stack__case" href="work/jai.html">Read case study →</a>
-          <a class="work-stack__cta" href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">View demo <span class="work-stack__cta-arrow" aria-hidden="true">↗</span></a>
+          <p class="work-stack__tag">Demo · landing</p>
+          <h3 class="work-stack__title">JAI Home Care</h3>
+          <p class="work-stack__url">Medical assistance, phone-first</p>
+          <div class="work-stack__links">
+            <a class="work-stack__cta" href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">Demo ↗</a>
+            <a class="work-stack__case" href="work/jai.html">Case study</a>
+          </div>
         </div>
       </article>
 
-      <article class="work-stack__row work-stack__row--flip" data-work-row>
-        <span class="work-stack__num" aria-hidden="true">06</span>
-        <div class="work-stack__visual" data-stretch>
-          <img src="assets/work/ace-factor-fitness.png" alt="Ace Factor Fitness gym website" loading="lazy" decoding="async" width="1200" height="750">
+      <article class="work-stack__row" data-work-row>
+        <div class="work-stack__visual">
+          <img src="assets/work/ace.svg" alt="Ace Factor Fitness gym site" loading="lazy" decoding="async" width="1600" height="1000">
         </div>
         <div class="work-stack__copy">
-          <p class="work-stack__tag">Demo · work in progress · React · 2025</p>
+          <p class="work-stack__tag">Demo · multi-page</p>
           <h3 class="work-stack__title">Ace Factor Fitness</h3>
-          <p class="work-stack__url">Multi-page gym site · plans, coaches, gallery</p>
-          <a class="work-stack__case" href="work/ace-factor.html">Read case study →</a>
-          <a class="work-stack__cta" href="https://lilkunal.github.io/ace-factor-fitness/" target="_blank" rel="noopener">View demo <span class="work-stack__cta-arrow" aria-hidden="true">↗</span></a>
+          <p class="work-stack__url">Plans, coaches, gallery</p>
+          <div class="work-stack__links">
+            <a class="work-stack__cta" href="https://lilkunal.github.io/ace-factor-fitness/" target="_blank" rel="noopener">Demo ↗</a>
+            <a class="work-stack__case" href="work/ace-factor.html">Case study</a>
+          </div>
         </div>
       </article>
 
       <article class="work-stack__row" data-work-row>
-        <span class="work-stack__num" aria-hidden="true">07</span>
-        <div class="work-stack__visual" data-stretch>
-          <img src="assets/work/portfolio.jpg" alt="This portfolio website" loading="lazy" decoding="async" width="1200" height="750">
+        <div class="work-stack__visual">
+          <img src="assets/work/portfolio.svg" alt="This portfolio — Kunal Varshney" loading="lazy" decoding="async" width="1600" height="1000">
         </div>
         <div class="work-stack__copy">
-          <p class="work-stack__tag">Live personal site · not a client deliverable</p>
-          <h3 class="work-stack__title">This portfolio</h3>
-          <p class="work-stack__url">lilkunal.github.io · hire page &amp; case studies</p>
-          <a class="work-stack__case" href="work/portfolio.html">Read case study →</a>
-          <a class="work-stack__cta" href="#contact">Let's talk <span class="work-stack__cta-arrow" aria-hidden="true">→</span></a>
+          <p class="work-stack__tag">Live · personal</p>
+          <h3 class="work-stack__title">This site</h3>
+          <p class="work-stack__url">Hire page and case studies</p>
+          <div class="work-stack__links">
+            <a class="work-stack__cta" href="#contact">Let's talk →</a>
+            <a class="work-stack__case" href="work/portfolio.html">Case study</a>
+          </div>
         </div>
       </article>
     </div>
   </section>
 
-  <section id="proof" class="section proof-section section--warm">
+  <section id="portfolios" class="section made-for section--warm">
+    <div class="made-for__head">
+      <p class="eyebrow">Portfolios I made</p>
+      <h2 class="section__title section__title--scroll">Their name. My craft.</h2>
+      <p class="made-for__lede">Live hire sites for Shweta and Antriksh. I can build yours the same way.</p>
+      <div class="ludo-strip made-for__ludo" aria-hidden="true">
+        <canvas data-ludo-sprite="compact" width="280" height="44"></canvas>
+      </div>
+    </div>
+    <div class="made-for__grid">
+      <article class="made-for__card">
+        <div class="made-for__visual">
+          <img src="assets/work/shweta-portfolio.svg" alt="Shweta Tiwari — HR Business Partner portfolio" width="1600" height="1000" loading="lazy" decoding="async">
+        </div>
+        <div class="made-for__copy">
+          <p class="made-for__tag">Live · Shweta</p>
+          <h3 class="made-for__title">Shweta Tiwari</h3>
+          <p class="made-for__role">HRBP — talent, engagement, people strategy.</p>
+          <a class="made-for__cta" href="https://tiwarishweta03.github.io/" target="_blank" rel="noopener">Visit live site ↗</a>
+        </div>
+      </article>
+      <article class="made-for__card">
+        <div class="made-for__visual">
+          <img src="assets/work/antriksh-portfolio.svg" alt="Antriksh Upadhyay — support to cloud portfolio" width="1600" height="1000" loading="lazy" decoding="async">
+        </div>
+        <div class="made-for__copy">
+          <p class="made-for__tag">Live · Antriksh</p>
+          <h3 class="made-for__title">Antriksh Upadhyay</h3>
+          <p class="made-for__role">Support moving into cloud — a bold hire site.</p>
+          <a class="made-for__cta" href="https://antrikshu.github.io/" target="_blank" rel="noopener">Visit live site ↗</a>
+        </div>
+      </article>
+    </div>
+    <div class="made-for__offer">
+      <p class="made-for__offer-copy">Want a portfolio with your name on it? Tell me who you are.</p>
+      <a class="btn btn--primary" href="#contact">Get yours</a>
+    </div>
+  </section>
+
+  <section id="proof" class="section proof-section section--dark">
     <p class="eyebrow">Proof</p>
     <h2 class="section__title section__title--solo">What clients &amp; operators say</h2>
     <div class="proof-grid">
       <article class="proof-card">
         <p class="proof-card__metric">200+</p>
-        <p class="proof-card__quote">Products browsable online without a phone call first — export enquiries became self-serve instead of word-of-mouth only.</p>
-        <p class="proof-card__meta">Padma Enterprises · catalogue &amp; marketing</p>
+        <p class="proof-card__quote">Products online without a phone call first.</p>
+        <p class="proof-card__meta">Padma Enterprises · catalogue</p>
       </article>
       <article class="proof-card">
         <p class="proof-card__metric">Live in weeks</p>
-        <p class="proof-card__quote">Clear home-care site on mobile — families could understand services and reach out without hunting for a number.</p>
-        <p class="proof-card__meta">JAI Home Care · demo · design &amp; build · 2025</p>
+        <p class="proof-card__quote">Families could understand services on a phone.</p>
+        <p class="proof-card__meta">JAI Home Care · demo · 2025</p>
       </article>
       <article class="proof-card">
         <p class="proof-card__metric">4+ yrs</p>
-        <p class="proof-card__quote">I don't ghost after launch — support background means tickets, fixes, and follow-ups are normal for me, not exceptions.</p>
+        <p class="proof-card__quote">I don't ghost after launch. Support is the job.</p>
         <p class="proof-card__meta">Teleperformance · Webhelp · Concentrix · Flex</p>
       </article>
     </div>
@@ -600,11 +686,11 @@
     <div class="faq-list">
       <div class="faq-entry is-active">
         <button class="faq-item" type="button" aria-expanded="true">Are you a designer, or do you just handle marketing for a lighting business?</button>
-        <div class="faq-panel"><div class="faq-panel__inner"><p>Both, professionally. Since January 2025 I lead marketing and the full online presence for Padma Enterprises — our family lighting business — and I take on freelance web design for other clients. Padma is the live client/operator proof; demos like BKC, Daftar, Atul Shiv Shakti, JAI, and Ace Factor show builds still in progress. BKC is my own streetwear storefront product.</p></div></div>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>Both, professionally. Since January 2025 I lead marketing and the full online presence for Padma Enterprises — our family lighting business — and I take on freelance web design for other clients. Padma is the live client/operator proof; <a href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener">THOOK</a> is my live civic campaign; demos like BKC, Daftar, Atul Shiv Shakti, JAI, and Ace Factor show builds still in progress. I also design hire portfolios for people — see <a href="#portfolios">Portfolios</a>.</p></div></div>
       </div>
       <div class="faq-entry">
         <button class="faq-item" type="button" aria-expanded="false">Do you have client design work yet?</button>
-        <div class="faq-panel"><div class="faq-panel__inner"><p><strong>Live client site:</strong> <a href="https://www.padmalights.com" target="_blank" rel="noopener">Padma Enterprises</a> (200+ product catalogue I operate). <strong>Demos / WIP</strong> you can click through: <a href="https://lilkunal.github.io/Bkc/" target="_blank" rel="noopener">BKC</a> (my streetwear storefront), <a href="https://lilkunal.github.io/Daftar-The-office/" target="_blank" rel="noopener">Daftar</a>, <a href="https://lilkunal.github.io/Atulshivshakti/" target="_blank" rel="noopener">Atul Shiv Shakti</a>, <a href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">JAI Home Care</a>, and <a href="https://lilkunal.github.io/ace-factor-fitness/" target="_blank" rel="noopener">Ace Factor Fitness</a>. Before 2025: four years in technical support, so I don't disappear after launch.</p></div></div>
+        <div class="faq-panel"><div class="faq-panel__inner"><p><strong>Live client site:</strong> <a href="https://www.padmalights.com" target="_blank" rel="noopener">Padma Enterprises</a> (200+ product catalogue I operate). <strong>Live personal:</strong> <a href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener">THOOK</a> (citizen campaign). <strong>Portfolios for people:</strong> <a href="https://tiwarishweta03.github.io/" target="_blank" rel="noopener">Shweta Tiwari</a>, <a href="https://antrikshu.github.io/" target="_blank" rel="noopener">Antriksh Upadhyay</a>. <strong>Demos / WIP:</strong> <a href="https://lilkunal.github.io/Bkc/" target="_blank" rel="noopener">BKC</a>, <a href="https://lilkunal.github.io/Daftar-The-office/" target="_blank" rel="noopener">Daftar</a>, <a href="https://lilkunal.github.io/Atulshivshakti/" target="_blank" rel="noopener">Atul Shiv Shakti</a>, <a href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">JAI Home Care</a>, and <a href="https://lilkunal.github.io/ace-factor-fitness/" target="_blank" rel="noopener">Ace Factor Fitness</a>.</p></div></div>
       </div>
       <div class="faq-entry">
         <button class="faq-item" type="button" aria-expanded="false">What happens after the site goes live — do you just disappear?</button>
@@ -818,6 +904,7 @@
 <script src="js/main.js"></script>
 <script src="js/lottie-accents.js"></script>
 <script src="js/cv-scroll.js"></script>
+<script src="js/ludo-sprite.js"></script>
 <script src="js/work-stack.js"></script>
 <script src="js/carousel.js"></script>
 <script src="js/animations.js"></script>

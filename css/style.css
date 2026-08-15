@@ -270,6 +270,42 @@ img, video { max-width: 100%; height: auto; display: block; }
 .nav__dropdown { position: relative; display: inline-flex; }
 .nav__caret { font-size: 0.75em; opacity: 0.7; }
 
+.nav__drop-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s var(--ease);
+}
+
+.nav__drop-btn:hover,
+.nav__drop-btn[aria-expanded="true"] {
+  color: var(--ink);
+}
+
+.nav__menu-label {
+  margin: 0.35rem 0 0.1rem;
+  padding: 0.35rem 0.75rem 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.nav__menu-label:first-child {
+  margin-top: 0;
+}
+
 .nav__background {
   display: inline-flex;
   align-items: center;
@@ -297,7 +333,7 @@ img, video { max-width: 100%; height: auto; display: block; }
   position: absolute;
   top: calc(100% + 0.6rem);
   left: 0;
-  min-width: 15rem;
+  min-width: 17.5rem;
   display: flex;
   flex-direction: column;
   background: color-mix(in srgb, var(--paper) 88%, transparent);
@@ -2541,6 +2577,7 @@ a.work-tile:hover {
 /* ===== Responsive ===== */
 @media (max-width: 1080px) {
   .nav__dropdown { display: block; width: 100%; }
+  .nav__drop-btn { min-height: 44px; }
   .nav__menu {
     position: static;
     box-shadow: none;

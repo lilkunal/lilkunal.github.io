@@ -6,12 +6,13 @@
    - Videos are never cached. They are ~21 MB and would blow past the origin's
      storage quota for no benefit.
    Bump CACHE_VERSION to retire every old cache on the next activation. */
-var CACHE_VERSION = "kv-v62";
+var CACHE_VERSION = "kv-v65";
 
 var PRECACHE = [
   "./",
   "./index.html",
   "./work/padma.html",
+  "./work/thook.html",
   "./work/bkc.html",
   "./work/daftar.html",
   "./work/atul-shiv-shakti.html",
@@ -24,6 +25,8 @@ var PRECACHE = [
   "./css/style.css",
   "./css/editorial-hero.css",
   "./css/work-stack.css",
+  "./css/ludo-sprite.css",
+  "./css/made-for.css",
   "./css/nav-theme.css",
   "./css/cv-scroll.css",
   "./css/svgator-effects.css",
@@ -43,13 +46,16 @@ var PRECACHE = [
   "./assets/photos/kunal-hero-profile.png",
   "./assets/photos/site-bg-illustration.png",
   "./assets/Kunal-Varshney-Resume.pdf",
-  "./assets/work/padma-gate-light.jpg",
-  "./assets/work/bkc.png",
-  "./assets/work/jai-home-care.jpg",
-  "./assets/work/ace-factor-fitness.png",
-  "./assets/work/portfolio.jpg",
-  "./assets/work/daftar.png",
-  "./assets/work/atul-shiv-shakti.png",
+  "./assets/work/padma.svg",
+  "./assets/work/thook.svg",
+  "./assets/work/bkc.svg",
+  "./assets/work/daftar.svg",
+  "./assets/work/atul.svg",
+  "./assets/work/jai.svg",
+  "./assets/work/ace.svg",
+  "./assets/work/portfolio.svg",
+  "./assets/work/shweta-portfolio.svg",
+  "./assets/work/antriksh-portfolio.svg",
   "./assets/cv/cv-now.jpg",
   "./assets/cv/cv-support.jpg",
   "./assets/cv/cv-school.jpg",
@@ -66,6 +72,7 @@ var PRECACHE = [
   "./js/lottie-accents.js",
   "./js/cv-scroll.js",
   "./js/work-stack.js",
+  "./js/ludo-sprite.js",
   "./js/cursor-water.js",
   "./js/stretch-reveal.js",
   "./js/how-build-scene.js",
