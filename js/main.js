@@ -61,41 +61,63 @@
     nameFlip.addEventListener("keydown", toggleNameFlip);
   }
 
-  /* Projects dropdown in the nav */
-  var projectsBtn = document.getElementById("projects-menu-btn");
-  var projectsMenu = document.getElementById("projects-menu");
+  /* Work / Portfolios dropdowns in the nav */
+  var navDropdowns = Array.prototype.slice.call(document.querySelectorAll(".nav__dropdown"));
 
-  function closeProjectsMenu() {
-    if (!projectsMenu || !projectsBtn) return;
-    projectsMenu.setAttribute("hidden", "");
-    projectsBtn.setAttribute("aria-expanded", "false");
-  }
-  function openProjectsMenu() {
-    if (!projectsMenu || !projectsBtn) return;
-    projectsMenu.removeAttribute("hidden");
-    projectsBtn.setAttribute("aria-expanded", "true");
+  function closeNavDropdown(dd) {
+    var btn = dd.querySelector(".nav__drop-btn");
+    var menu = dd.querySelector(".nav__menu");
+    if (!btn || !menu) return;
+    menu.setAttribute("hidden", "");
+    btn.setAttribute("aria-expanded", "false");
   }
 
-  if (projectsBtn && projectsMenu) {
-    projectsBtn.addEventListener("click", function (e) {
-      e.stopPropagation();
-      if (projectsBtn.getAttribute("aria-expanded") === "true") closeProjectsMenu();
-      else openProjectsMenu();
+  function closeAllNavDropdowns(except) {
+    navDropdowns.forEach(function (dd) {
+      if (dd !== except) closeNavDropdown(dd);
     });
-    Array.prototype.slice.call(projectsMenu.querySelectorAll("a")).forEach(function (link) {
+  }
+
+  navDropdowns.forEach(function (dd) {
+    var btn = dd.querySelector(".nav__drop-btn");
+    var menu = dd.querySelector(".nav__menu");
+    if (!btn || !menu) return;
+
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var open = btn.getAttribute("aria-expanded") === "true";
+      closeAllNavDropdowns();
+      if (!open) {
+        menu.removeAttribute("hidden");
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    Array.prototype.slice.call(menu.querySelectorAll("a")).forEach(function (link) {
       link.addEventListener("click", function () {
-        closeProjectsMenu();
+        closeNavDropdown(dd);
         if (navToggleInput) navToggleInput.checked = false;
       });
     });
+  });
+
+  if (navDropdowns.length) {
     document.addEventListener("click", function (e) {
-      if (!projectsMenu.contains(e.target) && e.target !== projectsBtn && !projectsBtn.contains(e.target)) {
-        closeProjectsMenu();
-      }
+      var hit = navDropdowns.some(function (dd) { return dd.contains(e.target); });
+      if (!hit) closeAllNavDropdowns();
     });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") closeProjectsMenu();
+      if (e.key === "Escape") closeAllNavDropdowns();
     });
+  }
+
+  /* Open the matching home dropdown when arriving via #work / #portfolios */
+  var hashTarget = document.getElementById((location.hash || "").slice(1));
+  if (hashTarget && hashTarget.tagName === "DETAILS") {
+    hashTarget.open = true;
+  } else if (location.hash === "#work") {
+    var firstFold = document.querySelector("#work .fold");
+    if (firstFold) firstFold.open = true;
   }
 
   /* Identity ticker */

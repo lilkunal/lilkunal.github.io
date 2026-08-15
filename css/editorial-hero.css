@@ -295,8 +295,7 @@ body:has(.site-bg) .hero--editorial::before {
 .js .hero-editorial__solid,
 .js .hero-editorial__outline,
 .js .hero-editorial__pitch,
-.js .hero-editorial__foot,
-.js .hero-editorial__proof li {
+.js .hero-editorial__foot {
   opacity: 0;
 }
 

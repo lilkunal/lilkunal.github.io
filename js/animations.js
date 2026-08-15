@@ -151,12 +151,6 @@
         y: [16, 0],
         duration: 640
       }, 920);
-      tl.add(".hero-editorial__proof li", {
-        opacity: [0, 1],
-        y: [10, 0],
-        delay: A.stagger(70),
-        duration: 520
-      }, 1040);
     } else {
       var tl = A.createTimeline({ defaults: { ease: "out(3)" } });
       tl.add(".hero-curtain", {
@@ -231,6 +225,7 @@
       [".reels__card", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
       [".reels__lede", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".work-stack", "anim-hide-up", { opacity: 1, y: 0 }, 0],
+      [".made-for__card", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
       [".ai-process", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".ai-process__step", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
       [".proof-grid", "anim-hide-up", { opacity: 1, y: 0 }, 0],
@@ -385,7 +380,7 @@
         inline transform.
      --------------------------------------------------------------------- */
   if (M && M.animate) {
-    $$(".service-card, .contact-card, .faq-item, .bg-tab, .value-pillar, .deck__btn, .cv-scroll__rail-item, .work-stack__cta, .work-stack__case, .proof-card, .offclock__tile").forEach(function (el) {
+    $$(".service-card, .contact-card, .faq-item, .bg-tab, .value-pillar, .deck__btn, .cv-scroll__rail-item, .work-stack__cta, .work-stack__case, .proof-card, .made-for__card, .offclock__tile").forEach(function (el) {
       el.addEventListener("pointerdown", function () {
         M.animate(el, { scale: 0.96 }, { type: "spring", stiffness: 420, damping: 22 });
       });

@@ -106,6 +106,7 @@
 <link rel="stylesheet" href="css/editorial-hero.css">
 <link rel="stylesheet" href="css/work-stack.css">
 <link rel="stylesheet" href="css/ludo-sprite.css">
+<link rel="stylesheet" href="css/show-pages.css">
 <link rel="stylesheet" href="css/made-for.css">
 <link rel="stylesheet" href="css/nav-theme.css">
 <link rel="stylesheet" href="css/cv-scroll.css">
@@ -147,23 +148,28 @@
   <nav class="nav__links" aria-label="Primary">
     <span class="nav__avail" aria-label="Open for remote projects"><span class="nav__avail-dot" aria-hidden="true"></span> Open · Remote</span>
     <div class="nav__dropdown">
-      <button type="button" class="nav__drop-btn" id="projects-menu-btn" aria-expanded="false" aria-controls="projects-menu">
-        Projects <span class="nav__caret" aria-hidden="true">▾</span>
+      <button type="button" class="nav__drop-btn" id="work-menu-btn" aria-expanded="false" aria-controls="work-menu">
+        Work <span class="nav__caret" aria-hidden="true">▾</span>
       </button>
-      <div class="nav__menu" id="projects-menu" hidden>
-        <p class="nav__menu-label">Work</p>
-        <a href="#work">All work</a>
-        <a href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener">THOOK</a>
+      <div class="nav__menu" id="work-menu" hidden>
+        <a href="work/">All website work</a>
         <a href="https://www.padmalights.com" target="_blank" rel="noopener">Padma Enterprises</a>
+        <a href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener">THOOK</a>
         <a href="https://lilkunal.github.io/Bkc/" target="_blank" rel="noopener">BKC</a>
         <a href="https://lilkunal.github.io/Daftar-The-office/" target="_blank" rel="noopener">Daftar</a>
         <a href="https://lilkunal.github.io/Atulshivshakti/" target="_blank" rel="noopener">Atul Shiv Shakti</a>
         <a href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">JAI Home Care</a>
         <a href="https://lilkunal.github.io/ace-factor-fitness/" target="_blank" rel="noopener">Ace Factor Fitness</a>
-        <p class="nav__menu-label">Portfolios I made</p>
+      </div>
+    </div>
+    <div class="nav__dropdown">
+      <button type="button" class="nav__drop-btn" id="portfolios-menu-btn" aria-expanded="false" aria-controls="portfolios-menu">
+        Portfolios <span class="nav__caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="nav__menu" id="portfolios-menu" hidden>
+        <a href="portfolios/">All portfolios</a>
         <a href="https://tiwarishweta03.github.io/" target="_blank" rel="noopener">Shweta Tiwari</a>
         <a href="https://antrikshu.github.io/" target="_blank" rel="noopener">Antriksh Upadhyay</a>
-        <a href="#portfolios">See portfolios</a>
         <a class="nav__menu-out" href="#contact">Want yours? Let's talk</a>
       </div>
     </div>
@@ -241,12 +247,6 @@
           <a class="btn btn--ghost" href="assets/Kunal-Varshney-Resume.pdf" download>Résumé</a>
         </div>
       </div>
-
-      <ul class="hero-editorial__proof">
-        <li>Padma · live</li>
-        <li>THOOK · live</li>
-        <li>BKC · demo</li>
-      </ul>
     </div>
     <a class="hero-editorial__scroll" href="#about" aria-label="Scroll to content">↓</a>
   </section>
@@ -301,7 +301,6 @@
           </article>
         </div>
 
-        <p class="how-build__lede">After launch I stay reachable. Exploring <a href="https://github.com/MiniMax-AI/MiniMax-H3" target="_blank" rel="noopener">MiniMax H3</a> for video experiments.</p>
         <a class="btn btn--ghost" href="assets/Kunal-Varshney-Resume.pdf" download>Résumé PDF →</a>
       </div>
     </div>
@@ -475,178 +474,59 @@
     </div>
   </section>
 
-  <section id="work" class="section work work--stack section--dark">
-    <div class="work__head">
-      <div class="lottie-accent lottie-accent--work lottie-accent--inline" data-lottie-work aria-hidden="true"></div>
-      <div>
-        <svg class="svg-draw svg-draw--section" data-svg-draw viewBox="0 0 120 4" aria-hidden="true"><path d="M0 2 H120" stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-        <h2 class="section__title section__title--solo section__title--scroll">Work</h2>
-        <p class="work__lede">Live client, live product, and demos. Identity cards — not full-page screenshots.</p>
-        <div class="ludo-strip work__ludo" aria-hidden="true">
-          <canvas data-ludo-sprite="compact" width="320" height="44"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <div class="work-stack" data-work-stack aria-label="Selected projects">
-      <article class="work-stack__row" data-work-row>
-        <div class="work-stack__visual">
-          <img src="assets/work/padma.svg" alt="Padma Enterprises — outdoor lighting catalogue" loading="lazy" decoding="async" width="1600" height="1000">
-        </div>
-        <div class="work-stack__copy">
-          <p class="work-stack__tag">Live · family business</p>
-          <h3 class="work-stack__title">Padma Enterprises</h3>
-          <p class="work-stack__url">200+ SKUs · export enquiries</p>
-          <div class="work-stack__links">
-            <a class="work-stack__cta" href="https://www.padmalights.com" target="_blank" rel="noopener">Live site ↗</a>
-            <a class="work-stack__case" href="work/padma.html">Case study</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="work-stack__row" data-work-row>
-        <div class="work-stack__visual">
-          <img src="assets/work/thook.svg" alt="THOOK citizen campaign" loading="lazy" decoding="async" width="1600" height="1000">
-        </div>
-        <div class="work-stack__copy">
-          <p class="work-stack__tag">Live · PWA</p>
-          <h3 class="work-stack__title">THOOK</h3>
-          <p class="work-stack__url">Report the stain. Never the person.</p>
-          <div class="work-stack__links">
-            <a class="work-stack__cta" href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener">Live site ↗</a>
-            <a class="work-stack__case" href="work/thook.html">Case study</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="work-stack__row" data-work-row>
-        <div class="work-stack__visual">
-          <img src="assets/work/bkc.svg" alt="BKC Hinglish streetwear tees" loading="lazy" decoding="async" width="1600" height="1000">
-        </div>
-        <div class="work-stack__copy">
-          <p class="work-stack__tag">Demo · React</p>
-          <h3 class="work-stack__title">BKC</h3>
-          <p class="work-stack__url">Streetwear tees · 186 designs · cart</p>
-          <div class="work-stack__links">
-            <a class="work-stack__cta" href="https://lilkunal.github.io/Bkc/" target="_blank" rel="noopener">Demo ↗</a>
-            <a class="work-stack__case" href="work/bkc.html">Case study</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="work-stack__row" data-work-row>
-        <div class="work-stack__visual">
-          <img src="assets/work/daftar.svg" alt="Daftar — The Office civic product" loading="lazy" decoding="async" width="1600" height="1000">
-        </div>
-        <div class="work-stack__copy">
-          <p class="work-stack__tag">Demo · WIP</p>
-          <h3 class="work-stack__title">Daftar</h3>
-          <p class="work-stack__url">Government work, in plain language</p>
-          <div class="work-stack__links">
-            <a class="work-stack__cta" href="https://lilkunal.github.io/Daftar-The-office/" target="_blank" rel="noopener">Demo ↗</a>
-            <a class="work-stack__case" href="work/daftar.html">Case study</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="work-stack__row" data-work-row>
-        <div class="work-stack__visual">
-          <img src="assets/work/atul.svg" alt="Atul Shiv Shakti Vedic astrology" loading="lazy" decoding="async" width="1600" height="1000">
-        </div>
-        <div class="work-stack__copy">
-          <p class="work-stack__tag">Demo · WIP</p>
-          <h3 class="work-stack__title">Atul Shiv Shakti</h3>
-          <p class="work-stack__url">Astrology · WhatsApp booking</p>
-          <div class="work-stack__links">
-            <a class="work-stack__cta" href="https://lilkunal.github.io/Atulshivshakti/" target="_blank" rel="noopener">Demo ↗</a>
-            <a class="work-stack__case" href="work/atul-shiv-shakti.html">Case study</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="work-stack__row" data-work-row>
-        <div class="work-stack__visual">
-          <img src="assets/work/jai.svg" alt="JAI Home Care Services" loading="lazy" decoding="async" width="1600" height="1000">
-        </div>
-        <div class="work-stack__copy">
-          <p class="work-stack__tag">Demo · landing</p>
-          <h3 class="work-stack__title">JAI Home Care</h3>
-          <p class="work-stack__url">Medical assistance, phone-first</p>
-          <div class="work-stack__links">
-            <a class="work-stack__cta" href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">Demo ↗</a>
-            <a class="work-stack__case" href="work/jai.html">Case study</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="work-stack__row" data-work-row>
-        <div class="work-stack__visual">
-          <img src="assets/work/ace.svg" alt="Ace Factor Fitness gym site" loading="lazy" decoding="async" width="1600" height="1000">
-        </div>
-        <div class="work-stack__copy">
-          <p class="work-stack__tag">Demo · multi-page</p>
-          <h3 class="work-stack__title">Ace Factor Fitness</h3>
-          <p class="work-stack__url">Plans, coaches, gallery</p>
-          <div class="work-stack__links">
-            <a class="work-stack__cta" href="https://lilkunal.github.io/ace-factor-fitness/" target="_blank" rel="noopener">Demo ↗</a>
-            <a class="work-stack__case" href="work/ace-factor.html">Case study</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="work-stack__row" data-work-row>
-        <div class="work-stack__visual">
-          <img src="assets/work/portfolio.svg" alt="This portfolio — Kunal Varshney" loading="lazy" decoding="async" width="1600" height="1000">
-        </div>
-        <div class="work-stack__copy">
-          <p class="work-stack__tag">Live · personal</p>
-          <h3 class="work-stack__title">This site</h3>
-          <p class="work-stack__url">Hire page and case studies</p>
-          <div class="work-stack__links">
-            <a class="work-stack__cta" href="#contact">Let's talk →</a>
-            <a class="work-stack__case" href="work/portfolio.html">Case study</a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section id="portfolios" class="section made-for section--warm">
-    <div class="made-for__head">
-      <p class="eyebrow">Portfolios I made</p>
-      <h2 class="section__title section__title--scroll">Their name. My craft.</h2>
-      <p class="made-for__lede">Live hire sites for Shweta and Antriksh. I can build yours the same way.</p>
-      <div class="ludo-strip made-for__ludo" aria-hidden="true">
-        <canvas data-ludo-sprite="compact" width="280" height="44"></canvas>
-      </div>
-    </div>
-    <div class="made-for__grid">
-      <article class="made-for__card">
-        <div class="made-for__visual">
-          <img src="assets/work/shweta-portfolio.svg" alt="Shweta Tiwari — HR Business Partner portfolio" width="1600" height="1000" loading="lazy" decoding="async">
-        </div>
-        <div class="made-for__copy">
-          <p class="made-for__tag">Live · Shweta</p>
-          <h3 class="made-for__title">Shweta Tiwari</h3>
-          <p class="made-for__role">HRBP — talent, engagement, people strategy.</p>
-          <a class="made-for__cta" href="https://tiwarishweta03.github.io/" target="_blank" rel="noopener">Visit live site ↗</a>
-        </div>
-      </article>
-      <article class="made-for__card">
-        <div class="made-for__visual">
-          <img src="assets/work/antriksh-portfolio.svg" alt="Antriksh Upadhyay — support to cloud portfolio" width="1600" height="1000" loading="lazy" decoding="async">
-        </div>
-        <div class="made-for__copy">
-          <p class="made-for__tag">Live · Antriksh</p>
-          <h3 class="made-for__title">Antriksh Upadhyay</h3>
-          <p class="made-for__role">Support moving into cloud — a bold hire site.</p>
-          <a class="made-for__cta" href="https://antrikshu.github.io/" target="_blank" rel="noopener">Visit live site ↗</a>
-        </div>
-      </article>
-    </div>
-    <div class="made-for__offer">
-      <p class="made-for__offer-copy">Want a portfolio with your name on it? Tell me who you are.</p>
-      <a class="btn btn--primary" href="#contact">Get yours</a>
+  <section id="work" class="section work section--dark">
+    <p class="eyebrow">Selected work</p>
+    <h2 class="section__title">Work &amp; portfolios</h2>
+    <div class="fold-list">
+      <details class="fold">
+        <summary>Website work</summary>
+        <ul class="fold__items">
+          <li>
+            <a href="https://www.padmalights.com" target="_blank" rel="noopener"><strong>Padma Enterprises</strong> <span>live</span></a>
+            <p>200+ lighting SKUs, live for export.</p>
+          </li>
+          <li>
+            <a href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener"><strong>THOOK</strong> <span>live</span></a>
+            <p>Shame the habit. Never the person.</p>
+          </li>
+          <li>
+            <a href="https://lilkunal.github.io/Bkc/" target="_blank" rel="noopener"><strong>BKC</strong> <span>demo</span></a>
+            <p>Hinglish streetwear tees — shop and cart.</p>
+          </li>
+          <li>
+            <a href="https://lilkunal.github.io/Daftar-The-office/" target="_blank" rel="noopener"><strong>Daftar</strong> <span>demo</span></a>
+            <p>Government work, in plain language.</p>
+          </li>
+          <li>
+            <a href="https://lilkunal.github.io/Atulshivshakti/" target="_blank" rel="noopener"><strong>Atul Shiv Shakti</strong> <span>demo</span></a>
+            <p>Astrology, booked on WhatsApp.</p>
+          </li>
+          <li>
+            <a href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener"><strong>JAI Home Care</strong> <span>demo</span></a>
+            <p>Medical assistance, phone-first.</p>
+          </li>
+          <li>
+            <a href="https://lilkunal.github.io/ace-factor-fitness/" target="_blank" rel="noopener"><strong>Ace Factor Fitness</strong> <span>demo</span></a>
+            <p>Gym site — plans, coaches, gallery.</p>
+          </li>
+        </ul>
+        <a class="fold__more" href="work/">All website work →</a>
+      </details>
+      <details class="fold" id="portfolios">
+        <summary>Portfolios I made</summary>
+        <ul class="fold__items">
+          <li>
+            <a href="https://tiwarishweta03.github.io/" target="_blank" rel="noopener"><strong>Shweta Tiwari</strong> <span>HRBP</span></a>
+            <p>Hire site — talent, engagement, people strategy.</p>
+          </li>
+          <li>
+            <a href="https://antrikshu.github.io/" target="_blank" rel="noopener"><strong>Antriksh Upadhyay</strong> <span>Support → cloud</span></a>
+            <p>A bold personal hire site.</p>
+          </li>
+        </ul>
+        <a class="fold__more" href="portfolios/">All portfolios →</a>
+        <a class="fold__more" href="#contact">Want yours? Let's talk →</a>
+      </details>
     </div>
   </section>
 
@@ -686,7 +566,7 @@
     <div class="faq-list">
       <div class="faq-entry is-active">
         <button class="faq-item" type="button" aria-expanded="true">Are you a designer, or do you just handle marketing for a lighting business?</button>
-        <div class="faq-panel"><div class="faq-panel__inner"><p>Both, professionally. Since January 2025 I lead marketing and the full online presence for Padma Enterprises — our family lighting business — and I take on freelance web design for other clients. Padma is the live client/operator proof; <a href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener">THOOK</a> is my live civic campaign; demos like BKC, Daftar, Atul Shiv Shakti, JAI, and Ace Factor show builds still in progress. I also design hire portfolios for people — see <a href="#portfolios">Portfolios</a>.</p></div></div>
+        <div class="faq-panel"><div class="faq-panel__inner"><p>Both, professionally. Since January 2025 I lead marketing and the full online presence for Padma Enterprises — our family lighting business — and I take on freelance web design for other clients. Padma is the live client/operator proof; <a href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener">THOOK</a> is my live civic campaign; demos like BKC, Daftar, Atul Shiv Shakti, JAI, and Ace Factor show builds still in progress. I also design hire portfolios for people — see <a href="portfolios/">Portfolios I made</a>.</p></div></div>
       </div>
       <div class="faq-entry">
         <button class="faq-item" type="button" aria-expanded="false">Do you have client design work yet?</button>
@@ -909,7 +789,7 @@
 <script src="js/carousel.js"></script>
 <script src="js/animations.js"></script>
 <script src="js/scroll-motion.js"></script>
-<script src="js/game.js?v=24"></script>
+<script src="js/game.js?v=25"></script>
 <script src="js/how-build-scene.js" defer></script>
 <script src="js/playful-accents.js" defer></script>
 <script src="js/cursor-water.js" defer></script>
