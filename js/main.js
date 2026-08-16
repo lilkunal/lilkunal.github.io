@@ -111,13 +111,28 @@
     });
   }
 
+  /* Page accordions — same motion as FAQ */
+  Array.prototype.slice.call(document.querySelectorAll("[data-accordion]")).forEach(function (root) {
+    var items = Array.prototype.slice.call(root.querySelectorAll(".work-drop__item"));
+    items.forEach(function (item) {
+      var btn = item.querySelector("[data-accordion-btn]");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        var open = item.classList.contains("is-open");
+        item.classList.toggle("is-open", !open);
+        btn.setAttribute("aria-expanded", open ? "false" : "true");
+      });
+    });
+  });
+
   /* Open the matching home dropdown when arriving via #work / #portfolios */
-  var hashTarget = document.getElementById((location.hash || "").slice(1));
-  if (hashTarget && hashTarget.tagName === "DETAILS") {
-    hashTarget.open = true;
-  } else if (location.hash === "#work") {
-    var firstFold = document.querySelector("#work .fold");
-    if (firstFold) firstFold.open = true;
+  if (location.hash === "#portfolios") {
+    var peopleItem = document.getElementById("portfolios");
+    if (peopleItem) {
+      peopleItem.classList.add("is-open");
+      var peopleBtn = peopleItem.querySelector("[data-accordion-btn]");
+      if (peopleBtn) peopleBtn.setAttribute("aria-expanded", "true");
+    }
   }
 
   /* Identity ticker */

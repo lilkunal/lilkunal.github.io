@@ -234,6 +234,8 @@
       [".work__note", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".ask-search", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".faq-entry", "anim-hide-left", { opacity: 1, x: 0 }, 0.05],
+      [".work-drop__item", "anim-hide-up", { opacity: 1, y: 0 }, 0.08],
+      [".people-shelf--page .people-card", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
       [".contact__intro", "anim-hide-up", { opacity: 1, y: 0 }, 0],
       [".contact-action", "anim-hide-pop", { opacity: 1, scale: 1 }, 0.08],
       [".form-field", "anim-hide-up", { opacity: 1, y: 0 }, 0.06],
@@ -380,7 +382,7 @@
         inline transform.
      --------------------------------------------------------------------- */
   if (M && M.animate) {
-    $$(".service-card, .contact-card, .faq-item, .bg-tab, .value-pillar, .deck__btn, .cv-scroll__rail-item, .work-stack__cta, .work-stack__case, .proof-card, .made-for__card, .offclock__tile").forEach(function (el) {
+    $$(".service-card, .contact-card, .faq-item, .bg-tab, .value-pillar, .deck__btn, .cv-scroll__rail-item, .work-stack__cta, .work-stack__case, .proof-card, .made-for__card, .offclock__tile, .work-drop__btn, .people-card").forEach(function (el) {
       el.addEventListener("pointerdown", function () {
         M.animate(el, { scale: 0.96 }, { type: "spring", stiffness: 420, damping: 22 });
       });
