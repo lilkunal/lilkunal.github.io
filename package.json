@@ -1,0 +1,10 @@
+{
+  "name": "kunal-portfolio",
+  "private": true,
+  "scripts": {
+    "test:hire-site": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
+  }
+}

@@ -15,6 +15,7 @@
   var PIPE_GAP = 168;
   var PIPE_SPACING = 210;        /* horizontal distance between pipes */
   var SPEED = 2.0;
+  var FUNKY_AT = 10;             /* after this many towers, poles get weird */
   var GRAVITY = 0.42;
   var FLAP = -7.2;
   var PLAYER_X = 96;
@@ -176,7 +177,8 @@
       shake: 0,
       webT: 0,                 /* countdown for the web-strand flourish */
       motes: [],
-      sky: []
+      sky: [],
+      funkyFlash: 0
     };
     try { S.best = parseInt(localStorage.getItem(BEST_KEY), 10) || 0; } catch (e) { S.best = 0; }
     var i;
@@ -190,10 +192,68 @@
     for (i = 0; i < 3; i++) addPipe(W + 140 + i * PIPE_SPACING);
   }
 
+  function isFunky() {
+    return S && S.score >= FUNKY_AT;
+  }
+
+  function pipeSpeed() {
+    return isFunky() ? 2.55 : SPEED;
+  }
+
+  function pipeGapSize() {
+    return isFunky() ? 148 : PIPE_GAP;
+  }
+
   function addPipe(x) {
-    var margin = 70;
-    var playable = H - GROUND - margin * 2 - PIPE_GAP;
-    S.pipes.push({ x: x, gapY: margin + Math.random() * Math.max(20, playable), scored: false });
+    var gap = pipeGapSize();
+    var margin = isFunky() ? 58 : 70;
+    var playable = H - GROUND - margin * 2 - gap;
+    var gapY = margin + Math.random() * Math.max(20, playable);
+    var kind = "normal";
+    if (isFunky()) {
+      var mix = (S.score + S.pipes.length) % 3;
+      if (mix === 0) kind = "drop";
+      else if (mix === 1) kind = "invert";
+      else kind = "icicle";
+    }
+    S.pipes.push({
+      x: x,
+      gapY: gapY,
+      gap: gap,
+      scored: false,
+      kind: kind,
+      drop: kind === "normal" ? 0 : -260,
+      dropV: kind === "normal" ? 0 : 1.2,
+      stuck: kind === "normal",
+      invert: kind === "invert"
+    });
+  }
+
+  function sfxThud() {
+    playTone(90, 0.12, "sawtooth", 0.08);
+    playTone(140, 0.08, "square", 0.04, 0.05);
+  }
+
+  function sfxFunky() {
+    playTone(330, 0.08, "square", 0.05);
+    playTone(220, 0.1, "square", 0.05, 0.08);
+    playTone(110, 0.16, "sawtooth", 0.07, 0.16);
+  }
+
+  function goFunky() {
+    if (S.funkyFlash > 0) return;
+    S.funkyFlash = 96;
+    sfxFunky();
+    var i, p;
+    for (i = 0; i < S.pipes.length; i++) {
+      p = S.pipes[i];
+      if (p.scored) continue;
+      p.kind = i % 2 === 0 ? "drop" : "invert";
+      p.invert = p.kind === "invert";
+      p.drop = -240;
+      p.dropV = 2;
+      p.stuck = false;
+    }
   }
 
   function flap() {
@@ -222,6 +282,7 @@
     S.t++;
     if (S.shake > 0) S.shake--;
     if (S.webT > 0) S.webT--;
+    if (S.funkyFlash > 0) S.funkyFlash--;
 
     var i, p;
     for (i = 0; i < S.motes.length; i++) {
@@ -247,13 +308,25 @@
     S.y += S.vy;
     S.rot = Math.max(-0.5, Math.min(1.4, S.vy / 11));
 
+    var spd = pipeSpeed();
     for (i = 0; i < S.pipes.length; i++) {
       p = S.pipes[i];
-      p.x -= SPEED;
+      p.x -= spd;
+      if (!p.stuck) {
+        p.dropV += 0.65;
+        p.drop += p.dropV;
+        if (p.drop >= 0) {
+          p.drop = 0;
+          p.stuck = true;
+          S.shake = Math.max(S.shake, 8);
+          sfxThud();
+        }
+      }
       if (!p.scored && p.x + PIPE_W < PLAYER_X - PLAYER_R) {
         p.scored = true;
         S.score++;
         sfxScore();
+        if (S.score === FUNKY_AT) goFunky();
       }
     }
     while (S.pipes.length && S.pipes[0].x < -PIPE_W - 10) S.pipes.shift();
@@ -264,17 +337,105 @@
     if (S.y < PLAYER_R) { S.y = PLAYER_R; S.vy = 0; }
     if (S.y > H - GROUND - PLAYER_R) { S.y = H - GROUND - PLAYER_R; die(); return; }
 
-    /* Pipe collision — circle against the two rectangles. */
+    /* Pipe collision — circle against the two rectangles (or one icicle). */
     for (i = 0; i < S.pipes.length; i++) {
       p = S.pipes[i];
-      if (PLAYER_X + PLAYER_R < p.x || PLAYER_X - PLAYER_R > p.x + PIPE_W) continue;
-      if (S.y - PLAYER_R < p.gapY || S.y + PLAYER_R > p.gapY + PIPE_GAP) { die(); return; }
+      if (hitsPipe(p)) { die(); return; }
     }
+  }
+
+  function hitsPipe(p) {
+    var gap = p.gap || PIPE_GAP;
+    var dy = p.drop || 0;
+    if (PLAYER_X + PLAYER_R < p.x || PLAYER_X - PLAYER_R > p.x + PIPE_W) return false;
+    if (p.kind === "icicle") {
+      return (S.y - PLAYER_R) < (p.gapY + gap * 0.42 + dy);
+    }
+    return (S.y - PLAYER_R) < (p.gapY + dy) || (S.y + PLAYER_R) > (p.gapY + gap + dy);
   }
 
   /* ------------------------------------------------------------------
      Drawing
      ------------------------------------------------------------------ */
+  function drawPole(g, p) {
+    var gap = p.gap || PIPE_GAP;
+    var dy = p.drop || 0;
+    var by = p.gapY + gap;
+    g.save();
+    g.translate(0, dy);
+    g.fillStyle = C.surface;
+    g.strokeStyle = C.ink;
+    g.lineWidth = 3;
+
+    if (p.kind === "icicle") {
+      var tip = p.gapY + gap * 0.42;
+      pixelRect(g, p.x, -48, PIPE_W, tip + 48, 6);
+      g.fill();
+      g.stroke();
+      g.fillStyle = C.accent;
+      g.beginPath();
+      g.moveTo(p.x + 3, tip);
+      g.lineTo(p.x + PIPE_W - 3, tip);
+      g.lineTo(p.x + PIPE_W / 2, tip + 22);
+      g.closePath();
+      g.fill();
+      g.stroke();
+      g.restore();
+      return;
+    }
+
+    pixelRect(g, p.x, -40, PIPE_W, p.gapY + 40, 6);
+    g.fill();
+    g.stroke();
+    pixelRect(g, p.x, by, PIPE_W, H - GROUND - by + 10, 6);
+    g.fill();
+    g.stroke();
+
+    if (p.invert) {
+      /* Upside-down lips: caps on the outer ends, spikes pointing the wrong way. */
+      g.fillStyle = C.accent2;
+      g.fillRect(p.x + 6, 6, PIPE_W - 12, 10);
+      g.fillStyle = C.accent;
+      g.fillRect(p.x + 6, H - GROUND - 20, PIPE_W - 12, 10);
+      g.beginPath();
+      g.moveTo(p.x + 8, p.gapY);
+      g.lineTo(p.x + PIPE_W - 8, p.gapY);
+      g.lineTo(p.x + PIPE_W / 2, p.gapY + 16);
+      g.closePath();
+      g.fill();
+      g.fillStyle = C.accent2;
+      g.beginPath();
+      g.moveTo(p.x + 8, by);
+      g.lineTo(p.x + PIPE_W - 8, by);
+      g.lineTo(p.x + PIPE_W / 2, by - 16);
+      g.closePath();
+      g.fill();
+    } else if (p.kind === "drop") {
+      g.fillStyle = C.accent;
+      g.beginPath();
+      g.moveTo(p.x + 8, p.gapY);
+      g.lineTo(p.x + PIPE_W - 8, p.gapY);
+      g.lineTo(p.x + PIPE_W / 2, p.gapY + 16);
+      g.closePath();
+      g.fill();
+      g.fillStyle = C.accent2;
+      g.beginPath();
+      g.moveTo(p.x + 8, by);
+      g.lineTo(p.x + PIPE_W - 8, by);
+      g.lineTo(p.x + PIPE_W / 2, H - GROUND + 8);
+      g.closePath();
+      g.fill();
+      g.strokeStyle = C.ink;
+      g.stroke();
+    } else {
+      g.fillStyle = C.accent;
+      g.fillRect(p.x + 6, p.gapY - 14, PIPE_W - 12, 8);
+      g.fillStyle = C.accent2;
+      g.fillRect(p.x + 6, by + 6, PIPE_W - 12, 8);
+    }
+    g.restore();
+  }
+
   function drawHero(g, x, y, rot) {
     g.save();
     g.translate(x, y);
@@ -359,21 +520,9 @@
     }
     g.globalAlpha = 1;
 
-    /* Towers */
+    /* Towers — after 10 they drop, flip, or stick from the ceiling */
     for (i = 0; i < S.pipes.length; i++) {
-      var p = S.pipes[i];
-      g.fillStyle = C.surface;
-      g.strokeStyle = C.ink;
-      g.lineWidth = 3;
-
-      pixelRect(g, p.x, -40, PIPE_W, p.gapY + 40, 6); g.fill(); g.stroke();
-      var by = p.gapY + PIPE_GAP;
-      pixelRect(g, p.x, by, PIPE_W, H - GROUND - by + 10, 6); g.fill(); g.stroke();
-
-      g.fillStyle = C.accent;
-      g.fillRect(p.x + 6, p.gapY - 14, PIPE_W - 12, 8);
-      g.fillStyle = C.accent2;
-      g.fillRect(p.x + 6, by + 6, PIPE_W - 12, 8);
+      drawPole(g, S.pipes[i]);
     }
 
     /* Ground */
@@ -381,7 +530,7 @@
     g.fillRect(0, H - GROUND, W, GROUND);
     g.fillStyle = C.accent;
     for (i = 0; i < Math.ceil(W / 22) + 1; i++) {
-      var gx = ((i * 22 - S.t * SPEED) % (W + 22) + W + 22) % (W + 22) - 22;
+      var gx = ((i * 22 - S.t * pipeSpeed()) % (W + 22) + W + 22) % (W + 22) - 22;
       g.fillRect(gx, H - GROUND, 11, 4);
     }
 
@@ -397,7 +546,7 @@
       g.fillText(String(S.score), W / 2, 52);
     }
 
-    if (S.mode === "ready") panel(g, "TAP TO SWING", ["Click, tap or press space", "Mind the towers"]);
+    if (S.mode === "ready") panel(g, "TAP TO SWING", ["Click, tap or press space", "After 10, the poles get funky"]);
     else if (S.mode === "dead") deathPanel(g);
 
     g.restore();
@@ -424,6 +573,13 @@
     g.fillText("YOU", rowL, 58);
     g.textAlign = "right";
     g.fillText(String(S.score), rowR, 58);
+
+    if (S.funkyFlash > 0 || isFunky()) {
+      g.textAlign = "center";
+      g.fillStyle = C.accent;
+      g.font = "8px " + C.pixelFont;
+      g.fillText(S.funkyFlash > 40 ? "THE POLES GOT FUNKY" : "FUNKY POLES  ·  WATCH THE CEILING", W / 2, 76);
+    }
   }
 
   /* However well you do, the leaderboard has other ideas. */
@@ -432,7 +588,9 @@
     if (n <= 2) return "TWO WALLS. TRAGIC.";
     if (n <= 5) return "ALMOST COMPETENT.";
     if (n <= 9) return "NOT BAD. NOT ENOUGH.";
-    if (n <= 19) return "OK, YOU CAN ACTUALLY PLAY";
+    if (n === 10) return "THE POLES JUST QUIT.";
+    if (n <= 14) return "UPSIDE-DOWN. RUDE.";
+    if (n <= 19) return "THEY STUCK TO THE CEILING.";
     if (n <= 39) return "SHOW-OFF.";
     return "ARE YOU CHEATING?";
   }
