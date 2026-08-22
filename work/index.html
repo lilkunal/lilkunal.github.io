@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Website work — Kunal Varshney</title>
-<meta name="description" content="Sites Kunal Varshney built — Padma, JAI Home Care, Atul Shiv Shakti, Ace Factor, BKC, Daftar, THOOK. One line each.">
+<meta name="description" content="Sites Kunal Varshney built — Padma Lights (live), THOOK (live), plus JAI, Atul Shiv Shakti, Ace Factor, BKC, and Daftar demos.">
 <meta property="og:title" content="Website work — Kunal Varshney">
-<meta property="og:description" content="Live client, live product, and demos. One line each.">
+<meta property="og:description" content="Live client work, clickable demos, and a civic product. Each one has a case study.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lilkunal.github.io/work/">
 <meta property="og:locale" content="en_IN">
@@ -22,9 +22,7 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/editorial-hero.css">
 <link rel="stylesheet" href="../css/nav-theme.css">
-<link rel="stylesheet" href="../css/ludo-sprite.css">
 <link rel="stylesheet" href="../css/show-pages.css">
-<link rel="stylesheet" href="../css/cursor-water.css">
 <script>document.documentElement.classList.add("js"); document.documentElement.setAttribute("data-theme", localStorage.getItem("kv-theme") || "dark");</script>
 </head>
 <body>
@@ -38,8 +36,9 @@
   </a>
   <label for="nav-toggle" class="nav__burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
   <nav class="nav__links" aria-label="Primary">
-    <a href="./">Website work</a>
-    <a href="../portfolios/">Portfolios I made</a>
+    <a href="./">Work</a>
+    <a href="../portfolios/">Portfolios</a>
+    <a href="../resume/index.html">Résumé</a>
     <a href="../index.html#contact" class="nav__cta">Let's talk</a>
     <button type="button" class="theme-toggle theme-toggle--switch" id="theme-toggle" aria-label="Switch light or dark theme" aria-pressed="true">
       <span class="theme-toggle__track" aria-hidden="true">
@@ -55,144 +54,133 @@
 <main id="main" class="section show-page">
   <div class="show-page__head">
     <p class="eyebrow">Website work</p>
-    <h1>Sites I built</h1>
-    <p class="show-page__lede">Padma first. Then the rest, in the order I made them.</p>
-    <div class="ludo-strip show-page__ludo" aria-hidden="true">
-      <canvas data-ludo-sprite="compact" width="320" height="44"></canvas>
-    </div>
+    <h1>Sites you can open now</h1>
+    <p class="show-page__lede">Padma first — the live client. Then demos in the order I built them. Each has a case study.</p>
   </div>
 
-  <div class="work-drop work-drop--stack" data-accordion>
-    <article class="work-drop__item is-open">
-      <button class="work-drop__btn" type="button" data-accordion-btn aria-expanded="true">
-        <span class="work-drop__kicker">01</span>
-        <span class="work-drop__label">Padma Enterprises</span>
-        <span class="work-drop__meta">live</span>
-        <span class="work-drop__caret" aria-hidden="true"></span>
-      </button>
-      <div class="work-drop__panel">
-        <div class="work-drop__inner">
-          <p class="work-drop__note">200+ lighting SKUs, live for export.</p>
-          <div class="work-drop__links">
+  <ol class="work-board">
+    <li>
+      <article class="work-card">
+        <a class="work-card__visual" href="https://www.padmalights.com" target="_blank" rel="noopener">
+          <img src="../assets/work/padma-gate-light.jpg" alt="Padma Lights catalogue" width="800" height="500" loading="eager" decoding="async">
+        </a>
+        <div class="work-card__copy">
+          <p class="work-card__tag">01 · Live client</p>
+          <h2><span class="work-index__name">Padma Enterprises</span></h2>
+          <p class="work-card__line">200+ lighting SKUs, live for export.</p>
+          <p class="work-card__links">
             <a href="https://www.padmalights.com" target="_blank" rel="noopener">Live site ↗</a>
             <a href="padma.html">Case study</a>
-          </div>
+          </p>
         </div>
-      </div>
-    </article>
-    <article class="work-drop__item">
-      <button class="work-drop__btn" type="button" data-accordion-btn aria-expanded="false">
-        <span class="work-drop__kicker">02</span>
-        <span class="work-drop__label">JAI Home Care</span>
-        <span class="work-drop__meta">demo</span>
-        <span class="work-drop__caret" aria-hidden="true"></span>
-      </button>
-      <div class="work-drop__panel">
-        <div class="work-drop__inner">
-          <p class="work-drop__note">Medical assistance, phone-first.</p>
-          <div class="work-drop__links">
+      </article>
+    </li>
+    <li>
+      <article class="work-card">
+        <a class="work-card__visual" href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">
+          <img src="../assets/work/jai-home-care.jpg" alt="JAI Home Care" width="800" height="500" loading="lazy" decoding="async">
+        </a>
+        <div class="work-card__copy">
+          <p class="work-card__tag">02 · Demo</p>
+          <h2><span class="work-index__name">JAI Home Care</span></h2>
+          <p class="work-card__line">Medical assistance, phone-first.</p>
+          <p class="work-card__links">
             <a href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">Demo ↗</a>
             <a href="jai.html">Case study</a>
-          </div>
+          </p>
         </div>
-      </div>
-    </article>
-    <article class="work-drop__item">
-      <button class="work-drop__btn" type="button" data-accordion-btn aria-expanded="false">
-        <span class="work-drop__kicker">03</span>
-        <span class="work-drop__label">Atul Shiv Shakti</span>
-        <span class="work-drop__meta">demo</span>
-        <span class="work-drop__caret" aria-hidden="true"></span>
-      </button>
-      <div class="work-drop__panel">
-        <div class="work-drop__inner">
-          <p class="work-drop__note">Astrology, booked on WhatsApp.</p>
-          <div class="work-drop__links">
+      </article>
+    </li>
+    <li>
+      <article class="work-card">
+        <a class="work-card__visual" href="https://lilkunal.github.io/Atulshivshakti/" target="_blank" rel="noopener">
+          <img src="../assets/work/atul-shiv-shakti.png" alt="Atul Shiv Shakti" width="800" height="500" loading="lazy" decoding="async">
+        </a>
+        <div class="work-card__copy">
+          <p class="work-card__tag">03 · Demo</p>
+          <h2><span class="work-index__name">Atul Shiv Shakti</span></h2>
+          <p class="work-card__line">Astrology, booked on WhatsApp.</p>
+          <p class="work-card__links">
             <a href="https://lilkunal.github.io/Atulshivshakti/" target="_blank" rel="noopener">Demo ↗</a>
             <a href="atul-shiv-shakti.html">Case study</a>
-          </div>
+          </p>
         </div>
-      </div>
-    </article>
-    <article class="work-drop__item">
-      <button class="work-drop__btn" type="button" data-accordion-btn aria-expanded="false">
-        <span class="work-drop__kicker">04</span>
-        <span class="work-drop__label">Ace Factor Fitness</span>
-        <span class="work-drop__meta">demo</span>
-        <span class="work-drop__caret" aria-hidden="true"></span>
-      </button>
-      <div class="work-drop__panel">
-        <div class="work-drop__inner">
-          <p class="work-drop__note">Gym site — plans, coaches, gallery.</p>
-          <div class="work-drop__links">
+      </article>
+    </li>
+    <li>
+      <article class="work-card">
+        <a class="work-card__visual" href="https://lilkunal.github.io/ace-factor-fitness/" target="_blank" rel="noopener">
+          <img src="../assets/work/ace-factor-fitness.png" alt="Ace Factor Fitness" width="800" height="500" loading="lazy" decoding="async">
+        </a>
+        <div class="work-card__copy">
+          <p class="work-card__tag">04 · Demo</p>
+          <h2><span class="work-index__name">Ace Factor Fitness</span></h2>
+          <p class="work-card__line">Gym site — plans, coaches, gallery.</p>
+          <p class="work-card__links">
             <a href="https://lilkunal.github.io/ace-factor-fitness/" target="_blank" rel="noopener">Demo ↗</a>
             <a href="ace-factor.html">Case study</a>
-          </div>
+          </p>
         </div>
-      </div>
-    </article>
-    <article class="work-drop__item">
-      <button class="work-drop__btn" type="button" data-accordion-btn aria-expanded="false">
-        <span class="work-drop__kicker">05</span>
-        <span class="work-drop__label">BKC</span>
-        <span class="work-drop__meta">demo</span>
-        <span class="work-drop__caret" aria-hidden="true"></span>
-      </button>
-      <div class="work-drop__panel">
-        <div class="work-drop__inner">
-          <p class="work-drop__note">Hinglish streetwear tees — shop and cart.</p>
-          <div class="work-drop__links">
+      </article>
+    </li>
+    <li>
+      <article class="work-card">
+        <a class="work-card__visual" href="https://lilkunal.github.io/Bkc/" target="_blank" rel="noopener">
+          <img src="../assets/work/bkc.png" alt="BKC streetwear" width="800" height="500" loading="lazy" decoding="async">
+        </a>
+        <div class="work-card__copy">
+          <p class="work-card__tag">05 · Demo</p>
+          <h2><span class="work-index__name">BKC</span></h2>
+          <p class="work-card__line">Hinglish streetwear tees — shop and cart.</p>
+          <p class="work-card__links">
             <a href="https://lilkunal.github.io/Bkc/" target="_blank" rel="noopener">Demo ↗</a>
             <a href="bkc.html">Case study</a>
-          </div>
+          </p>
         </div>
-      </div>
-    </article>
-    <article class="work-drop__item">
-      <button class="work-drop__btn" type="button" data-accordion-btn aria-expanded="false">
-        <span class="work-drop__kicker">06</span>
-        <span class="work-drop__label">Daftar</span>
-        <span class="work-drop__meta">demo</span>
-        <span class="work-drop__caret" aria-hidden="true"></span>
-      </button>
-      <div class="work-drop__panel">
-        <div class="work-drop__inner">
-          <p class="work-drop__note">Government work, in plain language.</p>
-          <div class="work-drop__links">
+      </article>
+    </li>
+    <li>
+      <article class="work-card">
+        <a class="work-card__visual" href="https://lilkunal.github.io/Daftar-The-office/" target="_blank" rel="noopener">
+          <img src="../assets/work/daftar.png" alt="Daftar government desk" width="800" height="500" loading="lazy" decoding="async">
+        </a>
+        <div class="work-card__copy">
+          <p class="work-card__tag">06 · Demo</p>
+          <h2><span class="work-index__name">Daftar</span></h2>
+          <p class="work-card__line">Government work, in plain language.</p>
+          <p class="work-card__links">
             <a href="https://lilkunal.github.io/Daftar-The-office/" target="_blank" rel="noopener">Demo ↗</a>
             <a href="daftar.html">Case study</a>
-          </div>
+          </p>
         </div>
-      </div>
-    </article>
-    <article class="work-drop__item">
-      <button class="work-drop__btn" type="button" data-accordion-btn aria-expanded="false">
-        <span class="work-drop__kicker">07</span>
-        <span class="work-drop__label">THOOK</span>
-        <span class="work-drop__meta">live</span>
-        <span class="work-drop__caret" aria-hidden="true"></span>
-      </button>
-      <div class="work-drop__panel">
-        <div class="work-drop__inner">
-          <p class="work-drop__note">Shame the habit. Never the person.</p>
-          <div class="work-drop__links">
+      </article>
+    </li>
+    <li>
+      <article class="work-card">
+        <a class="work-card__visual" href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener">
+          <img src="../assets/work/thook.svg" alt="THOOK campaign wordmark" width="800" height="500" loading="lazy" decoding="async">
+        </a>
+        <div class="work-card__copy">
+          <p class="work-card__tag">07 · Live product</p>
+          <h2><span class="work-index__name">THOOK</span></h2>
+          <p class="work-card__line">Shame the habit. Never the person.</p>
+          <p class="work-card__links">
             <a href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener">Live site ↗</a>
             <a href="thook.html">Case study</a>
-          </div>
+          </p>
         </div>
-      </div>
-    </article>
-  </div>
+      </article>
+    </li>
+  </ol>
 
   <div class="show-offer">
-    <p>Need a site like these? I design, ship, and stay reachable.</p>
+    <p>Need a site like these? I design, ship, and stay reachable after launch.</p>
     <a class="btn btn--primary" href="../index.html#contact">Let's talk</a>
+    <a class="btn btn--ghost" href="../portfolios/">Portfolios I made</a>
   </div>
 </main>
 
 <script src="../js/main.js"></script>
-<script src="../js/ludo-sprite.js"></script>
-<script src="../js/cursor-water.js" defer></script>
 <script src="../js/analytics.js" defer></script>
 <script>
   if ("serviceWorker" in navigator) {

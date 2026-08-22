@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img">
-  <rect width="1600" height="1000" fill="#0a0a0a"/>
-  <rect x="0" y="0" width="28" height="1000" fill="#f4f4f4"/>
-  <text x="90" y="160" fill="#f4f4f4" font-family="Arial,sans-serif" font-size="24" letter-spacing="10">SUPPORT → CLOUD</text>
-  <text x="80" y="400" fill="#fff" font-family="Arial Black,sans-serif" font-size="108">ANTRIKSH</text>
-  <text x="80" y="540" fill="#fff" font-family="Arial Black,sans-serif" font-size="108">UPADHYAY</text>
-  <line x1="90" y1="620" x2="520" y2="620" stroke="#f4f4f4" stroke-width="8"/>
-  <text x="90" y="880" fill="#cfcfcf" font-family="Arial,sans-serif" font-size="28">Personal hire site · live</text>
-</svg>

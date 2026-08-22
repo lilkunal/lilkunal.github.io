@@ -18,7 +18,7 @@ Re-verify each job URL before submit — roles rotate.
 
 | | |
 |---|---|
-| **Status** | Best design fit — global remote |
+| **Status** | Best design fit — global remote. **Blocked 2026-08-21:** Ashby: already applied in this domain within 90 days. Do not resubmit until the window ends. |
 | **Apply** | https://elevenlabs.io/careers/e5185eb9-dcbb-47c7-a623-244fd90e2e13/website-designer |
 | **Careers hub** | https://elevenlabs.io/careers |
 | **Materials** | [cover-letter-elevenlabs.md](./cover-letter-elevenlabs.md) · [elevenlabs-application-answers.md](./elevenlabs-application-answers.md) |
@@ -37,7 +37,7 @@ Re-verify each job URL before submit — roles rotate.
 - [ ] Paste form answers from `elevenlabs-application-answers.md`
 - [ ] Link portfolio + padmalights.com
 - [ ] Confirm location eligibility (global remote)
-- [ ] Submit · note date here: ________
+- [x] Submit blocked 2026-08-21 — Ashby 90-day domain limit (already applied)
 
 ---
 

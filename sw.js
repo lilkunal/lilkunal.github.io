@@ -3,22 +3,13 @@
      the cached copy is only used when the network genuinely fails.
    - Static assets are cache-first, which is what makes the site (and the hidden
      game) usable with no connection at all.
-   - Videos are never cached. They are ~21 MB and would blow past the origin's
-     storage quota for no benefit.
+   - Videos are never cached.
    Bump CACHE_VERSION to retire every old cache on the next activation. */
-var CACHE_VERSION = "kv-v70";
+var CACHE_VERSION = "kv-v73";
 
 var PRECACHE = [
   "./",
   "./index.html",
-  "./work/padma.html",
-  "./work/thook.html",
-  "./work/bkc.html",
-  "./work/daftar.html",
-  "./work/atul-shiv-shakti.html",
-  "./work/jai.html",
-  "./work/ace-factor.html",
-  "./work/portfolio.html",
   "./work/",
   "./work/index.html",
   "./portfolios/",
@@ -28,39 +19,17 @@ var PRECACHE = [
   "./assets/hire-me.html",
   "./css/style.css",
   "./css/editorial-hero.css",
-  "./css/work-stack.css",
-  "./css/ludo-sprite.css",
   "./css/show-pages.css",
-  "./css/made-for.css",
   "./css/nav-theme.css",
   "./css/cv-scroll.css",
-  "./css/svgator-effects.css",
-  "./css/theme-motion.css",
-  "./css/minimal.css",
   "./css/contact-panel.css",
-  "./css/cursor-water.css",
   "./css/upgrade-sections.css",
-  "./css/how-build-scene.css",
-  "./css/playful-accents.css",
-  "./css/three-accent.css",
-  "./js/three-accent.js",
-  "./js/vendor/three.module.min.js",
   "./resume/css/style.css",
   "./resume/css/resume-theme.css",
   "./assets/brand-mark.svg",
   "./assets/photos/kunal-hero-profile.png",
   "./assets/photos/site-bg-illustration.png",
   "./assets/Kunal-Varshney-Resume.pdf",
-  "./assets/work/thumb-padma.jpg",
-  "./assets/work/thumb-thook.jpg",
-  "./assets/work/thumb-bkc.jpg",
-  "./assets/work/thumb-daftar.jpg",
-  "./assets/work/thumb-atul.jpg",
-  "./assets/work/thumb-jai.jpg",
-  "./assets/work/thumb-ace.jpg",
-  "./assets/work/thumb-portfolio.jpg",
-  "./assets/work/thumb-shweta.jpg",
-  "./assets/work/thumb-antriksh.jpg",
   "./assets/cv/cv-now.jpg",
   "./assets/cv/cv-support.jpg",
   "./assets/cv/cv-school.jpg",
@@ -70,25 +39,11 @@ var PRECACHE = [
   "./assets/cv/cv-poster-1.jpg",
   "./assets/cv/cv-poster-2.jpg",
   "./js/main.js",
-  "./js/animations.js",
-  "./js/scroll-motion.js",
-  "./js/carousel.js",
-  "./js/svgator-effects.js",
-  "./js/lottie-accents.js",
   "./js/cv-scroll.js",
-  "./js/work-stack.js",
-  "./js/ludo-sprite.js",
-  "./js/show-pages.js",
-  "./js/cursor-water.js",
-  "./js/stretch-reveal.js",
-  "./js/how-build-scene.js",
   "./js/site-config.js",
   "./js/seo-head.js",
   "./js/analytics.js",
   "./js/game.js",
-  "./js/playful-accents.js",
-  "./js/vendor/anime.umd.min.js",
-  "./js/vendor/motion.min.js",
   "./resume/js/main.js",
   "./assets/favicon.svg",
   "./resume/assets/favicon.svg"
@@ -97,8 +52,6 @@ var PRECACHE = [
 self.addEventListener("install", function (event) {
   event.waitUntil(
     caches.open(CACHE_VERSION).then(function (cache) {
-      /* addAll is atomic — one 404 would reject the whole install, so add them
-         individually and let any single miss pass. */
       return Promise.all(PRECACHE.map(function (url) {
         return cache.add(url).catch(function () { return null; });
       }));
@@ -130,7 +83,6 @@ self.addEventListener("fetch", function (event) {
   try { url = new URL(req.url); } catch (e) { return; }
   if (!isCacheable(url)) return;
 
-  /* Navigations: try the network, fall back to cache when offline. */
   if (req.mode === "navigate") {
     event.respondWith(
       fetch(req).then(function (res) {
@@ -146,7 +98,6 @@ self.addEventListener("fetch", function (event) {
     return;
   }
 
-  /* Everything else: serve from cache, refresh it in the background. */
   event.respondWith(
     caches.match(req).then(function (hit) {
       var net = fetch(req).then(function (res) {

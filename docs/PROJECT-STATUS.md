@@ -5,27 +5,29 @@
 
 ## Last updated
 
-2026-08-21 — Cursor (this clone fast-forwarded to origin, then unpublished local assets)
+2026-08-22 — Cursor (hire-ready work first)
 
 ## Done
 
-- [x] `/work/` and `/portfolios/` already live and matching local HTML (`56d07c5`, SW was `kv-v69`)
-- [x] Fast-forwarded this folder from stale `d081630` (+189 commits) to `origin/main`
-- [x] Work JPEG thumbs (`assets/work/thumb-*.jpg`) + hidden-game funky poles + hire-site Playwright — committing as `kv-v70`
+- [x] Home shows three clickable proof cards (Padma live, JAI demo, THOOK live) — no accordion dump
+- [x] `/work/` is a visual index with case-study links. `/portfolios/` stays the name board
+- [x] Hero, facts, and contact copy tightened for a recruiter/client scan
+- [x] Work sits above “How I build”. SW **kv-v73**
+- [x] ElevenLabs apply blocked (90-day domain limit)
 
 ## In progress
 
-- [ ] Submit ElevenLabs Website Designer application using `docs/job-search/`
+- [ ] Push so live matches local (this session)
 
 ## Next
 
-1. Push this commit so thumbs and funky game are on https://lilkunal.github.io/
-2. Apply ElevenLabs: `cover-letter-elevenlabs.md` + `elevenlabs-application-answers.md` + `apply-checklist-top5.md`
-3. Optional: GitLab Customer Success Engineer, India (Greenhouse)
-4. Print dual business card from `projects/padma-business-assets/business-card-2026/export/` (outside this repo)
+1. Confirm GitHub Pages after push
+2. Optional: GitLab Customer Success Engineer, India
+3. Revisit ElevenLabs after the 90-day window
 
 ## Decisions
 
-- Ignore the old copy at `D:\LAPPY BHAI STUFF\CLAUDE KA KAAM\KUNAL PORTFOLIO`
-- Job-search pack lives in `docs/job-search/`
-- Service worker: bump `CACHE_VERSION` when precached files change
+- Home sells the person **and** shows three pieces of proof
+- Full lists live on `/work/` and `/portfolios/`
+- Keep: résumé, case studies, hire-me, hidden game, short films
+- Remove: leftover effects, unused CSS/JS, `_fetch/` dump, unused photos

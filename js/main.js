@@ -125,16 +125,6 @@
     });
   });
 
-  /* Open the matching home dropdown when arriving via #work / #portfolios */
-  if (location.hash === "#portfolios") {
-    var peopleItem = document.getElementById("portfolios");
-    if (peopleItem) {
-      peopleItem.classList.add("is-open");
-      var peopleBtn = peopleItem.querySelector("[data-accordion-btn]");
-      if (peopleBtn) peopleBtn.setAttribute("aria-expanded", "true");
-    }
-  }
-
   /* Identity ticker */
   var tickerWords = ["web designer", "football regular", "cinephile", "Padma Enterprises' online guy", "technical support veteran", "old soul"];
   var tickerEl = document.getElementById("ticker-word");

@@ -290,15 +290,6 @@ body:has(.site-bg) .hero--editorial::before {
   will-change: transform, opacity;
 }
 
-.js .hero-editorial__eyebrow,
-.js .hero-editorial__name,
-.js .hero-editorial__solid,
-.js .hero-editorial__outline,
-.js .hero-editorial__pitch,
-.js .hero-editorial__foot {
-  opacity: 0;
-}
-
 .section__title--scroll {
   will-change: transform, opacity;
   transform-origin: left center;
