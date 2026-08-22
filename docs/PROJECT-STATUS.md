@@ -9,15 +9,14 @@
 
 ## Done
 
-- [x] Home shows three clickable proof cards (Padma live, JAI demo, THOOK live) — no accordion dump
-- [x] `/work/` is a visual index with case-study links. `/portfolios/` stays the name board
-- [x] Hero, facts, and contact copy tightened for a recruiter/client scan
-- [x] Work sits above “How I build”. SW **kv-v73**
+- [x] Home: why-hire strip + three clickable proofs (Padma, JAI, THOOK)
+- [x] `/work/` is a visual index. `/portfolios/` is the name board
+- [x] Pushed **6b6e689** then follow-up for featured cards. SW **kv-v74**
 - [x] ElevenLabs apply blocked (90-day domain limit)
 
 ## In progress
 
-- [ ] Push so live matches local (this session)
+- [ ] Confirm GitHub Pages after this follow-up push
 
 ## Next
 
