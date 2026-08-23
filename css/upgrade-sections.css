@@ -230,10 +230,6 @@
   .fact-strip--proof {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .why-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 .why-grid {
@@ -278,12 +274,20 @@
   color: var(--accent);
 }
 
+@media (max-width: 900px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1100px) {
+  .nav__avail {
+    display: none;
+  }
+}
+
 @media (max-width: 560px) {
   .ai-process {
     grid-template-columns: 1fr;
-  }
-
-  .nav__avail {
-    display: none;
   }
 }

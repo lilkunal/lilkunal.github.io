@@ -1,13 +1,15 @@
-/* Editorial hero — type-first, no hero photo (site texture is global .site-bg) */
+/* Editorial hero — type-first. Portrait texture stays on the first screen only. */
 
-/* Full-site illustrated texture — 7% opacity, fixed behind all content */
 body:has(.site-bg) {
-  background: transparent;
+  background: var(--paper);
 }
 
 .site-bg {
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100svh;
   z-index: -1;
   pointer-events: none;
   background: var(--paper);
@@ -24,14 +26,15 @@ body:has(.site-bg) {
   opacity: 0.07;
 }
 
-/* Let fixed portrait show through section bands */
+/* Content bands sit on paper so the portrait does not wash through work or FAQ */
 body:has(.site-bg) .section--warm,
-body:has(.site-bg) .section--dark {
-  background: transparent;
+body:has(.site-bg) .section--dark,
+body:has(.site-bg) .section.ask {
+  background: var(--paper);
 }
 
 body:has(.site-bg) .section.experience.section--warm {
-  background: transparent;
+  background: var(--paper);
   border-block-color: color-mix(in srgb, var(--border) 65%, transparent);
 }
 
@@ -224,8 +227,8 @@ body:has(.site-bg) .hero--editorial::before {
 }
 
 .hero-editorial__pitch {
-  margin: 0 auto 1.35rem;
-  max-width: 36ch;
+  margin: 0 auto 1rem;
+  max-width: 42ch;
   font-size: clamp(1rem, 2.2vw, 1.12rem);
   line-height: 1.55;
   font-weight: 500;
@@ -252,7 +255,7 @@ body:has(.site-bg) .hero--editorial::before {
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.5rem 1.25rem;
-  margin: 1.5rem auto 0;
+  margin: 0 auto 1.25rem;
   padding: 0;
   list-style: none;
   font-size: 0.82rem;
@@ -266,6 +269,15 @@ body:has(.site-bg) .hero--editorial::before {
   margin-left: 1.25rem;
   color: var(--ink-faint);
   font-weight: 400;
+}
+
+.hero-editorial__proof a {
+  color: inherit;
+  text-underline-offset: 0.15em;
+}
+
+.hero-editorial__proof a:hover {
+  color: var(--accent-strong);
 }
 
 .hero-editorial__scroll {
@@ -347,15 +359,24 @@ body:has(.site-bg) .hero--editorial::before {
     min-height: auto;
     padding-top: calc(var(--nav-height) + 1.1rem);
     padding-bottom: 3.25rem;
+    padding-inline: max(1rem, env(safe-area-inset-left, 0px)) max(1rem, env(safe-area-inset-right, 0px));
   }
 
   .hero-editorial__name {
-    font-size: clamp(2.5rem, 13vw, 3.5rem);
+    font-size: clamp(2.15rem, 11vw, 3.2rem);
+    overflow-wrap: anywhere;
+  }
+
+  .hero-editorial__roles {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    line-height: 1.05;
   }
 
   .hero-editorial__solid,
   .hero-editorial__outline {
-    font-size: clamp(1.5rem, 7vw, 2rem);
+    font-size: clamp(1.35rem, 7vw, 1.85rem);
   }
 
   .hero-editorial__outline {
@@ -364,5 +385,40 @@ body:has(.site-bg) .hero--editorial::before {
 
   .hero-editorial__pitch {
     max-width: none;
+    font-size: 1rem;
+  }
+
+  .hero-editorial__proof {
+    gap: 0.35rem 0.85rem;
+  }
+
+  .hero-editorial__proof li:not(:last-child)::after {
+    margin-left: 0.85rem;
+  }
+
+  .hero-editorial__actions {
+    width: 100%;
+  }
+
+  .hero-editorial__actions .btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .hero-editorial__scroll {
+    display: none;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero--editorial {
+    min-height: auto;
+    padding-top: calc(var(--nav-height) + 0.6rem);
+    padding-bottom: 1.5rem;
+    justify-content: flex-start;
+  }
+
+  .hero-editorial__scroll {
+    display: none;
   }
 }

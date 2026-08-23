@@ -2,7 +2,6 @@ const { test, expect } = require("@playwright/test");
 
 const WORK_ORDER = [
   "Padma Enterprises",
-  "THOOK",
   "JAI Home Care",
   "Atul Shiv Shakti",
   "Ace Factor Fitness",
@@ -11,11 +10,14 @@ const WORK_ORDER = [
 ];
 
 test.describe("Kunal hire site — work", () => {
-  test("Home points to the work page instead of listing sites", async ({ page }) => {
+  test("Home features Daftar and never names THOOK", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("#work .work-drop__list")).toHaveCount(0);
-    await expect(page.locator("#work .work-card")).toHaveCount(0);
-    await expect(page.getByRole("link", { name: /See the work/ })).toHaveAttribute("href", "work/");
+    await expect(page.locator("body")).not.toContainText("THOOK");
+    await expect(page.locator("#work .work-index__name")).toHaveText([
+      "Padma Enterprises",
+      "JAI Home Care",
+      "Daftar",
+    ]);
   });
 
   test("Work nav goes to the work page", async ({ page }) => {
@@ -24,12 +26,15 @@ test.describe("Kunal hire site — work", () => {
     await expect(work).toHaveAttribute("href", "work/");
   });
 
-  test("/work/ leads with live sites, then labelled demos", async ({ page }) => {
+  test("/work/ lists sites without a THOOK card", async ({ page }) => {
     await page.goto("/work/");
     const names = page.locator(".work-index__name");
     await expect(names).toHaveCount(WORK_ORDER.length);
     await expect(names).toHaveText(WORK_ORDER);
-    await expect(page.getByText("01 · Live client")).toBeVisible();
-    await expect(page.getByText("03 · Demo")).toBeVisible();
+    await expect(page.locator(".work-card img[src*='thook']")).toHaveCount(0);
+    await expect(page.locator("a.work-quiet")).toHaveAttribute(
+      "href",
+      "https://lilkunal.github.io/thook/"
+    );
   });
 });

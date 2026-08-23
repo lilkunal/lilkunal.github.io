@@ -180,7 +180,7 @@ body.dossier .nav-toggle-input {
   align-items: center;
   gap: 1rem;
   min-height: var(--top-h);
-  padding: 0.5rem 1.25rem;
+  padding: max(0.5rem, env(safe-area-inset-top, 0px)) max(1.25rem, env(safe-area-inset-right, 0px)) 0.5rem max(1.25rem, env(safe-area-inset-left, 0px));
   background: var(--top-bg);
   border-bottom: 1px solid var(--top-border);
   backdrop-filter: blur(14px);
@@ -593,6 +593,10 @@ body.dossier .js .reveal:not(.is-visible) {
     display: none;
   }
 
+  .dossier-top__portfolio {
+    display: none;
+  }
+
   .dossier-sheet {
     padding: 1.25rem 1rem 1.5rem;
     border-radius: 12px;
@@ -605,6 +609,16 @@ body.dossier .js .reveal:not(.is-visible) {
 
   body.dossier .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  body.dossier .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  body.dossier .hero__actions .btn {
+    justify-content: center;
+    min-height: 44px;
   }
 }
 

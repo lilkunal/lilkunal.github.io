@@ -305,6 +305,10 @@
 
 /* Mobile — native horizontal snap, no scroll pin */
 @media (max-width: 860px) {
+  .cv-scroll {
+    margin-inline: 0;
+  }
+
   .cv-scroll__runway {
     height: auto !important;
   }
@@ -314,6 +318,7 @@
     top: auto;
     height: auto;
     max-height: none;
+    margin-inline: 0;
   }
 
   .cv-scroll__hint em {

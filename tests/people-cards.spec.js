@@ -9,9 +9,9 @@ test.describe("Kunal hire site — portfolios", () => {
 
   test("/portfolios page is a name board, not a work list", async ({ page }) => {
     await page.goto("/portfolios/");
-    await expect(page.getByRole("heading", { name: /Their name/ })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /Hire sites I designed/ })).toBeVisible();
     await expect(page.locator(".people-card--shweta")).toBeVisible();
     await expect(page.locator(".people-card--antriksh")).toBeVisible();
-    await expect(page.locator(".work-index")).toHaveCount(0);
+    await expect(page.locator(".work-board")).toHaveCount(0);
   });
 });
