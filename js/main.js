@@ -220,6 +220,7 @@
     closeAllFaq();
     setEntryState(entry, true);
   }
+  closeAllFaq();
   faqEntries.forEach(function (entry) {
     var btn = entry.querySelector(".faq-item");
     if (!btn) return;

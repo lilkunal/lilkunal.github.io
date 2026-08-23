@@ -5,7 +5,7 @@
 
 ## Last updated
 
-2026-08-23 — Cursor (THOOK hidden; Daftar on home; section backgrounds opaque)
+2026-08-23 — Cursor (FAQ starts closed)
 
 ## Done
 
@@ -17,7 +17,8 @@
 - [x] `/portfolios/` heading is hire-site language; nav includes Résumé + Contact
 - [x] Résumé no longer calls demo sites “clients”; contact is adult
 - [x] Device fit: phone/tablet overflow, stacked nav logo, 44px menu, safe-area, stacked CTAs, iPad gets desktop nav
-- [x] SW **kv-v78**
+- [x] FAQ answers stay closed until a question is clicked
+- [x] SW **kv-v79**
 - [x] ElevenLabs apply blocked (90-day domain limit)
 
 ## In progress
