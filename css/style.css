@@ -1823,7 +1823,8 @@ a.work-tile:hover {
   transition: box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
 }
 
-.faq-entry.is-active {
+.faq-entry.is-active,
+.faq-entry[open] {
   box-shadow: inset 4px 4px 10px var(--neu-dark), inset -3px -3px 8px var(--neu-light);
   border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
 }
@@ -1837,11 +1838,18 @@ a.work-tile:hover {
   font-weight: 600;
   font-size: 1.02rem;
   color: var(--ink);
+  cursor: pointer;
+  list-style: none;
   transition: color 0.2s var(--ease), transform 0.15s var(--ease);
 }
 
+.faq-item::-webkit-details-marker {
+  display: none;
+}
+
 .faq-item:hover { transform: translateY(-1px); }
-.faq-entry.is-active .faq-item { color: var(--accent-strong); }
+.faq-entry.is-active .faq-item,
+.faq-entry[open] .faq-item { color: var(--accent-strong); }
 
 .faq-item::after {
   content: "+";
@@ -1853,20 +1861,20 @@ a.work-tile:hover {
   font-size: 1.2rem;
 }
 
-.faq-entry.is-active .faq-item::after {
+.faq-entry.is-active .faq-item::after,
+.faq-entry[open] .faq-item::after {
   content: "–";
   color: var(--accent);
 }
 
 .faq-panel {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s var(--ease);
+  display: none;
 }
 
-.faq-entry.is-active .faq-panel { grid-template-rows: 1fr; }
-
-.faq-panel__inner { overflow: hidden; }
+.faq-entry[open] .faq-panel,
+.faq-entry.is-active .faq-panel {
+  display: block;
+}
 
 .faq-panel__inner p {
   padding: 0 1.35rem 1.25rem;

@@ -38,3 +38,15 @@ test.describe("Kunal hire site — work", () => {
     );
   });
 });
+
+test.describe("Kunal hire site — FAQ", () => {
+  test("answers stay hidden until a question is clicked", async ({ page }) => {
+    await page.goto("/");
+    const first = page.locator("#ask .faq-entry").first();
+    await expect(first).not.toHaveAttribute("open");
+    await expect(first.locator(".faq-panel")).toBeHidden();
+    await first.locator("summary").click();
+    await expect(first).toHaveAttribute("open");
+    await expect(first.locator(".faq-panel")).toBeVisible();
+  });
+});

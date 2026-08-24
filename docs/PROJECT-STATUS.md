@@ -5,7 +5,7 @@
 
 ## Last updated
 
-2026-08-23 — Cursor (FAQ starts closed)
+2026-08-24 — Cursor (FAQ uses closed details; answers hidden until click)
 
 ## Done
 
@@ -17,8 +17,8 @@
 - [x] `/portfolios/` heading is hire-site language; nav includes Résumé + Contact
 - [x] Résumé no longer calls demo sites “clients”; contact is adult
 - [x] Device fit: phone/tablet overflow, stacked nav logo, 44px menu, safe-area, stacked CTAs, iPad gets desktop nav
-- [x] FAQ answers stay closed until a question is clicked
-- [x] SW **kv-v79**
+- [x] FAQ answers stay closed until a question is clicked (native `<details>`, hidden until open)
+- [x] SW **kv-v80**
 - [x] ElevenLabs apply blocked (90-day domain limit)
 
 ## In progress

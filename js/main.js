@@ -205,13 +205,12 @@
     });
   });
 
-  /* FAQ accordion — each answer expands directly under its own question */
+  /* FAQ — native <details>, closed on load. One open at a time. */
   var faqEntries = Array.prototype.slice.call(document.querySelectorAll(".faq-entry"));
 
   function setEntryState(entry, isOpen) {
-    entry.classList.toggle("is-active", isOpen);
-    var btn = entry.querySelector(".faq-item");
-    if (btn) btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    entry.open = !!isOpen;
+    entry.classList.toggle("is-active", !!isOpen);
   }
   function closeAllFaq() {
     faqEntries.forEach(function (e) { setEntryState(e, false); });
@@ -222,12 +221,15 @@
   }
   closeAllFaq();
   faqEntries.forEach(function (entry) {
-    var btn = entry.querySelector(".faq-item");
-    if (!btn) return;
-    btn.addEventListener("click", function () {
-      var alreadyActive = entry.classList.contains("is-active");
-      closeAllFaq();
-      if (!alreadyActive) setEntryState(entry, true);
+    entry.addEventListener("toggle", function () {
+      if (!entry.open) {
+        entry.classList.remove("is-active");
+        return;
+      }
+      entry.classList.add("is-active");
+      faqEntries.forEach(function (other) {
+        if (other !== entry) setEntryState(other, false);
+      });
     });
   });
 
