@@ -5,20 +5,20 @@
 
 ## Last updated
 
-2026-08-24 — Cursor (FAQ uses closed details; answers hidden until click)
+2026-09-03 — Cursor (THOOK back on /work/)
 
 ## Done
 
 - [x] Slimmed the hire site: dropped decorative layers (Three.js, ludo, blobs, runner, cursor-water, anime/Motion, hidden services/process, unused assets)
 - [x] Home no longer lists projects in accordion cards — **See the work** goes to `/work/`
 - [x] Hire rewrite: hero is one identity + See work / Get in touch; why-hire then a path to work (no project dump)
-- [x] Home featured work is Padma, JAI, Daftar. THOOK is a hidden link on `/work/` only — no card, no name, no thumbnail
+- [x] Home featured work is Padma, JAI, Daftar. THOOK is a full card on `/work/` (07 · Live)
 - [x] Work/FAQ sections sit on paper; the portrait texture stays on the first screen
 - [x] `/portfolios/` heading is hire-site language; nav includes Résumé + Contact
 - [x] Résumé no longer calls demo sites “clients”; contact is adult
 - [x] Device fit: phone/tablet overflow, stacked nav logo, 44px menu, safe-area, stacked CTAs, iPad gets desktop nav
 - [x] FAQ answers stay closed until a question is clicked (native `<details>`, hidden until open)
-- [x] SW **kv-v80**
+- [x] SW **kv-v81**
 - [x] ElevenLabs apply blocked (90-day domain limit)
 
 ## In progress
@@ -36,6 +36,6 @@
 
 - Keep: home, work, portfolios, résumé, case studies, hire-me, hidden game, short films
 - Home sells the person. Work and portfolios live on their own pages
-- THOOK is a hidden unmarked link on `/work/` — not on home, FAQ, résumé, or sitemap
+- THOOK is on `/work/` as a live site card — not on the home featured row
 - Live vs demo stays explicit — Padma is the client proof; JAI and the rest are demos
 - Remove: leftover effects, unused CSS/JS, `_fetch/` dump, unused photos/stickers/thumbs

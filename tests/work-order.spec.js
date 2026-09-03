@@ -7,12 +7,13 @@ const WORK_ORDER = [
   "Ace Factor Fitness",
   "BKC",
   "Daftar",
+  "THOOK",
 ];
 
 test.describe("Kunal hire site — work", () => {
-  test("Home features Daftar and never names THOOK", async ({ page }) => {
+  test("Home features Daftar and does not list THOOK", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("body")).not.toContainText("THOOK");
+    await expect(page.locator("#work")).not.toContainText("THOOK");
     await expect(page.locator("#work .work-index__name")).toHaveText([
       "Padma Enterprises",
       "JAI Home Care",
@@ -26,16 +27,13 @@ test.describe("Kunal hire site — work", () => {
     await expect(work).toHaveAttribute("href", "work/");
   });
 
-  test("/work/ lists sites without a THOOK card", async ({ page }) => {
+  test("/work/ includes THOOK with the other sites", async ({ page }) => {
     await page.goto("/work/");
     const names = page.locator(".work-index__name");
     await expect(names).toHaveCount(WORK_ORDER.length);
     await expect(names).toHaveText(WORK_ORDER);
-    await expect(page.locator(".work-card img[src*='thook']")).toHaveCount(0);
-    await expect(page.locator("a.work-quiet")).toHaveAttribute(
-      "href",
-      "https://lilkunal.github.io/thook/"
-    );
+    await expect(page.getByRole("heading", { name: "THOOK" })).toBeVisible();
+    await expect(page.locator("a.work-quiet")).toHaveCount(0);
   });
 });
 
