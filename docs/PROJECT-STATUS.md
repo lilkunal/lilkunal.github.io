@@ -5,7 +5,7 @@
 
 ## Last updated
 
-2026-09-03 — Cursor (THOOK back on /work/)
+2026-09-05 — Cursor (THOOK thumb + hero name no longer stacks on load)
 
 ## Done
 
@@ -18,7 +18,9 @@
 - [x] Résumé no longer calls demo sites “clients”; contact is adult
 - [x] Device fit: phone/tablet overflow, stacked nav logo, 44px menu, safe-area, stacked CTAs, iPad gets desktop nav
 - [x] FAQ answers stay closed until a question is clicked (native `<details>`, hidden until open)
-- [x] SW **kv-v81**
+- [x] THOOK work card uses the spit-take drawing as the thumbnail
+- [x] Hero nickname no longer paints over the name on first load
+- [x] SW **kv-v82**
 - [x] ElevenLabs apply blocked (90-day domain limit)
 
 ## In progress

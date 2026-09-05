@@ -156,6 +156,8 @@ body:has(.site-bg) .hero--editorial::before {
   justify-content: center;
   transform: rotateX(180deg);
   color: var(--accent);
+  /* Hide until 3D flip is ready — otherwise "Little" paints over the name on first load */
+  visibility: hidden;
 }
 
 .name-flip__aka {
@@ -173,6 +175,11 @@ body:has(.site-bg) .hero--editorial::before {
 .nav__brand:is(:hover, :focus-visible) .name-flip--nav .name-flip__inner {
   animation: none;
   transform: rotateX(180deg);
+}
+
+.hero-editorial__name.name-flip:is(:hover, :focus-visible, .is-flipped) .name-flip__face--back,
+.nav__brand:is(:hover, :focus-visible) .name-flip--nav .name-flip__face--back {
+  visibility: visible;
 }
 
 @keyframes name-flip-hint {
@@ -330,6 +337,7 @@ body:has(.site-bg) .hero--editorial::before {
 
   .name-flip__face--back {
     transform: none;
+    visibility: hidden;
     opacity: 0;
   }
 
@@ -340,6 +348,7 @@ body:has(.site-bg) .hero--editorial::before {
 
   .hero-editorial__name.name-flip:is(:hover, :focus-visible, .is-flipped) .name-flip__face--back,
   .nav__brand:is(:hover, :focus-visible) .name-flip--nav .name-flip__face--back {
+    visibility: visible;
     opacity: 1;
   }
 }
