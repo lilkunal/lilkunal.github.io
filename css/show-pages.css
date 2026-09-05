@@ -345,6 +345,24 @@
   color: #f4efe6;
 }
 
+.people-card--anamika {
+  background: #1c2422;
+  color: #eef4f1;
+  border-color: #2e3c38;
+}
+
+.people-card--anamika .people-card__tag {
+  color: #7eb8a8;
+}
+
+.people-card--anamika .people-card__line {
+  color: rgba(238, 244, 241, 0.72);
+}
+
+.people-card--anamika .people-card__go {
+  color: #eef4f1;
+}
+
 .work-drop--stack {
   grid-template-columns: 1fr;
   max-width: 44rem;

@@ -5,10 +5,14 @@
 
 ## Last updated
 
-2026-09-05 — Cursor (THOOK thumb + hero name no longer stacks on load)
+2026-09-05 — Cursor (Anamika Rajput hire portfolio on `/portfolios/`)
 
 ## Done
 
+- [x] `/portfolios/` lists three hire sites: Shweta Tiwari, Antriksh Upadhyay, and Anamika Rajput (https://r-anamika.github.io/)
+- [x] Home why-hire / FAQ / meta and résumé copy name all three; no third featured work card on home
+- [x] `people-card--anamika` sage accent (distinct from Shweta paper and Antriksh gold-on-dark)
+- [x] SW **kv-v83**
 - [x] Slimmed the hire site: dropped decorative layers (Three.js, ludo, blobs, runner, cursor-water, anime/Motion, hidden services/process, unused assets)
 - [x] Home no longer lists projects in accordion cards — **See the work** goes to `/work/`
 - [x] Hire rewrite: hero is one identity + See work / Get in touch; why-hire then a path to work (no project dump)
@@ -20,7 +24,6 @@
 - [x] FAQ answers stay closed until a question is clicked (native `<details>`, hidden until open)
 - [x] THOOK work card uses the spit-take drawing as the thumbnail
 - [x] Hero nickname no longer paints over the name on first load
-- [x] SW **kv-v82**
 - [x] ElevenLabs apply blocked (90-day domain limit)
 
 ## In progress
@@ -29,7 +32,7 @@
 
 ## Next
 
-1. Hard-refresh https://lilkunal.github.io/ once if the old THOOK card is cached
+1. Hard-refresh https://lilkunal.github.io/portfolios/ once so the Anamika card is not masked by the old SW
 2. Optional: GitLab Customer Success Engineer, India
 3. Revisit ElevenLabs after the 90-day window
 4. Kunal should read hero / why-hire / FAQ copy and swap anything that doesn’t sound like him

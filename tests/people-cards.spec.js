@@ -12,6 +12,9 @@ test.describe("Kunal hire site — portfolios", () => {
     await expect(page.getByRole("heading", { name: /Hire sites I designed/ })).toBeVisible();
     await expect(page.locator(".people-card--shweta")).toBeVisible();
     await expect(page.locator(".people-card--antriksh")).toBeVisible();
+    await expect(page.locator(".people-card--anamika")).toBeVisible();
+    await expect(page.locator(".people-card")).toHaveCount(3);
+    await expect(page.locator(".people-card--anamika")).toHaveAttribute("href", "https://r-anamika.github.io/");
     await expect(page.locator(".work-board")).toHaveCount(0);
   });
 });
