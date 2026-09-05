@@ -21,22 +21,11 @@ test.describe("Kunal hire site — device fit", () => {
     }
   }
 
-  test("Home nav mark is one logo, not two stacked", async ({ page }) => {
+  test("Home nav mark is the guy drawing, not the old robot face", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");
-    const stacked = await page.evaluate(() => {
-      const logo = document.querySelector(".nav__logo");
-      const draw = document.querySelector(".nav__logo-draw");
-      if (!logo || !draw) return false;
-      const drawStyle = getComputedStyle(draw);
-      if (drawStyle.display === "none" || drawStyle.opacity === "0" || drawStyle.visibility === "hidden") {
-        return false;
-      }
-      const a = logo.getBoundingClientRect();
-      const b = draw.getBoundingClientRect();
-      return Math.abs(a.top - b.top) > 8;
-    });
-    expect(stacked).toBe(false);
+    await expect(page.locator(".nav__logo")).toHaveAttribute("src", /kunal-mark\.jpg$/);
+    await expect(page.locator(".nav__logo-draw")).toHaveCount(0);
   });
 
   test("Phone menu button is at least 44px tall", async ({ page }) => {

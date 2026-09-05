@@ -5,14 +5,16 @@
 
 ## Last updated
 
-2026-09-05 — Cursor (Anamika Rajput hire portfolio on `/portfolios/`)
+2026-09-05 — Cursor (nav + tab icon is the glasses guy drawing)
 
 ## Done
+
+- [x] Nav and browser-tab favicon use `assets/kunal-mark.jpg` (glasses guy). Robot face mark is gone from the header.
 
 - [x] `/portfolios/` lists three hire sites: Shweta Tiwari, Antriksh Upadhyay, and Anamika Rajput (https://r-anamika.github.io/)
 - [x] Home why-hire / FAQ / meta and résumé copy name all three; no third featured work card on home
 - [x] `people-card--anamika` sage accent (distinct from Shweta paper and Antriksh gold-on-dark)
-- [x] SW **kv-v83**
+- [x] SW **kv-v84**
 - [x] Slimmed the hire site: dropped decorative layers (Three.js, ludo, blobs, runner, cursor-water, anime/Motion, hidden services/process, unused assets)
 - [x] Home no longer lists projects in accordion cards — **See the work** goes to `/work/`
 - [x] Hire rewrite: hero is one identity + See work / Get in touch; why-hire then a path to work (no project dump)

@@ -5,7 +5,7 @@
      game) usable with no connection at all.
    - Videos are never cached.
    Bump CACHE_VERSION to retire every old cache on the next activation. */
-var CACHE_VERSION = "kv-v83";
+var CACHE_VERSION = "kv-v84";
 
 var PRECACHE = [
   "./",
@@ -26,7 +26,7 @@ var PRECACHE = [
   "./css/upgrade-sections.css",
   "./resume/css/style.css",
   "./resume/css/resume-theme.css",
-  "./assets/brand-mark.svg",
+  "./assets/kunal-mark.jpg",
   "./assets/photos/kunal-hero-profile.png",
   "./assets/photos/site-bg-illustration.png",
   "./assets/Kunal-Varshney-Resume.pdf",
@@ -44,9 +44,7 @@ var PRECACHE = [
   "./js/seo-head.js",
   "./js/analytics.js",
   "./js/game.js",
-  "./resume/js/main.js",
-  "./assets/favicon.svg",
-  "./resume/assets/favicon.svg"
+  "./resume/js/main.js"
 ];
 
 self.addEventListener("install", function (event) {
