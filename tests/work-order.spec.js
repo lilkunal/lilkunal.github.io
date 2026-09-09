@@ -8,12 +8,14 @@ const WORK_ORDER = [
   "BKC",
   "Daftar",
   "THOOK",
+  "Bhagwan",
 ];
 
 test.describe("Kunal hire site — work", () => {
-  test("Home features Daftar and does not list THOOK", async ({ page }) => {
+  test("Home features Daftar and does not list THOOK or Bhagwan", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator("#work")).not.toContainText("THOOK");
+    await expect(page.locator("#work")).not.toContainText("Bhagwan");
     await expect(page.locator("#work .work-index__name")).toHaveText([
       "Padma Enterprises",
       "JAI Home Care",
@@ -27,12 +29,13 @@ test.describe("Kunal hire site — work", () => {
     await expect(work).toHaveAttribute("href", "work/");
   });
 
-  test("/work/ includes THOOK with the other sites", async ({ page }) => {
+  test("/work/ includes THOOK and Bhagwan with the other sites", async ({ page }) => {
     await page.goto("/work/");
     const names = page.locator(".work-index__name");
     await expect(names).toHaveCount(WORK_ORDER.length);
     await expect(names).toHaveText(WORK_ORDER);
     await expect(page.getByRole("heading", { name: "THOOK" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Bhagwan" })).toBeVisible();
     await expect(page.locator("a.work-quiet")).toHaveCount(0);
   });
 });

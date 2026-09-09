@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case study — Bhagwan · Kunal Varshney</title>
+<meta name="description" content="Bhagwan case study — a live cosmology site of Indian gods and goddesses: first-person kathas, 33 koti, Upaniṣads, and a language switcher. Design &amp; build by Kunal Varshney.">
+<meta property="og:title" content="Case study — Bhagwan · Kunal Varshney">
+<meta property="og:description" content="A live personal product: first-person kathas in Hindi, English, and Sanskrit. Educational and devotional — not mockery.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://lilkunal.github.io/work/bhagwan.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Kunal Varshney">
+<script src="../js/site-config.js"></script>
+<script src="../js/seo-head.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Portfolio","item":"https://lilkunal.github.io/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://lilkunal.github.io/work/"},{"@type":"ListItem","position":3,"name":"Bhagwan","item":"https://lilkunal.github.io/work/bhagwan.html"}]},{"@type":"Article","headline":"Bhagwan — first-person cosmology of Indian gods","author":{"@type":"Person","name":"Kunal Varshney","url":"https://lilkunal.github.io/"},"url":"https://lilkunal.github.io/work/bhagwan.html"}]}
+</script>
+<link rel="canonical" href="https://lilkunal.github.io/work/bhagwan.html">
+<link rel="icon" type="image/png" href="../assets/kunal-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/nav-theme.css">
+<link rel="stylesheet" href="../css/upgrade-sections.css">
+<script>document.documentElement.classList.add("js"); document.documentElement.setAttribute("data-theme", localStorage.getItem("kv-theme") || "dark");</script>
+<style>
+.case-hero { padding-top: calc(var(--nav-height) + 2rem); max-width: var(--content-max); margin: 0 auto; padding-inline: clamp(1.25rem, 4vw, 3rem); }
+.case-hero__back { font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-soft); text-decoration: none; }
+.case-hero__back:hover { color: var(--accent); }
+.case-hero__tag { margin: 1rem 0 0.35rem; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+.case-hero__title { margin: 0; font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; }
+.case-hero__sub { margin: 0.75rem 0 0; max-width: 52ch; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.6; }
+.case-hero__img { margin: 2rem 0; border-radius: calc(var(--radius) + 6px); overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/9; background: #0a0806; }
+.case-hero__img img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
+.case-block { padding: 1.25rem; border-radius: var(--radius); border: 1px solid var(--border); background: color-mix(in srgb, var(--surface) 88%, transparent); }
+.case-block h2 { margin: 0 0 0.5rem; font-size: 0.72rem; font-family: var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.case-block p, .case-block ul { margin: 0; font-size: 0.92rem; line-height: 1.6; color: var(--ink-soft); }
+.case-block ul { padding-left: 1.1rem; }
+.case-pages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin: 1.5rem 0 0; }
+.case-pages a { display: block; padding: 0.9rem 1rem; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: inherit; background: color-mix(in srgb, var(--surface) 88%, transparent); }
+.case-pages a:hover { border-color: color-mix(in srgb, var(--accent) 50%, var(--border)); }
+.case-pages strong { display: block; font-family: var(--font-display); color: var(--ink); margin-bottom: 0.2rem; }
+.case-pages span { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.45; }
+.case-body { max-width: 62ch; margin: 2rem 0; font-size: 1rem; line-height: 1.7; color: var(--ink-soft); }
+.case-body h2 { font-family: var(--font-display); color: var(--ink); font-size: 1.35rem; margin: 2rem 0 0.65rem; }
+.case-body p { margin: 0 0 1rem; }
+.case-cta { display: flex; flex-wrap: wrap; gap: 0.65rem; margin: 2.5rem 0 4rem; }
+.case-note { margin: 1.5rem 0; padding: 1rem 1.15rem; border-radius: var(--radius); border: 1px dashed color-mix(in srgb, var(--accent) 45%, var(--border)); font-size: 0.92rem; color: var(--ink-soft); }
+@media (max-width: 760px) { .case-grid, .case-pages { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="nav nav--dark">
+  <a href="../index.html" class="nav__brand"><span class="nav__brand-name">Kunal Varshney</span></a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="../index.html">← Home</a>
+    <a href="https://lilkunal.github.io/bhagwan/" target="_blank" rel="noopener" class="nav__cta">Visit live site</a>
+  </nav>
+</header>
+<main class="case-hero">
+  <a class="case-hero__back" href="index.html">← All work</a>
+  <p class="case-hero__tag">Case study · Personal product · Live</p>
+  <h1 class="case-hero__title">Bhagwan</h1>
+  <p class="case-hero__sub">A cinematic cosmology of Indian gods and goddesses — first-person kathas, Hindi / English / Sanskrit, and a pandit’s shelves. Educational and devotional. Not mockery.</p>
+  <figure class="case-hero__img">
+    <img src="../assets/work/bhagwan.jpg" alt="Bhagwan — cinematic Śiva portrait used as the site’s visual north star" width="1200" height="750" loading="eager" decoding="async">
+  </figure>
+  <p class="case-note"><strong>Status:</strong> Live personal product at /bhagwan/ — not a client deliverable. Grouped by cosmic function, not a court of rank.</p>
+  <div class="case-grid">
+    <div class="case-block"><h2>Problem</h2><p>Most “Hindu gods” sites are either a ranking chart or a calendar scrape. Neither explains 33 koti correctly, nor lets a deity speak in the first person.</p></div>
+    <div class="case-block"><h2>What I built</h2><ul><li>38 deity / asura / chiranjivi profiles</li><li>56 first-person katha-blogs</li><li>EN / हि / सं language switcher</li><li>Hubs: 33 koti, Upaniṣads, lokas, astra-śāstra</li></ul></div>
+    <div class="case-block"><h2>Current state</h2><ul><li>Live on GitHub Pages</li><li>Vite + React + TypeScript</li><li>Cinematic Śiva portraits as the visual north star</li></ul></div>
+  </div>
+  <h2 class="case-hero__tag" style="margin-top:2rem">Open these pages</h2>
+  <div class="case-pages">
+    <a href="https://lilkunal.github.io/bhagwan/" target="_blank" rel="noopener"><strong>Home</strong><span>Hero, featured voices, enter the mandala.</span></a>
+    <a href="https://lilkunal.github.io/bhagwan/deities" target="_blank" rel="noopener"><strong>Deities</strong><span>Portfolios grouped by cosmic function.</span></a>
+    <a href="https://lilkunal.github.io/bhagwan/kathas" target="_blank" rel="noopener"><strong>Kathas</strong><span>First-person diary-blogs, Hindi and English.</span></a>
+    <a href="https://lilkunal.github.io/bhagwan/gyaan" target="_blank" rel="noopener"><strong>Gyaan</strong><span>Pandit’s shelves — koti, Upaniṣads, lokas, asuras.</span></a>
+    <a href="https://lilkunal.github.io/bhagwan/koti" target="_blank" rel="noopener"><strong>33 koti</strong><span>33 classes, not 330 million — unless discussing later popular speech.</span></a>
+    <a href="https://lilkunal.github.io/bhagwan/about" target="_blank" rel="noopener"><strong>About</strong><span>What this is, and what it is not.</span></a>
+  </div>
+  <div class="case-body">
+    <h2>My role</h2>
+    <p>Product, copy, and full front-end. The literary frame is first-person kathas with traditional śloka openings where they are authentic. Asuras are treated with dharmic complexity, not cartoon “devils.” Astra-śāstra on the site is cultural literacy, not a weapons how-to.</p>
+    <h2>Why this matters for hire</h2>
+    <p>Shows I can ship a content-heavy React app with a real information architecture — not only brochure landings. Language switching, long-form reading, and a tone that has to stay respectful while still being cinematic.</p>
+    <h2>Stack &amp; process</h2>
+    <p>Vite + React + TypeScript. Custom CSS (Cormorant Garamond, Syne, Noto Devanagari). GitHub Pages at <code>/bhagwan/</code>. Claude / Cursor for speed; I own the cosmology framing, the copy, and launch.</p>
+  </div>
+  <div class="case-cta">
+    <a class="btn btn--primary" href="https://lilkunal.github.io/bhagwan/" target="_blank" rel="noopener">Visit live site ↗</a>
+    <a class="btn btn--ghost" href="../index.html#contact">Let's talk</a>
+  </div>
+</main>
+<script src="../js/analytics.js" defer></script>
+</body>
+</html>

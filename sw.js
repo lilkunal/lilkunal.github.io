@@ -5,7 +5,7 @@
      game) usable with no connection at all.
    - Videos are never cached.
    Bump CACHE_VERSION to retire every old cache on the next activation. */
-var CACHE_VERSION = "kv-v84";
+var CACHE_VERSION = "kv-v86";
 
 var PRECACHE = [
   "./",
@@ -26,7 +26,7 @@ var PRECACHE = [
   "./css/upgrade-sections.css",
   "./resume/css/style.css",
   "./resume/css/resume-theme.css",
-  "./assets/kunal-mark.jpg",
+  "./assets/kunal-mark.png",
   "./assets/photos/kunal-hero-profile.png",
   "./assets/photos/site-bg-illustration.png",
   "./assets/Kunal-Varshney-Resume.pdf",

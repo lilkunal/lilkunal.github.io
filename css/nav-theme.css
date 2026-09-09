@@ -136,7 +136,7 @@ body {
   flex: none;
   object-fit: contain;
   border-radius: 10px;
-  background: #fff;
+  background: #0a0a0c;
 }
 
 .nav__brand:hover .nav__logo {

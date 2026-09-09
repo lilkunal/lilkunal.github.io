@@ -24,7 +24,7 @@ test.describe("Kunal hire site — device fit", () => {
   test("Home nav mark is the guy drawing, not the old robot face", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");
-    await expect(page.locator(".nav__logo")).toHaveAttribute("src", /kunal-mark\.jpg$/);
+    await expect(page.locator(".nav__logo")).toHaveAttribute("src", /kunal-mark\.png$/);
     await expect(page.locator(".nav__logo-draw")).toHaveCount(0);
   });
 

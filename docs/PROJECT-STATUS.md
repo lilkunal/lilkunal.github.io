@@ -5,20 +5,21 @@
 
 ## Last updated
 
-2026-09-05 — Cursor (nav + tab icon is the glasses guy drawing)
+2026-09-08 — Cursor (Bhagwan added to /work/)
 
 ## Done
 
-- [x] Nav and browser-tab favicon use `assets/kunal-mark.jpg` (glasses guy). Robot face mark is gone from the header.
+- [x] Nav and browser-tab favicon use `assets/kunal-mark.png` (dark faint-line chibi with glasses). Robot face mark is gone from the header. Nav logo background is `#0a0a0c`, not white.
 
 - [x] `/portfolios/` lists three hire sites: Shweta Tiwari, Antriksh Upadhyay, and Anamika Rajput (https://r-anamika.github.io/)
 - [x] Home why-hire / FAQ / meta and résumé copy name all three; no third featured work card on home
 - [x] `people-card--anamika` sage accent (distinct from Shweta paper and Antriksh gold-on-dark)
-- [x] SW **kv-v84**
+- [x] `/work/` lists Padma, JAI, Atul, Ace Factor, BKC, Daftar, THOOK, and **Bhagwan** (08 · Live at https://lilkunal.github.io/bhagwan/)
+- [x] SW **kv-v86**
 - [x] Slimmed the hire site: dropped decorative layers (Three.js, ludo, blobs, runner, cursor-water, anime/Motion, hidden services/process, unused assets)
 - [x] Home no longer lists projects in accordion cards — **See the work** goes to `/work/`
 - [x] Hire rewrite: hero is one identity + See work / Get in touch; why-hire then a path to work (no project dump)
-- [x] Home featured work is Padma, JAI, Daftar. THOOK is a full card on `/work/` (07 · Live)
+- [x] Home featured work is Padma, JAI, Daftar. THOOK and Bhagwan are full cards on `/work/` (live personal products)
 - [x] Work/FAQ sections sit on paper; the portrait texture stays on the first screen
 - [x] `/portfolios/` heading is hire-site language; nav includes Résumé + Contact
 - [x] Résumé no longer calls demo sites “clients”; contact is adult
@@ -43,6 +44,6 @@
 
 - Keep: home, work, portfolios, résumé, case studies, hire-me, hidden game, short films
 - Home sells the person. Work and portfolios live on their own pages
-- THOOK is on `/work/` as a live site card — not on the home featured row
+- THOOK and Bhagwan are on `/work/` as live site cards — not on the home featured row
 - Live vs demo stays explicit — Padma is the client proof; JAI and the rest are demos
 - Remove: leftover effects, unused CSS/JS, `_fetch/` dump, unused photos/stickers/thumbs
