@@ -2,7 +2,8 @@
   "name": "kunal-portfolio",
   "private": true,
   "scripts": {
-    "test:hire-site": "playwright test"
+    "test:hire-site": "playwright test",
+    "resume:pdf": "node scripts/make-resume-pdf.js"
   },
   "devDependencies": {
     "@playwright/test": "^1.62.1"
