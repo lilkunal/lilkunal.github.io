@@ -101,17 +101,35 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/editorial-hero.css">
-<link rel="stylesheet" href="css/show-pages.css">
-<link rel="stylesheet" href="css/nav-theme.css">
-<link rel="stylesheet" href="css/cv-scroll.css">
+<link rel="stylesheet" href="css/editorial-hero.css?v=95">
+<link rel="stylesheet" href="css/show-pages.css?v=95">
+<link rel="stylesheet" href="css/nav-theme.css?v=94">
 <link rel="stylesheet" href="css/contact-panel.css">
 <link rel="stylesheet" href="css/upgrade-sections.css">
 <script>document.documentElement.classList.add("js");</script>
-<style>.name-flip__face--back{visibility:hidden}.hero-editorial__name.name-flip:is(:hover,:focus-visible,.is-flipped) .name-flip__face--back,.nav__brand:is(:hover,:focus-visible) .name-flip--nav .name-flip__face--back{visibility:visible}</style>
+<style>
+.name-flip__face--back{visibility:hidden}
+.hero-editorial__name.name-flip:is(:hover,:focus-visible,.is-flipped) .name-flip__face--back,
+.nav__brand:is(:hover,:focus-visible) .name-flip--nav .name-flip__face--back{visibility:visible}
+.face-stage__canvas,.site-bg::after{opacity:.06;transition:opacity .55s ease}
+html.has-face-gl .site-face .site-bg::after{opacity:0}
+:root:not([data-theme="light"]) .face-stage__canvas,
+:root:not([data-theme="light"]) .site-bg::after{filter:none}
+:root:not([data-theme="light"]) .site-face::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgb(5 5 5 / .38),rgb(5 5 5 / .7));pointer-events:none;opacity:0;transition:opacity .55s ease;z-index:2}
+body:has(.site-face),:root[data-theme="light"] body:has(.site-face),:root[data-theme="dark"] body:has(.site-face){background-color:var(--paper);background-image:none}
+@media (hover:hover) and (pointer:fine){
+  body:hover .face-stage__canvas{opacity:1}
+  body:hover>.site-bg::after{opacity:1}
+  html.has-face-gl body:hover .site-face .site-bg::after{opacity:0}
+  :root:not([data-theme="light"]) body:hover .site-face::after{opacity:1}
+}
+</style>
 </head>
 <body>
-<div class="site-bg" aria-hidden="true"></div>
+<div class="site-face" id="face-stage" aria-hidden="true">
+  <canvas id="face-canvas" class="face-stage__canvas"></canvas>
+  <div class="site-bg"></div>
+</div>
 <a class="skip-link" href="#main">Skip to content</a>
 <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-hidden="true">
 
@@ -214,51 +232,157 @@
   <section id="work" class="section section--dark">
     <p class="eyebrow">Selected work</p>
     <h2 class="section__title section__title--solo">Work a hiring manager can click today</h2>
-    <p class="work-invite__lede">A live client catalogue, a phone-first service site, and a civic demo. The rest is on the work page.</p>
-    <div class="work-board work-board--featured">
-      <article class="work-card">
-        <a class="work-card__visual" href="https://www.padmalights.com" target="_blank" rel="noopener">
-          <img src="assets/work/padma-gate-light.jpg" alt="Padma Lights catalogue" width="800" height="500" loading="lazy" decoding="async">
-        </a>
-        <div class="work-card__copy">
-          <p class="work-card__tag">Live client</p>
-          <h3 class="work-index__name">Padma Enterprises</h3>
-          <p class="work-card__line">200+ lighting SKUs online for export. I run the site and the operation.</p>
-          <p class="work-card__links">
-            <a href="https://www.padmalights.com" target="_blank" rel="noopener">Live site ↗</a>
-            <a href="work/padma.html">Case study</a>
-          </p>
-        </div>
-      </article>
-      <article class="work-card">
-        <a class="work-card__visual" href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">
-          <img src="assets/work/jai-home-care.jpg" alt="JAI Home Care on a phone" width="800" height="500" loading="lazy" decoding="async">
-        </a>
-        <div class="work-card__copy">
-          <p class="work-card__tag">Demo · service</p>
-          <h3 class="work-index__name">JAI Home Care</h3>
-          <p class="work-card__line">Medical assistance explained so a family can call from a phone.</p>
-          <p class="work-card__links">
-            <a href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">Demo ↗</a>
-            <a href="work/jai.html">Case study</a>
-          </p>
-        </div>
-      </article>
-      <article class="work-card">
-        <a class="work-card__visual" href="https://lilkunal.github.io/Daftar-The-office/" target="_blank" rel="noopener">
-          <img src="assets/work/daftar.png" alt="Daftar government desk" width="800" height="500" loading="lazy" decoding="async">
-        </a>
-        <div class="work-card__copy">
-          <p class="work-card__tag">Demo · civic</p>
-          <h3 class="work-index__name">Daftar</h3>
-          <p class="work-card__line">Government work, in plain language.</p>
-          <p class="work-card__links">
-            <a href="https://lilkunal.github.io/Daftar-The-office/" target="_blank" rel="noopener">Demo ↗</a>
-            <a href="work/daftar.html">Case study</a>
-          </p>
-        </div>
-      </article>
+    <p class="work-invite__lede">Every site I ship — live client work, labelled demos, and personal products. Swipe or use the arrows.</p>
+
+    <div class="home-reel" data-carousel>
+      <button type="button" class="home-reel__btn" data-carousel-prev aria-label="Previous project">‹</button>
+      <div class="home-reel__track" data-carousel-track>
+        <article class="work-card">
+          <a class="work-card__visual" href="https://www.padmalights.com" target="_blank" rel="noopener">
+            <img src="assets/work/padma-gate-light.jpg" alt="Padma Lights catalogue" width="800" height="500" loading="lazy" decoding="async">
+          </a>
+          <div class="work-card__copy">
+            <p class="work-card__tag">01 · Live client</p>
+            <h3 class="work-index__name">Padma Enterprises</h3>
+            <p class="work-card__line">200+ lighting SKUs online for export. I run the site and the operation.</p>
+            <p class="work-card__links">
+              <a href="https://www.padmalights.com" target="_blank" rel="noopener">Live site ↗</a>
+              <a href="work/padma.html">Case study</a>
+            </p>
+          </div>
+        </article>
+        <article class="work-card">
+          <a class="work-card__visual" href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">
+            <img src="assets/work/jai-home-care.jpg" alt="JAI Home Care on a phone" width="800" height="500" loading="lazy" decoding="async">
+          </a>
+          <div class="work-card__copy">
+            <p class="work-card__tag">02 · Demo</p>
+            <h3 class="work-index__name">JAI Home Care</h3>
+            <p class="work-card__line">Medical assistance explained so a family can call from a phone.</p>
+            <p class="work-card__links">
+              <a href="https://jaihomecareservice-max.github.io/Jai-home-care/" target="_blank" rel="noopener">Demo ↗</a>
+              <a href="work/jai.html">Case study</a>
+            </p>
+          </div>
+        </article>
+        <article class="work-card">
+          <a class="work-card__visual" href="https://lilkunal.github.io/Atulshivshakti/" target="_blank" rel="noopener">
+            <img src="assets/work/atul-shiv-shakti.png" alt="Atul Shiv Shakti" width="800" height="500" loading="lazy" decoding="async">
+          </a>
+          <div class="work-card__copy">
+            <p class="work-card__tag">03 · Demo</p>
+            <h3 class="work-index__name">Atul Shiv Shakti</h3>
+            <p class="work-card__line">Astrology, booked on WhatsApp.</p>
+            <p class="work-card__links">
+              <a href="https://lilkunal.github.io/Atulshivshakti/" target="_blank" rel="noopener">Demo ↗</a>
+              <a href="work/atul-shiv-shakti.html">Case study</a>
+            </p>
+          </div>
+        </article>
+        <article class="work-card">
+          <a class="work-card__visual" href="https://lilkunal.github.io/ace-factor-fitness/" target="_blank" rel="noopener">
+            <img src="assets/work/ace-factor-fitness.png" alt="Ace Factor Fitness" width="800" height="500" loading="lazy" decoding="async">
+          </a>
+          <div class="work-card__copy">
+            <p class="work-card__tag">04 · Demo</p>
+            <h3 class="work-index__name">Ace Factor Fitness</h3>
+            <p class="work-card__line">Gym site — plans, coaches, gallery.</p>
+            <p class="work-card__links">
+              <a href="https://lilkunal.github.io/ace-factor-fitness/" target="_blank" rel="noopener">Demo ↗</a>
+              <a href="work/ace-factor.html">Case study</a>
+            </p>
+          </div>
+        </article>
+        <article class="work-card">
+          <a class="work-card__visual" href="https://lilkunal.github.io/Bkc/" target="_blank" rel="noopener">
+            <img src="assets/work/bkc.png" alt="BKC streetwear" width="800" height="500" loading="lazy" decoding="async">
+          </a>
+          <div class="work-card__copy">
+            <p class="work-card__tag">05 · Demo</p>
+            <h3 class="work-index__name">BKC</h3>
+            <p class="work-card__line">Hinglish streetwear tees — shop and cart.</p>
+            <p class="work-card__links">
+              <a href="https://lilkunal.github.io/Bkc/" target="_blank" rel="noopener">Demo ↗</a>
+              <a href="work/bkc.html">Case study</a>
+            </p>
+          </div>
+        </article>
+        <article class="work-card">
+          <a class="work-card__visual" href="https://lilkunal.github.io/Daftar-The-office/" target="_blank" rel="noopener">
+            <img src="assets/work/daftar.png" alt="Daftar government desk" width="800" height="500" loading="lazy" decoding="async">
+          </a>
+          <div class="work-card__copy">
+            <p class="work-card__tag">06 · Demo</p>
+            <h3 class="work-index__name">Daftar</h3>
+            <p class="work-card__line">Government work, in plain language.</p>
+            <p class="work-card__links">
+              <a href="https://lilkunal.github.io/Daftar-The-office/" target="_blank" rel="noopener">Demo ↗</a>
+              <a href="work/daftar.html">Case study</a>
+            </p>
+          </div>
+        </article>
+        <article class="work-card">
+          <a class="work-card__visual" href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener">
+            <img src="assets/work/thook.jpg" alt="THOOK campaign" width="800" height="500" loading="lazy" decoding="async">
+          </a>
+          <div class="work-card__copy">
+            <p class="work-card__tag">07 · Live</p>
+            <h3 class="work-index__name">THOOK</h3>
+            <p class="work-card__line">Civic campaign site. Shame the habit. Never the person.</p>
+            <p class="work-card__links">
+              <a href="https://lilkunal.github.io/thook/" target="_blank" rel="noopener">Live site ↗</a>
+              <a href="work/thook.html">Case study</a>
+            </p>
+          </div>
+        </article>
+        <article class="work-card">
+          <a class="work-card__visual" href="https://lilkunal.github.io/bhagwan/" target="_blank" rel="noopener">
+            <img src="assets/work/bhagwan.jpg" alt="Bhagwan — Indian cosmology site" width="800" height="500" loading="lazy" decoding="async">
+          </a>
+          <div class="work-card__copy">
+            <p class="work-card__tag">08 · Live</p>
+            <h3 class="work-index__name">Bhagwan</h3>
+            <p class="work-card__line">The gods keep diaries — first-person kathas in Hindi, English, and Sanskrit.</p>
+            <p class="work-card__links">
+              <a href="https://lilkunal.github.io/bhagwan/" target="_blank" rel="noopener">Live site ↗</a>
+              <a href="work/bhagwan.html">Case study</a>
+            </p>
+          </div>
+        </article>
+      </div>
+      <button type="button" class="home-reel__btn" data-carousel-next aria-label="Next project">›</button>
     </div>
+
+    <div class="home-people" id="hire-portfolios">
+      <p class="eyebrow">Portfolios I made</p>
+      <h2 class="section__title section__title--solo">Hire sites with their name on the door</h2>
+      <p class="work-invite__lede">Live personal sites I designed for people who are applying.</p>
+    <div class="home-reel home-reel--people" data-carousel>
+      <button type="button" class="home-reel__btn" data-carousel-prev aria-label="Previous portfolio">‹</button>
+      <div class="home-reel__track" data-carousel-track>
+        <a class="people-card people-card--shweta" href="https://tiwarishweta03.github.io/" target="_blank" rel="noopener">
+          <span class="people-card__tag">HR Business Partner</span>
+          <strong class="people-card__name">Shweta Tiwari</strong>
+          <span class="people-card__line">Talent, engagement, people strategy.</span>
+          <span class="people-card__go">Visit live site ↗</span>
+        </a>
+        <a class="people-card people-card--antriksh" href="https://antrikshu.github.io/" target="_blank" rel="noopener">
+          <span class="people-card__tag">Support → cloud</span>
+          <strong class="people-card__name">Antriksh Upadhyay</strong>
+          <span class="people-card__line">A bold personal hire site.</span>
+          <span class="people-card__go">Visit live site ↗</span>
+        </a>
+        <a class="people-card people-card--anamika" href="https://r-anamika.github.io/" target="_blank" rel="noopener">
+          <span class="people-card__tag">Quality Analyst</span>
+          <strong class="people-card__name">Anamika Rajput</strong>
+          <span class="people-card__line">Email campaign QA, rendering, and accessibility.</span>
+          <span class="people-card__go">Visit live site ↗</span>
+        </a>
+      </div>
+      <button type="button" class="home-reel__btn" data-carousel-next aria-label="Next portfolio">›</button>
+    </div>
+    </div>
+
     <div class="work-invite__actions">
       <a class="btn btn--primary" href="work/">All website work →</a>
       <a class="btn btn--ghost" href="portfolios/">Portfolios I made</a>
@@ -299,135 +423,6 @@
           </article>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section id="experience" class="section experience section--warm">
-    <h2 class="section__title section__title--solo section__title--scroll">Background</h2>
-
-    <div class="cv-scroll" data-cv-scroll aria-label="Career timeline">
-      <div class="cv-scroll__runway" data-cv-scroll-runway>
-        <div class="cv-scroll__pin">
-          <div class="cv-scroll__top">
-            <p class="cv-scroll__hint"><em>Scroll</em> to walk the timeline</p>
-            <div class="cv-scroll__progress" aria-hidden="true"><span class="cv-scroll__progress-bar" data-cv-scroll-bar></span></div>
-            <span class="cv-scroll__counter" data-cv-scroll-counter>01 / 07</span>
-          </div>
-          <div class="cv-scroll__viewport">
-            <div class="cv-scroll__track" data-cv-scroll-track>
-              <article class="cv-scroll__panel cv-scroll__panel--now is-active is-near" data-cv-panel>
-                <div class="cv-scroll__panel-inner">
-                  <div class="cv-scroll__visual"><img src="assets/cv/cv-now.jpg" alt="" loading="lazy" decoding="async" width="800" height="600"><span class="cv-scroll__year">2025</span></div>
-                  <div class="cv-scroll__copy">
-                    <p class="cv-scroll__tag">Now · Web design</p>
-                    <h3 class="cv-scroll__title">Building sites that are live.</h3>
-                    <p class="cv-scroll__sub">J&amp;Z Commercial (intern) · Padma Enterprises · freelance</p>
-                    <p class="cv-scroll__line">Since September 2026, I have been a web developer and UI/UX design intern at J&amp;Z Commercial, working on <em>MyCompassToday</em>. I also run <em>Padma Lights</em> online and take web work for other people.</p>
-                  </div>
-                </div>
-              </article>
-              <article class="cv-scroll__panel cv-scroll__panel--padma" data-cv-panel>
-                <div class="cv-scroll__panel-inner">
-                  <div class="cv-scroll__visual"><img src="assets/work/padma-gate-light.jpg" alt="" loading="lazy" decoding="async" width="800" height="600"><span class="cv-scroll__year">9yr</span></div>
-                  <div class="cv-scroll__copy">
-                    <p class="cv-scroll__tag">2017 – 2024 · Operator</p>
-                    <h3 class="cv-scroll__title">Family business, internet edition.</h3>
-                    <p class="cv-scroll__sub">Padma Enterprises · outdoor lighting</p>
-                    <p class="cv-scroll__line">Nine years running the catalogue online — before web design was the job title.</p>
-                  </div>
-                </div>
-              </article>
-              <article class="cv-scroll__panel cv-scroll__panel--support" data-cv-panel>
-                <div class="cv-scroll__panel-inner">
-                  <div class="cv-scroll__visual"><img src="assets/cv/cv-support.jpg" alt="" loading="lazy" decoding="async" width="800" height="600"><span class="cv-scroll__year">4+</span></div>
-                  <div class="cv-scroll__copy">
-                    <p class="cv-scroll__tag">2021 – 2024 · Support</p>
-                    <h3 class="cv-scroll__title">Four years fixing things.</h3>
-                    <p class="cv-scroll__sub">Teleperformance · Webhelp · Concentrix · Flex</p>
-                    <p class="cv-scroll__line">Tickets, PBX, Oracle logs, YouTube Kids moderation. <em>I don't ghost after launch.</em></p>
-                  </div>
-                </div>
-              </article>
-              <article class="cv-scroll__panel cv-scroll__panel--school" data-cv-panel>
-                <div class="cv-scroll__panel-inner">
-                  <div class="cv-scroll__visual"><img src="assets/cv/cv-school.jpg" alt="" loading="lazy" decoding="async" width="800" height="600"><span class="cv-scroll__year">B.Tech</span></div>
-                  <div class="cv-scroll__copy">
-                    <p class="cv-scroll__tag">Education</p>
-                    <h3 class="cv-scroll__title">B.Tech, Computer Science.</h3>
-                    <p class="cv-scroll__sub">ACET · 2020</p>
-                    <p class="cv-scroll__line">Google IT Support Professional, digital marketing, and the usual stack of coursework behind the work.</p>
-                  </div>
-                </div>
-              </article>
-              <article class="cv-scroll__panel cv-scroll__panel--skills" data-cv-panel>
-                <div class="cv-scroll__panel-inner">
-                  <div class="cv-scroll__visual"><img src="assets/cv/cv-skills.jpg" alt="" loading="lazy" decoding="async" width="800" height="600"><span class="cv-scroll__year">🛠</span></div>
-                  <div class="cv-scroll__copy">
-                    <p class="cv-scroll__tag">Toolkit</p>
-                    <h3 class="cv-scroll__title">What I actually use.</h3>
-                    <ul class="cv-scroll__chips">
-                      <li>HTML &amp; CSS</li><li>JavaScript</li><li>Responsive UI</li><li>SEO</li>
-                      <li>Claude / Cursor</li><li>Photoshop</li><li>Support tools</li>
-                    </ul>
-                  </div>
-                </div>
-              </article>
-              <article class="cv-scroll__panel cv-scroll__panel--reels" data-cv-panel>
-                <div class="cv-scroll__panel-inner">
-                  <div class="cv-scroll__visual"><img src="assets/cv/cv-reels.jpg" alt="" loading="lazy" decoding="async" width="800" height="600"><span class="cv-scroll__year">🎬</span></div>
-                  <div class="cv-scroll__copy">
-                    <p class="cv-scroll__tag">Off the clock</p>
-                    <h3 class="cv-scroll__title">Short films with friends.</h3>
-                    <p class="cv-scroll__line">No crew, no budget. It’s personal — not part of the hire case. Clips sit in the footer if you want them.</p>
-                  </div>
-                </div>
-              </article>
-              <article class="cv-scroll__panel cv-scroll__panel--vault" data-cv-panel>
-                <div class="cv-scroll__panel-inner">
-                  <div class="cv-scroll__visual"><img src="assets/cv/cv-vault.jpg" alt="" loading="lazy" decoding="async" width="800" height="600"><span class="cv-scroll__year">PDF</span></div>
-                  <div class="cv-scroll__copy">
-                    <p class="cv-scroll__tag">Résumé</p>
-                    <h3 class="cv-scroll__title">The full file is on the résumé.</h3>
-                    <p class="cv-scroll__line">Every job, skill, certification, and date — no signup required.</p>
-                    <div class="cv-scroll__actions">
-                      <a class="btn btn--primary" href="resume/index.html">Open résumé →</a>
-                      <a class="btn btn--ghost" href="assets/Kunal-Varshney-Resume.pdf" download>PDF ↓</a>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="cv-scroll__rail-wrap"><ol class="cv-scroll__rail" data-cv-scroll-rail aria-label="Timeline chapters"></ol></div>
-        </div>
-      </div>
-
-      <div class="cv-scroll__footer">
-        <p><strong>Need the whole file?</strong> Job history, skills, education, and certifications — on the résumé. No signup required.</p>
-        <div class="cv-scroll__links">
-          <a class="btn btn--primary" href="resume/index.html">Open résumé →</a>
-          <a class="btn btn--ghost" href="assets/Kunal-Varshney-Resume.pdf" download>Download PDF ↓</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="ask" class="section ask">
-    <p class="eyebrow">FAQ</p>
-    <h2 class="section__title">Hiring questions, answered</h2>
-    <div class="faq-list">
-      <details class="faq-entry">
-        <summary class="faq-item">What can I click today?</summary>
-        <div class="faq-panel"><div class="faq-panel__inner"><p>Live: <a href="https://www.padmalights.com" target="_blank" rel="noopener">Padma Lights</a>, <a href="https://tiwarishweta03.github.io/" target="_blank" rel="noopener">Shweta Tiwari</a>, <a href="https://antrikshu.github.io/" target="_blank" rel="noopener">Antriksh Upadhyay</a>, <a href="https://r-anamika.github.io/" target="_blank" rel="noopener">Anamika Rajput</a>, <a href="https://lilkunal.github.io/bhagwan/" target="_blank" rel="noopener">Bhagwan</a>. Demos (JAI, Atul Shiv Shakti, Ace Factor, BKC, <a href="https://lilkunal.github.io/Daftar-The-office/" target="_blank" rel="noopener">Daftar</a>) are labelled on the <a href="work/">work page</a>.</p></div></div>
-      </details>
-      <details class="faq-entry">
-        <summary class="faq-item">Do you disappear after launch?</summary>
-        <div class="faq-panel"><div class="faq-panel__inner"><p>No. I'll show you how to swap a photo or a price, and I stay reachable. Four years in technical support is why.</p></div></div>
-      </details>
-      <details class="faq-entry">
-        <summary class="faq-item">How do you use AI?</summary>
-        <div class="faq-panel"><div class="faq-panel__inner"><p>Claude and Cursor for speed. I own design, copy, mobile QA, and launch. Same process on this site and on client work.</p></div></div>
-      </details>
     </div>
   </section>
 
@@ -509,7 +504,6 @@
         </svg>
         +91 85340 49747
       </a>
-      <button class="contact-chip contact-chip--copy copy-btn" type="button" data-copy="8534049747" aria-label="Copy phone number">Copy number</button>
     </div>
 
     <p class="social-intro">Also here:</p>
@@ -587,8 +581,8 @@
   </button>
 </footer>
 
-<script src="js/main.js"></script>
-<script src="js/cv-scroll.js"></script>
+<script src="js/main.js?v=95"></script>
+<script type="module" src="js/portrait-scroll.js?v=93"></script>
 <script src="js/game.js?v=26"></script>
 <script src="js/analytics.js" defer></script>
 <script>

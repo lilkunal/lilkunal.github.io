@@ -459,6 +459,26 @@
     });
   }
 
-  /* Scroll reveals now live in js/animations.js (Motion `inView`), which
-     replaced the CSS-class observer that used to run here. */
+  /* Home work + portfolio reels */
+  Array.prototype.slice.call(document.querySelectorAll("[data-carousel]")).forEach(function (root) {
+    var track = root.querySelector("[data-carousel-track]");
+    var prev = root.querySelector("[data-carousel-prev]");
+    var next = root.querySelector("[data-carousel-next]");
+    if (!track) return;
+
+    function step() {
+      var card = track.children[0];
+      if (!card) return 280;
+      var styles = window.getComputedStyle(track);
+      var gap = parseFloat(styles.columnGap || styles.gap) || 16;
+      return card.getBoundingClientRect().width + gap;
+    }
+
+    function go(dir) {
+      track.scrollBy({ left: dir * step(), behavior: reduceMotion ? "auto" : "smooth" });
+    }
+
+    if (prev) prev.addEventListener("click", function () { go(-1); });
+    if (next) next.addEventListener("click", function () { go(1); });
+  });
 })();

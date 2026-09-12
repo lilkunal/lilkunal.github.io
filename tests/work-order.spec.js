@@ -12,15 +12,10 @@ const WORK_ORDER = [
 ];
 
 test.describe("Kunal hire site — work", () => {
-  test("Home features Daftar and does not list THOOK or Bhagwan", async ({ page }) => {
+  test("Home work carousel lists every site in order", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("#work")).not.toContainText("THOOK");
-    await expect(page.locator("#work")).not.toContainText("Bhagwan");
-    await expect(page.locator("#work .work-index__name")).toHaveText([
-      "Padma Enterprises",
-      "JAI Home Care",
-      "Daftar",
-    ]);
+    await expect(page.locator("#work .work-index__name")).toHaveText(WORK_ORDER);
+    await expect(page.locator("#work [data-carousel]").first()).toBeVisible();
   });
 
   test("Work nav goes to the work page", async ({ page }) => {
@@ -40,14 +35,12 @@ test.describe("Kunal hire site — work", () => {
   });
 });
 
-test.describe("Kunal hire site — FAQ", () => {
-  test("answers stay hidden until a question is clicked", async ({ page }) => {
+test.describe("Kunal hire site — home", () => {
+  test("Background timeline and FAQ are gone", async ({ page }) => {
     await page.goto("/");
-    const first = page.locator("#ask .faq-entry").first();
-    await expect(first).not.toHaveAttribute("open");
-    await expect(first.locator(".faq-panel")).toBeHidden();
-    await first.locator("summary").click();
-    await expect(first).toHaveAttribute("open");
-    await expect(first.locator(".faq-panel")).toBeVisible();
+    await expect(page.locator("#experience")).toHaveCount(0);
+    await expect(page.locator("#ask")).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "Background" })).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "Hiring questions, answered" })).toHaveCount(0);
   });
 });

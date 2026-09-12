@@ -98,6 +98,20 @@ body {
   color: var(--ink) !important;
 }
 
+.nav.nav--on-editorial .nav__logo-wrap,
+.nav.nav--on-editorial .nav__logo {
+  background: color-mix(in srgb, var(--paper) 88%, #fff);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+:root[data-theme="dark"] .nav.nav--on-editorial .nav__logo-wrap,
+:root[data-theme="dark"] .nav.nav--on-editorial .nav__logo,
+:root:not([data-theme="light"]) .nav.nav--on-editorial .nav__logo-wrap,
+:root:not([data-theme="light"]) .nav.nav--on-editorial .nav__logo {
+  background: #eceae4;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.28);
+}
+
 @media (max-width: 900px) {
   .nav.nav--on-editorial .nav__links {
     background: color-mix(in srgb, var(--paper) 96%, transparent) !important;
@@ -124,6 +138,10 @@ body {
   flex: none;
   width: clamp(36px, 8vw, 50px);
   height: clamp(36px, 8vw, 50px);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f2f1ec;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
 }
 
 .nav__logo-draw {
@@ -136,7 +154,7 @@ body {
   flex: none;
   object-fit: contain;
   border-radius: 10px;
-  background: #0a0a0c;
+  background: #f2f1ec;
 }
 
 .nav__brand:hover .nav__logo {
@@ -289,6 +307,16 @@ body {
     linear-gradient(rgba(26, 24, 20, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(26, 24, 20, 0.04) 1px, transparent 1px);
   color: var(--ink);
+}
+
+body:has(.site-face),
+body:has(> .site-bg),
+:root[data-theme="light"] body:has(.site-face),
+:root[data-theme="light"] body:has(> .site-bg),
+:root[data-theme="dark"] body:has(.site-face),
+:root[data-theme="dark"] body:has(> .site-bg) {
+  background-image: none;
+  background-color: var(--paper);
 }
 
 /* Below the dark hero, sections inherit light tokens — carousels keep cinematic overlays */

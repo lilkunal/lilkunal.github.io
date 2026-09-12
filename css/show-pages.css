@@ -1025,3 +1025,83 @@
 .work-quiet:focus-visible {
   color: var(--ink-faint);
 }
+
+.home-reel {
+  position: relative;
+  margin-top: 1.35rem;
+}
+
+.home-people {
+  margin-top: 2.75rem;
+}
+
+.home-reel--people {
+  margin-top: 1rem;
+}
+
+.home-reel--page {
+  margin-top: 1.5rem;
+  max-width: none;
+}
+
+.home-reel__track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0.2rem 2.6rem 1rem;
+}
+
+.home-reel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.home-reel__track > * {
+  flex: 0 0 min(20.5rem, 78vw);
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+.home-reel .people-card {
+  min-height: 12.5rem;
+  justify-content: center;
+  padding: 1.35rem 1.4rem;
+}
+
+.home-reel__btn {
+  position: absolute;
+  top: calc(50% + 0.6rem);
+  z-index: 4;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.home-reel__btn[data-carousel-prev] { left: 0; }
+.home-reel__btn[data-carousel-next] { right: 0; }
+
+.home-reel__btn:hover {
+  border-color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .home-reel__track {
+    padding-inline: 0;
+  }
+
+  .home-reel__btn {
+    display: none;
+  }
+}

@@ -24,6 +24,15 @@
 <link rel="stylesheet" href="../css/nav-theme.css">
 <link rel="stylesheet" href="../css/show-pages.css">
 <script>document.documentElement.classList.add("js"); document.documentElement.setAttribute("data-theme", localStorage.getItem("kv-theme") || "dark");</script>
+<style>
+.site-bg::after{opacity:.06;transition:opacity .55s ease,transform .55s ease}
+:root:not([data-theme="light"]) .site-bg::after{filter:none}
+:root:not([data-theme="light"]) body>.site-bg::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgb(5 5 5 / .38),rgb(5 5 5 / .7));pointer-events:none;opacity:0;transition:opacity .55s ease;z-index:2}
+@media (hover:hover) and (pointer:fine){
+  body:hover>.site-bg::after{opacity:1;transform:scale(1.035)}
+  :root:not([data-theme="light"]) body:hover>.site-bg::before{opacity:1}
+}
+</style>
 </head>
 <body>
 <div class="site-bg" aria-hidden="true"></div>

@@ -24,6 +24,15 @@
 <link rel="stylesheet" href="../css/nav-theme.css">
 <link rel="stylesheet" href="../css/show-pages.css">
 <script>document.documentElement.classList.add("js"); document.documentElement.setAttribute("data-theme", localStorage.getItem("kv-theme") || "dark");</script>
+<style>
+.site-bg::after{opacity:.06;transition:opacity .55s ease,transform .55s ease}
+:root:not([data-theme="light"]) .site-bg::after{filter:none}
+:root:not([data-theme="light"]) body>.site-bg::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgb(5 5 5 / .38),rgb(5 5 5 / .7));pointer-events:none;opacity:0;transition:opacity .55s ease;z-index:2}
+@media (hover:hover) and (pointer:fine){
+  body:hover>.site-bg::after{opacity:1;transform:scale(1.035)}
+  :root:not([data-theme="light"]) body:hover>.site-bg::before{opacity:1}
+}
+</style>
 </head>
 <body>
 <div class="site-bg" aria-hidden="true"></div>
@@ -58,25 +67,29 @@
     <p class="show-page__lede">Live personal sites for people applying for jobs — their name on the door, my design and build.</p>
   </div>
 
-  <div class="people-shelf people-shelf--page">
-    <a class="people-card people-card--shweta" href="https://tiwarishweta03.github.io/" target="_blank" rel="noopener">
-      <span class="people-card__tag">HR Business Partner</span>
-      <strong class="people-card__name">Shweta Tiwari</strong>
-      <span class="people-card__line">Talent, engagement, people strategy.</span>
-      <span class="people-card__go">Visit live site ↗</span>
-    </a>
-    <a class="people-card people-card--antriksh" href="https://antrikshu.github.io/" target="_blank" rel="noopener">
-      <span class="people-card__tag">Support → cloud</span>
-      <strong class="people-card__name">Antriksh Upadhyay</strong>
-      <span class="people-card__line">A bold personal hire site.</span>
-      <span class="people-card__go">Visit live site ↗</span>
-    </a>
-    <a class="people-card people-card--anamika" href="https://r-anamika.github.io/" target="_blank" rel="noopener">
-      <span class="people-card__tag">Quality Analyst</span>
-      <strong class="people-card__name">Anamika Rajput</strong>
-      <span class="people-card__line">Email campaign QA, rendering, and accessibility.</span>
-      <span class="people-card__go">Visit live site ↗</span>
-    </a>
+  <div class="home-reel home-reel--people home-reel--page" data-carousel>
+    <button type="button" class="home-reel__btn" data-carousel-prev aria-label="Previous portfolio">‹</button>
+    <div class="home-reel__track" data-carousel-track>
+      <a class="people-card people-card--shweta" href="https://tiwarishweta03.github.io/" target="_blank" rel="noopener">
+        <span class="people-card__tag">HR Business Partner</span>
+        <strong class="people-card__name">Shweta Tiwari</strong>
+        <span class="people-card__line">Talent, engagement, people strategy.</span>
+        <span class="people-card__go">Visit live site ↗</span>
+      </a>
+      <a class="people-card people-card--antriksh" href="https://antrikshu.github.io/" target="_blank" rel="noopener">
+        <span class="people-card__tag">Support → cloud</span>
+        <strong class="people-card__name">Antriksh Upadhyay</strong>
+        <span class="people-card__line">A bold personal hire site.</span>
+        <span class="people-card__go">Visit live site ↗</span>
+      </a>
+      <a class="people-card people-card--anamika" href="https://r-anamika.github.io/" target="_blank" rel="noopener">
+        <span class="people-card__tag">Quality Analyst</span>
+        <strong class="people-card__name">Anamika Rajput</strong>
+        <span class="people-card__line">Email campaign QA, rendering, and accessibility.</span>
+        <span class="people-card__go">Visit live site ↗</span>
+      </a>
+    </div>
+    <button type="button" class="home-reel__btn" data-carousel-next aria-label="Next portfolio">›</button>
   </div>
 
   <div class="show-offer">

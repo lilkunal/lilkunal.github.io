@@ -1,18 +1,45 @@
-/* Editorial hero — type-first. Portrait texture stays on the first screen only. */
+/* Full portrait is the page background. Cards sit on top; section bands stay clear. */
 
-body:has(.site-bg) {
-  background: var(--paper);
+body:has(.site-face),
+:root[data-theme="light"] body:has(.site-face),
+:root[data-theme="dark"] body:has(.site-face) {
+  background-color: var(--paper);
+  background-image: none;
+}
+
+.site-face {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.face-stage__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.06;
+  transition: opacity 0.55s ease;
 }
 
 .site-bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100svh;
-  z-index: -1;
+  inset: 0;
   pointer-events: none;
   background: var(--paper);
+}
+
+/* Home fallback layer must stay clear so the canvas (or ::after) can read through. */
+.site-face .site-bg {
+  background: transparent;
+}
+
+body > .site-bg {
+  position: fixed;
+  inset: 0;
+  height: auto;
+  z-index: -1;
 }
 
 .site-bg::after {
@@ -23,31 +50,109 @@ body:has(.site-bg) {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  opacity: 0.07;
+  opacity: 0.06;
+  transition: opacity 0.55s ease, transform 0.55s ease;
 }
 
-/* Content bands sit on paper so the portrait does not wash through work or FAQ */
-body:has(.site-bg) .section--warm,
-body:has(.site-bg) .section--dark,
-body:has(.site-bg) .section.ask {
-  background: var(--paper);
+html.has-face-gl .site-face .site-bg::after {
+  opacity: 0;
 }
 
-body:has(.site-bg) .section.experience.section--warm {
-  background: var(--paper);
-  border-block-color: color-mix(in srgb, var(--border) 65%, transparent);
+/* Dark theme keeps the real drawing. A charcoal veil sits over it
+   so light type still reads — no invert, no negative. */
+:root:not([data-theme="light"]) .site-face::after,
+:root:not([data-theme="light"]) body > .site-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgb(5 5 5 / 0.38) 0%,
+      rgb(5 5 5 / 0.58) 45%,
+      rgb(5 5 5 / 0.7) 100%
+    );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+  z-index: 2;
 }
 
-body:has(.site-bg) .hero--editorial::before {
-  background: radial-gradient(
-    ellipse 85% 65% at 50% 42%,
-    color-mix(in srgb, var(--paper) 40%, transparent),
-    transparent 78%
-  );
+:root:not([data-theme="light"]) .hero-editorial__name,
+:root:not([data-theme="light"]) .hero-editorial__solid,
+:root:not([data-theme="light"]) .hero-editorial__pitch,
+:root:not([data-theme="light"]) .section__title,
+:root:not([data-theme="light"]) .how-build__lede,
+:root:not([data-theme="light"]) .work-invite__lede {
+  text-shadow: 0 1px 16px rgb(0 0 0 / 0.55);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body:hover .face-stage__canvas {
+    opacity: 1;
+  }
+
+  body:hover > .site-bg::after {
+    opacity: 1;
+    transform: scale(1.035);
+  }
+
+  html.has-face-gl body:hover .site-face .site-bg::after {
+    opacity: 0;
+  }
+
+  :root:not([data-theme="light"]) body:hover .site-face::after,
+  :root:not([data-theme="light"]) body:hover > .site-bg::before {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .face-stage__canvas,
+  .site-bg::after {
+    transition: none;
+  }
+
+  body:hover > .site-bg::after {
+    transform: none;
+  }
+}
+
+/* Do not reset .nav position — it stays sticky. */
+body:has(.site-face) .nav {
+  z-index: 20;
+}
+
+body:has(.site-face) main,
+body:has(.site-face) .footer {
+  position: relative;
+  z-index: 1;
+}
+
+body:has(.site-face) .section,
+body:has(.site-face) .section--warm,
+body:has(.site-face) .section--dark,
+body:has(.site-face) .hero--editorial,
+body:has(.site-face) .how-build__shell,
+body:has(.site-face) .how-build__main,
+body:has(.site-face) .contact__intro,
+body:has(.site-face) .footer {
+  background: transparent;
+}
+
+body:has(.site-face) .why-card,
+body:has(.site-face) .ai-process__step,
+body:has(.site-face) .contact-action:not(.contact-action--wa),
+body:has(.site-face) .contact-brief,
+body:has(.site-face) .work-card {
+  background: color-mix(in srgb, var(--paper) 78%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .hero--editorial {
   position: relative;
+  z-index: 1;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -59,16 +164,7 @@ body:has(.site-bg) .hero--editorial::before {
 }
 
 .hero--editorial::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: radial-gradient(
-    ellipse 90% 70% at 50% 35%,
-    color-mix(in srgb, var(--paper) 72%, transparent),
-    transparent 72%
-  );
-  pointer-events: none;
+  display: none;
 }
 
 .hero-editorial__inner {

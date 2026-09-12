@@ -200,19 +200,6 @@
   grid-column: span 1;
 }
 
-.contact-chip--copy {
-  font-weight: 500;
-  color: var(--ink-soft);
-  background: transparent;
-  cursor: pointer;
-}
-
-.contact-chip--copy:hover,
-.contact-chip--copy:focus-visible {
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 8%, transparent);
-}
-
 .contact .social-float {
   margin-top: 0.9rem;
 }
@@ -335,11 +322,6 @@ a.offclock__tile:hover .offclock__go {
 
   .contact-chip--phone {
     grid-column: 1 / -1;
-  }
-
-  .contact-chip--copy {
-    grid-column: 1 / -1;
-    justify-self: start;
   }
 
   .social-float {

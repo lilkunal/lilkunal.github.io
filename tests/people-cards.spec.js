@@ -1,9 +1,10 @@
 const { test, expect } = require("@playwright/test");
 
 test.describe("Kunal hire site — portfolios", () => {
-  test("Home points to the portfolios page", async ({ page }) => {
+  test("Home points to the portfolios page and shows the hire carousel", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("#portfolios .people-card")).toHaveCount(0);
+    await expect(page.locator("#hire-portfolios .people-card")).toHaveCount(3);
+    await expect(page.locator("#hire-portfolios .people-card--anamika")).toHaveAttribute("href", "https://r-anamika.github.io/");
     await expect(page.getByRole("link", { name: /Portfolios I made/ }).first()).toHaveAttribute("href", "portfolios/");
   });
 
