@@ -5,16 +5,20 @@
 
 ## Last updated
 
-2026-09-12 — Cursor (home face + carousels; visible nav mark; no copy-number pill)
+2026-09-20 — Claude Code (still background, shorter home page)
 
 ## Done
 
+- [x] Home background is a still image (`.site-bg`, 16% dark / 9% light): the WebGL portrait, its hover reveal and its scroll pan are gone, and `js/portrait-scroll.js` is deleted — three.js no longer loads on the home page
+- [x] Home trimmed to hero → work + portfolios → contact → footer: the "Why hire me" cards (folded into hero proof lines), the four-step "How I work" section, the contact form, the duplicate contact chips and the social bubbles are gone; nav/hero name no longer flips
+- [x] Light theme: the background drawing (home portrait canvas, Work/Portfolios `.site-bg`) now stays at 15% opacity on hover instead of 100%, so dark text stays readable; dark theme keeps its charcoal veil
+- [x] Résumé intro (≥ 700px): a three.js dragon chases a glowing pearl through the intro paragraph (`resume/js/resume-flow.js`); Pretext 0.0.9 (`js/vendor/pretext/`, MIT) re-lays every line each frame so text flows on both sides of them. Hovering leads the pearl. Original `<p>` stays for screen readers; print/PDF shows it unchanged; reduced motion gets a still frame; phones skip it and never download three.js
 - [x] Home hero uses Three.js (r186 from `js/vendor/three.module.js`) so scroll pans the portrait; rest opacity 6%, hover to full
 - [x] Background timeline (`#experience`) and hiring FAQ (`#ask`) removed from home
 - [x] Home Selected work + Portfolios I made are carousels of all 8 sites and 3 hire portfolios
-- [x] Nav mark wrap is light paper so the glasses chibi reads; SW **kv-v96**
+- [x] Nav mark wrap is light paper so the glasses chibi reads; SW **kv-v97**
 - [x] Home contact no longer has a Copy number pill; tel + WhatsApp stay
-- [x] Résumé: Web Developer & UI/UX Designer (Intern) at J&Z Commercial Pvt. Ltd. since Sep 2026 — MyCompassToday and a sister brand; Padma and freelance stay Present
+- [x] Résumé experience trimmed on Kunal's instruction: the J&Z Commercial internship entry is off the site (résumé + home structured data), and the Padma marketing entry is folded into the single Freelance Web Designer entry (Jan 2025 – Present)
 - [x] Grammar pass across home, résumé, portfolios, and every case study ("labelled" spelling, missing articles, awkward phrasing)
 - [x] `assets/hire-me.html` re-saved as UTF-8; résumé PDF regenerated from `/resume/`
 

@@ -1,45 +1,18 @@
-/* Full portrait is the page background. Cards sit on top; section bands stay clear. */
+/* One still drawing behind every page: no hover reveal, no scroll motion, no WebGL. */
 
-body:has(.site-face),
-:root[data-theme="light"] body:has(.site-face),
-:root[data-theme="dark"] body:has(.site-face) {
+body:has(> .site-bg),
+:root[data-theme="light"] body:has(> .site-bg),
+:root[data-theme="dark"] body:has(> .site-bg) {
   background-color: var(--paper);
   background-image: none;
-}
-
-.site-face {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.face-stage__canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.06;
-  transition: opacity 0.55s ease;
-}
-
-.site-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: var(--paper);
-}
-
-/* Home fallback layer must stay clear so the canvas (or ::after) can read through. */
-.site-face .site-bg {
-  background: transparent;
 }
 
 body > .site-bg {
   position: fixed;
   inset: 0;
-  height: auto;
   z-index: -1;
+  pointer-events: none;
+  background: var(--paper);
 }
 
 .site-bg::after {
@@ -50,101 +23,41 @@ body > .site-bg {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  opacity: 0.06;
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  opacity: 0.16;
 }
 
-html.has-face-gl .site-face .site-bg::after {
-  opacity: 0;
-}
-
-/* Dark theme keeps the real drawing. A charcoal veil sits over it
-   so light type still reads — no invert, no negative. */
-:root:not([data-theme="light"]) .site-face::after,
-:root:not([data-theme="light"]) body > .site-bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      rgb(5 5 5 / 0.38) 0%,
-      rgb(5 5 5 / 0.58) 45%,
-      rgb(5 5 5 / 0.7) 100%
-    );
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.55s ease;
-  z-index: 2;
-}
-
-:root:not([data-theme="light"]) .hero-editorial__name,
-:root:not([data-theme="light"]) .hero-editorial__solid,
-:root:not([data-theme="light"]) .hero-editorial__pitch,
-:root:not([data-theme="light"]) .section__title,
-:root:not([data-theme="light"]) .how-build__lede,
-:root:not([data-theme="light"]) .work-invite__lede {
-  text-shadow: 0 1px 16px rgb(0 0 0 / 0.55);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  body:hover .face-stage__canvas {
-    opacity: 1;
-  }
-
-  body:hover > .site-bg::after {
-    opacity: 1;
-    transform: scale(1.035);
-  }
-
-  html.has-face-gl body:hover .site-face .site-bg::after {
-    opacity: 0;
-  }
-
-  :root:not([data-theme="light"]) body:hover .site-face::after,
-  :root:not([data-theme="light"]) body:hover > .site-bg::before {
-    opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .face-stage__canvas,
-  .site-bg::after {
-    transition: none;
-  }
-
-  body:hover > .site-bg::after {
-    transform: none;
-  }
+/* Paper is far lighter than the drawing, so light theme needs less of it. */
+:root[data-theme="light"] .site-bg::after {
+  opacity: 0.09;
 }
 
 /* Do not reset .nav position — it stays sticky. */
-body:has(.site-face) .nav {
+body:has(> .site-bg) .nav {
   z-index: 20;
 }
 
-body:has(.site-face) main,
-body:has(.site-face) .footer {
+body:has(> .site-bg) main,
+body:has(> .site-bg) .footer {
   position: relative;
   z-index: 1;
 }
 
-body:has(.site-face) .section,
-body:has(.site-face) .section--warm,
-body:has(.site-face) .section--dark,
-body:has(.site-face) .hero--editorial,
-body:has(.site-face) .how-build__shell,
-body:has(.site-face) .how-build__main,
-body:has(.site-face) .contact__intro,
-body:has(.site-face) .footer {
+body:has(> .site-bg) .section,
+body:has(> .site-bg) .section--warm,
+body:has(> .site-bg) .section--dark,
+body:has(> .site-bg) .hero--editorial,
+body:has(> .site-bg) .how-build__shell,
+body:has(> .site-bg) .how-build__main,
+body:has(> .site-bg) .contact__intro,
+body:has(> .site-bg) .footer {
   background: transparent;
 }
 
-body:has(.site-face) .why-card,
-body:has(.site-face) .ai-process__step,
-body:has(.site-face) .contact-action:not(.contact-action--wa),
-body:has(.site-face) .contact-brief,
-body:has(.site-face) .work-card {
+body:has(> .site-bg) .why-card,
+body:has(> .site-bg) .ai-process__step,
+body:has(> .site-bg) .contact-action:not(.contact-action--wa),
+body:has(> .site-bg) .contact-brief,
+body:has(> .site-bg) .work-card {
   background: color-mix(in srgb, var(--paper) 78%, transparent);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -205,99 +118,6 @@ body:has(.site-face) .work-card {
   letter-spacing: -0.045em;
   line-height: 0.92;
   color: var(--ink);
-}
-
-/* Nickname flap — hover / focus / tap flips Kunal Varshney → Little */
-.hero-editorial__type,
-.hero-editorial__name.name-flip {
-  transform-style: preserve-3d;
-}
-
-.name-flip {
-  display: inline-block;
-  max-width: 100%;
-  perspective: 1200px;
-  cursor: pointer;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.name-flip:focus {
-  outline: none;
-}
-
-.name-flip:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 0.12em;
-  border-radius: 4px;
-}
-
-.name-flip__inner {
-  display: grid;
-  transform-style: preserve-3d;
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  animation: name-flip-hint 1.35s var(--ease) 2.45s 1;
-}
-
-.name-flip__face {
-  grid-area: 1 / 1;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-.name-flip__face--back {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transform: rotateX(180deg);
-  color: var(--accent);
-  /* Hide until 3D flip is ready — otherwise "Little" paints over the name on first load */
-  visibility: hidden;
-}
-
-.name-flip__aka {
-  display: block;
-  margin-bottom: 0.12em;
-  font-family: var(--font-mono);
-  font-size: 0.14em;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-
-.hero-editorial__name.name-flip:is(:hover, :focus-visible, .is-flipped) .name-flip__inner,
-.nav__brand:is(:hover, :focus-visible) .name-flip--nav .name-flip__inner {
-  animation: none;
-  transform: rotateX(180deg);
-}
-
-.hero-editorial__name.name-flip:is(:hover, :focus-visible, .is-flipped) .name-flip__face--back,
-.nav__brand:is(:hover, :focus-visible) .name-flip--nav .name-flip__face--back {
-  visibility: visible;
-}
-
-@keyframes name-flip-hint {
-  0%, 100% { transform: rotateX(0); }
-  35% { transform: rotateX(-16deg); }
-  62% { transform: rotateX(7deg); }
-}
-
-.name-flip--nav {
-  perspective: 640px;
-  cursor: inherit;
-}
-
-.name-flip--nav .name-flip__inner {
-  animation: none;
-}
-
-.name-flip--nav .name-flip__face--back {
-  flex-direction: row;
-  justify-content: flex-start;
-  font-size: 0.92em;
-  letter-spacing: -0.03em;
 }
 
 .hero-editorial__roles {
@@ -383,22 +203,6 @@ body:has(.site-face) .work-card {
   color: var(--accent-strong);
 }
 
-.hero-editorial__scroll {
-  position: absolute;
-  right: clamp(1rem, 3vw, 2rem);
-  bottom: 1.5rem;
-  z-index: 2;
-  font-size: 1.25rem;
-  color: var(--ink-faint);
-  text-decoration: none;
-  animation: hero-editorial-bob 2.4s ease-in-out infinite;
-}
-
-@keyframes hero-editorial-bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
-}
-
 .hero-editorial__type,
 .hero-editorial__pitch,
 .hero-editorial__foot {
@@ -421,32 +225,6 @@ body:has(.site-face) .work-card {
     opacity: 1 !important;
   }
 
-  .hero-editorial__scroll {
-    animation: none;
-  }
-
-  .name-flip__inner {
-    animation: none;
-    transition: none;
-    transform: none !important;
-  }
-
-  .name-flip__face--back {
-    transform: none;
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  .hero-editorial__name.name-flip:is(:hover, :focus-visible, .is-flipped) .name-flip__face--front,
-  .nav__brand:is(:hover, :focus-visible) .name-flip--nav .name-flip__face--front {
-    opacity: 0;
-  }
-
-  .hero-editorial__name.name-flip:is(:hover, :focus-visible, .is-flipped) .name-flip__face--back,
-  .nav__brand:is(:hover, :focus-visible) .name-flip--nav .name-flip__face--back {
-    visibility: visible;
-    opacity: 1;
-  }
 }
 
 .nav--on-editorial {
@@ -510,9 +288,6 @@ body:has(.site-face) .work-card {
     justify-content: center;
   }
 
-  .hero-editorial__scroll {
-    display: none;
-  }
 }
 
 @media (max-height: 520px) and (orientation: landscape) {
@@ -521,9 +296,5 @@ body:has(.site-face) .work-card {
     padding-top: calc(var(--nav-height) + 0.6rem);
     padding-bottom: 1.5rem;
     justify-content: flex-start;
-  }
-
-  .hero-editorial__scroll {
-    display: none;
   }
 }
