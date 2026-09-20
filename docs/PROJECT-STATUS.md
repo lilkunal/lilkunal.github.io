@@ -5,10 +5,12 @@
 
 ## Last updated
 
-2026-09-20 — Claude Code (still background, shorter home page)
+2026-09-20 — Claude Code (still background, shorter home page, animated work reel, portfolios in the nav)
 
 ## Done
 
+- [x] Home no longer carries the hire-portfolios section; the nav "Portfolios" is a dropdown listing Shweta, Antriksh and Anamika plus "All portfolios" (home, /work/, /portfolios/)
+- [x] Work reel rebuilt: autoplay (4.5 s, pauses on hover/focus/off-screen/reduced motion and for 6 s after any interaction), progress dots, drag with a mouse, arrow keys, looping arrows, and edge fades so cards are not sliced
 - [x] Home background is a still image (`.site-bg`, 16% dark / 9% light): the WebGL portrait, its hover reveal and its scroll pan are gone, and `js/portrait-scroll.js` is deleted — three.js no longer loads on the home page
 - [x] Home trimmed to hero → work + portfolios → contact → footer: the "Why hire me" cards (folded into hero proof lines), the four-step "How I work" section, the contact form, the duplicate contact chips and the social bubbles are gone; nav/hero name no longer flips
 - [x] Light theme: the background drawing (home portrait canvas, Work/Portfolios `.site-bg`) now stays at 15% opacity on hover instead of 100%, so dark text stays readable; dark theme keeps its charcoal veil

@@ -1031,8 +1031,32 @@
   margin-top: 1.35rem;
 }
 
-.home-people {
-  margin-top: 2.75rem;
+/* Cards fade out at the edges instead of being sliced off mid-card. */
+.home-reel::before,
+.home-reel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 2.6rem;
+  width: 3.25rem;
+  z-index: 3;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease);
+}
+
+.home-reel::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--paper), transparent);
+}
+
+.home-reel::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--paper), transparent);
+}
+
+.home-reel.is-start::before,
+.home-reel.is-end::after {
+  opacity: 0;
 }
 
 .home-reel--people {
@@ -1053,6 +1077,20 @@
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   padding: 0.2rem 2.6rem 1rem;
+  cursor: grab;
+}
+
+.home-reel__track:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+.home-reel__track.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  user-select: none;
 }
 
 .home-reel__track::-webkit-scrollbar {
@@ -1063,6 +1101,19 @@
   flex: 0 0 min(20.5rem, 78vw);
   scroll-snap-align: start;
   min-width: 0;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.home-reel__track > *:hover {
+  transform: translateY(-4px);
+}
+
+.home-reel .work-card__visual img {
+  transition: transform 0.5s var(--ease);
+}
+
+.home-reel .work-card:hover .work-card__visual img {
+  transform: scale(1.04);
 }
 
 .home-reel .people-card {
@@ -1073,7 +1124,7 @@
 
 .home-reel__btn {
   position: absolute;
-  top: calc(50% + 0.6rem);
+  top: calc(50% - 0.7rem);
   z-index: 4;
   width: 2.5rem;
   height: 2.5rem;
@@ -1087,6 +1138,7 @@
   color: var(--ink);
   font-size: 1.35rem;
   line-height: 1;
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease), transform 0.2s var(--ease);
 }
 
 .home-reel__btn[data-carousel-prev] { left: 0; }
@@ -1094,6 +1146,30 @@
 
 .home-reel__btn:hover {
   border-color: var(--accent);
+  transform: scale(1.06);
+}
+
+.home-reel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+}
+
+.home-reel__dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 25%, transparent);
+  cursor: pointer;
+  transition: width 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.home-reel__dot.is-active {
+  width: 1.35rem;
+  background: var(--accent);
 }
 
 @media (max-width: 640px) {
@@ -1103,5 +1179,22 @@
 
   .home-reel__btn {
     display: none;
+  }
+
+  .home-reel::before,
+  .home-reel::after {
+    width: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-reel__track > *,
+  .home-reel__dot,
+  .home-reel__btn {
+    transition: none;
+  }
+
+  .home-reel__track > *:hover {
+    transform: none;
   }
 }

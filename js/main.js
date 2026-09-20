@@ -459,26 +459,164 @@
     });
   }
 
-  /* Home work + portfolio reels */
+  /* Work + portfolio reels: snap scrolling with arrows, dots, drag and optional autoplay */
   Array.prototype.slice.call(document.querySelectorAll("[data-carousel]")).forEach(function (root) {
     var track = root.querySelector("[data-carousel-track]");
+    if (!track) return;
+    var cards = Array.prototype.slice.call(track.children);
+    if (cards.length < 2) return;
+
     var prev = root.querySelector("[data-carousel-prev]");
     var next = root.querySelector("[data-carousel-next]");
-    if (!track) return;
+    var autoplayMs = parseInt(root.getAttribute("data-carousel-autoplay"), 10) || 0;
+    var timer = 0;
+    var idleTimer = 0;
+    var paused = false;
+    var onScreen = true;
 
-    function step() {
-      var card = track.children[0];
-      if (!card) return 280;
-      var styles = window.getComputedStyle(track);
-      var gap = parseFloat(styles.columnGap || styles.gap) || 16;
-      return card.getBoundingClientRect().width + gap;
+    root.setAttribute("aria-roledescription", "carousel");
+    track.tabIndex = 0;
+
+    var dots = document.createElement("div");
+    dots.className = "home-reel__dots";
+    dots.setAttribute("role", "tablist");
+    dots.setAttribute("aria-label", "Choose a card");
+    cards.forEach(function (card, index) {
+      var dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "home-reel__dot";
+      dot.setAttribute("role", "tab");
+      dot.setAttribute("aria-label", "Go to item " + (index + 1));
+      dot.addEventListener("click", function () {
+        scrollToCard(index);
+        holdAutoplay();
+      });
+      dots.appendChild(dot);
+    });
+    root.appendChild(dots);
+    var dotEls = Array.prototype.slice.call(dots.children);
+
+    function maxScroll() {
+      return Math.max(0, track.scrollWidth - track.clientWidth);
+    }
+
+    /* The track rests at its own padding, so positions are measured from the cards, not from 0. */
+    function offsetOf(index) {
+      var padLeft = parseFloat(window.getComputedStyle(track).paddingLeft) || 0;
+      return cards[index].getBoundingClientRect().left - track.getBoundingClientRect().left - padLeft;
+    }
+
+    function activeIndex() {
+      var best = 0;
+      var bestDistance = Infinity;
+      cards.forEach(function (card, index) {
+        var distance = Math.abs(offsetOf(index));
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          best = index;
+        }
+      });
+      return best;
+    }
+
+    function scrollToCard(index) {
+      var target = Math.max(0, Math.min(track.scrollLeft + offsetOf(index), maxScroll()));
+      track.scrollTo({ left: target, behavior: reduceMotion ? "auto" : "smooth" });
     }
 
     function go(dir) {
-      track.scrollBy({ left: dir * step(), behavior: reduceMotion ? "auto" : "smooth" });
+      if (dir > 0 && track.scrollLeft >= maxScroll() - 2) return scrollToCard(0);
+      if (dir < 0 && activeIndex() === 0) return scrollToCard(cards.length - 1);
+      scrollToCard(Math.max(0, Math.min(activeIndex() + dir, cards.length - 1)));
     }
 
-    if (prev) prev.addEventListener("click", function () { go(-1); });
-    if (next) next.addEventListener("click", function () { go(1); });
+    function paint() {
+      var index = activeIndex();
+      dotEls.forEach(function (dot, i) {
+        dot.classList.toggle("is-active", i === index);
+        dot.setAttribute("aria-selected", i === index ? "true" : "false");
+      });
+      root.classList.toggle("is-start", index === 0);
+      root.classList.toggle("is-end", track.scrollLeft >= maxScroll() - 2);
+    }
+
+    /* Autoplay yields to anything the visitor does, then picks up again. */
+    function holdAutoplay() {
+      paused = true;
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(function () { paused = false; }, 6000);
+    }
+
+    if (autoplayMs && !reduceMotion) {
+      timer = setInterval(function () {
+        if (!paused && onScreen && !document.hidden) go(1);
+      }, autoplayMs);
+    }
+
+    if (prev) prev.addEventListener("click", function () { go(-1); holdAutoplay(); });
+    if (next) next.addEventListener("click", function () { go(1); holdAutoplay(); });
+
+    root.addEventListener("pointerenter", function () { paused = true; });
+    root.addEventListener("pointerleave", function () { paused = false; });
+    root.addEventListener("focusin", function () { paused = true; });
+    root.addEventListener("focusout", function () { paused = false; });
+
+    track.addEventListener("scroll", function () { window.requestAnimationFrame(paint); }, { passive: true });
+
+    track.addEventListener("keydown", function (event) {
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+      event.preventDefault();
+      go(event.key === "ArrowRight" ? 1 : -1);
+      holdAutoplay();
+    });
+
+    /* Drag with a mouse or pen; touch keeps the browser's own scrolling. */
+    var dragging = false;
+    var dragged = false;
+    var startX = 0;
+    var startLeft = 0;
+
+    track.addEventListener("pointerdown", function (event) {
+      if (event.pointerType === "touch" || event.button !== 0) return;
+      dragging = true;
+      dragged = false;
+      startX = event.clientX;
+      startLeft = track.scrollLeft;
+      track.classList.add("is-dragging");
+    });
+
+    window.addEventListener("pointermove", function (event) {
+      if (!dragging) return;
+      var dx = event.clientX - startX;
+      if (Math.abs(dx) > 3) dragged = true;
+      track.scrollLeft = startLeft - dx;
+    });
+
+    window.addEventListener("pointerup", function () {
+      if (!dragging) return;
+      dragging = false;
+      track.classList.remove("is-dragging");
+      if (dragged) {
+        holdAutoplay();
+        scrollToCard(activeIndex());
+      }
+    });
+
+    // A drag that ends on a card must not follow its link.
+    track.addEventListener("click", function (event) {
+      if (!dragged) return;
+      event.preventDefault();
+      event.stopPropagation();
+      dragged = false;
+    }, true);
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        onScreen = entries[0].isIntersecting;
+      }).observe(root);
+    }
+
+    window.addEventListener("resize", function () { window.requestAnimationFrame(paint); });
+    paint();
   });
 })();

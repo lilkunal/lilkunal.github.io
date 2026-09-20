@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/editorial-hero.css?v=100">
 <link rel="stylesheet" href="../css/nav-theme.css">
-<link rel="stylesheet" href="../css/show-pages.css">
+<link rel="stylesheet" href="../css/show-pages.css?v=101">
 <script>document.documentElement.classList.add("js"); document.documentElement.setAttribute("data-theme", localStorage.getItem("kv-theme") || "dark");</script>
 </head>
 <body>
@@ -37,7 +37,16 @@
   <label for="nav-toggle" class="nav__burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
   <nav class="nav__links" aria-label="Primary">
     <a href="../work/">Work</a>
-    <a href="./">Portfolios</a>
+    <div class="nav__dropdown">
+      <button type="button" class="nav__drop-btn" aria-expanded="false" aria-controls="nav-portfolios">Portfolios <span class="nav__caret" aria-hidden="true">▾</span></button>
+      <div class="nav__menu" id="nav-portfolios" hidden>
+        <span class="nav__menu-label">Hire sites I made</span>
+        <a href="https://tiwarishweta03.github.io/" target="_blank" rel="noopener">Shweta Tiwari — HR Business Partner</a>
+        <a href="https://antrikshu.github.io/" target="_blank" rel="noopener">Antriksh Upadhyay — Support → cloud</a>
+        <a href="https://r-anamika.github.io/" target="_blank" rel="noopener">Anamika Rajput — Quality Analyst</a>
+        <a class="nav__menu-out" href="./">All portfolios →</a>
+      </div>
+    </div>
     <a href="../resume/index.html">Résumé</a>
     <a href="../index.html#contact" class="nav__cta">Contact</a>
     <button type="button" class="theme-toggle theme-toggle--switch" id="theme-toggle" aria-label="Switch light or dark theme" aria-pressed="true">
@@ -89,7 +98,7 @@
   </div>
 </main>
 
-<script src="../js/main.js"></script>
+<script src="../js/main.js?v=101"></script>
 <script src="../js/analytics.js" defer></script>
 <script>
   if ("serviceWorker" in navigator) {

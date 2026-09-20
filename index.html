@@ -103,7 +103,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/editorial-hero.css?v=100">
-<link rel="stylesheet" href="css/show-pages.css?v=95">
+<link rel="stylesheet" href="css/show-pages.css?v=101">
 <link rel="stylesheet" href="css/nav-theme.css?v=94">
 <link rel="stylesheet" href="css/contact-panel.css">
 <link rel="stylesheet" href="css/upgrade-sections.css">
@@ -127,7 +127,16 @@
   <nav class="nav__links" aria-label="Primary">
     <span class="nav__avail" aria-label="Open for remote work"><span class="nav__avail-dot" aria-hidden="true"></span> Open · Remote</span>
     <a href="work/">Work</a>
-    <a href="portfolios/">Portfolios</a>
+    <div class="nav__dropdown">
+      <button type="button" class="nav__drop-btn" aria-expanded="false" aria-controls="nav-portfolios">Portfolios <span class="nav__caret" aria-hidden="true">▾</span></button>
+      <div class="nav__menu" id="nav-portfolios" hidden>
+        <span class="nav__menu-label">Hire sites I made</span>
+        <a href="https://tiwarishweta03.github.io/" target="_blank" rel="noopener">Shweta Tiwari — HR Business Partner</a>
+        <a href="https://antrikshu.github.io/" target="_blank" rel="noopener">Antriksh Upadhyay — Support → cloud</a>
+        <a href="https://r-anamika.github.io/" target="_blank" rel="noopener">Anamika Rajput — Quality Analyst</a>
+        <a class="nav__menu-out" href="portfolios/">All portfolios →</a>
+      </div>
+    </div>
     <a href="resume/index.html">Résumé</a>
     <a href="#contact" class="nav__cta">Contact</a>
     <button type="button" class="theme-toggle theme-toggle--switch" id="theme-toggle" aria-label="Switch light or dark theme" aria-pressed="true">
@@ -179,7 +188,7 @@
     <h2 class="section__title section__title--solo">Work a hiring manager can click today</h2>
     <p class="work-invite__lede">Live client work, labelled demos, and personal products. Every one: written scope, build, real-phone QA, then support after launch.</p>
 
-    <div class="home-reel" data-carousel>
+    <div class="home-reel" data-carousel data-carousel-autoplay="4500">
       <button type="button" class="home-reel__btn" data-carousel-prev aria-label="Previous project">‹</button>
       <div class="home-reel__track" data-carousel-track>
         <article class="work-card">
@@ -298,36 +307,6 @@
       <button type="button" class="home-reel__btn" data-carousel-next aria-label="Next project">›</button>
     </div>
 
-    <div class="home-people" id="hire-portfolios">
-      <p class="eyebrow">Portfolios I made</p>
-      <h2 class="section__title section__title--solo">Hire sites with their name on the door</h2>
-      <p class="work-invite__lede">Live personal sites I designed for people who are applying.</p>
-    <div class="home-reel home-reel--people" data-carousel>
-      <button type="button" class="home-reel__btn" data-carousel-prev aria-label="Previous portfolio">‹</button>
-      <div class="home-reel__track" data-carousel-track>
-        <a class="people-card people-card--shweta" href="https://tiwarishweta03.github.io/" target="_blank" rel="noopener">
-          <span class="people-card__tag">HR Business Partner</span>
-          <strong class="people-card__name">Shweta Tiwari</strong>
-          <span class="people-card__line">Talent, engagement, people strategy.</span>
-          <span class="people-card__go">Visit live site ↗</span>
-        </a>
-        <a class="people-card people-card--antriksh" href="https://antrikshu.github.io/" target="_blank" rel="noopener">
-          <span class="people-card__tag">Support → cloud</span>
-          <strong class="people-card__name">Antriksh Upadhyay</strong>
-          <span class="people-card__line">A bold personal hire site.</span>
-          <span class="people-card__go">Visit live site ↗</span>
-        </a>
-        <a class="people-card people-card--anamika" href="https://r-anamika.github.io/" target="_blank" rel="noopener">
-          <span class="people-card__tag">Quality Analyst</span>
-          <strong class="people-card__name">Anamika Rajput</strong>
-          <span class="people-card__line">Email campaign QA, rendering, and accessibility.</span>
-          <span class="people-card__go">Visit live site ↗</span>
-        </a>
-      </div>
-      <button type="button" class="home-reel__btn" data-carousel-next aria-label="Next portfolio">›</button>
-    </div>
-    </div>
-
     <div class="work-invite__actions">
       <a class="btn btn--primary" href="work/">All website work →</a>
       <a class="btn btn--ghost" href="portfolios/">Portfolios I made</a>
@@ -412,7 +391,7 @@
   </button>
 </footer>
 
-<script src="js/main.js?v=95"></script>
+<script src="js/main.js?v=101"></script>
 <script src="js/game.js?v=26"></script>
 <script src="js/analytics.js" defer></script>
 <script>
