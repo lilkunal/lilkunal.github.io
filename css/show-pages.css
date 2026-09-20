@@ -1198,3 +1198,47 @@
     transform: none;
   }
 }
+
+/* ===== Portfolios page: the short answer, then the three sites ===== */
+.people-why {
+  max-width: 58ch;
+  margin: 0 0 clamp(1.5rem, 4vw, 2.25rem);
+  padding: 1.1rem 1.25rem;
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--paper) 72%, transparent);
+}
+
+.people-why h2 {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.people-why p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+  gap: 1rem;
+}
+
+.people-grid .people-card {
+  min-height: 11rem;
+  justify-content: center;
+  padding: 1.35rem 1.4rem;
+}
+
+.people-foot {
+  margin: 1.1rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}

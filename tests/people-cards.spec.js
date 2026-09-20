@@ -1,17 +1,12 @@
 const { test, expect } = require("@playwright/test");
 
 test.describe("Kunal hire site — portfolios", () => {
-  test("Home keeps the portfolios in the nav dropdown, not in a section", async ({ page }) => {
+  test("Home sends people to the portfolios page through the nav only", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator("#hire-portfolios")).toHaveCount(0);
-
-    await page.getByRole("button", { name: /Portfolios/ }).click();
-    const menu = page.locator("#nav-portfolios");
-    await expect(menu).toBeVisible();
-    await expect(menu.getByRole("link", { name: /Shweta Tiwari/ })).toHaveAttribute("href", "https://tiwarishweta03.github.io/");
-    await expect(menu.getByRole("link", { name: /Antriksh Upadhyay/ })).toHaveAttribute("href", "https://antrikshu.github.io/");
-    await expect(menu.getByRole("link", { name: /Anamika Rajput/ })).toHaveAttribute("href", "https://r-anamika.github.io/");
-    await expect(menu.getByRole("link", { name: /All portfolios/ })).toHaveAttribute("href", "portfolios/");
+    await expect(page.locator("#nav-portfolios")).toHaveCount(0);
+    await expect(page.locator(".work-invite__actions")).toHaveCount(0);
+    await expect(page.locator(".nav__links").getByRole("link", { name: "Portfolios" })).toHaveAttribute("href", "portfolios/");
   });
 
   test("Home work reel moves and tracks its position with dots", async ({ page }) => {
@@ -35,13 +30,16 @@ test.describe("Kunal hire site — portfolios", () => {
     await expect(dots.first()).toHaveClass(/is-active/);
   });
 
-  test("/portfolios page is a name board, not a work list", async ({ page }) => {
+  test("/portfolios explains why the sites are there, then lists all three", async ({ page }) => {
     await page.goto("/portfolios/");
-    await expect(page.getByRole("heading", { name: /Hire sites I designed/ })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /Hire sites I built for other people/ })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /Why someone else's name is on my site/ })).toBeVisible();
+    await expect(page.locator(".people-why p")).toContainText("design");
+
+    await expect(page.locator(".people-card")).toHaveCount(3);
     await expect(page.locator(".people-card--shweta")).toBeVisible();
     await expect(page.locator(".people-card--antriksh")).toBeVisible();
     await expect(page.locator(".people-card--anamika")).toBeVisible();
-    await expect(page.locator(".people-card")).toHaveCount(3);
     await expect(page.locator(".people-card--anamika")).toHaveAttribute("href", "https://r-anamika.github.io/");
     await expect(page.locator(".work-board")).toHaveCount(0);
   });
