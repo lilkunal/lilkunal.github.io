@@ -252,3 +252,6 @@
     transition: none;
   }
 }
+
+.gaming-card__meta[href] { text-decoration: none; }
+.gaming-card__meta[href]:hover { color: var(--neon); }
