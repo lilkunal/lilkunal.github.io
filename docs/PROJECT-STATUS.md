@@ -10,7 +10,7 @@
 ## Done
 
 - [x] `/portfolios/` rebuilt as a proper page: a short "Why someone else's name is on my site" answer (the site is Kunal's work, live, shown with permission), then the three hire sites in a grid — no carousel, no nav dropdown
-- [x] `/gaming/` rebuilt as a paper pinboard (taped polaroid, ID tickets, era timeline) after the neon arcade version was rejected. Valorant stuartboi#0702, Discord stuart07026699, Steam StuartBoi07 by SteamID64. The avatar keeps its separate `#g-*` parts driven by `js/gamer.js`. Footer carries a four-image pixel-art sticker strip.
+- [x] `/gaming/` rebuilt as a paper pinboard (taped polaroid, ID tickets, era timeline) after the neon arcade version was rejected. Valorant stuartboi#0702, Discord stuart07026699, Steam StuartBoi07 by SteamID64. The avatar keeps its separate `#g-*` parts driven by `js/gamer.js`. The four pixel-art stickers scatter down the right-hand band of the page.
 - [x] Nav carries Gaming on home, /work/, /portfolios/; the stray `</div>` left in the home and work navs by the dropdown removal is gone
 - [x] Résumé intro carries the one-sheet profile poster (`assets/photos/kunal-profile-poster.webp`), hidden in print so the PDF is unchanged
 - [x] Hero drops the proof strip (live client · three portfolios · four years in support); the hero is eyebrow, name, role, pitch, two buttons

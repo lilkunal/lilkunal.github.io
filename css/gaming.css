@@ -313,45 +313,33 @@ body:has(.gaming-board) {
   }
 }
 
-/* --- footer sticker strip ---------------------------------------------- */
+/* --- stickers scattered down the board ---------------------------------
+   Decorative only: they live in the side margins and are hidden whenever the
+   window is too narrow to hold them clear of the text. */
 
-.board-foot {
-  margin-top: 3.5rem;
-  padding-top: 2rem;
-  border-top: 1px dashed var(--g-line);
+.board-stickers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: none;
 }
 
-.board-foot__label {
-  margin: 0 0 1.25rem;
-  font-family: "Caveat", cursive;
-  font-size: 1.35rem;
-  color: var(--g-ink-soft);
-}
+.gaming-board { position: relative; }
 
-.stickers {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.25rem;
-}
-
-.stickers li {
-  background: #000;
-  border: 1px solid var(--g-line);
-  box-shadow: 0 8px 20px rgba(43, 39, 35, 0.18);
-}
-
-.stickers li:nth-child(odd) { transform: rotate(-1.2deg); }
-.stickers li:nth-child(even) { transform: rotate(1deg); }
-
-.stickers img {
-  display: block;
-  width: 100%;
+.sticker {
+  position: absolute;
+  width: 118px;
   height: auto;
+  border: 1px solid var(--g-line);
+  box-shadow: 0 10px 24px rgba(43, 39, 35, 0.22);
 }
 
-@media (max-width: 640px) {
-  .stickers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* They sit in the empty band to the right of the text, clear of every column. */
+.sticker--1 { top: 3%;  right: 10px;  transform: rotate(4deg); }
+.sticker--2 { top: 56%; right: 152px; transform: rotate(-5deg); }
+.sticker--3 { top: 64%; right: 12px;  transform: rotate(3deg); }
+.sticker--4 { top: 82%; right: 124px; transform: rotate(-3deg); }
+
+@media (min-width: 1180px) {
+  .board-stickers { display: block; }
 }
