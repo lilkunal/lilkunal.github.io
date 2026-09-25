@@ -56,26 +56,31 @@
     start();
   });
 
-  /* Blink: squash the lids for a moment, at a human-ish random interval. */
-  if (lids && !reduceMotion) {
-    (function blink() {
-      window.setTimeout(function () {
-        lids.setAttribute("transform", "scale(1 0.08)");
-        window.setTimeout(function () { lids.setAttribute("transform", "scale(1 1)"); }, 110);
-        blink();
-      }, 2200 + Math.random() * 3800);
-    })();
+  /* Blink: the lids sit rolled up out of sight and drop for a moment. */
+  var LID_OPEN = "scale(1 0.04)";
+  if (lids) {
+    lids.setAttribute("transform", LID_OPEN);
+    if (!reduceMotion) {
+      (function blink() {
+        window.setTimeout(function () {
+          lids.setAttribute("transform", "scale(1 1)");
+          window.setTimeout(function () { lids.setAttribute("transform", LID_OPEN); }, 110);
+          blink();
+        }, 2200 + Math.random() * 3800);
+      })();
+    }
   }
 
-  /* Copy the Valorant ID. */
-  var copy = document.querySelector("[data-copy-id]");
-  if (copy && navigator.clipboard) {
-    copy.addEventListener("click", function () {
-      navigator.clipboard.writeText(copy.getAttribute("data-copy-id")).then(function () {
-        var original = copy.textContent;
-        copy.textContent = "Copied";
-        window.setTimeout(function () { copy.textContent = original; }, 1600);
-      }).catch(function () {});
+  /* Copy any of the IDs. */
+  if (navigator.clipboard) {
+    Array.prototype.forEach.call(document.querySelectorAll("[data-copy-id]"), function (copy) {
+      copy.addEventListener("click", function () {
+        navigator.clipboard.writeText(copy.getAttribute("data-copy-id")).then(function () {
+          var original = copy.textContent;
+          copy.textContent = "Copied";
+          window.setTimeout(function () { copy.textContent = original; }, 1600);
+        }).catch(function () {});
+      });
     });
   }
 })();

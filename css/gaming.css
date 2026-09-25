@@ -110,10 +110,12 @@ body:has(.gaming-board) {
   display: block;
   width: 100%;
   height: auto;
-  background: #e2dbcc;
+  /* A photo stays a photo: the print keeps its own light paper in both themes. */
+  background: #ded5c2;
 }
 
-:root[data-theme="dark"] .polaroid svg { background: #1f1b15; }
+/* The lids roll up out of sight and drop for a blink, so they hinge at the top. */
+#g-lids { transform-origin: 50% 0%; }
 
 .polaroid figcaption {
   font-family: "Caveat", cursive;
