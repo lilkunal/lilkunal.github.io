@@ -32,29 +32,15 @@ test.describe("Kunal hire site — gaming", () => {
     expect(right).not.toEqual(left);
   });
 
-  test("Stickers scatter down the page and clear the text", async ({ page }) => {
-    await page.setViewportSize({ width: 1400, height: 1000 });
+  test("Footer sticker strip loads all four images", async ({ page }) => {
     await page.goto("/gaming/");
-    const imgs = page.locator(".board-stickers img");
+    const imgs = page.locator(".board-foot .stickers img");
     await expect(imgs).toHaveCount(4);
-
-    await page.evaluate(() => document.querySelectorAll("img").forEach((i) => (i.loading = "eager")));
-    const boxes = [];
+    await imgs.last().scrollIntoViewIfNeeded();
     for (let i = 0; i < 4; i += 1) {
       await expect(imgs.nth(i)).toBeVisible();
       const ok = await imgs.nth(i).evaluate((el) => el.complete && el.naturalWidth > 0);
       expect(ok).toBe(true);
-      boxes.push(await imgs.nth(i).boundingBox());
-    }
-
-    // No sticker may sit on top of a paragraph or an ID ticket.
-    const text = await page.locator(".eras p, .board-head p, .ticket").all();
-    const textBoxes = (await Promise.all(text.map((t) => t.boundingBox()))).filter(Boolean);
-    for (const s of boxes) {
-      for (const b of textBoxes) {
-        const overlaps = s.x < b.x + b.width && s.x + s.width > b.x && s.y < b.y + b.height && s.y + s.height > b.y;
-        expect(overlaps).toBe(false);
-      }
     }
   });
 

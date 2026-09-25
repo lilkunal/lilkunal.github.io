@@ -25,9 +25,9 @@ body:has(.gaming-board) {
 }
 
 .gaming-board {
-  max-width: 1080px;
+  max-width: 980px;
   margin: 0 auto;
-  padding: 3.5rem 1rem 5rem;
+  padding: 3.5rem 1.25rem 5rem;
   color: var(--g-ink);
 }
 
@@ -75,8 +75,8 @@ body:has(.gaming-board) {
 
 .board {
   display: grid;
-  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
-  gap: 2.5rem;
+  grid-template-columns: minmax(0, 330px) minmax(0, 1fr);
+  gap: 3rem;
   align-items: start;
   padding: 1rem 0 3rem;
 }
@@ -313,33 +313,45 @@ body:has(.gaming-board) {
   }
 }
 
-/* --- stickers scattered down the board ---------------------------------
-   Decorative only: they live in the side margins and are hidden whenever the
-   window is too narrow to hold them clear of the text. */
+/* --- footer sticker strip ---------------------------------------------- */
 
-.board-stickers {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  display: none;
+.board-foot {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px dashed var(--g-line);
 }
 
-.gaming-board { position: relative; }
+.board-foot__label {
+  margin: 0 0 1.25rem;
+  font-family: "Caveat", cursive;
+  font-size: 1.35rem;
+  color: var(--g-ink-soft);
+}
 
-.sticker {
-  position: absolute;
-  width: 118px;
-  height: auto;
+.stickers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.stickers li {
+  background: #000;
   border: 1px solid var(--g-line);
-  box-shadow: 0 10px 24px rgba(43, 39, 35, 0.22);
+  box-shadow: 0 8px 20px rgba(43, 39, 35, 0.18);
 }
 
-/* They sit in the empty band to the right of the text, clear of every column. */
-.sticker--1 { top: 3%;  right: 10px;  transform: rotate(4deg); }
-.sticker--2 { top: 56%; right: 152px; transform: rotate(-5deg); }
-.sticker--3 { top: 64%; right: 12px;  transform: rotate(3deg); }
-.sticker--4 { top: 82%; right: 124px; transform: rotate(-3deg); }
+.stickers li:nth-child(odd) { transform: rotate(-1.2deg); }
+.stickers li:nth-child(even) { transform: rotate(1deg); }
 
-@media (min-width: 1180px) {
-  .board-stickers { display: block; }
+.stickers img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .stickers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
