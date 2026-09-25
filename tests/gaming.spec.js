@@ -32,6 +32,18 @@ test.describe("Kunal hire site — gaming", () => {
     expect(right).not.toEqual(left);
   });
 
+  test("Footer sticker strip loads all four images", async ({ page }) => {
+    await page.goto("/gaming/");
+    const imgs = page.locator(".stickers img");
+    await expect(imgs).toHaveCount(4);
+    await imgs.last().scrollIntoViewIfNeeded();
+    for (let i = 0; i < 4; i += 1) {
+      await expect(imgs.nth(i)).toBeVisible();
+      const ok = await imgs.nth(i).evaluate((el) => el.complete && el.naturalWidth > 0);
+      expect(ok).toBe(true);
+    }
+  });
+
   test("Every page links to gaming and the page fits a phone", async ({ page }) => {
     for (const path of ["/", "/work/", "/portfolios/"]) {
       await page.goto(path);
