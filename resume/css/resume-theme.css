@@ -805,3 +805,26 @@ body.dossier .hero__flow > span.is-bold {
     margin-right: auto;
   }
 }
+
+/* One-sheet profile poster under the intro. */
+.hero__poster {
+  margin: 2.5rem 0 0;
+  max-width: 460px;
+}
+.hero__poster img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+}
+.hero__poster figcaption {
+  margin-top: 0.6rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+}
+
+@media print {
+  .hero__poster { display: none; }
+}

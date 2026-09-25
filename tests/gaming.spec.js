@@ -6,7 +6,9 @@ test.describe("Kunal hire site — gaming", () => {
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     await expect(page.locator("body")).toContainText("stuartboi#0702");
     await expect(page.locator("#gamer")).toBeVisible();
-    await expect(page.locator("[data-copy-id]")).toHaveAttribute("data-copy-id", "stuartboi#0702");
+    await expect(page.locator("[data-copy-id]").first()).toHaveAttribute("data-copy-id", "stuartboi#0702");
+    await expect(page.locator("body")).toContainText("stuart07026699");
+    await expect(page.getByRole("link", { name: /Profile/ })).toHaveAttribute("href", /76561199138410559/);
 
     // The parts the cursor animation drives must all exist.
     for (const id of ["#g-head", "#g-pupils", "#g-brows", "#g-arm-left", "#g-arm-right", "#g-lids"]) {

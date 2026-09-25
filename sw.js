@@ -5,7 +5,7 @@
      game) usable with no connection at all.
    - Videos are never cached.
    Bump CACHE_VERSION to retire every old cache on the next activation. */
-var CACHE_VERSION = "kv-v103";
+var CACHE_VERSION = "kv-v104";
 
 var PRECACHE = [
   "./",
@@ -22,15 +22,16 @@ var PRECACHE = [
   "./css/style.css",
   "./css/editorial-hero.css",
   "./css/show-pages.css",
-  "./css/gaming.css?v=2",
+  "./css/gaming.css?v=3",
   "./css/nav-theme.css",
   "./css/contact-panel.css",
   "./css/upgrade-sections.css",
   "./resume/css/style.css",
-  "./resume/css/resume-theme.css?v=97",
+  "./resume/css/resume-theme.css?v=104",
   "./assets/kunal-mark.png",
   "./assets/photos/kunal-hero-profile.png",
   "./assets/photos/site-bg-illustration.png",
+  "./assets/photos/kunal-profile-poster.webp",
   "./assets/Kunal-Varshney-Resume.pdf",
   "./assets/cv/cv-now.jpg",
   "./assets/cv/cv-support.jpg",
@@ -41,7 +42,7 @@ var PRECACHE = [
   "./assets/cv/cv-poster-1.jpg",
   "./assets/cv/cv-poster-2.jpg",
   "./js/main.js",
-  "./js/gamer.js?v=1",
+  "./js/gamer.js?v=2",
   "./js/site-config.js",
   "./js/seo-head.js",
   "./js/analytics.js",
