@@ -828,3 +828,17 @@ body.dossier .hero__flow > span.is-bold {
 @media print {
   .hero__poster { display: none; }
 }
+
+/* Wide screens: the poster sits beside the intro instead of under it. */
+@media (min-width: 980px) {
+  .hero--resume {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 330px;
+    column-gap: 3.5rem;
+    align-items: start;
+  }
+  .hero__poster {
+    margin: 0;
+    max-width: 330px;
+  }
+}
