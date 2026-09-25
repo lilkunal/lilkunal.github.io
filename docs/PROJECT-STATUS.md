@@ -5,11 +5,13 @@
 
 ## Last updated
 
-2026-09-20 — Claude Code (still background, shorter home page, animated work reel, portfolios in the nav)
+2026-09-25 — Claude Code (gaming page)
 
 ## Done
 
 - [x] `/portfolios/` rebuilt as a proper page: a short "Why someone else's name is on my site" answer (the site is Kunal's work, live, shown with permission), then the three hire sites in a grid — no carousel, no nav dropdown
+- [x] `/gaming/` added: Valorant ID stuartboi#0702 (click to copy), childhood games, Steam/mobile, and an inline SVG gamer whose head, pupils, brows, arms and eyelids are separate `#g-*` parts driven by `js/gamer.js` (cursor follow + blink, still under reduced motion). Steam handle StuartBoi07 (no public vanity URL yet)
+- [x] Nav carries Gaming on home, /work/, /portfolios/; the stray `</div>` left in the home and work navs by the dropdown removal is gone
 - [x] Hero drops the proof strip (live client · three portfolios · four years in support); the hero is eyebrow, name, role, pitch, two buttons
 - [x] Home has no hire-portfolios section and no "All website work"/"Portfolios I made" buttons; both pages are reached from the nav, where "Portfolios" is a plain link again
 - [x] Work reel rebuilt: autoplay (4.5 s, pauses on hover/focus/off-screen/reduced motion and for 6 s after any interaction), progress dots, drag with a mouse, arrow keys, looping arrows, and edge fades so cards are not sliced
