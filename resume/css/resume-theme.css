@@ -761,3 +761,12 @@ body.dossier .hero__lede a {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+/* Tech + period line under an auto-managed project card (career-tracker writes these). */
+body.dossier .project-card__meta {
+  margin: 0.4rem 0 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-500);
+}
