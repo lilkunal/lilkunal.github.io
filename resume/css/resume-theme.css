@@ -386,7 +386,8 @@ body.dossier .signal {
 
 body.dossier .hero__lede {
   font-size: 0.84rem;
-  max-width: none;
+  /* A readable measure: full-width centred lines are hard to track back to. */
+  max-width: 58ch;
   margin-top: 0.75rem;
 }
 
