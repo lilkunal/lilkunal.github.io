@@ -778,3 +778,11 @@ body.dossier .achievements__note {
   font-style: italic;
   color: var(--ink-500);
 }
+
+@media print {
+  /* `position: relative` puts the hero in the positioned paint layer, so it is
+     written to the PDF after every static section. Naive ATS parsers read the
+     content stream in order and saw "Experience" before the name. Nothing in
+     the printed hero is absolutely positioned, so static is safe here. */
+  body.dossier .hero--resume { position: static; }
+}
