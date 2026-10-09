@@ -771,3 +771,10 @@ body.dossier .project-card__meta {
   letter-spacing: 0.04em;
   color: var(--ink-500);
 }
+
+body.dossier .achievements__note {
+  margin: 0.9rem 0 0;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--ink-500);
+}
