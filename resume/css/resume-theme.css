@@ -786,3 +786,39 @@ body.dossier .achievements__note {
      the printed hero is absolutely positioned, so static is safe here. */
   body.dossier .hero--resume { position: static; }
 }
+
+/* Poster motion: one entrance when it scrolls in, then still. A lift on hover.
+   Deliberately no scroll-linked drift - a picture that moves while you read is noise. */
+body.dossier .hero__poster {
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
+}
+
+body.dossier .hero__poster.is-ready {
+  opacity: 0;
+  transform: translateY(18px) rotate(-1.2deg);
+}
+
+body.dossier .hero__poster.is-in {
+  animation: poster-settle 0.7s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes poster-settle {
+  from { opacity: 0; transform: translateY(18px) rotate(-1.2deg); }
+  to   { opacity: 1; transform: none; }
+}
+
+body.dossier .hero__poster:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 64px rgba(28, 25, 23, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.dossier .hero__poster,
+  body.dossier .hero__poster.is-ready,
+  body.dossier .hero__poster.is-in {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+}

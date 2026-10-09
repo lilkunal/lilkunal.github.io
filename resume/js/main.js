@@ -73,4 +73,18 @@
       }
     });
   }
+
+  /* Poster: fade and settle once when it first scrolls into view. */
+  var poster = document.querySelector(".hero__poster");
+  if (poster && "IntersectionObserver" in window &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    poster.classList.add("is-ready");
+    new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-in");
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.15 }).observe(poster);
+  }
 })();
