@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab — Kunal Varshney</title>
+<meta name="description" content="A three.js character animation demo: keyframe playback, crossfade blending between idle, walk and run, one-shot moves and morph-target expressions. Loads only when you ask it to.">
+<meta property="og:title" content="Lab — Kunal Varshney">
+<meta property="og:description" content="three.js skeletal animation, blending and morph targets, behind a click so no other page pays for it.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lilkunal.github.io/lab/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Kunal Varshney">
+<link rel="canonical" href="https://lilkunal.github.io/lab/">
+<link rel="icon" type="image/png" href="../assets/kunal-mark.png">
+<script src="../js/site-config.js"></script>
+<script src="../js/seo-head.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/nav-theme.css">
+<link rel="stylesheet" href="../css/lab.css?v=1">
+<script>document.documentElement.classList.add("js"); document.documentElement.setAttribute("data-theme", localStorage.getItem("kv-theme") || "dark");</script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "../js/vendor/three/three.module.min.js",
+    "three/addons/loaders/GLTFLoader.js": "../js/vendor/three/GLTFLoader.js",
+    "three/addons/utils/BufferGeometryUtils.js": "../js/vendor/three/BufferGeometryUtils.js"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-hidden="true">
+
+<header class="nav">
+  <a href="../index.html" class="nav__brand">
+    <span class="nav__brand-name">Kunal Varshney</span>
+  </a>
+  <label for="nav-toggle" class="nav__burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="../work/">Work</a>
+    <a href="../portfolios/">Portfolios</a>
+    <a href="./">Lab</a>
+    <a href="../gaming/">Gaming</a>
+    <a href="../resume/index.html">Résumé</a>
+    <a href="../index.html#contact" class="nav__cta">Contact</a>
+    <button type="button" class="theme-toggle theme-toggle--switch" id="theme-toggle" aria-label="Switch light or dark theme" aria-pressed="true">
+      <span class="theme-toggle__track" aria-hidden="true">
+        <span class="theme-toggle__glyph theme-toggle__glyph--sun" aria-hidden="true">☀</span>
+        <span class="theme-toggle__glyph theme-toggle__glyph--moon" aria-hidden="true">☾</span>
+        <span class="theme-toggle__thumb"></span>
+      </span>
+      <span class="theme-toggle__text">Theme</span>
+    </button>
+  </nav>
+</header>
+
+<main id="main" class="lab">
+  <section class="lab-head">
+    <p class="lab-head__tag">Lab</p>
+    <h1>Skeletal animation, <em>on request</em></h1>
+    <p class="lab-head__lede">A rigged character with fourteen clips: keyframe playback, crossfade blending between idle, walk and run, one-shot moves that return to where they left, and morph-target expressions. Built with three.js.</p>
+    <p class="lab-head__note">Nothing on this page downloads until you press the button. That is the point of it being here and not on every page: three.js and the model together are about 850 KB, and a portfolio that spends that on every visit is a portfolio that loses the visitor.</p>
+  </section>
+
+  <div class="lab-stage-wrap">
+    <div id="stage" class="lab-stage">
+      <button type="button" id="start" class="lab-start">
+        <span class="lab-start__label">Run the demo</span>
+        <span class="lab-start__meta">three.js + a 454 KB character</span>
+      </button>
+    </div>
+    <p id="status" class="lab-status" role="status" aria-live="polite"></p>
+
+    <div id="panel" class="lab-panel" hidden>
+      <div class="lab-group">
+        <span class="lab-group__title">Locomotion <em>crossfaded</em></span>
+        <button type="button" data-group="move" data-action="Idle" aria-pressed="true">Idle</button>
+        <button type="button" data-group="move" data-action="Walking" aria-pressed="false">Walk</button>
+        <button type="button" data-group="move" data-action="Running" aria-pressed="false">Run</button>
+        <button type="button" data-group="move" data-action="Dance" aria-pressed="false">Dance</button>
+        <button type="button" data-group="move" data-action="Sitting" aria-pressed="false">Sit</button>
+      </div>
+
+      <div class="lab-group">
+        <span class="lab-group__title">One-shot <em>returns to the base clip</em></span>
+        <button type="button" data-group="once" data-action="Jump" aria-pressed="false">Jump</button>
+        <button type="button" data-group="once" data-action="Wave" aria-pressed="false">Wave</button>
+        <button type="button" data-group="once" data-action="Punch" aria-pressed="false">Punch</button>
+        <button type="button" data-group="once" data-action="ThumbsUp" aria-pressed="false">Thumbs up</button>
+        <button type="button" data-group="once" data-action="Yes" aria-pressed="false">Yes</button>
+        <button type="button" data-group="once" data-action="No" aria-pressed="false">No</button>
+      </div>
+
+      <div class="lab-group" id="faces">
+        <span class="lab-group__title">Expression <em>morph targets</em></span>
+        <button type="button" data-group="face" data-action="Angry" aria-pressed="false">Angry</button>
+        <button type="button" data-group="face" data-action="Surprised" aria-pressed="false">Surprised</button>
+        <button type="button" data-group="face" data-action="Sad" aria-pressed="false">Sad</button>
+        <button type="button" data-group="face" data-action="none" aria-pressed="true">Neutral</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="lab-notes">
+    <h2>What is actually happening</h2>
+    <dl>
+      <dt>Crossfade blending</dt>
+      <dd>Switching between idle, walk and run does not swap clips. Both play at once while their weights interpolate over 0.4s, so the skeleton never pops between poses.</dd>
+
+      <dt>One-shot with return</dt>
+      <dd>Jump, wave and punch play once, clamp on their final frame, then fade back to whichever clip was running before. The listener removes itself so repeated presses do not stack handlers.</dd>
+
+      <dt>Morph targets</dt>
+      <dd>Expressions are vertex blend shapes on the head mesh, driven by influence weights, not separate models.</dd>
+
+      <dt>Budget</dt>
+      <dd>The renderer stops when the canvas scrolls out of view or the tab is hidden. An animation loop that nobody is watching is just battery.</dd>
+    </dl>
+    <p class="lab-notes__foot">Techniques from the three.js examples for keyframe animation, skinning blending, multiple animations and morph targets, rebuilt on one model instead of four so the page costs 454 KB rather than 9 MB.</p>
+  </section>
+</main>
+
+<script type="module" src="../js/lab.js?v=1"></script>
+<script src="../js/main.js?v=101"></script>
+<script src="../js/analytics.js" defer></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("../sw.js").catch(function () {});
+    });
+  }
+</script>
+</body>
+</html>
