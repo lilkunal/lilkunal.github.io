@@ -9,7 +9,7 @@
 <meta property="og:description" content="three.js skeletal animation, blending and morph targets, behind a click so no other page pays for it.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lilkunal.github.io/lab/">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <meta name="author" content="Kunal Varshney">
 <link rel="canonical" href="https://lilkunal.github.io/lab/">
 <link rel="icon" type="image/png" href="../assets/kunal-mark.png">
@@ -20,14 +20,17 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/nav-theme.css">
-<link rel="stylesheet" href="../css/lab.css?v=1">
+<link rel="stylesheet" href="../css/lab.css?v=2">
 <script>document.documentElement.classList.add("js"); document.documentElement.setAttribute("data-theme", localStorage.getItem("kv-theme") || "dark");</script>
 <script type="importmap">
 {
   "imports": {
     "three": "../js/vendor/three/three.module.min.js",
     "three/addons/loaders/GLTFLoader.js": "../js/vendor/three/GLTFLoader.js",
-    "three/addons/utils/BufferGeometryUtils.js": "../js/vendor/three/BufferGeometryUtils.js"
+    "three/addons/utils/BufferGeometryUtils.js": "../js/vendor/three/BufferGeometryUtils.js",
+    "three/addons/controls/OrbitControls.js": "../js/vendor/three/OrbitControls.js",
+    "three/addons/animation/CCDIKSolver.js": "../js/vendor/three/CCDIKSolver.js",
+    "three/addons/loaders/DRACOLoader.js": "../js/vendor/three/DRACOLoader.js"
   }
 }
 </script>
@@ -44,7 +47,6 @@
   <nav class="nav__links" aria-label="Primary">
     <a href="../work/">Work</a>
     <a href="../portfolios/">Portfolios</a>
-    <a href="./">Lab</a>
     <a href="../gaming/">Gaming</a>
     <a href="../resume/index.html">Résumé</a>
     <a href="../index.html#contact" class="nav__cta">Contact</a>
@@ -62,16 +64,24 @@
 <main id="main" class="lab">
   <section class="lab-head">
     <p class="lab-head__tag">Lab</p>
-    <h1>Skeletal animation, <em>on request</em></h1>
-    <p class="lab-head__lede">A rigged character with fourteen clips: keyframe playback, crossfade blending between idle, walk and run, one-shot moves that return to where they left, and morph-target expressions. Built with three.js.</p>
+    <h1>Three.js, <em>three ways</em></h1>
+    <p class="lab-head__lede">Crossfade blending and morph targets on a fourteen-clip robot, additive layering on a walk cycle, and a CCD inverse-kinematics arm that reaches for wherever you point. Drag to orbit, scroll to zoom.</p>
     <p class="lab-head__note">Nothing on this page downloads until you press the button. That is the point of it being here and not on every page: three.js and the model together are about 850 KB, and a portfolio that spends that on every visit is a portfolio that loses the visitor.</p>
   </section>
+
+  <p class="lab-unlisted">Unlisted: this page is not in the nav, not in the sitemap, and carries a noindex. Share the link deliberately.</p>
+
+  <div id="tabs" class="lab-tabs" hidden>
+    <button type="button" data-demo="character" aria-pressed="true">Blending &amp; morphs <em>454 KB</em></button>
+    <button type="button" data-demo="additive" aria-pressed="false">Additive <em>2.8 MB</em></button>
+    <button type="button" data-demo="ik" aria-pressed="false">Inverse kinematics <em>940 KB</em></button>
+  </div>
 
   <div class="lab-stage-wrap">
     <div id="stage" class="lab-stage">
       <button type="button" id="start" class="lab-start">
         <span class="lab-start__label">Run the demo</span>
-        <span class="lab-start__meta">three.js + a 454 KB character</span>
+        <span class="lab-start__meta">three.js + a 454 KB character · drag to orbit</span>
       </button>
     </div>
     <p id="status" class="lab-status" role="status" aria-live="polite"></p>
@@ -112,20 +122,23 @@
       <dt>Crossfade blending</dt>
       <dd>Switching between idle, walk and run does not swap clips. Both play at once while their weights interpolate over 0.4s, so the skeleton never pops between poses.</dd>
 
+      <dt>Additive blending</dt>
+      <dd>A second demo. An additive clip stores the difference from its first frame, so a pose like <em>sneak</em> or <em>sad</em> layers on top of the walk instead of replacing it. The pose clips are cut to a single frame first, because a pose is not a movement.</dd>
+
+      <dt>Inverse kinematics</dt>
+      <dd>A third demo. CCD walks the arm from the hand back to the shoulder, rotating one joint at a time until the hand reaches its target bone. Switch the target to follow the cursor and the whole arm solves itself as you move.</dd>
+
       <dt>One-shot with return</dt>
       <dd>Jump, wave and punch play once, clamp on their final frame, then fade back to whichever clip was running before. The listener removes itself so repeated presses do not stack handlers.</dd>
 
-      <dt>Morph targets</dt>
-      <dd>Expressions are vertex blend shapes on the head mesh, driven by influence weights, not separate models.</dd>
-
       <dt>Budget</dt>
-      <dd>The renderer stops when the canvas scrolls out of view or the tab is hidden. An animation loop that nobody is watching is just battery.</dd>
+      <dd>Each demo fetches only its own model, and the DRACO decoder is downloaded only for the compressed one. The renderer stops when the canvas scrolls out of view or the tab is hidden.</dd>
     </dl>
-    <p class="lab-notes__foot">Techniques from the three.js examples for keyframe animation, skinning blending, multiple animations and morph targets, rebuilt on one model instead of four so the page costs 454 KB rather than 9 MB.</p>
+    <p class="lab-notes__foot">Rebuilt from the three.js examples for keyframe animation, skinning blending, additive blending, morph targets and CCD inverse kinematics. Each demo loads on demand, so opening the page still costs 32 KB.</p>
   </section>
 </main>
 
-<script type="module" src="../js/lab.js?v=1"></script>
+<script type="module" src="../js/lab.js?v=5"></script>
 <script src="../js/main.js?v=101"></script>
 <script src="../js/analytics.js" defer></script>
 <script>

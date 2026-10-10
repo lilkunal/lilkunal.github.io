@@ -225,3 +225,53 @@ body:has(.lab) { background: var(--lab-bg); }
 @media (max-width: 640px) {
   .lab-stage { aspect-ratio: 4 / 5; }
 }
+
+/* Demo switcher */
+.lab-tabs[hidden] { display: none; }
+
+.lab-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.lab-tabs button {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--lab-line);
+  border-radius: 999px;
+  background: var(--lab-panel);
+  color: var(--lab-ink);
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.lab-tabs button em {
+  font-style: normal;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  opacity: 0.6;
+}
+
+.lab-tabs button[aria-pressed="true"] {
+  background: var(--lab-accent);
+  border-color: var(--lab-accent);
+  color: #0d1512;
+  font-weight: 600;
+}
+
+.lab-tabs button[aria-pressed="true"] em { opacity: 0.8; }
+.lab-tabs button:disabled { opacity: 0.5; cursor: progress; }
+
+.lab-unlisted {
+  margin: 1.2rem 0 0;
+  padding: 0.75rem 1rem;
+  border: 1px dashed var(--lab-line);
+  border-radius: 10px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--lab-ink-soft);
+}
