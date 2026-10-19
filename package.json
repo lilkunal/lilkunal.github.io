@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "test:hire-site": "playwright test",
-    "resume:pdf": "node scripts/make-resume-pdf.js"
+    "resume:pdf": "node scripts/make-resume-pdf.js",
+    "card:pdf": "node scripts/make-card-pdf.js"
   },
   "devDependencies": {
     "@playwright/test": "^1.62.1"
