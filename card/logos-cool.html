@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logo concepts — cool set</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #15161a; color: #eceef1; font-family: "DM Sans", system-ui, sans-serif; padding: 34px; }
+h1 { font-family: "Space Grotesk", sans-serif; font-size: 21px; }
+.sub { color: #8f959d; font-size: 13px; margin-bottom: 30px; font-family: "IBM Plex Mono", monospace; }
+.grid { display: flex; flex-wrap: wrap; gap: 26px; }
+.cell { width: 372px; background: #1e2026; border: 1px solid #2e323a; border-radius: 14px; overflow: hidden; }
+.cell h2 { font-family: "Space Grotesk", sans-serif; font-size: 15.5px; padding: 15px 18px 0; }
+.says { font-family: "IBM Plex Mono", monospace; font-size: 10.5px; color: #e0a34a; padding: 5px 18px 0; }
+.cell p { font-size: 12.5px; color: #8f959d; padding: 8px 18px 16px; line-height: 1.6; }
+.show { display: flex; }
+.lt, .dk { flex: 1; aspect-ratio: 1 / .8; display: grid; place-items: center; }
+.lt { background: #f2f3f5; } .dk { background: #0e0f12; }
+.lt svg, .dk svg { width: 100px; height: 100px; display: block; overflow: visible; }
+.small { display: flex; gap: 11px; align-items: center; padding: 13px 18px; border-top: 1px solid #2e323a; background: #191b20; }
+.small svg { width: 28px; height: 28px; }
+.wordmark { font-family: "Space Grotesk", sans-serif; font-size: 13.5px; font-weight: 700; }
+.wordmark em { display: block; font-style: normal; font-family: "IBM Plex Mono", monospace;
+  font-size: 7px; letter-spacing: .18em; color: #80868e; text-transform: uppercase; }
+
+/* ---------- motion ---------- */
+@keyframes rise { 0%,12% { transform: translateY(16px); opacity: 0 } 30%,100% { transform: none; opacity: 1 } }
+@keyframes draw { to { stroke-dashoffset: 0 } }
+@keyframes scan { 0% { transform: translateY(-4px) } 100% { transform: translateY(56px) } }
+@keyframes orbit { to { transform: rotate(360deg) } }
+@keyframes pop { 0%,60% { transform: scale(.4); opacity: 0 } 75% { transform: scale(1.12); opacity: 1 } 100% { transform: scale(1); opacity: 1 } }
+@keyframes fill { to { width: 46px } }
+
+.b1 { animation: rise 3.4s cubic-bezier(.2,.8,.3,1) infinite; }
+.b2 { animation: rise 3.4s .12s cubic-bezier(.2,.8,.3,1) infinite; }
+.b3 { animation: rise 3.4s .24s cubic-bezier(.2,.8,.3,1) infinite; }
+.line { stroke-dasharray: 120; stroke-dashoffset: 120; animation: draw 2.6s .5s ease-out infinite; }
+.scanner { animation: scan 2.6s ease-in-out infinite alternate; }
+.ring { transform-origin: 50px 52px; animation: orbit 5s linear infinite; }
+.px { animation: pop 2.8s cubic-bezier(.3,1.5,.5,1) infinite; }
+.bar { animation: fill 2.4s ease-in-out infinite alternate; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important } }
+</style>
+</head>
+<body>
+
+<h1>Six cool ones — these move</h1>
+<p class="sub">each still reads as a static mark when frozen for print · no initials</p>
+
+<div class="grid">
+
+<!-- 1 · isometric build -->
+<div class="cell">
+  <div class="show">
+    <div class="lt">
+      <svg viewBox="0 0 100 100">
+        <defs><linearGradient id="i1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b8cff"/><stop offset="1" stop-color="#2a4fd6"/></linearGradient></defs>
+        <g class="b1"><path d="M50 62 80 79 50 96 20 79z" fill="#c3cfe8"/></g>
+        <g class="b2"><path d="M50 40 80 57 50 74 20 57z" fill="#7f9ee0"/></g>
+        <g class="b3"><path d="M50 18 80 35 50 52 20 35z" fill="url(#i1)"/></g>
+      </svg>
+    </div>
+    <div class="dk">
+      <svg viewBox="0 0 100 100">
+        <defs><linearGradient id="i1d" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7ea8ff"/><stop offset="1" stop-color="#3f63ff"/></linearGradient></defs>
+        <g class="b1"><path d="M50 62 80 79 50 96 20 79z" fill="#2c3a55"/></g>
+        <g class="b2"><path d="M50 40 80 57 50 74 20 57z" fill="#43609c"/></g>
+        <g class="b3"><path d="M50 18 80 35 50 52 20 35z" fill="url(#i1d)"/></g>
+      </svg>
+    </div>
+  </div>
+  <h2>1 · Assembles itself</h2>
+  <p class="says">three slabs stack up, bottom to top, forever</p>
+  <p>Isometric and dimensional, so it has weight on a dark card. Frozen it is a clean stack; in a browser it builds itself, which is the thing you are selling.</p>
+  <div class="small">
+    <svg viewBox="0 0 100 100"><defs><linearGradient id="i1s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7ea8ff"/><stop offset="1" stop-color="#3f63ff"/></linearGradient></defs>
+      <path d="M50 62 80 79 50 96 20 79z" fill="#2c3a55"/><path d="M50 40 80 57 50 74 20 57z" fill="#43609c"/><path d="M50 18 80 35 50 52 20 35z" fill="url(#i1s)"/></svg>
+    <span class="wordmark">Kunal Varshney<em>web · seo · tools</em></span>
+  </div>
+</div>
+
+<!-- 2 · the scan -->
+<div class="cell">
+  <div class="show">
+    <div class="lt">
+      <svg viewBox="0 0 100 100">
+        <defs><linearGradient id="s2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00c2a8"/><stop offset="1" stop-color="#008f93"/></linearGradient>
+          <clipPath id="c2"><rect x="18" y="14" width="64" height="72" rx="8"/></clipPath></defs>
+        <rect x="18" y="14" width="64" height="72" rx="8" fill="url(#s2)"/>
+        <g clip-path="url(#c2)">
+          <rect x="28" y="28" width="34" height="5" rx="2.5" fill="#fff" opacity=".95"/>
+          <rect x="28" y="40" width="22" height="4" rx="2" fill="#fff" opacity=".6"/>
+          <rect x="28" y="50" width="30" height="4" rx="2" fill="#fff" opacity=".6"/>
+          <rect x="28" y="60" width="18" height="4" rx="2" fill="#fff" opacity=".6"/>
+          <rect class="scanner" x="18" y="18" width="64" height="7" fill="#fff" opacity=".75"/>
+        </g>
+      </svg>
+    </div>
+    <div class="dk">
+      <svg viewBox="0 0 100 100">
+        <defs><linearGradient id="s2d" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19e6c6"/><stop offset="1" stop-color="#00b0b5"/></linearGradient>
+          <clipPath id="c2d"><rect x="18" y="14" width="64" height="72" rx="8"/></clipPath></defs>
+        <rect x="18" y="14" width="64" height="72" rx="8" fill="url(#s2d)"/>
+        <g clip-path="url(#c2d)">
+          <rect x="28" y="28" width="34" height="5" rx="2.5" fill="#06302c" opacity=".9"/>
+          <rect x="28" y="40" width="22" height="4" rx="2" fill="#06302c" opacity=".55"/>
+          <rect x="28" y="50" width="30" height="4" rx="2" fill="#06302c" opacity=".55"/>
+          <rect x="28" y="60" width="18" height="4" rx="2" fill="#06302c" opacity=".55"/>
+          <rect class="scanner" x="18" y="18" width="64" height="7" fill="#eafff9" opacity=".85"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <h2>2 · The scan</h2>
+  <p class="says">a light bar sweeps the page, like a crawler reading it</p>
+  <p>A page being indexed, drawn as a scanner passing over it. Sharp, a bit sci-fi, and it is exactly what Google does to a site you have just built.</p>
+  <div class="small">
+    <svg viewBox="0 0 100 100"><defs><linearGradient id="s2s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19e6c6"/><stop offset="1" stop-color="#00b0b5"/></linearGradient></defs>
+      <rect x="18" y="14" width="64" height="72" rx="8" fill="url(#s2s)"/><rect x="28" y="40" width="44" height="6" rx="3" fill="#06302c" opacity=".6"/></svg>
+    <span class="wordmark">Kunal Varshney<em>web · seo · tools</em></span>
+  </div>
+</div>
+
+<!-- 3 · pixel burst -->
+<div class="cell">
+  <div class="show">
+    <div class="lt">
+      <svg viewBox="0 0 100 100">
+        <defs><linearGradient id="p3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7a3d"/><stop offset="1" stop-color="#e02f6b"/></linearGradient></defs>
+        <rect x="34" y="34" width="32" height="32" rx="4" fill="url(#p3)"/>
+        <g fill="url(#p3)">
+          <rect class="px" x="12" y="14" width="11" height="11" rx="2" style="animation-delay:.0s"/>
+          <rect class="px" x="76" y="18" width="9" height="9" rx="2" style="animation-delay:.18s"/>
+          <rect class="px" x="16" y="72" width="9" height="9" rx="2" style="animation-delay:.36s"/>
+          <rect class="px" x="74" y="70" width="12" height="12" rx="2" style="animation-delay:.54s"/>
+          <rect class="px" x="46" y="8" width="8" height="8" rx="2" style="animation-delay:.72s"/>
+          <rect class="px" x="48" y="82" width="8" height="8" rx="2" style="animation-delay:.9s"/>
+        </g>
+      </svg>
+    </div>
+    <div class="dk">
+      <svg viewBox="0 0 100 100">
+        <defs><linearGradient id="p3d" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9a5c"/><stop offset="1" stop-color="#ff4d85"/></linearGradient></defs>
+        <rect x="34" y="34" width="32" height="32" rx="4" fill="url(#p3d)"/>
+        <g fill="url(#p3d)">
+          <rect class="px" x="12" y="14" width="11" height="11" rx="2" style="animation-delay:.0s"/>
+          <rect class="px" x="76" y="18" width="9" height="9" rx="2" style="animation-delay:.18s"/>
+          <rect class="px" x="16" y="72" width="9" height="9" rx="2" style="animation-delay:.36s"/>
+          <rect class="px" x="74" y="70" width="12" height="12" rx="2" style="animation-delay:.54s"/>
+          <rect class="px" x="46" y="8" width="8" height="8" rx="2" style="animation-delay:.72s"/>
+          <rect class="px" x="48" y="82" width="8" height="8" rx="2" style="animation-delay:.9s"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <h2>3 · Pixel pull</h2>
+  <p class="says">loose pixels snap in toward one solid block</p>
+  <p>Scattered material being pulled into one finished thing. It also ties back to the pixel art already on your site, so your logo and your work look related.</p>
+  <div class="small">
+    <svg viewBox="0 0 100 100"><defs><linearGradient id="p3s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9a5c"/><stop offset="1" stop-color="#ff4d85"/></linearGradient></defs>
+      <rect x="34" y="34" width="32" height="32" rx="4" fill="url(#p3s)"/>
+      <g fill="url(#p3s)"><rect x="12" y="14" width="11" height="11" rx="2"/><rect x="76" y="70" width="12" height="12" rx="2"/><rect x="76" y="18" width="9" height="9" rx="2"/><rect x="16" y="72" width="9" height="9" rx="2"/></g></svg>
+    <span class="wordmark">Kunal Varshney<em>web · seo · tools</em></span>
+  </div>
+</div>
+
+<!-- 4 · orbit -->
+<div class="cell">
+  <div class="show">
+    <div class="lt">
+      <svg viewBox="0 0 100 100">
+        <defs><linearGradient id="o4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7b5cff"/><stop offset="1" stop-color="#3c23c9"/></linearGradient></defs>
+        <ellipse cx="50" cy="52" rx="42" ry="17" fill="none" stroke="#b9afff" stroke-width="4" transform="rotate(-22 50 52)"/>
+        <rect x="31" y="28" width="38" height="48" rx="7" fill="url(#o4)"/>
+        <rect x="39" y="40" width="22" height="4.5" rx="2.25" fill="#fff"/>
+        <rect x="39" y="50" width="15" height="4" rx="2" fill="#fff" opacity=".65"/>
+        <g class="ring" style="transform-origin:50px 52px"><circle cx="92" cy="52" r="7" fill="#ff8a3d" transform="rotate(-22 50 52)"/></g>
+      </svg>
+    </div>
+    <div class="dk">
+      <svg viewBox="0 0 100 100">
+        <defs><linearGradient id="o4d" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9b82ff"/><stop offset="1" stop-color="#5b3cff"/></linearGradient></defs>
+        <ellipse cx="50" cy="52" rx="42" ry="17" fill="none" stroke="#4b3f8a" stroke-width="4" transform="rotate(-22 50 52)"/>
+        <rect x="31" y="28" width="38" height="48" rx="7" fill="url(#o4d)"/>
+        <rect x="39" y="40" width="22" height="4.5" rx="2.25" fill="#fff"/>
+        <rect x="39" y="50" width="15" height="4" rx="2" fill="#fff" opacity=".65"/>
+        <g class="ring" style="transform-origin:50px 52px"><circle cx="92" cy="52" r="7" fill="#ffa05c" transform="rotate(-22 50 52)"/></g>
+      </svg>
+    </div>
+  </div>
+  <h2>4 · In orbit</h2>
+  <p class="says">traffic circling the page, always moving</p>
+  <p>A page with something orbiting it. Reads as reach and attention rather than a static document, and the single warm dot against the violet gives it a spark.</p>
+  <div class="small">
+    <svg viewBox="0 0 100 100"><defs><linearGradient id="o4s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9b82ff"/><stop offset="1" stop-color="#5b3cff"/></linearGradient></defs>
+      <ellipse cx="50" cy="52" rx="42" ry="17" fill="none" stroke="#4b3f8a" stroke-width="5" transform="rotate(-22 50 52)"/>
+      <rect x="31" y="28" width="38" height="48" rx="7" fill="url(#o4s)"/>
+      <circle cx="88" cy="40" r="8" fill="#ffa05c"/></svg>
+    <span class="wordmark">Kunal Varshney<em>web · seo · tools</em></span>
+  </div>
+</div>
+
+<!-- 5 · the build bar -->
+<div class="cell">
+  <div class="show">
+    <div class="lt">
+      <svg viewBox="0 0 100 100">
+        <defs><linearGradient id="b5" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#17c964"/><stop offset="1" stop-color="#0e8f6f"/></linearGradient></defs>
+        <rect x="14" y="16" width="72" height="68" rx="10" fill="#111418"/>
+        <rect x="24" y="30" width="22" height="5" rx="2.5" fill="#4b545f"/>
+        <rect x="24" y="44" width="52" height="9" rx="4.5" fill="#2a2f36"/>
+        <rect class="bar" x="24" y="44" width="10" height="9" rx="4.5" fill="url(#b5)"/>
+        <rect x="24" y="62" width="34" height="5" rx="2.5" fill="#4b545f"/>
+        <circle cx="76" cy="66" r="7" fill="#17c964"/>
+      </svg>
+    </div>
+    <div class="dk">
+      <svg viewBox="0 0 100 100">
+        <defs><linearGradient id="b5d" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2ee57f"/><stop offset="1" stop-color="#14b083"/></linearGradient></defs>
+        <rect x="14" y="16" width="72" height="68" rx="10" fill="#1b1f25" stroke="#2e343d" stroke-width="2"/>
+        <rect x="24" y="30" width="22" height="5" rx="2.5" fill="#596470"/>
+        <rect x="24" y="44" width="52" height="9" rx="4.5" fill="#2a2f36"/>
+        <rect class="bar" x="24" y="44" width="10" height="9" rx="4.5" fill="url(#b5d)"/>
+        <rect x="24" y="62" width="34" height="5" rx="2.5" fill="#596470"/>
+        <circle cx="76" cy="66" r="7" fill="#2ee57f"/>
+      </svg>
+    </div>
+  </div>
+  <h2>5 · Shipping</h2>
+  <p class="says">a progress bar filling inside a terminal window</p>
+  <p>The least decorative and the most honest: a build running to completion. Technical buyers will like it; it is the one mark here that looks like software rather than marketing.</p>
+  <div class="small">
+    <svg viewBox="0 0 100 100"><defs><linearGradient id="b5s" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2ee57f"/><stop offset="1" stop-color="#14b083"/></linearGradient></defs>
+      <rect x="14" y="16" width="72" height="68" rx="10" fill="#1b1f25" stroke="#2e343d" stroke-width="3"/>
+      <rect x="24" y="44" width="52" height="10" rx="5" fill="#2a2f36"/><rect x="24" y="44" width="34" height="10" rx="5" fill="url(#b5s)"/></svg>
+    <span class="wordmark">Kunal Varshney<em>web · seo · tools</em></span>
+  </div>
+</div>
+
+<!-- 6 · the line that draws -->
+<div class="cell">
+  <div class="show">
+    <div class="lt">
+      <svg viewBox="0 0 100 100">
+        <defs><linearGradient id="d6" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ff5a36"/><stop offset="1" stop-color="#ffb020"/></linearGradient></defs>
+        <rect x="10" y="12" width="80" height="76" rx="12" fill="#14161b"/>
+        <path class="line" d="M24 72 42 54l13 11 21-29" stroke="url(#d6)" stroke-width="8"
+              fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M66 36h12v12" stroke="url(#d6)" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="dk">
+      <svg viewBox="0 0 100 100">
+        <defs><linearGradient id="d6d" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ff7a52"/><stop offset="1" stop-color="#ffc83d"/></linearGradient></defs>
+        <rect x="10" y="12" width="80" height="76" rx="12" fill="#1c1f26" stroke="#2f343d" stroke-width="2"/>
+        <path class="line" d="M24 72 42 54l13 11 21-29" stroke="url(#d6d)" stroke-width="8"
+              fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M66 36h12v12" stroke="url(#d6d)" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+  <h2>6 · Draws itself</h2>
+  <p class="says">the growth line is drawn stroke by stroke, on loop</p>
+  <p>Dark tile, hot gradient line. The drawing animation is the whole personality: it looks like the result arriving rather than sitting there already finished.</p>
+  <div class="small">
+    <svg viewBox="0 0 100 100"><defs><linearGradient id="d6s" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ff7a52"/><stop offset="1" stop-color="#ffc83d"/></linearGradient></defs>
+      <rect x="10" y="12" width="80" height="76" rx="12" fill="#1c1f26" stroke="#2f343d" stroke-width="3"/>
+      <path d="M24 72 42 54l13 11 21-29" stroke="url(#d6s)" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M66 36h12v12" stroke="url(#d6s)" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="wordmark">Kunal Varshney<em>web · seo · tools</em></span>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

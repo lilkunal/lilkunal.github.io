@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business card — Kunal Varshney</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* 90 x 54 mm card with 3 mm bleed on every side -> 96 x 60 mm page.
+   Trim is at 3mm; keep anything that must survive the guillotine 4mm inside that. */
+:root {
+  --bleed: 3mm;
+  --w: 90mm;
+  --h: 54mm;
+  --safe: 7mm;            /* bleed + 4mm safe margin */
+  --paper: #f5f1e8;
+  --ink: #1b1916;
+  --ink-soft: #5d564c;
+  --accent: #0f766e;
+  --dark: #141210;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+@page {
+  size: 96mm 60mm;
+  margin: 0;
+}
+
+html, body { background: #8a8a8a; }
+
+.card {
+  position: relative;
+  width: 96mm;
+  height: 60mm;
+  overflow: hidden;
+  font-family: "DM Sans", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  page-break-after: always;
+  break-after: page;
+}
+
+.card:last-child { page-break-after: auto; break-after: auto; }
+
+.card__inner {
+  position: absolute;
+  inset: var(--safe);
+}
+
+/* ---------- front ---------- */
+
+.name {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 7.4mm;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.role {
+  margin-top: 1.6mm;
+  font-size: 3.1mm;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.01em;
+}
+
+.rule {
+  width: 14mm;
+  height: 0.6mm;
+  background: var(--accent);
+  margin: 3.4mm 0;
+}
+
+.lines {
+  display: grid;
+  gap: 1.5mm;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 2.9mm;
+  color: var(--ink-soft);
+}
+
+.lines b { color: var(--ink); font-weight: 500; }
+
+.front-foot {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 2.6mm;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ---------- back ---------- */
+
+.card--back { background: var(--dark); color: var(--paper); }
+
+.card--back .card__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 6mm;
+}
+
+.pitch {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 5.6mm;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+
+.pitch em { font-style: normal; color: #5fd0ae; }
+
+.pitch-note {
+  margin-top: 2.6mm;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 2.7mm;
+  line-height: 1.45;
+  color: #a9a299;
+}
+
+.qr {
+  display: grid;
+  justify-items: center;
+  gap: 1.6mm;
+}
+
+/* Dark modules on a light panel: the orientation every scanner expects.
+   Inverted QR works on some phones and fails on others, which is not a gamble
+   worth taking on 500 printed cards. */
+.qr-plate {
+  background: var(--paper);
+  padding: 2mm;
+  border-radius: 1mm;
+  line-height: 0;
+}
+
+.qr svg {
+  width: 22mm;
+  height: 22mm;
+  color: var(--dark);           /* the path uses currentColor */
+  display: block;
+}
+
+.qr span {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 2.3mm;
+  letter-spacing: 0.06em;
+  color: #a9a299;
+}
+
+/* Screen-only: show where the card gets cut. Never printed. */
+@media screen {
+  body { padding: 10mm; display: grid; gap: 8mm; justify-items: center; }
+  .card { box-shadow: 0 4mm 12mm rgba(0,0,0,0.35); }
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: var(--bleed);
+    border: 0.2mm dashed rgba(220, 60, 60, 0.9);
+    pointer-events: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- FRONT -->
+<section class="card">
+  <div class="card__inner">
+    <h1 class="name">Kunal Varshney</h1>
+    <p class="role">Web Designer &amp; Front-End Developer</p>
+    <div class="rule"></div>
+    <div class="lines">
+      <span><b>lilkunal.github.io</b></span>
+      <span>kunalvrshn@gmail.com</span>
+      <span>+91 85340 49747</span>
+    </div>
+    <p class="front-foot">Gurugram · Remote</p>
+  </div>
+</section>
+
+<!-- BACK -->
+<section class="card card--back">
+  <div class="card__inner">
+    <div>
+      <p class="pitch">Sites that load<br>before you<br><em>lose interest.</em></p>
+      <p class="pitch-note">Design, build, SEO and launch.<br>Scope and price agreed in writing.</p>
+    </div>
+    <div class="qr">
+      <span class="qr-plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" shape-rendering="crispEdges" role="img" aria-label="QR code to lilkunal.github.io"><path fill="currentColor" d="M0 0h7v1h-7zM9 0h4v1h-4zM14 0h1v1h-1zM18 0h2v1h-2zM22 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h1v1h-1zM10 1h2v1h-2zM13 1h1v1h-1zM19 1h2v1h-2zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM9 2h1v1h-1zM15 2h1v1h-1zM18 2h1v1h-1zM22 2h1v1h-1zM24 2h3v1h-3zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM11 3h3v1h-3zM16 3h1v1h-1zM19 3h2v1h-2zM22 3h1v1h-1zM24 3h3v1h-3zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h1v1h-1zM11 4h3v1h-3zM16 4h4v1h-4zM22 4h1v1h-1zM24 4h3v1h-3zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM9 5h1v1h-1zM12 5h1v1h-1zM14 5h3v1h-3zM18 5h2v1h-2zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h7v1h-7zM10 7h3v1h-3zM15 7h1v1h-1zM17 7h1v1h-1zM19 7h1v1h-1zM0 8h1v1h-1zM2 8h1v1h-1zM4 8h1v1h-1zM6 8h1v1h-1zM9 8h1v1h-1zM11 8h2v1h-2zM16 8h2v1h-2zM19 8h2v1h-2zM24 8h1v1h-1zM27 8h1v1h-1zM1 9h2v1h-2zM4 9h2v1h-2zM7 9h2v1h-2zM13 9h1v1h-1zM15 9h2v1h-2zM20 9h1v1h-1zM22 9h1v1h-1zM25 9h1v1h-1zM28 9h1v1h-1zM0 10h2v1h-2zM3 10h1v1h-1zM6 10h2v1h-2zM9 10h2v1h-2zM12 10h1v1h-1zM14 10h3v1h-3zM18 10h1v1h-1zM20 10h4v1h-4zM26 10h3v1h-3zM3 11h3v1h-3zM11 11h1v1h-1zM13 11h2v1h-2zM16 11h5v1h-5zM23 11h2v1h-2zM27 11h1v1h-1zM2 12h1v1h-1zM5 12h2v1h-2zM8 12h1v1h-1zM10 12h3v1h-3zM14 12h2v1h-2zM17 12h1v1h-1zM21 12h2v1h-2zM25 12h1v1h-1zM27 12h2v1h-2zM0 13h5v1h-5zM7 13h2v1h-2zM11 13h1v1h-1zM14 13h2v1h-2zM20 13h3v1h-3zM25 13h1v1h-1zM28 13h1v1h-1zM2 14h3v1h-3zM6 14h1v1h-1zM8 14h3v1h-3zM13 14h1v1h-1zM17 14h1v1h-1zM21 14h1v1h-1zM24 14h2v1h-2zM27 14h2v1h-2zM0 15h3v1h-3zM4 15h1v1h-1zM10 15h3v1h-3zM15 15h1v1h-1zM17 15h3v1h-3zM21 15h2v1h-2zM24 15h2v1h-2zM27 15h1v1h-1zM1 16h2v1h-2zM6 16h3v1h-3zM11 16h2v1h-2zM16 16h7v1h-7zM25 16h1v1h-1zM27 16h2v1h-2zM1 17h5v1h-5zM7 17h2v1h-2zM10 17h2v1h-2zM13 17h1v1h-1zM15 17h2v1h-2zM20 17h3v1h-3zM25 17h2v1h-2zM28 17h1v1h-1zM0 18h1v1h-1zM4 18h1v1h-1zM6 18h1v1h-1zM10 18h1v1h-1zM14 18h4v1h-4zM22 18h3v1h-3zM27 18h2v1h-2zM1 19h2v1h-2zM8 19h3v1h-3zM12 19h3v1h-3zM16 19h3v1h-3zM20 19h1v1h-1zM23 19h3v1h-3zM27 19h1v1h-1zM0 20h1v1h-1zM2 20h3v1h-3zM6 20h2v1h-2zM9 20h2v1h-2zM12 20h1v1h-1zM14 20h2v1h-2zM18 20h1v1h-1zM20 20h5v1h-5zM8 21h4v1h-4zM14 21h2v1h-2zM19 21h2v1h-2zM24 21h1v1h-1zM26 21h3v1h-3zM0 22h7v1h-7zM9 22h3v1h-3zM13 22h1v1h-1zM17 22h1v1h-1zM19 22h2v1h-2zM22 22h1v1h-1zM24 22h2v1h-2zM27 22h2v1h-2zM0 23h1v1h-1zM6 23h1v1h-1zM9 23h2v1h-2zM12 23h1v1h-1zM15 23h1v1h-1zM20 23h1v1h-1zM24 23h2v1h-2zM28 23h1v1h-1zM0 24h1v1h-1zM2 24h3v1h-3zM6 24h1v1h-1zM8 24h2v1h-2zM16 24h1v1h-1zM20 24h5v1h-5zM0 25h1v1h-1zM2 25h3v1h-3zM6 25h1v1h-1zM9 25h3v1h-3zM13 25h1v1h-1zM15 25h3v1h-3zM19 25h2v1h-2zM23 25h2v1h-2zM26 25h1v1h-1zM0 26h1v1h-1zM2 26h3v1h-3zM6 26h1v1h-1zM8 26h2v1h-2zM15 26h2v1h-2zM18 26h2v1h-2zM23 26h3v1h-3zM28 26h1v1h-1zM0 27h1v1h-1zM6 27h1v1h-1zM9 27h1v1h-1zM12 27h2v1h-2zM16 27h5v1h-5zM22 27h2v1h-2zM27 27h1v1h-1zM0 28h7v1h-7zM8 28h4v1h-4zM14 28h2v1h-2zM18 28h1v1h-1zM20 28h1v1h-1zM22 28h2v1h-2zM27 28h2v1h-2z"/></svg></span>
+      <span>lilkunal.github.io</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

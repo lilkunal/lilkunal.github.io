@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Pull — identity sheet</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root { --o: #FF7A3D; --p: #E02F6B; --ink: #15161a; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #15161a; color: #eceef1; font-family: "DM Sans", system-ui, sans-serif; padding: 36px; }
+h1 { font-family: "Space Grotesk", sans-serif; font-size: 22px; }
+.sub { color: #8f959d; font-size: 13px; font-family: "IBM Plex Mono", monospace; margin-bottom: 30px; }
+h2 { font-family: "Space Grotesk", sans-serif; font-size: 14px; margin: 30px 0 12px;
+  color: #c9cdd3; letter-spacing: .01em; }
+.panel { background: #1d1f25; border: 1px solid #2d313a; border-radius: 14px; padding: 22px; }
+.flex { display: flex; gap: 26px; flex-wrap: wrap; align-items: center; }
+.swatch { font-family: "IBM Plex Mono", monospace; font-size: 10px; color: #8f959d; margin-top: 8px; text-align: center; }
+
+/* the mark */
+.mk { display: block; }
+.grad   { fill: url(#kvGrad); }
+.mono-d { fill: #15161a; }
+.mono-l { fill: #ffffff; }
+
+.tile { display: grid; place-items: center; border-radius: 12px; }
+.on-dark  { background: #0e0f12; }
+.on-light { background: #f2f3f5; }
+.on-brand { background: linear-gradient(135deg, #FF7A3D, #E02F6B); }
+
+/* lockups */
+.lock { display: flex; align-items: center; gap: 13px; }
+.lock .nm { font-family: "Space Grotesk", sans-serif; font-weight: 700; letter-spacing: -.015em; line-height: 1; }
+.lock .sl { font-family: "IBM Plex Mono", monospace; letter-spacing: .18em; text-transform: uppercase;
+  color: #8f959d; display: block; margin-top: 5px; }
+.stack { text-align: center; }
+.stack .nm { margin-top: 12px; }
+
+/* size ladder */
+.ladder { display: flex; align-items: flex-end; gap: 22px; }
+.ladder figure { text-align: center; }
+
+@keyframes pull {
+  0%, 8%  { transform: translate(-14px, -14px) scale(.55); opacity: 0 }
+  38%,100% { transform: none; opacity: var(--o2) }
+}
+.anim .s1 { --o2: .32; animation: pull 2.8s cubic-bezier(.25,1.2,.4,1) infinite; }
+.anim .s2 { --o2: .55; animation: pull 2.8s .14s cubic-bezier(.25,1.2,.4,1) infinite; }
+.anim .s3 { --o2: .80; animation: pull 2.8s .28s cubic-bezier(.25,1.2,.4,1) infinite; }
+@media (prefers-reduced-motion: reduce) { .anim * { animation: none !important; opacity: 1 } }
+</style>
+</head>
+<body>
+
+<!-- one definition, reused everywhere -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="kvGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF7A3D"/><stop offset="1" stop-color="#E02F6B"/>
+    </linearGradient>
+    <g id="markFull">
+      <rect class="s1" x="6"  y="10" width="8"  height="8"  rx="1.5" opacity=".32"/>
+      <rect class="s2" x="18" y="20" width="12" height="12" rx="2"   opacity=".55"/>
+      <rect class="s3" x="31" y="33" width="15" height="15" rx="2.5" opacity=".8"/>
+      <rect x="50" y="28" width="40" height="40" rx="6"/>
+    </g>
+    <g id="markCompact">
+      <rect x="8"  y="14" width="18" height="18" rx="3" opacity=".6"/>
+      <rect x="36" y="30" width="52" height="52" rx="8"/>
+    </g>
+  </defs>
+</svg>
+
+<h1>Pixel Pull</h1>
+<p class="sub">loose material is drawn into one finished block · #FF7A3D &rarr; #E02F6B</p>
+
+<h2>The mark, on every background</h2>
+<div class="panel flex">
+  <div><div class="tile on-dark" style="width:150px;height:150px">
+    <svg class="mk" viewBox="0 0 96 96" width="104" height="104"><use href="#markFull" class="grad"/></svg>
+  </div><p class="swatch">on dark</p></div>
+
+  <div><div class="tile on-light" style="width:150px;height:150px">
+    <svg class="mk" viewBox="0 0 96 96" width="104" height="104"><use href="#markFull" class="grad"/></svg>
+  </div><p class="swatch">on light</p></div>
+
+  <div><div class="tile on-brand" style="width:150px;height:150px">
+    <svg class="mk" viewBox="0 0 96 96" width="104" height="104"><use href="#markFull" class="mono-l"/></svg>
+  </div><p class="swatch">reversed, on brand</p></div>
+
+  <div><div class="tile on-light" style="width:150px;height:150px">
+    <svg class="mk" viewBox="0 0 96 96" width="104" height="104"><use href="#markFull" class="mono-d"/></svg>
+  </div><p class="swatch">one colour — stamps, invoices, fax</p></div>
+</div>
+
+<h2>It animates, because you build for the web</h2>
+<div class="panel flex">
+  <div><div class="tile on-dark" style="width:190px;height:190px">
+    <svg class="mk anim" viewBox="0 0 96 96" width="130" height="130"><use href="#markFull" class="grad"/></svg>
+  </div><p class="swatch">pixels fly in, loop</p></div>
+  <p style="max-width:380px;color:#8f959d;font-size:13px;line-height:1.65">
+    The three satellites fly in and settle, then repeat. On the site this runs in the nav;
+    in print it is simply the frozen version on the left. Same file, one CSS class apart,
+    and it stops entirely for anyone who has asked for reduced motion.</p>
+</div>
+
+<h2>Size ladder — where the full mark gives way to the compact one</h2>
+<div class="panel">
+  <div class="ladder">
+    <figure><div class="tile on-dark" style="width:128px;height:128px">
+      <svg viewBox="0 0 96 96" width="96" height="96"><use href="#markFull" class="grad"/></svg></div>
+      <p class="swatch">96 px · full</p></figure>
+    <figure><div class="tile on-dark" style="width:80px;height:80px">
+      <svg viewBox="0 0 96 96" width="56" height="56"><use href="#markFull" class="grad"/></svg></div>
+      <p class="swatch">56 px · full</p></figure>
+    <figure><div class="tile on-dark" style="width:56px;height:56px">
+      <svg viewBox="0 0 96 96" width="32" height="32"><use href="#markFull" class="grad"/></svg></div>
+      <p class="swatch">32 px · full (mushy)</p></figure>
+    <figure><div class="tile on-dark" style="width:56px;height:56px">
+      <svg viewBox="0 0 96 96" width="32" height="32"><use href="#markCompact" class="grad"/></svg></div>
+      <p class="swatch">32 px · compact</p></figure>
+    <figure><div class="tile on-dark" style="width:40px;height:40px">
+      <svg viewBox="0 0 96 96" width="16" height="16"><use href="#markCompact" class="grad"/></svg></div>
+      <p class="swatch">16 px · favicon</p></figure>
+  </div>
+  <p style="margin-top:16px;color:#8f959d;font-size:13px;line-height:1.65;max-width:720px">
+    Below roughly 40 px the three-step trail collapses into noise, which is the weakness I flagged.
+    The compact variant drops to one satellite and a larger core, so the idea survives at favicon size.
+    Rule: full mark above 40 px, compact below.</p>
+</div>
+
+<h2>Lockups</h2>
+<div class="panel flex" style="gap:40px">
+  <div class="lock">
+    <svg viewBox="0 0 96 96" width="46" height="46"><use href="#markFull" class="grad"/></svg>
+    <span class="nm" style="font-size:21px">Kunal Varshney
+      <span class="sl" style="font-size:8px">Web · SEO · Tools</span></span>
+  </div>
+
+  <div class="lock stack" style="display:block">
+    <svg viewBox="0 0 96 96" width="54" height="54"><use href="#markFull" class="grad"/></svg>
+    <div class="nm" style="font-size:19px">Kunal Varshney
+      <span class="sl" style="font-size:8px">Web · SEO · Tools</span></div>
+  </div>
+
+  <div class="lock">
+    <svg viewBox="0 0 96 96" width="30" height="30"><use href="#markCompact" class="grad"/></svg>
+    <span class="nm" style="font-size:15px">Kunal Varshney</span>
+  </div>
+</div>
+
+<h2>In use</h2>
+<div class="panel flex">
+  <!-- browser tab -->
+  <div>
+    <div style="width:250px;background:#2b2e35;border-radius:10px 10px 0 0;padding:8px">
+      <div style="display:flex;gap:7px;align-items:center;background:#1d1f25;border-radius:7px;padding:7px 9px">
+        <svg viewBox="0 0 96 96" width="15" height="15"><use href="#markCompact" class="grad"/></svg>
+        <span style="font-size:11px;color:#c9cdd3">Kunal Varshney</span>
+      </div>
+    </div>
+    <p class="swatch">browser tab</p>
+  </div>
+
+  <!-- avatar -->
+  <div style="text-align:center">
+    <div class="tile on-dark" style="width:70px;height:70px;border-radius:50%;border:1px solid #2d313a">
+      <svg viewBox="0 0 96 96" width="42" height="42"><use href="#markCompact" class="grad"/></svg>
+    </div>
+    <p class="swatch">avatar</p>
+  </div>
+
+  <!-- business card corner -->
+  <div>
+    <div style="width:260px;height:150px;background:#fff;border-radius:9px;padding:18px;position:relative">
+      <svg viewBox="0 0 96 96" width="30" height="30"><use href="#markFull" class="grad"/></svg>
+      <p style="font-family:'Space Grotesk';font-weight:700;color:#15161a;font-size:15px;margin-top:26px">Kunal Varshney</p>
+      <p style="font-family:'IBM Plex Mono';font-size:8px;color:#5d6470;margin-top:3px;letter-spacing:.06em">
+        WEB · SEO · TOOLS</p>
+      <p style="font-family:'IBM Plex Mono';font-size:8px;color:#5d6470;position:absolute;bottom:18px">
+        lilkunal.github.io</p>
+    </div>
+    <p class="swatch">card corner</p>
+  </div>
+</div>
+
+</body>
+</html>

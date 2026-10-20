@@ -21,11 +21,12 @@ test.describe("Kunal hire site — device fit", () => {
     }
   }
 
-  test("Home nav mark is the guy drawing, not the old robot face", async ({ page }) => {
+  test("Home nav carries the Pixel Pull mark, and the favicon is the brand one", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");
-    await expect(page.locator(".nav__logo")).toHaveAttribute("src", /kunal-mark\.png$/);
+    await expect(page.locator("svg.nav__logo--mark")).toHaveCount(1);
     await expect(page.locator(".nav__logo-draw")).toHaveCount(0);
+    await expect(page.locator('link[rel="icon"][href$="favicon.ico"]')).toHaveCount(1);
   });
 
   test("Phone menu button is at least 44px tall", async ({ page }) => {

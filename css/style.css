@@ -2747,3 +2747,26 @@ a.work-tile:hover {
     justify-content: center;
   }
 }
+
+/* Pixel Pull in the nav: the satellites fly in once on load, then settle.
+   One pass only — a mark that loops forever in the corner of every page is a
+   distraction, not an identity. */
+.nav__logo--mark { display: block; }
+
+@keyframes pp-pull {
+  from { transform: translate(-10px, -10px) scale(.5); opacity: 0; }
+}
+
+.nav__logo--mark .pp1 { animation: pp-pull .7s cubic-bezier(.25,1.2,.4,1) both; }
+.nav__logo--mark .pp2 { animation: pp-pull .7s .09s cubic-bezier(.25,1.2,.4,1) both; }
+.nav__logo--mark .pp3 { animation: pp-pull .7s .18s cubic-bezier(.25,1.2,.4,1) both; }
+
+.nav__brand:hover .nav__logo--mark .pp1,
+.nav__brand:hover .nav__logo--mark .pp2,
+.nav__brand:hover .nav__logo--mark .pp3 { animation: pp-pull .6s cubic-bezier(.25,1.2,.4,1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__logo--mark .pp1,
+  .nav__logo--mark .pp2,
+  .nav__logo--mark .pp3 { animation: none; }
+}
